@@ -97,6 +97,8 @@
 	name = "Monochromacy"
 	desc = "You suffer from full colorblindness, and perceive nearly the entire world in blacks and whites."
 	value = 0
+	gain_text = "<span class='notice'>You feel the need to sleuth some crime.</span>" //!
+	lose_text = "<span class='notice'>The world is colored again!</span>"
 	medical_record_text = "Patient is afflicted with almost complete color blindness."
 
 /datum/quirk/monochromatic/add()

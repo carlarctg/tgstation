@@ -6,8 +6,8 @@
 	desc = "You become drunk more slowly and suffer fewer drawbacks from alcohol."
 	value = 1
 	mob_trait = TRAIT_ALCOHOL_TOLERANCE
-	gain_text = "<span class='notice'>You feel like you could drink a whole keg!</span>" //!
-	lose_text = "<span class='danger'>You feel like you lost your alcoholic tolerance, somehow.</span>"
+	gain_text = "<span class='notice'>You feel like you could drink a whole keg!</span>" 
+	lose_text = "<span class='danger'>You feel like you lost your alcoholic tolerance, somehow.</span>" //!
 	medical_record_text = "Patient demonstrates a high tolerance for alcohol."
 
 /datum/quirk/apathetic
@@ -73,7 +73,7 @@
 	value = 1
 	mob_trait = TRAIT_JOLLY
 	mood_quirk = TRUE
-	gain_text = "<span class='danger'>You feel happy!</span>"
+	gain_text = "<span class='danger'>You feel happy!</span>" //!
 	lose_text = "<span class='notice'>You don't feel so jolly anymore.</span>"
 	medical_record_text = "Patient demonstrates constant euthymia irregular for environment. It's a bit much, to be honest."
 
@@ -163,8 +163,8 @@
 	desc = "You hold a spiritual belief, whether in God, nature or the arcane rules of the universe. You gain comfort from the presence of holy people, and believe that your prayers are more special than others."
 	value = 1
 	mob_trait = TRAIT_SPIRITUAL
-	gain_text = "<span class='notice'>You have faith in a higher power.</span>"
-	lose_text = "<span class='danger'>You lost your faith!</span>"
+	gain_text = "<span class='notice'>You have faith in a higher power.</span>" 
+	lose_text = "<span class='danger'>You lost your faith!</span>"//!
 	medical_record_text = "Patient reports a belief in a higher power."
 
 /datum/quirk/spiritual/on_spawn()
