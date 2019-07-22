@@ -75,8 +75,8 @@
 	desc = "You sometimes just hate life."
 	mob_trait = TRAIT_DEPRESSION
 	value = -1
-	gain_text = "<span class='danger'>You start feeling depressed.</span>"
-	lose_text = "<span class='notice'>You no longer feel depressed.</span>" //if only it were that easy!
+	gain_text = "<span class='danger'>You feel worthless.</span>" //!
+	lose_text = "<span class='notice'>You feel like a productive member of society!</span>" //if only it were that easy!
 	medical_record_text = "Patient has a severe mood disorder, causing them to experience acute episodes of depression."
 	mood_quirk = TRUE
 
@@ -91,6 +91,8 @@
 	mood_quirk = TRUE
 	var/obj/item/heirloom
 	var/where
+	gain_text = "<span class='danger'>You feel an intense need to protect your belongings.</span>" //!
+	lose_text = "<span class='notice'>You feel like maybe your heirlooms aren't so important after all.</span>"
 	medical_record_text = "Patient demonstrates an unnatural attachment to a family heirloom."
 
 /datum/quirk/family_heirloom/on_spawn()
@@ -269,6 +271,8 @@
 	name = "Nyctophobia"
 	desc = "As far as you can remember, you've always been afraid of the dark. While in the dark without a light source, you instinctually act careful, and constantly feel a sense of dread."
 	value = -1
+	gain_text = "<span class='danger'>You notice a dark spot near you, and shudder.</span>"//!
+	lose_text = "<span class='notice'>You're no longer afraid of the dark!</span>"
 	medical_record_text = "Patient demonstrates a fear of the dark. (Seriously?)"
 
 /datum/quirk/nyctophobia/on_process()
@@ -301,6 +305,8 @@
 	human_only = TRUE
 	gain_text = null // Handled by trauma.
 	lose_text = null
+	gain_text = "<span class='danger'>You look at your legs and sigh.</span>"//!
+	lose_text = "<span class='notice'>Your legs work again!</span>"
 	medical_record_text = "Patient has an untreatable impairment in motor function in the lower extremities."
 
 /datum/quirk/paraplegic/add()
@@ -333,6 +339,8 @@
 	desc = "You're terrible with guns and can't line up a straight shot to save your life. Dual-wielding is right out."
 	value = -1
 	mob_trait = TRAIT_POOR_AIM
+	gain_text = "<span class='danger'>You feel like you couldn't hit the broad side of a barn.</span>"//!
+	lose_text = "<span class='notice'>You feel like a sharpshooter!</span>"
 	medical_record_text = "Patient possesses a strong tremor in both hands."
 
 /datum/quirk/prosopagnosia
@@ -340,13 +348,15 @@
 	desc = "You have a mental disorder that prevents you from being able to recognize faces at all."
 	value = -1
 	mob_trait = TRAIT_PROSOPAGNOSIA
+	gain_text = "<span class='danger'>Your face feels blurry.</span>"//!
+	lose_text = "<span class='notice'>Your face doesn't feel blurry anymore!</span>"
 	medical_record_text = "Patient suffers from prosopagnosia and cannot recognize faces."
 
 /datum/quirk/prosthetic_limb
 	name = "Prosthetic Limb"
 	desc = "An accident caused you to lose one of your limbs. Because of this, you now have a random prosthetic!"
 	value = -1
-	var/slot_string = "limb"
+	var/slot_string = "limb" //probably shouldn't have text
 	medical_record_text = "During physical examination, patient was found to have a prosthetic limb."
 
 /datum/quirk/prosthetic_limb/on_spawn()
@@ -380,7 +390,7 @@
 	desc = "Your first instinct is always to let people push you around. Resisting out of grabs will take conscious effort."
 	value = -2
 	mob_trait = TRAIT_GRABWEAKNESS
-	gain_text = "<span class='danger'>You feel like a pushover.</span>"
+	gain_text = "<span class='danger'>You feel like you can't stop people from pushing you around.</span>" //!
 	lose_text = "<span class='notice'>You feel like standing up for yourself.</span>"
 	medical_record_text = "Patient presents a notably unassertive personality and is easy to manipulate."
 
@@ -552,6 +562,6 @@
 	desc = "Due to past troubles, you are unable to recover your sanity if you lose it. Be very careful managing your mood!"
 	value = -2
 	mob_trait = TRAIT_UNSTABLE
-	gain_text = "<span class='danger'>There's a lot on your mind right now.</span>"
-	lose_text = "<span class='notice'>Your mind finally feels calm.</span>"
+	gain_text = "<span class='danger'>Your mind feels like it's teetering on an edge.</span>" //!
+	lose_text = "<span class='notice'>Your mind finally feels relaxed.</span>"
 	medical_record_text = "Patient's mind is in a vulnerable state, and cannot recover from traumatic events."

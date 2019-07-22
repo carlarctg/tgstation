@@ -6,8 +6,8 @@
 	desc = "You become drunk more slowly and suffer fewer drawbacks from alcohol."
 	value = 1
 	mob_trait = TRAIT_ALCOHOL_TOLERANCE
-	gain_text = "<span class='notice'>You feel like you could drink a whole keg!</span>"
-	lose_text = "<span class='danger'>You don't feel as resistant to alcohol anymore. Somehow.</span>"
+	gain_text = "<span class='notice'>You feel like you could drink a whole keg!</span>" //!
+	lose_text = "<span class='danger'>You feel like you lost your alcoholic tolerance, somehow.</span>"
 	medical_record_text = "Patient demonstrates a high tolerance for alcohol."
 
 /datum/quirk/apathetic
@@ -15,6 +15,8 @@
 	desc = "You just don't care as much as other people. That's nice to have in a place like this, I guess."
 	value = 1
 	mood_quirk = TRUE
+	gain_text = "<span class='danger'>The world looks a little dull.</span>" //!
+	lose_text = "<span class='notice'>The world feels a bit brighter!</span>"
 	medical_record_text = "Patient was administered the Apathy Evaluation Scale but did not bother to complete it."
 
 /datum/quirk/apathetic/add()
@@ -71,6 +73,8 @@
 	value = 1
 	mob_trait = TRAIT_JOLLY
 	mood_quirk = TRUE
+	gain_text = "<span class='danger'>You feel happy!</span>"
+	lose_text = "<span class='notice'>You don't feel so jolly anymore.</span>"
 	medical_record_text = "Patient demonstrates constant euthymia irregular for environment. It's a bit much, to be honest."
 
 /datum/quirk/jolly/on_process()
@@ -141,6 +145,8 @@
 	desc = "You know your body well, and can accurately assess the extent of your wounds."
 	value = 2
 	mob_trait = TRAIT_SELF_AWARE
+	gain_text = "<span class='danger'>You feel acutely aware of yourself.</span>" //!
+	lose_text = "<span class='notice'>You feel very unaware.</span>"
 	medical_record_text = "Patient demonstrates an uncanny knack for self-diagnosis."
 
 /datum/quirk/skittish
@@ -148,6 +154,8 @@
 	desc = "You can conceal yourself in danger. Ctrl-shift-click a closed locker to jump into it, as long as you have access."
 	value = 2
 	mob_trait = TRAIT_SKITTISH
+	gain_text = "<span class='danger'>You feel like trapping yourself into a filthy locker!</span>"//!
+	lose_text = "<span class='notice'>You no longer feel like a skittish worm.</span>"
 	medical_record_text = "Patient demonstrates a high aversion to danger and has described hiding in containers out of fear."
 
 /datum/quirk/spiritual
@@ -156,7 +164,7 @@
 	value = 1
 	mob_trait = TRAIT_SPIRITUAL
 	gain_text = "<span class='notice'>You have faith in a higher power.</span>"
-	lose_text = "<span class='danger'>You lose faith!</span>"
+	lose_text = "<span class='danger'>You lost your faith!</span>"
 	medical_record_text = "Patient reports a belief in a higher power."
 
 /datum/quirk/spiritual/on_spawn()
