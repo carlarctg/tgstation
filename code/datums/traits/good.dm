@@ -12,11 +12,11 @@
 
 /datum/quirk/apathetic
 	name = "Apathetic"
-	desc = "You just don't care as much as other people. That's nice to have in a place like this, I guess."
+	desc = "You just don't care as much as other people. That's nice to have in a place like this, you guess."
 	value = 1
 	mood_quirk = TRUE
-	gain_text = "<span class='danger'>The world looks a little dull.</span>" //!
-	lose_text = "<span class='notice'>The world feels a bit brighter!</span>"
+	gain_text = "<span class='notice'>The world feels a little dull.</span>" //!
+	lose_text = "<span class='danger'>The world feels a bit brighter.</span>"
 	medical_record_text = "Patient was administered the Apathy Evaluation Scale but did not bother to complete it."
 
 /datum/quirk/apathetic/add()
@@ -53,7 +53,7 @@
 	desc = "You're great at quick moves! You can climb tables more quickly."
 	value = 2
 	mob_trait = TRAIT_FREERUNNING
-	gain_text = "<span class='notice'>You feel lithe on your feet!</span>"
+	gain_text = "<span class='notice'>You feel nimble!</span>"
 	lose_text = "<span class='danger'>You feel clumsy again.</span>"
 	medical_record_text = "Patient scored highly on cardio tests."
 
@@ -73,8 +73,8 @@
 	value = 1
 	mob_trait = TRAIT_JOLLY
 	mood_quirk = TRUE
-	gain_text = "<span class='danger'>You feel happy!</span>" //!
-	lose_text = "<span class='notice'>You don't feel so jolly anymore.</span>"
+	gain_text = "<span class='notice'>You feel happy!</span>" //!
+	lose_text = "<span class='danger'>You don't feel so happy anymore.</span>"
 	medical_record_text = "Patient demonstrates constant euthymia irregular for environment. It's a bit much, to be honest."
 
 /datum/quirk/jolly/on_process()
@@ -145,8 +145,8 @@
 	desc = "You know your body well, and can accurately assess the extent of your wounds."
 	value = 2
 	mob_trait = TRAIT_SELF_AWARE
-	gain_text = "<span class='danger'>You feel acutely aware of yourself.</span>" //!
-	lose_text = "<span class='notice'>You feel very unaware.</span>"
+	gain_text = "<span class='notice'>You feel acutely aware of yourself.</span>" //!
+	lose_text = "<span class='danger'>You feel very unaware.</span>"
 	medical_record_text = "Patient demonstrates an uncanny knack for self-diagnosis."
 
 /datum/quirk/skittish

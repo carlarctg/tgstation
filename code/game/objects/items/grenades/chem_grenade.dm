@@ -200,6 +200,22 @@
 
 	qdel(src)
 
+/obj/item/grenade/chem_grenade/heirloom //DELETE COMMENT//this is terrible and should be tested and fixed by someone smarter
+	name = "spent chemical grenade"
+	desc = "A spent custom made grenade. You could wire it, but the beaker compartments are broken. Reminds you of that time you gibbed the clown."
+	icon_state = "chemg_ass"
+	item_state = "flashbang"
+	w_class = WEIGHT_CLASS_SMALL
+	force = 1
+	allowed_containers = null
+	banned_containers = list(/obj/item/reagent_containers) 
+	affected_area = 0
+	ignition_temp = 0 
+	//casedesc = "A spent custom made chemical grenade. You could wire it, but the beaker compartments are broken. Reminds you of that time you gibbed the clown."
+
+/obj/item/grenade/chem_grenade/heirloom/stage_change() //so it doesn't get the -casing and icon_state changes
+		return FALSE
+
 //Large chem grenades accept slime cores and use the appropriately.
 /obj/item/grenade/chem_grenade/large
 	name = "large grenade"

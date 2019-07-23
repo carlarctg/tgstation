@@ -105,7 +105,7 @@
 		switch(quirk_holder.mind.assigned_role)
 			//Service jobs
 			if("Clown")
-				heirloom_type = /obj/item/bikehorn/golden
+				heirloom_type = pick(subtypesof(/obj/item/bikehorn/))
 			if("Mime")
 				heirloom_type = /obj/item/reagent_containers/food/snacks/baguette
 			if("Janitor")
@@ -117,52 +117,52 @@
 			if("Bartender")
 				heirloom_type = pick(/obj/item/reagent_containers/glass/rag, /obj/item/clothing/head/that, /obj/item/reagent_containers/food/drinks/shaker)
 			if("Curator")
-				heirloom_type = pick(/obj/item/pen/fountain, /obj/item/storage/pill_bottle/dice)
+				heirloom_type = pick(/obj/item/pen/fountain, /obj/item/storage/pill_bottle/dice) 
 			if("Assistant")
-				heirloom_type = /obj/item/storage/toolbox/mechanical/old/heirloom
+				heirloom_type = pick(/obj/item/storage/toolbox/mechanical/old/heirloom, /obj/item/clothing/gloves/color/heirloom)
 			//Security/Command
 			if("Captain")
-				heirloom_type = /obj/item/reagent_containers/food/drinks/flask/gold
+				heirloom_type = pick(/obj/item/reagent_containers/food/drinks/flask/gold, /obj/item/coin/plasma, /obj/item/bikehorn/rubberducky)
 			if("Head of Security")
-				heirloom_type = /obj/item/book/manual/wiki/security_space_law
+				heirloom_type = pick(/obj/item/restraints/handcuffs, /obj/item/gun/energy/e_gun/advtaser/heirloom, /obj/item/reagent_containers/food/snacks/donut/jelly)
 			if("Warden")
-				heirloom_type = /obj/item/book/manual/wiki/security_space_law
+				heirloom_type = pick(/obj/item/book/manual/wiki/security_space_law, /obj/item/reagent_containers/syringe/lethal /obj/item/reagent_containers/food/snacks/donut, /obj/item/reagent_containers/food/snacks/donut/jelly)
 			if("Security Officer")
-				heirloom_type = pick(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
+				heirloom_type = pick(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec, /obj/item/reagent_containers/food/snacks/donut)
 			if("Detective")
-				heirloom_type = /obj/item/reagent_containers/food/drinks/bottle/whiskey
-			if("Lawyer")
+				heirloom_type = pick(/obj/item/reagent_containers/food/drinks/bottle/whiskey, /obj/item/reagent_containers/food/snacks/candy_corn)
+			if("Lawyer") //note to self add toolbox comment to all heirlooms?
 				heirloom_type = pick(/obj/item/gavelhammer, /obj/item/book/manual/wiki/security_space_law)
 			//RnD
 			if("Research Director")
-				heirloom_type = /obj/item/toy/plush/slimeplushie
+				heirloom_type = pick(/obj/item/toy/plush/slimeplushie, /obj/item/slime_extract/grey/heirloom, /obj/item/stock_parts/manipulator)
 			if("Scientist")
-				heirloom_type = /obj/item/toy/plush/slimeplushie
+				heirloom_type = pick(/obj/item/toy/plush/slimeplushie, /obj/item/slime_extract/grey/heirloom, /obj/item/stock_parts/manipulator)
 			if("Roboticist")
 				heirloom_type = pick(subtypesof(/obj/item/toy/prize)) //look at this nerd
 			//Medical
 			if("Chief Medical Officer")
-				heirloom_type = pick(/obj/item/clothing/neck/stethoscope, /obj/item/bodybag)
+				heirloom_type = pick(/obj/item/clothing/neck/stethoscope, /obj/item/bodybag, /obj/item/flashlight/pen)
 			if("Medical Doctor")
-				heirloom_type = pick(/obj/item/clothing/neck/stethoscope, /obj/item/bodybag)
+				heirloom_type = pick(/obj/item/clothing/neck/stethoscope, /obj/item/bodybag, /obj/item/flashlight/pen)
 			if("Chemist")
-				heirloom_type = /obj/item/book/manual/wiki/chemistry
+				heirloom_type = pick(/obj/item/book/manual/wiki/chemistry, /obj/item/reagent_containers/glass/beaker, /obj/item/grenade/chem_grenade/heirloom)
 			if("Virologist")
-				heirloom_type = /obj/item/reagent_containers/syringe
+				heirloom_type = pick(/obj/item/reagent_containers/syringe, /obj/item/reagent_containers/dropper)
 			//Engineering
 			if("Chief Engineer")
 				heirloom_type = pick(/obj/item/clothing/head/hardhat/white, /obj/item/screwdriver, /obj/item/wrench, /obj/item/weldingtool, /obj/item/crowbar, /obj/item/wirecutters)
 			if("Station Engineer")
 				heirloom_type = pick(/obj/item/clothing/head/hardhat, /obj/item/screwdriver, /obj/item/wrench, /obj/item/weldingtool, /obj/item/crowbar, /obj/item/wirecutters)
 			if("Atmospheric Technician")
-				heirloom_type = pick(/obj/item/lighter, /obj/item/lighter/greyscale, /obj/item/storage/box/matches)
+				heirloom_type = pick(/obj/item/clothing/head/hardhat/red, /obj/item/lighter, /obj/item/lighter/greyscale, /obj/item/storage/box/matches)
 			//Supply
 			if("Quartermaster")
 				heirloom_type = pick(/obj/item/stamp, /obj/item/stamp/denied)
 			if("Cargo Technician")
-				heirloom_type = /obj/item/clipboard
+				heirloom_type = pick(/obj/item/clipboard, /obj/item/destTagger)
 			if("Shaft Miner")
-				heirloom_type = pick(/obj/item/pickaxe/mini, /obj/item/shovel)
+				heirloom_type = pick(/obj/item/pickaxe/mini, /obj/item/reagent_containers/hypospray/medipen/survival/heirloom)
 
 	if(!heirloom_type)
 		heirloom_type = pick(
@@ -356,7 +356,7 @@
 	name = "Prosthetic Limb"
 	desc = "An accident caused you to lose one of your limbs. Because of this, you now have a random prosthetic!"
 	value = -1
-	var/slot_string = "limb" //probably shouldn't have text
+	var/slot_string = "limb" //has snowflake gain_text
 	medical_record_text = "During physical examination, patient was found to have a prosthetic limb."
 
 /datum/quirk/prosthetic_limb/on_spawn()

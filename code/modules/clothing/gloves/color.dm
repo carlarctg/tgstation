@@ -8,6 +8,14 @@
 	item_color="yellow"
 	resistance_flags = NONE
 
+/obj/item/clothing/gloves/color/heirloom //REMOVE THIS COMMMENT LATER// test random name
+	desc = "These gloves probably won't protect the wearer from electric shock."
+	name = pick("shitty insulated gloves", "worn out insulated gloves", "deficient insulated gloves", "unsulated gloves", "non-sulated gloves", "exsulated gloves")
+	icon_state = "yellow"
+	item_state = "ygloves"
+	item_color="yellow"
+	resistance_flags = NONE
+
 /obj/item/clothing/gloves/color/fyellow                             //Cheap Chinese Crap
 	desc = "These gloves are cheap knockoffs of the coveted ones - no way this can end badly."
 	name = "budget insulated gloves"

@@ -23,6 +23,14 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode, /obj/item/ammo_casing/energy/disabler)
 	ammo_x_offset = 2
 
+/obj/item/gun/energy/e_gun/advtaser/heirloom
+	name = "broken hybrid taser"
+	desc = "A dual-mode taser designed to fire both short-range high-power electrodes and long-range disabler beams. This one has worn out from use. Reminds you of the good old days."
+	icon_state = "advtaser"
+	ammo_type = null
+	can_charge = FALSE
+	dead_cell = TRUE
+
 /obj/item/gun/energy/e_gun/advtaser/cyborg
 	name = "cyborg taser"
 	desc = "An integrated hybrid taser that draws directly from a cyborg's power cell. The weapon contains a limiter to prevent the cyborg's power cell from overheating."

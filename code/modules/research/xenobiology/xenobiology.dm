@@ -99,6 +99,11 @@
 			else
 				return 0
 
+/obj/item/slime_extract/grey/heirloom
+	name = "old grey slime extract"
+	desc = "Goo extracted from a slime. You remember the day you activated it like it was yesterday. Or not, if you're not a scientist."
+	Uses = 0
+
 /obj/item/slime_extract/gold
 	name = "gold slime extract"
 	icon_state = "gold slime extract"

@@ -80,7 +80,7 @@
 
 /obj/item/storage/toolbox/mechanical/old/heirloom
 	name = "toolbox" //this will be named "X family toolbox"
-	desc = "It's seen better days."
+	desc = "It's seen better days. Doesn't look very robust."
 	force = 5
 	w_class = WEIGHT_CLASS_NORMAL
 
