@@ -107,7 +107,7 @@
 			if("Clown")
 				heirloom_type = pick(subtypesof(/obj/item/bikehorn/))
 			if("Mime")
-				heirloom_type = /obj/item/reagent_containers/food/snacks/baguette
+				heirloom_type = /obj/item/reagent_containers/food/snacks/baguette //doesn't get any better than this
 			if("Janitor")
 				heirloom_type = pick(/obj/item/mop, /obj/item/clothing/suit/caution, /obj/item/reagent_containers/glass/bucket)
 			if("Cook")
@@ -117,7 +117,7 @@
 			if("Bartender")
 				heirloom_type = pick(/obj/item/reagent_containers/glass/rag, /obj/item/clothing/head/that, /obj/item/reagent_containers/food/drinks/shaker)
 			if("Curator")
-				heirloom_type = pick(/obj/item/pen/fountain, /obj/item/storage/pill_bottle/dice) 
+				heirloom_type = pick(/obj/item/pen/fountain, /obj/item/storage/pill_bottle/dice)
 			if("Assistant")
 				heirloom_type = pick(/obj/item/storage/toolbox/mechanical/old/heirloom, /obj/item/clothing/gloves/color/heirloom)
 			//Security/Command
@@ -126,7 +126,7 @@
 			if("Head of Security")
 				heirloom_type = pick(/obj/item/restraints/handcuffs, /obj/item/gun/energy/e_gun/advtaser/heirloom, /obj/item/reagent_containers/food/snacks/donut/jelly)
 			if("Warden")
-				heirloom_type = pick(/obj/item/book/manual/wiki/security_space_law, /obj/item/reagent_containers/syringe/lethal /obj/item/reagent_containers/food/snacks/donut, /obj/item/reagent_containers/food/snacks/donut/jelly)
+				heirloom_type = pick(/obj/item/book/manual/wiki/security_space_law, /obj/item/reagent_containers/syringe/lethal, /obj/item/reagent_containers/food/snacks/donut, /obj/item/reagent_containers/food/snacks/donut/jelly)
 			if("Security Officer")
 				heirloom_type = pick(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec, /obj/item/reagent_containers/food/snacks/donut)
 			if("Detective")

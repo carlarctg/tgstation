@@ -202,7 +202,7 @@
 
 /obj/item/grenade/chem_grenade/heirloom //DELETE COMMENT//this is terrible and should be tested and fixed by someone smarter
 	name = "spent chemical grenade"
-	desc = "A spent custom made grenade. You could wire it, but the beaker compartments are broken. Reminds you of that time you gibbed the clown."
+	desc = "A spent chemical grenade. You could wire it, but the beaker compartments are broken. Reminds you of that time you gibbed the clown."
 	icon_state = "chemg_ass"
 	item_state = "flashbang"
 	w_class = WEIGHT_CLASS_SMALL

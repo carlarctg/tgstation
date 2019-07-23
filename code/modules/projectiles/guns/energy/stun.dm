@@ -25,8 +25,8 @@
 
 /obj/item/gun/energy/e_gun/advtaser/heirloom
 	name = "broken hybrid taser"
-	desc = "A dual-mode taser designed to fire both short-range high-power electrodes and long-range disabler beams. This one has worn out from use. Reminds you of the good old days."
-	icon_state = "advtaser"
+	desc = "A dual-mode taser designed to fire both short-range high-power electrodes and long-range disabler beams. This one's battery has worn out from use. Reminds you of the good old days."
+	icon_state = "advtaser_heirloom" //make this
 	ammo_type = null
 	can_charge = FALSE
 	dead_cell = TRUE
