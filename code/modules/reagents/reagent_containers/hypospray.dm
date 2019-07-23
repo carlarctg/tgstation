@@ -160,11 +160,12 @@
 
 /obj/item/reagent_containers/hypospray/medipen/survival/heirloom
 	name = "spent survival medipen"
+	desc = "A medipen for surviving in the harshest of environments. You vividly remember the day it saved your life. Or not at all, if you're not a miner."
 	list_reagents = list()
 
 /obj/item/reagent_containers/hypospray/medipen/survival/heirloom/Initialize()
 	. = ..()
-	name = 
+	update_icon() //so it shows up as empty
 
 /obj/item/reagent_containers/hypospray/combat/heresypurge
 	name = "holy water autoinjector"
