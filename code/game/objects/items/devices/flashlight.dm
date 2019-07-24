@@ -345,7 +345,7 @@
 /obj/item/flashlight/lantern/heirloom_moth
 	name = "old lantern"
 	desc = "An old lantern that has seen plenty of use."
-	brightness_on = 4
+	brightness_on = 3 //worn with use
 
 /obj/item/flashlight/lantern/syndicate
 	name = "suspicious lantern"

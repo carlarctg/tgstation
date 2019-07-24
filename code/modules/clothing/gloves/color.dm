@@ -8,11 +8,13 @@
 	item_color= "yellow"
 	resistance_flags = NONE
 
-/obj/item/clothing/gloves/color/heirloom //REMOVE THIS COMMMENT LATER// test random name
-	desc = "These gloves probably won't protect the wearer from electric shock."
+/obj/item/clothing/gloves/color/heirloom
+	desc = "These gloves definitely won't protect the wearer from electric shock."
 	name = "shitty insulated gloves" //gets overwritten below
 	icon_state = "yellow"
 	item_state = "ygloves"
+	siemens_coefficient = 1.2 //heirlooms are bad
+	permeability_coefficient = 0.05
 	item_color= "yellow"
 	resistance_flags = NONE
 
