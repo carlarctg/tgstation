@@ -105,9 +105,11 @@
 		switch(quirk_holder.mind.assigned_role)
 			//Service jobs
 			if("Clown")
-				heirloom_type = pick(subtypesof(/obj/item/bikehorn/))
+				heirloom_type = pick(subtypesof(/obj/item/bikehorn/), obj/item/bikehorn)
 			if("Mime")
-				heirloom_type = /obj/item/reagent_containers/food/snacks/baguette //doesn't get any better than this
+				heirloom_type = /obj/item/reagent_containers/food/snacks/baguette
+			if("Chaplain")
+				heirloom_type = pick(/obj/item/storage/backpack/cultpack, /obj/item/clothing/head/bishopmitre, /obj/item/clothing/head/kippah)
 			if("Janitor")
 				heirloom_type = pick(/obj/item/mop, /obj/item/clothing/suit/caution, /obj/item/reagent_containers/glass/bucket)
 			if("Cook")
