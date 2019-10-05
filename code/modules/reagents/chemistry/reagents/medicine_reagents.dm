@@ -385,6 +385,28 @@
 	..()
 	. = 1
 
+/datum/reagent/medicine/rubidium
+	name = "Rubidium"
+	description = "Treats heavy radiation doses, purges other chemicals and slowly removes mutations."
+	reagent_state = LIQUID
+	color = "#E6FFF0"
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+
+/datum/reagent/medicine/pen_acid/on_mob_life(mob/living/carbon/M)
+	if(M.radiation > 1000)
+		M.radiation -= max(M.radiation-RAD_MOB_HAIRLOSS, 0)/20 // 2000 rads: -75 rads per tick, chills out when you start losing hair
+	else M.radiation -= max(M.radiation-RAD_MOB_SAFE, 0)/40 // 999 rads: -33 rads per tick
+	M.adjustToxLoss(-0.5*REM, 0) //not the main purpose of the chemical but still related to radiation
+	M.adjustFireLoss(-0.5*REM, 0) //helps a tiny bit against radiation pulses
+	if(prob(10))
+		if(M.has_dna())
+			M.dna.remove_all_mutations(list(MUT_NORMAL, MUT_EXTRA), TRUE)
+	for(var/datum/reagent/toxin/R in M.reagents.reagent_list)
+		if(R != src)
+			M.reagents.remove_reagent(R.type,2.25)
+	..()
+	. = 1
+
 /datum/reagent/medicine/sal_acid
 	name = "Salicyclic Acid"
 	description = "Stimulates the healing of severe bruises. Extremely rapidly heals severe bruising and slowly heals minor ones. Overdose will worsen existing bruising."
