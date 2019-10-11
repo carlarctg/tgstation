@@ -19,3 +19,5 @@ obj/item/kitchen/fork/spatula
     new /obj/item/stack/sheet/mineral/coal/ten(src)
     new /obj/item/clothing/head/chefhat(src)
     ..()
+
+//test if people can portal gun the windows
