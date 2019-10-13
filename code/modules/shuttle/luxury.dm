@@ -8,7 +8,7 @@ obj/item/kitchen/fork/spatula
 
 /obj/item/storage/backpack/satchel/flat/boomer
     name = "griller's satchel"
-    desc += "Contains every item an aspiring griller needs, hidden below a floortile so the zoomer interns at Centcom don't confiscate it."
+    desc = "Contains every item an aspiring griller needs, hidden below a floortile so the zoomer interns at Centcom don't confiscate it."
 
 /obj/item/storage/backpack/satchel/flat/boomer/PopulateContents()
     new /obj/item/reagent_containers/food/drinks/soda_cans/monkey_energy(src)
