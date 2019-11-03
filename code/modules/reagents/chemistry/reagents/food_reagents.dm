@@ -152,6 +152,16 @@
 		T.name = "deep-fried [initial(T.name)]"
 		T.add_atom_colour(color, TEMPORARY_COLOUR_PRIORITY)
 
+/datum/reagent/consumable/cooking_oil/coconutoil
+	name = "Coconut Oil"
+	description = "Coconut oil, can be used as a replacement for cooking oil. Tasty on its own, and with plenty of health benefits that seem to not exist in the GMU-ridden Space Station 13 coconuts."
+	color = "#DFDFC7"
+	taste_mult = 1
+	taste_description = "coconut oil"
+	quality = DRINK_GOOD
+	nutriment_factor = 5 * REAGENTS_METABOLISM //Not very healthy on its own, but a bit better than canola
+	metabolization_rate = 12 * REAGENTS_METABOLISM
+
 /datum/reagent/consumable/sugar
 	name = "Sugar"
 	description = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."

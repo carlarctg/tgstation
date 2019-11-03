@@ -108,6 +108,24 @@
 	glass_name = "glass of watermelon juice"
 	glass_desc = "A glass of watermelon juice."
 
+/datum/reagent/consumable/coconutwater
+	name = "Coconut Water"
+	description = "Coconut WATER. That's right, W-A-T-E-R. I will die on this hill."
+	color = "#CEC3B9"
+	nutriment_factor = 5 * REAGENTS_METABOLISM //less tasty than coconut milk but makes u less fat
+	quality = DRINK_NICE
+	taste_description = "coconut water"
+	glass_icon_state = "glass_red"
+	glass_name = "glass of coconut water"
+	glass_desc = "A glass of coconut water."
+
+/datum/reagent/consumable/coconutwater/on_mob_life(mob/living/carbon/M)
+	M.satiety += 15 //very healthy
+	if(M.nutrition > 400)
+		nutriment_factor = 1 * REAGENTS_METABOLISM //no fats!
+	. = 1
+	..()
+
 /datum/reagent/consumable/lemonjuice
 	name = "Lemon Juice"
 	description = "This juice is VERY sour."
@@ -207,20 +225,32 @@
 		holder.remove_reagent(/datum/reagent/consumable/capsaicin, 2)
 	..()
 
-/datum/reagent/consumable/soymilk
+/datum/reagent/consumable/milk/soy
 	name = "Soy Milk"
 	description = "An opaque white liquid made from soybeans."
 	color = "#DFDFC7" // rgb: 223, 223, 199
 	taste_description = "soy milk"
-	glass_icon_state = "glass_white"
 	glass_name = "glass of soy milk"
 	glass_desc = "White and nutritious soy goodness!"
 
-/datum/reagent/consumable/soymilk/on_mob_life(mob/living/carbon/M)
-	if(M.getBruteLoss() && prob(20))
-		M.heal_bodypart_damage(1,0, 0)
+/datum/reagent/consumable/milk/coconut
+	name = "Coconut Milk"
+	description = "Coconut milk. Not milked from coconut cows. Tasty but very filling."
+	color = "#FFFFFF" // wow this is really white irl
+	nutriment_factor = 10 * REAGENTS_METABOLISM //tasty but makes u fat
+	quality = DRINK_GOOD //ditto
+	taste_description = "coconut milk"
+	glass_icon_state = "glass_white"
+	glass_name = "glass of coconut milk"
+	glass_desc = "White and nutritious coco-goodness!"
+
+/datum/reagent/consumable/milk/coconut/on_mob_life(mob/living/carbon/M)
+	if(M.getBruteLoss() && prob(40))
+		M.heal_bodypart_damage(1.5,0, 0)//its hard to get, should be good right
 		. = 1
-	..()
+	if(M.satiety < 200)
+		M.satiety -= 2 //this happens every tick so the reduction is small
+..()
 
 /datum/reagent/consumable/cream
 	name = "Cream"

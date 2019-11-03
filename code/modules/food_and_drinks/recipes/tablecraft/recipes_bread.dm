@@ -67,7 +67,7 @@
 /datum/crafting_recipe/food/mimanabread
 	name = "Mimana bread"
 	reqs = list(
-		/datum/reagent/consumable/soymilk = 5,
+		/datum/reagent/consumable/milk/soy = 5,
 		/obj/item/reagent_containers/food/snacks/store/bread/plain = 1,
 		/obj/item/reagent_containers/food/snacks/tofu = 3,
 		/obj/item/reagent_containers/food/snacks/grown/banana/mime = 1

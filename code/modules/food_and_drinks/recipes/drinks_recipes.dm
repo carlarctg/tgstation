@@ -345,7 +345,7 @@
 	name = "Soy Latte"
 	id = /datum/reagent/consumable/soy_latte
 	results = list(/datum/reagent/consumable/soy_latte = 2)
-	required_reagents = list(/datum/reagent/consumable/coffee = 1, /datum/reagent/consumable/soymilk = 1)
+	required_reagents = list(/datum/reagent/consumable/coffee = 1, /datum/reagent/consumable/milk/soy = 1)
 
 /datum/chemical_reaction/cafe_latte
 	name = "Cafe Latte"

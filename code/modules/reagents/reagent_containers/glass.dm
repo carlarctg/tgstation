@@ -147,7 +147,7 @@
 	custom_materials = list(/datum/material/glass=2500, /datum/material/plastic=3000)
 	volume = 120
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,60,120)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,60,120)
 
 /obj/item/reagent_containers/glass/beaker/plastic/update_icon()
 	icon_state = "beakerlarge" // hack to lets us reuse the large beaker reagent fill states
@@ -223,10 +223,9 @@
 	righthand_file = 'icons/mob/inhands/equipment/custodial_righthand.dmi'
 	custom_materials = list(/datum/material/iron=200)
 	w_class = WEIGHT_CLASS_NORMAL
-	amount_per_transfer_from_this = 20
+	amount_per_transfer_from_this = 70
 	possible_transfer_amounts = list(5,10,15,20,25,30,50,70)
 	volume = 70
-	flags_inv = HIDEHAIR
 	slot_flags = ITEM_SLOT_HEAD
 	resistance_flags = NONE
 	armor = list("melee" = 10, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 75, "acid" = 50) //Weak melee protection, because you can wear it on your head

@@ -11,7 +11,7 @@
 /datum/chemical_reaction/tofu
 	name = "Tofu"
 	id = "tofu"
-	required_reagents = list(/datum/reagent/consumable/soymilk = 10)
+	required_reagents = list(/datum/reagent/consumable/milk/soy = 10)
 	required_catalysts = list(/datum/reagent/consumable/enzyme = 5)
 	mob_react = FALSE
 
@@ -24,7 +24,7 @@
 /datum/chemical_reaction/chocolate_bar
 	name = "Chocolate Bar"
 	id = "chocolate_bar"
-	required_reagents = list(/datum/reagent/consumable/soymilk = 2, /datum/reagent/consumable/coco = 2, /datum/reagent/consumable/sugar = 2)
+	required_reagents = list(/datum/reagent/consumable/milk/soy = 2, /datum/reagent/consumable/coco = 2, /datum/reagent/consumable/sugar = 2)
 
 /datum/chemical_reaction/chocolate_bar/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -67,7 +67,7 @@
 	name = "Soy Sauce"
 	id = /datum/reagent/consumable/soysauce
 	results = list(/datum/reagent/consumable/soysauce = 5)
-	required_reagents = list(/datum/reagent/consumable/soymilk = 4, /datum/reagent/toxin/acid = 1)
+	required_reagents = list(/datum/reagent/consumable/milk/soy = 4, /datum/reagent/toxin/acid = 1)
 
 /datum/chemical_reaction/corn_syrup
 	name = /datum/reagent/consumable/corn_syrup
@@ -163,7 +163,7 @@
 
 /datum/chemical_reaction/cakebatter/vegan
 	id = "vegancakebatter"
-	required_reagents = list(/datum/reagent/consumable/soymilk = 15, /datum/reagent/consumable/flour = 15, /datum/reagent/consumable/sugar = 5)
+	required_reagents = list(/datum/reagent/consumable/milk/soy = 15, /datum/reagent/consumable/flour = 15, /datum/reagent/consumable/sugar = 5)
 
 /datum/chemical_reaction/ricebowl
 	name = "Rice Bowl"
