@@ -29,9 +29,9 @@ Regenerative extracts:
 		user.visible_message("<span class='notice'>[user] crushes the [src] over [user.p_them()]self, the milky goo quickly regenerating all of [user.p_their()] injuries!</span>",
 			"<span class='notice'>You squeeze the [src], and it bursts in your hand, splashing you with milky goo which quickly regenerates your injuries!</span>")
 	core_effect_before(H, user)
-	H.revive(full_heal = 1)
+	H.revive(full_heal = TRUE, admin_revive = FALSE)
 	core_effect(H, user)
-	playsound(target, 'sound/effects/splat.ogg', 40, 1)
+	playsound(target, 'sound/effects/splat.ogg', 40, TRUE)
 	qdel(src)
 
 /obj/item/slimecross/regenerative/grey
@@ -199,7 +199,7 @@ Regenerative extracts:
 		var/mob/living/simple_animal/slime/S = target
 		S.random_colour()
 	if(isjellyperson(target))
-		target.reagents.add_reagent(/datum/reagent/slime_toxin,5)
+		target.reagents.add_reagent(/datum/reagent/mutationtoxin/jelly,5)
 
 
 /obj/item/slimecross/regenerative/pink
@@ -217,7 +217,7 @@ Regenerative extracts:
 /obj/item/slimecross/regenerative/gold/core_effect(mob/living/target, mob/user)
 	var/newcoin = pick(/obj/item/coin/silver, /obj/item/coin/iron, /obj/item/coin/gold, /obj/item/coin/diamond, /obj/item/coin/plasma, /obj/item/coin/uranium)
 	var/obj/item/coin/C = new newcoin(target.loc)
-	playsound(C, 'sound/items/coinflip.ogg', 50, 1)
+	playsound(C, 'sound/items/coinflip.ogg', 50, TRUE)
 	target.put_in_hand(C)
 
 /obj/item/slimecross/regenerative/oil
@@ -225,7 +225,7 @@ Regenerative extracts:
 	effect_desc = "Fully heals the target and flashes everyone in sight."
 
 /obj/item/slimecross/regenerative/oil/core_effect(mob/living/target, mob/user)
-	playsound(src, 'sound/weapons/flash.ogg', 100, 1)
+	playsound(src, 'sound/weapons/flash.ogg', 100, TRUE)
 	for(var/mob/living/L in view(user,7))
 		L.flash_act()
 
@@ -258,7 +258,7 @@ Regenerative extracts:
 	if(target == user)
 		return
 	var/mob/living/U = user
-	U.revive(full_heal = 1)
+	U.revive(full_heal = TRUE, admin_revive = FALSE)
 	to_chat(U, "<span class='notice'>Some of the milky goo sprays onto you, as well!</span>")
 
 /obj/item/slimecross/regenerative/adamantine

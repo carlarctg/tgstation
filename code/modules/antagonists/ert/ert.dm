@@ -10,12 +10,14 @@
 	var/datum/outfit/outfit = /datum/outfit/ert/security
 	var/role = "Security Officer"
 	var/list/name_source
+	var/random_names = TRUE
 	show_in_antagpanel = FALSE
 	antag_moodlet = /datum/mood_event/focused
 	can_hijack = HIJACK_PREVENT
 
 /datum/antagonist/ert/on_gain()
-	update_name()
+	if(random_names)
+		update_name()
 	forge_objectives()
 	equipERT()
 	. = ..()
@@ -108,6 +110,17 @@
 	outfit = /datum/outfit/death_commando
 	role = "Officer"
 
+/datum/antagonist/ert/intern
+	name = "CentCom Intern"
+	outfit = /datum/outfit/centcom_intern
+	random_names = FALSE
+	role = "Intern"
+
+/datum/antagonist/ert/intern/leader
+	name = "CentCom Head Intern"
+	outfit = /datum/outfit/centcom_intern/leader
+	role = "Head Intern"
+
 /datum/antagonist/ert/create_team(datum/team/ert/new_team)
 	if(istype(new_team))
 		ert_team = new_team
@@ -134,7 +147,7 @@
 	else
 		missiondesc += " Follow orders given to you by your squad leader."
 
-		missiondesc += "Avoid civilian casualites when possible."
+		missiondesc += "Avoid civilian casualties when possible."
 
 	missiondesc += "<BR><B>Your Mission</B> : [ert_team.mission.explanation_text]"
 	to_chat(owner,missiondesc)

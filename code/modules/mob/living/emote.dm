@@ -74,8 +74,8 @@
 	key_third_person = "deathgasps"
 	message = "seizes up and falls limp, their eyes dead and lifeless..."
 	message_robot = "shudders violently for a moment before falling still, its eyes slowly darkening."
-	message_AI = "lets out a flurry of sparks, its screen flickering as its systems slowly halt."
-	message_alien = "lets out a waning guttural screech, green blood bubbling from its maw..."
+	message_AI = "screeches, its screen flickering as its systems slowly halt."
+	message_alien = "lets out a waning guttural screech, and collapses onto the floor..."
 	message_larva = "lets out a sickly hiss of air and falls limply to the floor..."
 	message_monkey = "lets out a faint chimper as it collapses and stops moving..."
 	message_simple =  "stops moving..."
@@ -250,7 +250,7 @@
 				H.Paralyze(20)
 			else
 				message_param = "<span class='userdanger'>bumps [user.p_their()] head on the ground</span> trying to motion towards %t."
-				H.adjustBrainLoss(5)
+				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
 	..()
 
 /datum/emote/living/pout
@@ -425,12 +425,12 @@
 	if(!can_run_emote(user, TRUE, intentional))
 		return FALSE
 	if(is_banned_from(user.ckey, "Emote"))
-		to_chat(user, "You cannot send custom emotes (banned).")
+		to_chat(user, "<span class='boldwarning'>You cannot send custom emotes (banned).</span>")
 		return FALSE
 	else if(QDELETED(user))
 		return FALSE
 	else if(user.client && user.client.prefs.muted & MUTE_IC)
-		to_chat(user, "You cannot send IC messages (muted).")
+		to_chat(user, "<span class='boldwarning'>You cannot send IC messages (muted).</span>")
 		return FALSE
 	else if(!params)
 		var/custom_emote = copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)

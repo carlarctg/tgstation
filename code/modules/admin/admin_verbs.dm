@@ -17,7 +17,9 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/reestablish_db_connection, /*reattempt a connection to the database*/
 	/client/proc/cmd_admin_pm_context,	/*right-click adminPM interface*/
 	/client/proc/cmd_admin_pm_panel,		/*admin-pm list*/
-	/client/proc/stop_sounds
+	/client/proc/stop_sounds,
+	/client/proc/mark_datum_mapview,
+	/client/proc/fix_air				/*resets air in designated radius to its default atmos composition*/
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
@@ -557,7 +559,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	var/type_length = length("/obj/effect/proc_holder/spell") + 2
 	for(var/A in GLOB.spells)
 		spell_list[copytext("[A]", type_length)] = A
-	var/obj/effect/proc_holder/spell/S = input("Choose the spell to give to that guy", "ABRAKADABRA") as null|anything in spell_list
+	var/obj/effect/proc_holder/spell/S = input("Choose the spell to give to that guy", "ABRAKADABRA") as null|anything in sortList(spell_list)
 	if(!S)
 		return
 
@@ -578,7 +580,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set desc = "Remove a spell from the selected mob."
 
 	if(T && T.mind)
-		var/obj/effect/proc_holder/spell/S = input("Choose the spell to remove", "NO ABRAKADABRA") as null|anything in T.mind.spell_list
+		var/obj/effect/proc_holder/spell/S = input("Choose the spell to remove", "NO ABRAKADABRA") as null|anything in sortList(T.mind.spell_list)
 		if(S)
 			T.mind.RemoveSpell(S)
 			log_admin("[key_name(usr)] removed the spell [S] from [key_name(T)].")
@@ -592,7 +594,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(!istype(T))
 		to_chat(src, "<span class='notice'>You can only give a disease to a mob of type /mob/living.</span>")
 		return
-	var/datum/disease/D = input("Choose the disease to give to that guy", "ACHOO") as null|anything in SSdisease.diseases
+	var/datum/disease/D = input("Choose the disease to give to that guy", "ACHOO") as null|anything in sortList(SSdisease.diseases, /proc/cmp_typepaths_asc)
 	if(!D)
 		return
 	T.ForceContractDisease(new D, FALSE, TRUE)

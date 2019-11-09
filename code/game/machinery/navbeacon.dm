@@ -75,7 +75,7 @@
 	update_icon()
 
 // update the icon_state
-/obj/machinery/navbeacon/update_icon()
+/obj/machinery/navbeacon/update_icon_state()
 	var/state="navbeacon[open]"
 
 	if(invisibility)
@@ -92,7 +92,7 @@
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		open = !open
 
-		user.visible_message("[user] [open ? "opens" : "closes"] the beacon's cover.", "<span class='notice'>You [open ? "open" : "close"] the beacon's cover.</span>")
+		user.visible_message("<span class='notice'>[user] [open ? "opens" : "closes"] the beacon's cover.</span>", "<span class='notice'>You [open ? "open" : "close"] the beacon's cover.</span>")
 
 		update_icon()
 

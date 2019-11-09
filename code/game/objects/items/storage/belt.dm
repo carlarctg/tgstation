@@ -9,6 +9,7 @@
 	slot_flags = ITEM_SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined")
 	max_integrity = 300
+	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
 	var/content_overlays = FALSE //If this is true, the belt will gain overlays based on what it's holding
 
 /obj/item/storage/belt/suicide_act(mob/living/carbon/user)
@@ -34,10 +35,13 @@
 	item_state = "utility"
 	content_overlays = TRUE
 	custom_price = 50
+	drop_sound = 'sound/items/handling/toolbelt_drop.ogg'
+	pickup_sound =  'sound/items/handling/toolbelt_pickup.ogg'
 
 /obj/item/storage/belt/utility/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.set_holdable(list(
 		/obj/item/crowbar,
 		/obj/item/screwdriver,
@@ -57,7 +61,11 @@
 		/obj/item/holosign_creator/engineering,
 		/obj/item/forcefield_projector,
 		/obj/item/assembly/signaler,
-		/obj/item/lightreplacer
+		/obj/item/lightreplacer,
+		/obj/item/construction/rcd,
+		/obj/item/pipe_dispenser,
+		/obj/item/inducer,
+		/obj/item/plunger
 		))
 
 /obj/item/storage/belt/utility/chief
@@ -103,15 +111,6 @@
 	new /obj/item/wirecutters(src)
 	new /obj/item/t_scanner(src)
 	new /obj/item/extinguisher/mini(src)
-
-/obj/item/storage/belt/utility/servant/PopulateContents()
-	new /obj/item/screwdriver/brass(src)
-	new /obj/item/wirecutters/brass(src)
-	new /obj/item/wrench/brass(src)
-	new /obj/item/crowbar/brass(src)
-	new /obj/item/weldingtool/experimental/brass(src)
-	new /obj/item/multitool(src)
-	new /obj/item/stack/cable_coil(src, MAXCOIL, "yellow")
 
 /obj/item/storage/belt/medical
 	name = "medical belt"
@@ -169,7 +168,10 @@
 		/obj/item/implant,
 		/obj/item/implanter,
 		/obj/item/pinpointer/crew,
-		/obj/item/holosign_creator/medical
+		/obj/item/holosign_creator/medical,
+		/obj/item/pipe_dispenser/plumbing,
+		/obj/item/construction/plumbing,
+		/obj/item/plunger
 		))
 
 /obj/item/storage/belt/security
@@ -324,7 +326,7 @@
 	desc = "Proves to the world that you are the strongest!"
 	icon_state = "championbelt"
 	item_state = "champion"
-	materials = list(MAT_GOLD=400)
+	custom_materials = list(/datum/material/gold=400)
 
 /obj/item/storage/belt/champion/ComponentInitialize()
 	. = ..()
@@ -445,7 +447,9 @@
 		/obj/item/lighter,
 		/obj/item/multitool,
 		/obj/item/reagent_containers/food/drinks/bottle/molotov,
-		/obj/item/grenade/plastic/c4,
+		/obj/item/grenade/c4,
+		/obj/item/reagent_containers/food/snacks/grown/cherry_bomb,
+		/obj/item/reagent_containers/food/snacks/grown/firelemon
 		))
 
 /obj/item/storage/belt/grenade/full/PopulateContents()
@@ -507,19 +511,20 @@
 		/obj/item/flashlight,
 		/obj/item/reagent_containers/spray,
 		/obj/item/soap,
-		/obj/item/holosign_creator/janibarrier,
+		/obj/item/holosign_creator,
 		/obj/item/forcefield_projector,
 		/obj/item/key/janitor,
 		/obj/item/clothing/gloves,
 		/obj/item/melee/flyswatter,
-		/obj/item/assembly/mousetrap
+		/obj/item/assembly/mousetrap,
+		/obj/item/paint/paint_remover
 		))
 
 /obj/item/storage/belt/janitor/full/PopulateContents()
 	new /obj/item/lightreplacer(src)
 	new /obj/item/reagent_containers/spray/cleaner(src)
 	new /obj/item/soap/nanotrasen(src)
-	new /obj/item/holosign_creator/janibarrier(src)
+	new /obj/item/holosign_creator(src)
 	new /obj/item/melee/flyswatter(src)
 
 /obj/item/storage/belt/bandolier
@@ -567,7 +572,7 @@
 	desc = "A dorky fannypack for keeping small items in."
 	icon_state = "fannypack_leather"
 	item_state = "fannypack_leather"
-	item_color = "fannypackleather"
+	dying_key = DYE_REGISTRY_FANNYPACK
 	custom_price = 15
 
 /obj/item/storage/belt/fannypack/ComponentInitialize()
@@ -580,61 +585,51 @@
 	name = "black fannypack"
 	icon_state = "fannypack_black"
 	item_state = "fannypack_black"
-	item_color = "black"
 
 /obj/item/storage/belt/fannypack/red
 	name = "red fannypack"
 	icon_state = "fannypack_red"
 	item_state = "fannypack_red"
-	item_color = "red"
 
 /obj/item/storage/belt/fannypack/purple
 	name = "purple fannypack"
 	icon_state = "fannypack_purple"
 	item_state = "fannypack_purple"
-	item_color = "purple"
 
 /obj/item/storage/belt/fannypack/blue
 	name = "blue fannypack"
 	icon_state = "fannypack_blue"
 	item_state = "fannypack_blue"
-	item_color = "blue"
 
 /obj/item/storage/belt/fannypack/orange
 	name = "orange fannypack"
 	icon_state = "fannypack_orange"
 	item_state = "fannypack_orange"
-	item_color = "orange"
 
 /obj/item/storage/belt/fannypack/white
 	name = "white fannypack"
 	icon_state = "fannypack_white"
 	item_state = "fannypack_white"
-	item_color = "white"
 
 /obj/item/storage/belt/fannypack/green
 	name = "green fannypack"
 	icon_state = "fannypack_green"
 	item_state = "fannypack_green"
-	item_color = "green"
 
 /obj/item/storage/belt/fannypack/pink
 	name = "pink fannypack"
 	icon_state = "fannypack_pink"
 	item_state = "fannypack_pink"
-	item_color = "pink"
 
 /obj/item/storage/belt/fannypack/cyan
 	name = "cyan fannypack"
 	icon_state = "fannypack_cyan"
 	item_state = "fannypack_cyan"
-	item_color = "cyan"
 
 /obj/item/storage/belt/fannypack/yellow
 	name = "yellow fannypack"
 	icon_state = "fannypack_yellow"
 	item_state = "fannypack_yellow"
-	item_color = "yellow"
 
 /obj/item/storage/belt/sabre
 	name = "sabre sheath"
@@ -663,7 +658,7 @@
 		return
 	if(length(contents))
 		var/obj/item/I = contents[1]
-		user.visible_message("[user] takes [I] out of [src].", "<span class='notice'>You take [I] out of [src].</span>")
+		user.visible_message("<span class='notice'>[user] takes [I] out of [src].</span>", "<span class='notice'>You take [I] out of [src].</span>")
 		user.put_in_hands(I)
 		update_icon()
 	else
