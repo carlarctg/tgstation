@@ -39,6 +39,19 @@
 	lose_text = "<span class='danger'>You no longer feel like drinking would ease your pain.</span>"
 	medical_record_text = "Patient has unusually efficient liver metabolism and can slowly regenerate wounds by drinking alcoholic beverages."
 
+/datum/quirk/drunkhealing/on_process()
+	var/mob/living/carbon/C = quirk_holder
+	switch(C.drunkenness)
+		if (6 to 40)
+			C.adjustBruteLoss(-0.1, FALSE)
+			C.adjustFireLoss(-0.05, FALSE)
+		if (41 to 60)
+			C.adjustBruteLoss(-0.4, FALSE)
+			C.adjustFireLoss(-0.2, FALSE)
+		if (61 to INFINITY)
+			C.adjustBruteLoss(-0.8, FALSE)
+			C.adjustFireLoss(-0.4, FALSE)
+
 /datum/quirk/empath
 	name = "Empath"
 	desc = "Whether it's a sixth sense or careful study of body language, it only takes you a quick glance at someone to understand how they feel."
@@ -47,6 +60,42 @@
 	gain_text = "<span class='notice'>You feel in tune with those around you.</span>"
 	lose_text = "<span class='danger'>You feel isolated from others.</span>"
 	medical_record_text = "Patient is highly perceptive of and sensitive to social cues, or may possibly have ESP. Further testing needed."
+
+datum/quirk/fan_clown
+	name = "Clown Fan"
+	desc = "You enjoy the clown's antics and get a mood boost when you see them."
+	value = 1
+	mob_trait = TRAIT_FAN_CLOWN
+	gain_text = "<span class='notice'>You are a big fan of the Clown.</span>"
+	lose_text = "<span class='danger'>The clown doesn't seem so great.</span>"
+	medical_record_text = "Patient reports being a big fan of the Clown."
+
+/datum/quirk/fan_clown/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/obj/item/clothing/accessory/fan_clown_pin/B = new(get_turf(H))
+	var/list/slots = list (
+		"backpack" = SLOT_IN_BACKPACK,
+		"hands" = SLOT_HANDS,
+	)
+	H.equip_in_one_of_slots(B, slots , qdel_on_fail = TRUE)
+
+datum/quirk/fan_mime
+	name = "Mime Fan"
+	desc = "You enjoy the Mime's antics and get a mood boost when you see them."
+	value = 1
+	mob_trait = TRAIT_FAN_MIME
+	gain_text = "<span class='notice'>You are a big fan of the Mime.</span>"
+	lose_text = "<span class='danger'>The mime doesn't seem so great.</span>"
+	medical_record_text = "Patient reports being a big fan of the Mime."
+
+/datum/quirk/fan_mime/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/obj/item/clothing/accessory/fan_mime_pin/B = new(get_turf(H))
+	var/list/slots = list (
+		"backpack" = SLOT_IN_BACKPACK,
+		"hands" = SLOT_HANDS,
+	)
+	H.equip_in_one_of_slots(B, slots , qdel_on_fail = TRUE)
 
 /datum/quirk/freerunning
 	name = "Freerunning"
@@ -126,7 +175,7 @@
 
 /datum/quirk/photographer
 	name = "Photographer"
-	desc = "You know how to handle a camera, shortening the delay between each shot."
+	desc = "You carry your camera and personal photo album everywhere you go and can snap photos faster."
 	value = 1
 	mob_trait = TRAIT_PHOTOGRAPHER
 	gain_text = "<span class='notice'>You know everything about photography.</span>"
@@ -135,9 +184,24 @@
 
 /datum/quirk/photographer/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
+	var/obj/item/storage/photo_album/photo_album = new(get_turf(H))
+	var/list/album_slots = list (
+		"backpack" = SLOT_IN_BACKPACK,
+		"hands" = SLOT_HANDS
+	)
+	H.equip_in_one_of_slots(photo_album, album_slots , qdel_on_fail = TRUE)
+	photo_album.persistence_id = "personal_[H.mind.key]" // this is a persistent album, the ID is tied to the account's key to avoid tampering
+	photo_album.persistence_load()
+	photo_album.name = "[H.real_name]'s photo album"
 	var/obj/item/camera/camera = new(get_turf(H))
-	H.put_in_hands(camera)
-	H.equip_to_slot(camera, SLOT_NECK)
+	var/list/camera_slots = list (
+		"neck" = SLOT_NECK,
+		"left pocket" = SLOT_L_STORE,
+		"right pocket" = SLOT_R_STORE,
+		"backpack" = SLOT_IN_BACKPACK,
+		"hands" = SLOT_HANDS
+	)
+	H.equip_in_one_of_slots(camera, camera_slots , qdel_on_fail = TRUE)
 	H.regenerate_icons()
 
 /datum/quirk/selfaware
@@ -174,7 +238,7 @@
 
 /datum/quirk/tagger
 	name = "Tagger"
-	desc = "You're an experienced artist. While drawing graffiti, you can get twice as many uses out of drawing supplies."
+	desc = "You're an experienced artist. People will actually be impressed by your graffiti, and you can get twice as many uses out of drawing supplies."
 	value = 1
 	mob_trait = TRAIT_TAGGER
 	gain_text = "<span class='notice'>You know how to tag walls efficiently.</span>"
