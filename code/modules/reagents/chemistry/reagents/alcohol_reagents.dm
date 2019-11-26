@@ -315,6 +315,28 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	quality = DRINK_FANTASTIC
 	taste_description = "scaley sweetness"
 
+/datum/reagent/consumable/ethanol/catchampagne
+	name = "Cat champagne"
+	description = "An alcoholic beverage from Space Japan, made by infusing felinid tails in ethanol. Tastes sickly sweet!"
+	color = "#7E4043" // rgb: 126, 64, 67
+	boozepwr = 50
+	quality = DRINK_FANTASTIC
+	taste_description = "wagging sweetness"
+
+/datum/reagent/consumable/ethanol/catchampagne/on_mob_life(mob/living/M)
+        ..()
+        if(prob(5)
+           to_chat(M,"You feel like swiping at laser dots.)
+        if(prob(3)
+           if(isfelinid(M) || islizard(M))
+               src.emote(wag)
+           else if(ishuman(M)
+                   to_chat(M,"You feel like a degenerate.")
+           else
+                to_chat(M,"You try to wag your tail and remember you don't have one!")
+        
+
+
 /datum/reagent/consumable/ethanol/grappa
 	name = "Grappa"
 	description = "A fine Italian brandy, for when regular wine just isn't alcoholic enough for you."
