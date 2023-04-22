@@ -351,3 +351,5 @@ GLOBAL_LIST_INIT(status_display_state_pictures, list(
 	"blank",
 	"shuttle",
 ))
+
+GLOBAL_LIST_INIT(medieval_family_names, world.file2list("strings/medieval_family_names.txt"))

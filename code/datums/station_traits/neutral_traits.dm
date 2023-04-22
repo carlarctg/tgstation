@@ -128,6 +128,85 @@
 	. = ..()
 	SSstation.announcer = /datum/centcom_announcer/medbot
 
+/datum/station_trait/protagonist
+	name = "Announcement \"System\""
+	trait_type = STATION_TRAIT_NEUTRAL
+	weight = 0
+	show_in_report = TRUE
+	trait_flags = STATION_TRAIT_ABSTRACT
+	report_message = "This station has received an esteemed guest! They will most likely be a high value target for any Syndicate invasions. Be sure to keep them safe!"
+	blacklist = list()
+	///What role to give to the picked player
+	var/datum/antagonist/role_to_give
+	//The mind of the player that was picked
+	var/datum/mind/picked_mind
+	//The antag datum instance for the protagonist we are creating
+	var/datum/antagonist/antag_datum_instance
+
+
+/datum/station_trait/protagonist/New()
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_PRE_GAMEMODE_SETUP, .proc/on_gamemode_setup)
+	RegisterSignal(SSdcs, COMSIG_GLOB_POST_GAMEMODE_SETUP, .proc/after_gamemode_setup)
+	antag_datum_instance = new role_to_give() //Create this early for things such as family name to be setup
+
+/// Checks if candidates are connected and if they are banned or don't want to be the antagonist.
+/datum/station_trait/protagonist/proc/trim_candidates(list/candidates)
+	for(var/mob/dead/new_player/candidate_player as anything in candidates)
+		var/client/candidate_client = GET_CLIENT(candidate_player)
+		if (!candidate_client || !candidate_player.mind) // Are they connected?
+			candidates.Remove(candidate_player)
+			continue
+
+		if(candidate_player.mind.special_role) // No double antags!
+			candidates.Remove(candidate_player)
+			continue
+
+		if(!(ROLE_PROTAGONIST in candidate_client.prefs.be_special) || is_banned_from(candidate_player.ckey, list(ROLE_PROTAGONIST, ROLE_SYNDICATE)))
+			candidates.Remove(candidate_player)
+			continue
+
+/datum/station_trait/protagonist/proc/on_gamemode_setup(datum/gamemode/gamemode_ref)
+	SIGNAL_HANDLER
+	var/list/candidates = list()
+	for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
+		if(player.ready == PLAYER_READY_TO_PLAY && player.mind && player.check_preferences())
+			candidates.Add(player)
+	trim_candidates(candidates)
+	if(!candidates)
+		return null
+	var/mob/dead/new_player/picked_player = pick(candidates)
+	picked_mind = picked_player.mind
+
+	picked_mind.assigned_role = ROLE_PROTAGONIST
+	picked_mind.special_role = ROLE_PROTAGONIST
+	SSstation.protagonists += picked_mind
+
+
+/datum/station_trait/protagonist/proc/after_gamemode_setup(datum/gamemode/gamemode_ref)
+	SSjob.SendToLateJoin(picked_mind.current)
+	picked_mind.add_antag_datum(antag_datum_instance)
+
+/datum/station_trait/protagonist/scaredy_prince
+	name = "Royal Visit"
+	report_message = "This station has received an esteemed guest! They will most likely be a high value target for any Syndicate invasions. Be sure to keep them safe! It seems this guest is a royal prince or princess! Although they are of royal blood, they don't seem to be the most brave person."
+	role_to_give = /datum/antagonist/protagonist/scaredy_prince
+	weight = 4
+	trait_flags = NONE
+
+///Pick a family name and put it in the title!
+/datum/station_trait/protagonist/scaredy_prince/New()
+	. = ..()
+	var/datum/antagonist/protagonist/scaredy_prince/prince_antag_datum = antag_datum_instance
+	name = "Royalty from house [prince_antag_datum.family_name]"
+
+/datum/station_trait/protagonist/nanotrasen_superweapon
+	name = "Superweapon"
+	report_message = "Central Command is sending the only surviving test subject in a superweapon project. You should be careful, they are incredibly frail and Syndicate Agents will see them as an easy target to cripple Nanotrasen."
+	role_to_give = /datum/antagonist/protagonist/nanotrasen_superweapon
+	weight = 4
+	trait_flags = NONE
+
 /datum/station_trait/colored_assistants
 	name = "Colored Assistants"
 	trait_type = STATION_TRAIT_NEUTRAL

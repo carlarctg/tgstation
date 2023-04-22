@@ -205,6 +205,11 @@ GLOBAL_LIST_INIT(ai_employers, list(
 /// Checks if the given mob is a traitor
 #define IS_TRAITOR(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/traitor))
 
+///protagonist stuffs 😏
+
+///how much max health the nanotrasen superweapon gets
+#define SUPERWEAPON_MAXHEALTH 50
+
 /// Checks if the given mob is a blood cultist
 #define IS_CULTIST(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/cult))
 

@@ -107,3 +107,6 @@ DEFINE_BITFIELD(antimagic_flags, list(
  * as it encompasses more states in which a mob may be "incorporeal from magic"
  */
 #define is_jaunting(atom) (istype(atom.loc, /obj/effect/dummy/phased_mob))
+
+///how much max health a wizard loses per soul tap
+#define HEALTH_LOST_PER_SOUL_TAP 20
