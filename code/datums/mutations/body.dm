@@ -250,6 +250,12 @@
 		return
 	QDEL_NULL(glowth)
 
+/datum/mutation/human/glow/blue/glow_color()
+	return COLOR_BLUE
+
+/datum/mutation/human/glow/blue_light/glow_color()
+	return COLOR_BLUE_LIGHT
+
 /datum/mutation/human/glow/anti
 	name = "Anti-Glow"
 	desc = "Your skin seems to attract and absorb nearby light creating 'darkness' around you."

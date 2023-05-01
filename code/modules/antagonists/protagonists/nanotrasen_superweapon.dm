@@ -4,24 +4,17 @@
 	min_age = 25
 	max_age = 50
 
-/datum/antagonist/protagonist/nanotrasen_superweapon/New()
-	. = ..()
-	family_name = pick(GLOB.medieval_family_names)
-
 /datum/antagonist/protagonist/nanotrasen_superweapon/on_gain()
 	. = ..()
 	var/mob/living/carbon/human/superweapon_human = owner.current
 
-	user.maxHealth = 50
-	user.health = min(user.health, user.maxHealth)
+	superweapon_human.maxHealth = 75
+	superweapon_human.health = min(superweapon_human.health, superweapon_human.maxHealth)
 
-	superweapon_human.dna.add_mutation(COUGH, MUT_OTHER)
-	superweapon_human.dna.add_mutation(BIOTECHCOMPAT, MUT_OTHER)
-	superweapon_human.dna.add_mutation(SUPERWEAPON_METAMORPH, MUT_OTHER)
-	superweapon_human.add_quirk(/datum/quirk/badback)
+	superweapon_human.dna.add_mutation(/datum/mutation/human/superweapon, MUT_OTHER)
 	ADD_TRAIT(superweapon_human, TRAIT_CHUNKYFINGERS, GENETIC_MUTATION) //same issue with thick fingers being weird but they're a frail superweapon, i want them using that
 
-	addtimer(CALLBACK(src, .proc/announce_arrival), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(announce_arrival), 10 SECONDS))
 
 /datum/antagonist/protagonist/nanotrasen_superweapon/equip_protagonist()
 	. = ..()

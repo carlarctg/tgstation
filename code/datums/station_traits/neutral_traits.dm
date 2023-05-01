@@ -146,8 +146,8 @@
 
 /datum/station_trait/protagonist/New()
 	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_PRE_GAMEMODE_SETUP, .proc/on_gamemode_setup)
-	RegisterSignal(SSdcs, COMSIG_GLOB_POST_GAMEMODE_SETUP, .proc/after_gamemode_setup)
+	RegisterSignal(SSdcs, COMSIG_GLOB_PRE_GAMEMODE_SETUP, PROC_REF(on_gamemode_setup_handler))
+	RegisterSignal(SSdcs, COMSIG_GLOB_POST_GAMEMODE_SETUP, PROC_REF(after_gamemode_setup))
 	antag_datum_instance = new role_to_give() //Create this early for things such as family name to be setup
 
 /// Checks if candidates are connected and if they are banned or don't want to be the antagonist.
@@ -166,8 +166,13 @@
 			candidates.Remove(candidate_player)
 			continue
 
-/datum/station_trait/protagonist/proc/on_gamemode_setup(datum/gamemode/gamemode_ref)
+/// Needs this because is_banned_from sleeps.
+/datum/station_trait/protagonist/proc/on_gamemode_setup_handler(datum/game_mode/game_mode_ref)
 	SIGNAL_HANDLER
+
+	INVOKE_ASYNC(src, PROC_REF(on_gamemode_setup_proper), game_mode_ref)
+
+/datum/station_trait/protagonist/proc/on_gamemode_setup_proper(datum/game_mode/game_mode_ref)
 	var/list/candidates = list()
 	for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
 		if(player.ready == PLAYER_READY_TO_PLAY && player.mind && player.check_preferences())
@@ -183,7 +188,7 @@
 	SSstation.protagonists += picked_mind
 
 
-/datum/station_trait/protagonist/proc/after_gamemode_setup(datum/gamemode/gamemode_ref)
+/datum/station_trait/protagonist/proc/after_gamemode_setup(datum/game_mode/game_mode_ref)
 	SSjob.SendToLateJoin(picked_mind.current)
 	picked_mind.add_antag_datum(antag_datum_instance)
 

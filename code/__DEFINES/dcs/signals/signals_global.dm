@@ -80,3 +80,8 @@
 /// Global signal called after the station changes its name.
 /// (new_name, old_name)
 #define COMSIG_GLOB_STATION_NAME_CHANGED "!station_name_changed"
+
+/// Before a gamemode is setup
+#define COMSIG_GLOB_PRE_GAMEMODE_SETUP "!pre_gamemode_setup"
+/// After a gamemode is setup
+#define COMSIG_GLOB_POST_GAMEMODE_SETUP "!post_gamemode_setup"

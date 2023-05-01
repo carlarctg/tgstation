@@ -73,6 +73,9 @@
 #define ROLE_MORPH "Morph"
 #define ROLE_SANTA "Santa"
 
+///Identifying string for the role of protagonists such as royal visitors.
+#define ROLE_PROTAGONIST "Protagonist"
+
 //Spawner roles
 #define ROLE_GHOST_ROLE "Ghost Role"
 #define ROLE_EXILE "Exile"

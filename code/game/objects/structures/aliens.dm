@@ -315,9 +315,14 @@
 	desc = "A thick gelatinous surface covers the floor.  Someone get the galoshes."
 	color = "#4BAE56"
 
-/obj/structure/alien/weeds/node/superweapon_cocoon
+/obj/structure/alien/weeds/superweapon_cocoon
 	name = "cocoon floor"
 	desc = "The goopy, soupy innard filled bottom of the cocoon. It has a sickly yellow color to it."
+	color = "#f7f335"
+
+/obj/structure/alien/weeds/node/superweapon_cocoon
+	name = "cocoon center"
+	desc = "The goopy, soupy innard filled center of the cocoon. It has a sickly yellow color to it, with some diseased glowing bits at the center..."
 	color = "#f7f335"
 
 #undef NODERANGE

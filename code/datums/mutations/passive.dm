@@ -42,7 +42,7 @@
 	if(..())
 		return
 	owner.AddElement(/datum/element/beauty, GOOD_LOOKING_BEAUTY_LEVEL) //what a sigh to behold!
-	RegisterSignal(owner, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	RegisterSignal(owner, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 
 /datum/mutation/human/good_looking/on_losing(mob/living/carbon/human/owner)
 	if(..())

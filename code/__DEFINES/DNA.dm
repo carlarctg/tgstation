@@ -9,12 +9,16 @@
 #define CHAMELEON_MUTATION_DEFAULT_TRANSPARENCY 204
 
 ///actual time until the superweapon metamorphs
-#define METAMORPH_COCOON_TIME 20 MINUTES
+#define METAMORPH_COCOON_TIME 1 MINUTES // 12 min?
 
 ///this mutation path has many powers related to the mind.
 #define SUPERWEAPON_PSIONICS "psionics"
+
 ///this mutation path has many powers related to the cold.
 #define SUPERWEAPON_CRYONICS "cryonics"
+
+///NT's attempt at reverse engineering changelings
+//#define SUPERWEAPON_SWAPLING "swapling"
 
 // String identifiers for associative list lookup
 
@@ -22,7 +26,6 @@
 #define POSITIVE 1
 #define NEGATIVE 2
 #define MINOR_NEGATIVE 4
-
 
 //Mutation classes. Normal being on them, extra being additional mutations with instability and other being stuff you dont want people to fuck with like wizard mutate
 /// A mutation that can be activated and deactived by completing a sequence
