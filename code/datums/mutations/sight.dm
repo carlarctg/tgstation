@@ -6,7 +6,8 @@
 	text_gain_indication = "<span class='danger'>You can't see very well.</span>"
 
 /datum/mutation/human/nearsight/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	owner.become_nearsighted(GENETIC_MUTATION)
 
@@ -23,7 +24,8 @@
 	text_gain_indication = "<span class='danger'>You can't seem to see anything.</span>"
 
 /datum/mutation/human/blind/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	owner.become_blind(GENETIC_MUTATION)
 
@@ -114,7 +116,8 @@
 	locked = TRUE
 
 /datum/mutation/human/xray/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_XRAY_VISION, GENETIC_MUTATION)
 	owner.update_sight()
@@ -144,13 +147,13 @@
 
 /datum/mutation/human/laser_eyes/on_acquiring(mob/living/carbon/human/H)
 	. = ..()
-	if(.)
+	if(!.)
 		return
 	RegisterSignal(H, COMSIG_MOB_ATTACK_RANGED, PROC_REF(on_ranged_attack))
 
 /datum/mutation/human/laser_eyes/on_losing(mob/living/carbon/human/H)
 	. = ..()
-	if(.)
+	if(!.)
 		return
 	UnregisterSignal(H, COMSIG_MOB_ATTACK_RANGED)
 
@@ -187,7 +190,8 @@
 	text_lose_indication = "<span class='danger'>You feel able to read and write again.</span>"
 
 /datum/mutation/human/illiterate/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_ILLITERATE, GENETIC_MUTATION)
 

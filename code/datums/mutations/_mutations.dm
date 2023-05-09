@@ -89,18 +89,18 @@
 
 /datum/mutation/human/proc/on_acquiring(mob/living/carbon/human/acquirer)
 	if(!acquirer || !istype(acquirer) || acquirer.stat == DEAD || (src in acquirer.dna.mutations))
-		return TRUE
+		return FALSE
 	if(species_allowed && !species_allowed.Find(acquirer.dna.species.id))
-		return TRUE
+		return FALSE
 	if(health_req && acquirer.health < health_req)
-		return TRUE
+		return FALSE
 	if(limb_req && !acquirer.get_bodypart(limb_req))
-		return TRUE
+		return FALSE
 	for(var/datum/mutation/human/mewtayshun as anything in acquirer.dna.mutations) //check for conflicting powers
 		if(!(mewtayshun.type in conflicts) && !(type in mewtayshun.conflicts))
 			continue
 		to_chat(acquirer, span_warning("You feel your genes resisting something."))
-		return TRUE
+		return FALSE
 	owner = acquirer
 	dna = acquirer.dna
 	dna.mutations += src
@@ -117,6 +117,7 @@
 	grant_power() //we do checks here so nothing about hulk getting magic
 	if(!modified)
 		addtimer(CALLBACK(src, PROC_REF(modify), 0.5 SECONDS)) //gonna want children calling ..() to run first
+	return src
 
 /datum/mutation/human/proc/get_visual_indicator()
 	return
@@ -126,8 +127,8 @@
 
 /datum/mutation/human/proc/on_losing(mob/living/carbon/human/owner)
 	if(!istype(owner) || !(owner.dna.mutations.Remove(src)))
-		return TRUE
-	. = FALSE
+		return FALSE
+	. = TRUE
 	if(text_lose_indication && owner.stat != DEAD)
 		to_chat(owner, text_lose_indication)
 	if(visual_indicators.len)

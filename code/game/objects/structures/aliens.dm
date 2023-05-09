@@ -107,6 +107,15 @@
 	desc = "Some sort of yellow cocoon in an egglike shape. It pulses and throbs from within."
 	color = "#f7f335"
 
+/obj/structure/alien/resin/wall/superweapon_cocoon/Initialize(mapload)
+	. = ..()
+	spew_superweapon_gas(src) // See superweapno_metamorph.dm
+
+/obj/structure/alien/resin/wall/superweapon_cocoon/Destroy()
+	spew_superweapon_gas(src)
+	. = ..()
+
+
 /obj/structure/alien/resin/membrane
 	name = "resin membrane"
 	desc = "Resin just thin enough to let light pass through."
@@ -320,10 +329,80 @@
 	desc = "The goopy, soupy innard filled bottom of the cocoon. It has a sickly yellow color to it."
 	color = "#f7f335"
 
+/obj/structure/alien/weeds/superweapon_cocoon/Initialize(mapload)
+	. = ..()
+	spew_superweapon_gas(src) // See superweapno_metamorph.dm
+
+/obj/structure/alien/weeds/superweapon_cocoon/Destroy()
+	spew_superweapon_gas(src)
+	. = ..()
+
 /obj/structure/alien/weeds/node/superweapon_cocoon
 	name = "cocoon center"
 	desc = "The goopy, soupy innard filled center of the cocoon. It has a sickly yellow color to it, with some diseased glowing bits at the center..."
 	color = "#f7f335"
+
+/obj/structure/alien/weeds/node/superweapon_cocoon/Initialize(mapload)
+	. = ..()
+	spew_superweapon_gas(src) // See superweapno_metamorph.dm
+
+/obj/structure/alien/weeds/node/superweapon_cocoon/Destroy()
+	spew_superweapon_gas(src)
+	. = ..()
+
+/obj/structure/chrysalis_pod
+	icon = 'icons/mob/simple/meteor_heart.dmi'
+	anchored = TRUE
+	name = "flesh pod"
+	desc = "A quivering pod of yellow resin. Something is pulsing inside!"
+	icon_state = "flesh_pod"
+	max_integrity = 250
+	density = TRUE
+	color = "#f7f335"
+	var/cut_open = FALSE
+
+/obj/structure/chrysalis_pod/Destroy()
+	. = ..()
+	spew_superweapon_gas(src)
+
+/obj/structure/chrysalis_pod/play_attack_sound(damage_amount, damage_type, damage_flag)
+	switch(damage_type)
+		if(BRUTE)
+			if(damage_amount)
+				playsound(loc, 'sound/effects/attackblob.ogg', vol = 50, vary = TRUE, pressure_affected = FALSE)
+			else
+				playsound(loc, 'sound/effects/meatslap.ogg', vol = 50, vary = TRUE, pressure_affected = FALSE)
+		if(BURN)
+			playsound(loc, 'sound/effects/wounds/sizzle1.ogg', vol = 100, vary = TRUE, pressure_affected = FALSE)
+
+/obj/structure/chrysalis_pod/attackby(obj/item/attacking_item, mob/user, params)
+	var/mob/living/luser = user
+	if (attacking_item.sharpness & SHARP_EDGED && istype(luser) && !luser.combat_mode)
+		cut_open(user)
+		return
+	return ..()
+
+/// Cut the pod open and destroy it
+/obj/structure/chrysalis_pod/proc/cut_open(mob/user)
+	balloon_alert(user, "slicing...")
+	if (!do_after(user, 3 SECONDS, target = src))
+		return
+	take_damage(200)
+
+/obj/structure/chrysalis_pod/take_damage(damage_flag)
+	..()
+	if((get_integrity() < max_integrity * 0.5) && !cut_open)
+		spill_out()
+
+/obj/structure/chrysalis_pod/proc/spill_out()
+	cut_open = TRUE
+	playsound(loc, 'sound/effects/wounds/blood3.ogg', vol = 50, vary = TRUE, pressure_affected = FALSE)
+	visible_message(span_notice("[src] is cut open, causing an odd gas to seep into the room..."))
+	spew_superweapon_gas(src)
+	for(var/atom/movable/atom in contents)
+		atom.forceMove(get_turf(src))
+	desc = "A pod of living meat, this one has been hollowed out."
+	icon_state = "flesh_pod_open"
 
 #undef NODERANGE
 

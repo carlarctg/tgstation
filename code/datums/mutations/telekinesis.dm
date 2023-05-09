@@ -17,13 +17,13 @@
 
 /datum/mutation/human/telekinesis/on_acquiring(mob/living/carbon/human/H)
 	. = ..()
-	if(.)
+	if(!.)
 		return
 	RegisterSignal(H, COMSIG_MOB_ATTACK_RANGED, PROC_REF(on_ranged_attack))
 
 /datum/mutation/human/telekinesis/on_losing(mob/living/carbon/human/H)
 	. = ..()
-	if(.)
+	if(!.)
 		return
 	UnregisterSignal(H, COMSIG_MOB_ATTACK_RANGED)
 

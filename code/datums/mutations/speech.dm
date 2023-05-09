@@ -19,7 +19,8 @@
 	text_lose_indication = "<span class='notice'>The off sensation passes.</span>"
 
 /datum/mutation/human/wacky/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
@@ -41,7 +42,8 @@
 	text_lose_indication = "<span class='danger'>You feel able to speak freely again.</span>"
 
 /datum/mutation/human/mute/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_MUTE, GENETIC_MUTATION)
 
@@ -58,7 +60,8 @@
 	text_lose_indication = "<span class='danger'>Your mind feels more clear.</span>"
 
 /datum/mutation/human/unintelligible/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_UNINTELLIGIBLE_SPEECH, GENETIC_MUTATION)
 
@@ -75,7 +78,8 @@
 	text_lose_indication = "<span class='notice'>The feeling of Swedishness passes.</span>"
 
 /datum/mutation/human/swedish/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
@@ -106,7 +110,8 @@
 	text_lose_indication = "<span class='notice'>You no longer feel like being rude and sassy.</span>"
 
 /datum/mutation/human/chav/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
@@ -155,7 +160,8 @@
 				owner.visible_message("<b>[owner]</b> [pick("jiggles their hips", "rotates their hips", "gyrates their hips", "taps their foot", "dances to an imaginary song", "jiggles their legs", "snaps their fingers")]!")
 
 /datum/mutation/human/elvis/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
@@ -210,7 +216,8 @@
 	var/has_startings = TRUE
 
 /datum/mutation/human/medieval/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
@@ -256,7 +263,8 @@
 	text_lose_indication = span_notice("The off sensation passes.")
 
 /datum/mutation/human/piglatin/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
@@ -287,7 +295,8 @@
 	text_lose_indication = "<span class='notice'>You no longer feel the christmas joy. It's [month] anyways!</span>"
 
 /datum/mutation/human/frost/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
@@ -323,7 +332,8 @@
 	text_lose_indication = "<span class='notice'>You're back to being a true-blooded American.</span>"
 
 /datum/mutation/human/canadian/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 

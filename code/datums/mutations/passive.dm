@@ -21,7 +21,8 @@
 	text_lose_indication = "<span class='danger'>Your mind feels a little bit foggy.</span>"
 
 /datum/mutation/human/clever/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	owner.add_traits(list(TRAIT_ADVANCEDTOOLUSER, TRAIT_LITERATE), GENETIC_MUTATION)
 
@@ -39,7 +40,8 @@
 	text_lose_indication = "<span class='notice'>You no longer feel like like a prince charming.</span>"
 
 /datum/mutation/human/good_looking/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	owner.AddElement(/datum/element/beauty, GOOD_LOOKING_BEAUTY_LEVEL) //what a sigh to behold!
 	RegisterSignal(owner, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))

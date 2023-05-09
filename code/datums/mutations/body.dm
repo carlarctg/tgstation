@@ -55,7 +55,8 @@
 	locked = TRUE
 
 /datum/mutation/human/bad_dna/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	to_chat(owner, text_gain_indication)
 	var/mob/new_mob
@@ -117,7 +118,8 @@
 	locked = TRUE // Default intert species for now, so locked from regular pool.
 
 /datum/mutation/human/dwarfism/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
 	owner.visible_message(span_danger("[owner] suddenly shrinks!"), span_notice("Everything around you seems to grow.."))
@@ -136,7 +138,8 @@
 	text_gain_indication = "<span class='danger'>You feel lightheaded.</span>"
 
 /datum/mutation/human/clumsy/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_CLUMSY, GENETIC_MUTATION)
 
@@ -177,7 +180,8 @@
 	text_gain_indication = "<span class='danger'>You can't seem to hear anything.</span>"
 
 /datum/mutation/human/deaf/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_DEAF, GENETIC_MUTATION)
 
@@ -199,7 +203,8 @@
 	var/original_name
 
 /datum/mutation/human/race/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	if(!ismonkey(owner))
 		original_species = owner.dna.species.type
@@ -227,7 +232,7 @@
 
 /datum/mutation/human/glow/on_acquiring(mob/living/carbon/human/owner)
 	. = ..()
-	if(.)
+	if(!.)
 		return
 	glow_color = glow_color()
 	glowth = new(owner)
@@ -246,7 +251,7 @@
 
 /datum/mutation/human/glow/on_losing(mob/living/carbon/human/owner)
 	. = ..()
-	if(.)
+	if(!.)
 		return
 	QDEL_NULL(glowth)
 
@@ -291,7 +296,8 @@
 	instability = 25
 
 /datum/mutation/human/insulated/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_SHOCKIMMUNE, GENETIC_MUTATION)
 
@@ -316,7 +322,8 @@
 		owner.ignite_mob()
 
 /datum/mutation/human/fire/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	owner.physiology.burn_mod *= 0.5
 
@@ -383,7 +390,8 @@
 	conflicts = list(/datum/mutation/human/dwarfism)
 
 /datum/mutation/human/gigantism/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.resize = 1.25
@@ -426,13 +434,13 @@
 
 /datum/mutation/human/extrastun/on_acquiring()
 	. = ..()
-	if(.)
+	if(!.)
 		return
 	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
 
 /datum/mutation/human/extrastun/on_losing()
 	. = ..()
-	if(.)
+	if(!.)
 		return
 	UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
 
@@ -457,13 +465,13 @@
 
 /datum/mutation/human/martyrdom/on_acquiring()
 	. = ..()
-	if(.)
+	if(!.)
 		return TRUE
 	RegisterSignal(owner, COMSIG_MOB_STATCHANGE, PROC_REF(bloody_shower))
 
 /datum/mutation/human/martyrdom/on_losing()
 	. = ..()
-	if(.)
+	if(!.)
 		return TRUE
 	UnregisterSignal(owner, COMSIG_MOB_STATCHANGE)
 
@@ -503,7 +511,7 @@
 
 /datum/mutation/human/headless/on_acquiring()
 	. = ..()
-	if(.)//cant add
+	if(!.)//cant add
 		return TRUE
 	var/obj/item/organ/internal/brain/brain = owner.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(brain)
@@ -521,7 +529,7 @@
 
 /datum/mutation/human/headless/on_losing()
 	. = ..()
-	if(.)
+	if(!.)
 		return TRUE
 	var/obj/item/organ/internal/brain/brain = owner.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(brain) //so this doesn't instantly kill you. we could delete the brain, but it lets people cure brain issues they /really/ shouldn't be

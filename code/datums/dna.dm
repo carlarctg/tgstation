@@ -361,10 +361,11 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(holder && HM)
 		if(HM.class == MUT_NORMAL)
 			set_se(1, HM)
-		. = HM.on_acquiring(holder)
-		if(.)
+		if(!(HM.on_acquiring(holder))) // failed to add mutation
 			qdel(HM)
-		update_instability()
+		else
+			update_instability()
+			return HM
 
 //Use remove_mutation instead
 /datum/dna/proc/force_lose(datum/mutation/human/HM)

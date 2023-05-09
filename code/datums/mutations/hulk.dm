@@ -22,7 +22,8 @@
 
 
 /datum/mutation/human/hulk/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	owner.add_traits(mutation_traits, GENETIC_MUTATION)
 	for(var/obj/item/bodypart/part as anything in owner.bodyparts)

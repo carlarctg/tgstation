@@ -18,7 +18,8 @@
 	return visual_indicators[type][1]
 
 /datum/mutation/human/temperature_adaptation/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	owner.add_traits(traits_to_give, GENETIC_MUTATION)
 
@@ -55,7 +56,8 @@
 	return visual_indicators[type][1]
 
 /datum/mutation/human/pressure_adaptation/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	owner.add_traits(list(TRAIT_RESISTLOWPRESSURE, TRAIT_RESISTHIGHPRESSURE), GENETIC_MUTATION)
 
