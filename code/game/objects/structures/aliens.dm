@@ -102,20 +102,6 @@
 	desc = "Thick material shaped into a wall. Yuck."
 	color = "#8EC127"
 
-/obj/structure/alien/resin/wall/superweapon_cocoon //For chrysalis
-	name = "chrysalis cocoon"
-	desc = "Some sort of yellow cocoon in an egglike shape. It pulses and throbs from within."
-	color = "#f7f335"
-
-/obj/structure/alien/resin/wall/superweapon_cocoon/Initialize(mapload)
-	. = ..()
-	spew_superweapon_gas(src) // See superweapno_metamorph.dm
-
-/obj/structure/alien/resin/wall/superweapon_cocoon/Destroy()
-	spew_superweapon_gas(src)
-	. = ..()
-
-
 /obj/structure/alien/resin/membrane
 	name = "resin membrane"
 	desc = "Resin just thin enough to let light pass through."
@@ -160,6 +146,8 @@
 	canSmoothWith = SMOOTH_GROUP_ALIEN_WEEDS + SMOOTH_GROUP_WALLS
 	///the range of the weeds going to be affected by the node
 	var/node_range = NODERANGE
+	///if the weeds die without a parent node that can link to them
+	var/dies_without_node = TRUE
 	///the parent node that will determine if we grow or die
 	var/obj/structure/alien/weeds/node/parent_node
 	///the list of turfs that the weeds will not be able to grow over
@@ -234,7 +222,7 @@
  * Called when the parent node is destroyed
  */
 /obj/structure/alien/weeds/proc/after_parent_destroyed()
-	if(!find_new_parent())
+	if(!find_new_parent() && dies_without_node)
 		var/random_time = rand(2 SECONDS, 8 SECONDS)
 		addtimer(CALLBACK(src, PROC_REF(do_qdel)), random_time)
 
@@ -323,86 +311,6 @@
 	name = "gelatinous floor"
 	desc = "A thick gelatinous surface covers the floor.  Someone get the galoshes."
 	color = "#4BAE56"
-
-/obj/structure/alien/weeds/superweapon_cocoon
-	name = "cocoon floor"
-	desc = "The goopy, soupy innard filled bottom of the cocoon. It has a sickly yellow color to it."
-	color = "#f7f335"
-
-/obj/structure/alien/weeds/superweapon_cocoon/Initialize(mapload)
-	. = ..()
-	spew_superweapon_gas(src) // See superweapno_metamorph.dm
-
-/obj/structure/alien/weeds/superweapon_cocoon/Destroy()
-	spew_superweapon_gas(src)
-	. = ..()
-
-/obj/structure/alien/weeds/node/superweapon_cocoon
-	name = "cocoon center"
-	desc = "The goopy, soupy innard filled center of the cocoon. It has a sickly yellow color to it, with some diseased glowing bits at the center..."
-	color = "#f7f335"
-
-/obj/structure/alien/weeds/node/superweapon_cocoon/Initialize(mapload)
-	. = ..()
-	spew_superweapon_gas(src) // See superweapno_metamorph.dm
-
-/obj/structure/alien/weeds/node/superweapon_cocoon/Destroy()
-	spew_superweapon_gas(src)
-	. = ..()
-
-/obj/structure/chrysalis_pod
-	icon = 'icons/mob/simple/meteor_heart.dmi'
-	anchored = TRUE
-	name = "flesh pod"
-	desc = "A quivering pod of yellow resin. Something is pulsing inside!"
-	icon_state = "flesh_pod"
-	max_integrity = 250
-	density = TRUE
-	color = "#f7f335"
-	var/cut_open = FALSE
-
-/obj/structure/chrysalis_pod/Destroy()
-	. = ..()
-	spew_superweapon_gas(src)
-
-/obj/structure/chrysalis_pod/play_attack_sound(damage_amount, damage_type, damage_flag)
-	switch(damage_type)
-		if(BRUTE)
-			if(damage_amount)
-				playsound(loc, 'sound/effects/attackblob.ogg', vol = 50, vary = TRUE, pressure_affected = FALSE)
-			else
-				playsound(loc, 'sound/effects/meatslap.ogg', vol = 50, vary = TRUE, pressure_affected = FALSE)
-		if(BURN)
-			playsound(loc, 'sound/effects/wounds/sizzle1.ogg', vol = 100, vary = TRUE, pressure_affected = FALSE)
-
-/obj/structure/chrysalis_pod/attackby(obj/item/attacking_item, mob/user, params)
-	var/mob/living/luser = user
-	if (attacking_item.sharpness & SHARP_EDGED && istype(luser) && !luser.combat_mode)
-		cut_open(user)
-		return
-	return ..()
-
-/// Cut the pod open and destroy it
-/obj/structure/chrysalis_pod/proc/cut_open(mob/user)
-	balloon_alert(user, "slicing...")
-	if (!do_after(user, 3 SECONDS, target = src))
-		return
-	take_damage(200)
-
-/obj/structure/chrysalis_pod/take_damage(damage_flag)
-	..()
-	if((get_integrity() < max_integrity * 0.5) && !cut_open)
-		spill_out()
-
-/obj/structure/chrysalis_pod/proc/spill_out()
-	cut_open = TRUE
-	playsound(loc, 'sound/effects/wounds/blood3.ogg', vol = 50, vary = TRUE, pressure_affected = FALSE)
-	visible_message(span_notice("[src] is cut open, causing an odd gas to seep into the room..."))
-	spew_superweapon_gas(src)
-	for(var/atom/movable/atom in contents)
-		atom.forceMove(get_turf(src))
-	desc = "A pod of living meat, this one has been hollowed out."
-	icon_state = "flesh_pod_open"
 
 #undef NODERANGE
 

@@ -1,7 +1,7 @@
 /datum/antagonist/protagonist/scaredy_prince
 	name = "Scaredy royalty"
 	outfit_type = /datum/outfit/royal_prince
-	max_age = 25
+	max_age = 45
 	var/family_name
 
 /datum/antagonist/protagonist/scaredy_prince/New()

@@ -206,6 +206,21 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 /datum/action/item_action/halt
 	name = "HALT!"
 
+/obj/item/clothing/mask/whistle/safety
+	name = "safety whistle"
+	desc = "A safety whistle that you can blow on in case you feel uncomfortable or need assistance! Primary action to call security, secondary action to call medical. Or just use the buttons."
+	actions_types = list(/datum/action/item_action/safety_whistle)
+
+/obj/item/clothing/mask/whistle/ui_action_click(mob/user, action)
+	if(!COOLDOWN_FINISHED(src, whistle_cooldown))
+		return
+	COOLDOWN_START(src, whistle_cooldown, 25 SECONDS)
+	user.audible_message(span_warning("[user] blows on [src]!"))a
+	playsound(src, 'sound/misc/whistle.ogg', 75, FALSE, 4)
+
+/datum/action/item_action/safety_whistle
+	name = "FWEEEP!"
+
 /obj/item/clothing/mask/party_horn
 	name = "party horn"
 	desc = "A paper tube used at parties that makes a noise when blown into."
@@ -216,7 +231,7 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	COOLDOWN_DECLARE(horn_cooldown)
 
 /obj/item/clothing/mask/party_horn/ui_action_click(mob/user, action)
-	if(!COOLDOWN_FINISHED(src, horn_cooldown))	
+	if(!COOLDOWN_FINISHED(src, horn_cooldown))
 		return
 	COOLDOWN_START(src, horn_cooldown, 10 SECONDS)
 	playsound(src, 'sound/items/party_horn.ogg', 75, FALSE)

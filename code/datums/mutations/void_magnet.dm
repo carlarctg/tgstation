@@ -42,6 +42,7 @@
 /datum/action/cooldown/spell/void/cursed
 	name = "Convoke Void" //magic the gathering joke here
 	desc = "A rare genome that attracts odd forces not usually observed. May sometimes pull you in randomly."
+	ignores_mute_limit = TRUE
 	/// A multiplier applied to the probability of the curse appearing every life tick
 	var/curse_probability_modifier = 1
 

@@ -255,8 +255,8 @@
 		return
 	QDEL_NULL(glowth)
 
-/datum/mutation/human/glow/blue/glow_color()
-	return COLOR_BLUE
+/datum/mutation/human/glow/purple/glow_color()
+	return COLOR_PRIDE_PURPLE
 
 /datum/mutation/human/glow/blue_light/glow_color()
 	return COLOR_BLUE_LIGHT

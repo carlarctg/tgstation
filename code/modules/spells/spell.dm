@@ -87,6 +87,8 @@
 	var/smoke_type
 	/// The amount of smoke to create on cast. This is a range, so a value of 5 will create enough smoke to cover everything within 5 steps.
 	var/smoke_amt = 0
+	/// Spells with this variable can still be cast if they're speech-type but the caster is mute.
+	var/ignores_mute_limit = FALSE
 
 /datum/action/cooldown/spell/Grant(mob/grant_to)
 	// If our spell is mind-bound, we only wanna grant it to our mind
@@ -373,7 +375,7 @@
 			to_chat(owner, span_warning("You can't position your hands correctly to invoke [src]!"))
 		return FALSE
 
-	if((invocation_type == INVOCATION_WHISPER || invocation_type == INVOCATION_SHOUT) && !living_owner.can_speak())
+	if((invocation_type == INVOCATION_WHISPER || invocation_type == INVOCATION_SHOUT) && !living_owner.can_speak() && ignores_mute_limit)
 		if(feedback)
 			to_chat(owner, span_warning("You can't get the words out to invoke [src]!"))
 		return FALSE

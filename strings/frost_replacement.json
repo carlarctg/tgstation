@@ -4,6 +4,7 @@
 		"stop": "FREEZE",
 		"soo": "snow",
 		"food": "ice cream",
+		"now": "snow",
 		"no": "snow",
 		"care": "carrot",
 		"coffee": "hot choco",
@@ -63,6 +64,7 @@
 		"magic": "christmas joy",
 		"traitor": "grinch",
 		"changeling": "changegrinch",
+		"ling": "changegrinch",
 		"heretic": "santa denier",
 		"cultist": "santa denier",
 		"cultie": "santa denier",
@@ -81,9 +83,10 @@
 		"fine": "pine",
 		"rich": "miser",
 		"clause": "claus",
+		"god": "santa",
 		"bitch": [
 			"grinch",
-			"bitch"
+			"birch"
 		]
 	}
 

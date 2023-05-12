@@ -321,8 +321,9 @@
 			message = replacetextEx(message, " [uppertext(key)]", " [uppertext(value)]")
 			message = replacetextEx(message, " [capitalize(key)]", " [capitalize(value)]")
 			message = replacetextEx(message, " [key]", " [value]")
-		if(prob(30))
+		if(prob(10))
 			message += ", season's greetings!"
+	speech_args[SPEECH_MESSAGE] = trim(message)
 
 /datum/mutation/human/canadian
 	name = "Canadian"
