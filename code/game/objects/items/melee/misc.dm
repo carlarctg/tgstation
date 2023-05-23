@@ -59,14 +59,23 @@
 	)
 	//very imprecise
 
+// handguard, blade. handle
+#define DEFAULT_SABRE_GREYSCALE rgb(248, 216, 96) + rgb(228, 231, 234) + rgb(145, 84, 35)
+
+// Sleek captain colored version.
+#define ALTERNATE_SABRE_GREYSCALE rgb(248, 216, 96) + rgb(228, 231, 234) + rgb(58, 103, 129)
+
+// Someone played the ultimate prank on the poor captain. How unlucky...
+#define BANANIUM_SABRE_GREYSCALE rgb(244, 133, 63) + rgb(244, 244, 0) + rgb(235, 103, 247)
+
 /obj/item/melee/sabre
-	name = "officer's sabre"
-	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
-	icon = 'icons/obj/weapons/sword.dmi'
-	icon_state = "sabre"
-	inhand_icon_state = "sabre"
-	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+	name = "captain's sabre"
+	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease.\
+		Rumoured to have been giften to the Captain by a visiting noble long ago.\
+		Either that or they stole it. You can see faint specks of what is most likely assistant blood on the blade's edge." // foreshadowing!
+	icon = 'icons/obj/weapons/sabre.dmi'
+	icon_state = "default"
+	inhand_icon_state = "default"
 	flags_1 = CONDUCT_1
 	obj_flags = UNIQUE_RENAME
 	force = 15
@@ -83,6 +92,11 @@
 	custom_materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT)
 	wound_bonus = 10
 	bare_wound_bonus = 25
+
+	greyscale_config = /datum/greyscale_config/sabre
+	greyscale_config_inhand_left = /datum/greyscale_config/sabre_lefthand
+	greyscale_config_inhand_right = /datum/greyscale_config/sabre_righthand
+	greyscale_colors = DEFAULT_SABRE_GREYSCALE
 
 /obj/item/melee/sabre/Initialize(mapload)
 	. = ..()
@@ -150,6 +164,25 @@
 		user.adjustBruteLoss(200)
 		user.death(FALSE)
 	REMOVE_TRAIT(src, TRAIT_NODROP, SABRE_SUICIDE_TRAIT)
+
+/obj/item/melee/sabre/alternate
+	name = "captain's customized sabre"
+	greyscale_colors = ALTERNATE_SABRE_GREYSCALE
+
+/obj/item/melee/sabre/bananium
+	name = "bananium sabre"
+	desc = "Someone pranked the captain and replaced his sabre with one made out of bananium! The humiliation!\
+		It looks just as sharp as always, but the dried assistant blood is replaced with what smells like dried banana juice."
+	custom_materials = list(/datum/material/bananium = HALF_SHEET_MATERIAL_AMOUNT)
+	greyscale_colors = BANANIUM_SABRE_GREYSCALE
+
+/obj/item/melee/sabre/bananium/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/squeak, list('sound/items/bikehorn.ogg'=1), 50, falloff_exponent = 20) //die off quick please
+
+#undef DEFAULT_SABRE_GREYSCALE
+#undef ALTERNATE_SABRE_GREYSCALE
+#undef BANANIUM_SABRE_GREYSCALE
 
 /obj/item/melee/beesword
 	name = "The Stinger"

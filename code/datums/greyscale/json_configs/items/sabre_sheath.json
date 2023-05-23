@@ -1,0 +1,42 @@
+{
+	"default": [
+		{
+			"type": "icon_state",
+			"icon_state": "sheath_body",
+			"blend_mode": "overlay",
+			"color_ids": [ 1 ]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "sheath_deco",
+			"blend_mode": "overlay",
+			"color_ids": [ 2 ]
+		}
+	],
+	"default-sabre": [
+		{
+			"type": "icon_state",
+			"icon_state": "sheath_body",
+			"blend_mode": "overlay",
+			"color_ids": [ 1 ]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "sheath_deco",
+			"blend_mode": "overlay",
+			"color_ids": [ 2 ]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "sabre_handle",
+			"blend_mode": "overlay",
+			"color_ids": [ 3 ]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "sabre_handguard",
+			"blend_mode": "overlay",
+			"color_ids": [ 4 ]
+		}
+	]
+}

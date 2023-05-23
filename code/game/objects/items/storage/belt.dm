@@ -773,13 +773,40 @@
 	inhand_icon_state = null
 	worn_icon_state = "cummerbund"
 
+//Placeholder color for the third color group which is filled by the sabre's handle color group when needed.
+#define SHEATH_FILLER_HANDLE "#000000"//rgb(0, 0, 0)
+//Placeholder color for the fourth color group which is filled by the sabre's handguard color group when needed.
+#define SHEATH_FILLER_HANDGUARD "#FFFFFF"//rgb(255, 255, 255)
+
+#define SHEATH_COLOR_GROUP_FILLER SHEATH_FILLER_HANDLE + SHEATH_FILLER_HANDGUARD
+
+// Body and decoration.
+#define DEFAULT_SHEATH_GREYSCALE rgb(204, 35, 35) + rgb(234, 219, 131)
+
+// Sleek captain colored version.
+#define ALTERNATE_SHEATH_GREYSCALE rgb(58, 103, 129) + rgb(248, 216, 96)
+
+// Someone played the ultimate prank on the poor captain. How unlucky...
+#define BANANIUM_SHEATH_GREYSCALE rgb(235, 103, 247) + rgb(244, 244, 0)
+
 /obj/item/storage/belt/sabre
 	name = "sabre sheath"
-	desc = "An ornate sheath designed to hold an officer's blade."
-	icon_state = "sheath"
-	inhand_icon_state = "sheath"
-	worn_icon_state = "sheath"
+	desc = "An ornate sheath designed to hold a specific kind of sabre."
+	icon = 'icons/obj/clothing/sabre_sheath.dmi'
+	icon_state = "default"
+	inhand_icon_state = "default"
+	worn_icon_state = "default"
 	w_class = WEIGHT_CLASS_BULKY
+
+	greyscale_config = /datum/greyscale_config/sabre_sheath
+	greyscale_config_inhand_left = /datum/greyscale_config/sabre_sheath_lefthand
+	greyscale_config_inhand_right = /datum/greyscale_config/sabre_sheath_righthand
+	greyscale_config_worn = /datum/greyscale_config/sabre_sheath_worn
+	greyscale_colors = DEFAULT_SHEATH_GREYSCALE + SHEATH_COLOR_GROUP_FILLER
+	var/greyscale_colors_type = DEFAULT_SHEATH_GREYSCALE
+
+	/// The sabre's handguard color, appended to greyscale_colors and removed when the sabre is.
+	var/list/sabre_color_list
 
 /obj/item/storage/belt/sabre/Initialize(mapload)
 	. = ..()
@@ -793,6 +820,12 @@
 			/obj/item/melee/sabre,
 		)
 	)
+
+	/*if(hood)
+		var/list/coat_colors = SSgreyscale.ParseColorString(greyscale_colors)
+		var/list/new_coat_colors = coat_colors.Copy(1,4)
+		hood.set_greyscale(new_coat_colors) //Adopt the suit's grayscale coloring for visual clarity.
+		*/
 
 /obj/item/storage/belt/sabre/examine(mob/user)
 	. = ..()
@@ -814,15 +847,47 @@
 	icon_state = initial(inhand_icon_state)
 	inhand_icon_state = initial(inhand_icon_state)
 	worn_icon_state = initial(worn_icon_state)
-	if(contents.len)
+	if(length(contents))
 		icon_state += "-sabre"
 		inhand_icon_state += "-sabre"
 		worn_icon_state += "-sabre"
+		var/obj/item/melee/sabre/sabre_inside = locate() in src
+		if(!sabre_inside)
+			return ..()
+		var/gingus = sabre_inside.greyscale_colors
+		sabre_color_list = splittext(gingus, "#", 1, 0, FALSE)
+		greyscale_colors = replacetext(greyscale_colors, SHEATH_FILLER_HANDLE, "#" + sabre_color_list[3])
+		greyscale_colors = replacetext(greyscale_colors, SHEATH_FILLER_HANDGUARD, "#" + sabre_color_list[4])
+		set_greyscale(greyscale_colors)
+		return ..()
+	else
+		set_greyscale(greyscale_colors_type)
+		sabre_color_list = null
 	return ..()
 
 /obj/item/storage/belt/sabre/PopulateContents()
-	new /obj/item/melee/sabre(src)
+	if(prob(20))
+		set_greyscale(ALTERNATE_SHEATH_GREYSCALE)
+		new /obj/item/melee/sabre/alternate(src)
+	else if(prob(1))
+		set_greyscale(BANANIUM_SHEATH_GREYSCALE)
+		new /obj/item/melee/sabre/bananium(src)
+	else
+		new /obj/item/melee/sabre(src)
 	update_appearance()
+
+/obj/item/storage/belt/sabre/set_greyscale(list/colors, new_config, new_worn_config, new_inhand_left, new_inhand_right)
+	// Can't replace these 1:1 as they're used in the code. Holy fuck this code sucks.
+	greyscale_colors = replacetext(colors, SHEATH_FILLER_HANDLE, rgb(1, 1, 1))
+	greyscale_colors = replacetext(colors, SHEATH_FILLER_HANDGUARD, rgb(254, 254, 254))
+	greyscale_colors_type = colors
+	colors = colors + SHEATH_COLOR_GROUP_FILLER
+	return ..()
+
+#undef SHEATH_COLOR_GROUP_FILLER
+#undef DEFAULT_SHEATH_GREYSCALE
+#undef ALTERNATE_SHEATH_GREYSCALE
+#undef BANANIUM_SHEATH_GREYSCALE
 
 /obj/item/storage/belt/plant
 	name = "botanical belt"

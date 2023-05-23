@@ -1,0 +1,22 @@
+{
+	"default": [
+		{
+			"type": "icon_state",
+			"icon_state": "handguard",
+			"blend_mode": "overlay",
+			"color_ids": [ 1 ]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "blade",
+			"blend_mode": "overlay",
+			"color_ids": [ 2 ]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "handle",
+			"blend_mode": "overlay",
+			"color_ids": [ 3 ]
+		}
+	]
+}

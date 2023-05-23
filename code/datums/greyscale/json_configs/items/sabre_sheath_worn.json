@@ -1,0 +1,36 @@
+{
+	"sheath": [
+		{
+			"type": "icon_state",
+			"icon_state": "sheath_worn_body",
+			"blend_mode": "overlay",
+			"color_ids": [ 1 ]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "sheath_worn_deco",
+			"blend_mode": "overlay",
+			"color_ids": [ 2 ]
+		}
+	],
+	"sheath-sabre": [
+		{
+			"type": "icon_state",
+			"icon_state": "sheath_worn_body",
+			"blend_mode": "overlay",
+			"color_ids": [ 1 ]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "sheath_worn_deco",
+			"blend_mode": "overlay",
+			"color_ids": [ 2 ]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "sheath_worn_sabre",
+			"blend_mode": "overlay",
+			"color_ids": [ 3 ]
+		}
+	]
+}

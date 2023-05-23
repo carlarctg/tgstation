@@ -1,0 +1,16 @@
+{
+	"default": [
+		{
+			"type": "icon_state",
+			"icon_state": "handguard_inhand_left",
+			"blend_mode": "overlay",
+			"color_ids": [ 1 ]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "blade_inhand_left",
+			"blend_mode": "overlay",
+			"color_ids": [ 2 ]
+		}
+	]
+}

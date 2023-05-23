@@ -233,7 +233,7 @@
 	name = "Marisa Sneakers"
 	icon_file = 'icons/obj/clothing/shoes.dmi'
 	json_config = 'code/datums/greyscale/json_configs/sneakers_marisa.json'
-	
+
 /datum/greyscale_config/sneakers_marisa/worn
 	name = "Worn Marisa Sneakers"
 	icon_file = 'icons/mob/clothing/feet.dmi'
@@ -350,6 +350,41 @@
 	name = "Gold Worn Cleric Mace"
 	icon_file = 'icons/obj/weapons/cleric_mace.dmi'
 	json_config = 'code/datums/greyscale/json_configs/items/cleric_mace_worn_gold.json'
+
+/datum/greyscale_config/sabre
+	name = "Base Sabre"
+	icon_file = 'icons/obj/weapons/sabre.dmi'
+	json_config = 'code/datums/greyscale/json_configs/items/sabre.json'
+
+/datum/greyscale_config/sabre_lefthand
+	name = "Base Held Sabre, Left"
+	icon_file = 'icons/obj/weapons/sabre.dmi'
+	json_config = 'code/datums/greyscale/json_configs/items/sabre_lefthand.json'
+
+/datum/greyscale_config/sabre_righthand
+	name = "Base Held Sabre, Right"
+	icon_file = 'icons/obj/weapons/sabre.dmi'
+	json_config = 'code/datums/greyscale/json_configs/items/sabre_righthand.json'
+
+/datum/greyscale_config/sabre_sheath
+	name = "Base Sabre"
+	icon_file = 'icons/obj/clothing/sabre_sheath.dmi'
+	json_config = 'code/datums/greyscale/json_configs/items/sabre_sheath.json'
+
+/datum/greyscale_config/sabre_sheath_lefthand
+	name = "Base Held Sabre, Left"
+	icon_file = 'icons/obj/clothing/sabre_sheath.dmi'
+	json_config = 'code/datums/greyscale/json_configs/items/sabre_sheath_lefthand.json'
+
+/datum/greyscale_config/sabre_sheath_righthand
+	name = "Base Held Sabre, Right"
+	icon_file = 'icons/obj/clothing/sabre_sheath.dmi'
+	json_config = 'code/datums/greyscale/json_configs/items/sabre_sheath_righthand.json'
+
+/datum/greyscale_config/sabre_sheath_worn
+	name = "Base Worn Sabre Sheath"
+	icon_file = 'icons/obj/clothing/sabre_sheath.dmi'
+	json_config = 'code/datums/greyscale/json_configs/items/sabre_sheath_worn.json'
 
 /datum/greyscale_config/ceremonial_blade
 	name = "Base Ceremonial Blade"
