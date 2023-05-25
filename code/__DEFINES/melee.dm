@@ -4,6 +4,7 @@
 #define MARTIALART_CQC "CQC"
 #define MARTIALART_HUGS_OF_THE_GONDOLA "hugs of the gondola"
 #define MARTIALART_KRAVMAGA "krav maga"
+#define MARTIALART_FENCING "fencing"
 #define MARTIALART_MUSHPUNCH "mushroom punch"
 #define MARTIALART_PLASMAFIST "plasma fist"
 #define MARTIALART_PSYCHOBRAWL "psychotic brawling"
