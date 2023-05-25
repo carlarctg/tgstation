@@ -41,6 +41,16 @@
 	user.visible_message(span_suicide("[user] puts the [src] to [user.p_their()] chest. It looks like [user.p_theyre()] trying to pulse [user.p_their()] heart off!"))
 	return OXYLOSS//theres a reason it wasn't recommended by doctors
 
+/obj/item/multitool/labeler
+	name = "\improper 'Lab-O-Matic' Supertool"
+	desc = "This handy, patented and improved version of the multitool comes with an integrated circuit labeller, allowing you to store information about a wire, even across different devices! Ages 8 and up. Do not swallow. Attempted replication of this device by unauthorized users is grounds for termination and retrocausal dissipation."
+	icon_state = "multitool_circuit"
+	force = 7
+	custom_materials = list(/datum/material/iron= SMALL_MATERIAL_AMOUNT * 0.75, /datum/material/glass= SMALL_MATERIAL_AMOUNT * 0.5, /datum/material/silver= SMALL_MATERIAL_AMOUNT * 0.5, /datum/material/gold= SMALL_MATERIAL_AMOUNT * 0.25)
+	custom_premium_price = PAYCHECK_COMMAND * 3
+	toolspeed = 0.8
+	usesound = 'sound/machines/doorclick.ogg'
+	var/list/label_buffer
 
 // Syndicate device disguised as a multitool; it will turn red when an AI camera is nearby.
 
