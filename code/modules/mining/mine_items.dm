@@ -80,7 +80,7 @@
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/machinery/computer/shuttle/mining/attack_hand(mob/user, list/modifiers)
 	if(is_station_level(user.z) && user.mind && IS_HEAD_REVOLUTIONARY(user) && !(user.mind in dumb_rev_heads))
-		to_chat(user, span_warning("You get a feeling that leaving the station might be a REALLY dumb idea..."))
+		to_chat(user, span_userdanger("You get a feeling that leaving the station might be a REALLY dumb idea..."))
 		dumb_rev_heads += user.mind
 		return
 
@@ -88,6 +88,91 @@
 		to_chat(user, span_warning("You get the feeling you shouldn't mess with this."))
 		return
 	return ..()
+
+/obj/machinery/computer/shuttle/mining/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/usb_port, list(/obj/item/circuit_component/shuttle_controls))
+	// Add another circuit for possible valid destinations
+
+/obj/item/circuit_component/shuttle_controls
+	display_name = "Mining Shuttle Controls"
+
+	/// The destination to go
+	var/datum/port/input/new_destination
+
+	/// The trigger to send the shuttle
+	var/datum/port/input/trigger_move
+
+	/// The current location
+	var/datum/port/output/location
+
+	/// Whether or not the shuttle is moving
+	var/datum/port/output/travelling_output
+
+	/// All valid destinations
+	var/datum/port/output/valid_destinations
+
+	/// The shuttle controls computer (/obj/machinery/computer/shuttle_controls)
+	var/obj/machinery/computer/shuttle/computer
+
+	/// The saved destination to update 'location' value.
+	var/saved_destination
+
+/obj/item/circuit_component/shuttle_controls/populate_ports()
+	new_destination = add_input_port("Destination", PORT_TYPE_STRING, trigger = null)
+	trigger_move = add_input_port("Send Shuttle", PORT_TYPE_SIGNAL)
+
+	location = add_output_port("Location", PORT_TYPE_STRING)
+	travelling_output = add_output_port("Travelling", PORT_TYPE_NUMBER)
+	valid_destinations = add_output_port("Valid Destinations", PORT_TYPE_LIST(PORT_TYPE_STRING))
+
+#define COMSIG_SHUTTLE_PRE_LAUNCH "gogus"
+#define COMSIG_SHUTTLE_LAUNCH "grongus"
+#define COMSIG_SHUTTLE_ARRIVE "gingus"
+
+/obj/item/circuit_component/shuttle_controls/register_usb_parent(atom/movable/shell)
+	. = ..()
+	if(istype(shell, /obj/machinery/computer/shuttle))
+		computer = shell
+		valid_destinations.set_output(splittext(computer.possible_destinations,";"))
+		RegisterSignal(computer, COMSIG_SHUTTLE_PRE_LAUNCH, PROC_REF(save_location))
+		RegisterSignal(computer, COMSIG_SHUTTLE_LAUNCH, PROC_REF(update_location), "Transit")
+		RegisterSignal(computer, COMSIG_SHUTTLE_ARRIVE, PROC_REF(update_location), saved_destination)
+
+/obj/item/circuit_component/shuttle_controls/proc/save_location()
+	location.set_output("Transit")
+	saved_destination = new_destination
+	travelling_output.set_output(1)
+
+/obj/item/circuit_component/shuttle_controls/proc/update_location(computer, dest_value)
+	location.set_output(dest_value)
+	if(location.value != "Transit")
+		travelling_output.set_output(0)
+
+/obj/item/circuit_component/shuttle_controls/unregister_usb_parent(atom/movable/shell)
+	computer = null
+	return ..()
+
+/obj/item/circuit_component/shuttle_controls/input_received(datum/port/input/port)
+	if (!COMPONENT_TRIGGERED_BY(trigger_move, port))
+		return
+
+	if (isnull(computer))
+		return
+
+	if (!computer.powered())
+		return
+
+	// Doubling this bit over from send_shuttle so it doesn't think we're doing a href exploit if the circuit user fucks up the input
+	var/list/dest_list = computer.get_valid_destinations()
+	var/validdest = FALSE
+	for(var/list/dest_data in dest_list)
+		if(dest_data["id"] == new_destination.value)
+			validdest = new_destination.value //Found our destination, we can skip ahead now
+			break
+
+	if(validdest)
+		INVOKE_ASYNC(computer, TYPE_PROC_REF(/obj/machinery/computer/shuttle, send_shuttle), validdest)
 
 /obj/machinery/computer/shuttle/mining/common
 	name = "lavaland shuttle console"

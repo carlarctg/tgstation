@@ -141,8 +141,8 @@
  * * dest_id - The ID of the stationary docking port to send the shuttle to
  * * user - The mob that used the console
  */
-/obj/machinery/computer/shuttle/proc/send_shuttle(dest_id, mob/user)
-	if(!launch_check(user))
+/obj/machinery/computer/shuttle/proc/send_shuttle(dest_id, atom/movable/user)
+	if(ismob(user) && !launch_check(user))
 		return SHUTTLE_CONSOLE_ACCESSDENIED
 	var/obj/docking_port/mobile/shuttle_port = SSshuttle.getShuttle(shuttleId)
 	if(shuttle_port.launch_status == ENDGAME_LAUNCHED)
@@ -166,7 +166,7 @@
 	switch(SSshuttle.moveShuttle(shuttleId, dest_id, TRUE))
 		if(DOCKING_SUCCESS)
 			say("Shuttle departing. Please stand away from the doors.")
-			log_shuttle("[key_name(user)] has sent shuttle \"[shuttleId]\" towards \"[dest_id]\", using [src].")
+			log_shuttle("[ismob(user) ? key_name(user) : user] has sent shuttle \"[shuttleId]\" towards \"[dest_id]\", using [src].")
 			return SHUTTLE_CONSOLE_SUCCESS
 		else
 			return SHUTTLE_CONSOLE_ERROR

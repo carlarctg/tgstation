@@ -429,6 +429,7 @@
 		new_table += list(entry)
 
 	records.set_output(new_table)
+
 /obj/item/circuit_component/arrest_console_arrest
 	display_name = "Security Records Set Status"
 	desc = "Receives a table to use to set people's arrest status. Table should be from the security records data component. If New Status port isn't set, the status will be decided by the options."
