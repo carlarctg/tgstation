@@ -66,7 +66,7 @@
 	if(slot & ITEM_SLOT_GLOVES)
 		style.teach(user, TRUE)
 
-/obj/item/clothing/gloves/krav_maga/dropped(mob/user)
+/obj/item/clothing/gloves/plate/royal_gauntlets/dropped(mob/user)
 	. = ..()
 	if(user.get_item_by_slot(ITEM_SLOT_GLOVES) == src)
 		style.remove(user)
@@ -83,8 +83,8 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	// They slow you down...
 	slowdown = SHOES_SLOWDOWN + 0.25
-	// But active slowdown isn't *too* bad.
-	slowdown_active = 0.5
+	// But overall active slowdown isn't *too* bad.
+	slowdown_active = 0.25
 	// And in exchange, noslip and baton resistance.
 	active_traits = list(TRAIT_NO_SLIP_WATER, TRAIT_NO_SLIP_ICE, TRAIT_NO_SLIP_SLIDE, TRAIT_NEGATES_GRAVITY, TRAIT_BATON_RESISTANCE)
 	// Overall useful as something to keep you alive, not to murderbone.
