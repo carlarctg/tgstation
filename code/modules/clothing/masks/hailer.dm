@@ -206,16 +206,32 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 /datum/action/item_action/halt
 	name = "HALT!"
 
+#define OFF_MODE 0
+#define SECURITY_MODE 1
+#define ENGINEERING_MODE 2
+#define MEDICAL_MODE 3
+
 /obj/item/clothing/mask/whistle/safety
 	name = "safety whistle"
-	desc = "A safety whistle that you can blow on in case you feel uncomfortable or need assistance! Primary action to call security, secondary action to call medical. Or just use the buttons."
+	desc = "A safety whistle that you can blow on in case you feel uncomfortable or need assistance!"
 	actions_types = list(/datum/action/item_action/safety_whistle)
+	var/warn_mode = MEDICAL_MODE
+	COOLDOWN_DECLARE(safety_whistle_cooldown)
 
-/obj/item/clothing/mask/whistle/ui_action_click(mob/user, action)
+/obj/item/clothing/mask/whistle/safety/attack_hand(mob/user, list/modifiers)
+	. = ..()
 	if(!COOLDOWN_FINISHED(src, whistle_cooldown))
 		return
 	COOLDOWN_START(src, whistle_cooldown, 25 SECONDS)
-	user.audible_message(span_warning("[user] blows on [src]!"))a
+	user.audible_message(span_warning("[user] blows on [src]!"))
+	playsound(src, 'sound/misc/whistle.ogg', 75, FALSE, 4)
+
+/obj/item/clothing/mask/whistle/safety/ui_action_click(mob/user, action)
+	. = ..()
+	for(var/mod_skin in mod.theme.skins)
+		skins[mod_skin] = image(icon = mod.icon, icon_state = "[mod_skin]-control")
+	var/pick = show_radial_menu(user, src)
+	user.audible_message(span_warning("[user] blows on [src]!"))
 	playsound(src, 'sound/misc/whistle.ogg', 75, FALSE, 4)
 
 /datum/action/item_action/safety_whistle
