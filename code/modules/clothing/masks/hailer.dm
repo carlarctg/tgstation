@@ -206,33 +206,53 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 /datum/action/item_action/halt
 	name = "HALT!"
 
-#define OFF_MODE 0
-#define SECURITY_MODE 1
-#define ENGINEERING_MODE 2
-#define MEDICAL_MODE 3
+#define OFF_MODE "No Alarm"
+#define SECURITY_MODE "Security Mode"
+#define ENGINEERING_MODE "Engineering Mode"
+#define MEDICAL_MODE "Medical Mode"
 
 /obj/item/clothing/mask/whistle/safety
 	name = "safety whistle"
 	desc = "A safety whistle that you can blow on in case you feel uncomfortable or need assistance!"
 	actions_types = list(/datum/action/item_action/safety_whistle)
 	var/warn_mode = MEDICAL_MODE
+	var/whistle_modes = list(OFF_MODE, SECURITY_MODE, ENGINEERING_MODE, MEDICAL_MODE)
+	// There's two cooldowns. Whistle cooldown, which is inherited..
+	// And safety whistle cooldown, which is much longer and used if the whistle is blown on any of the 'on' modes.
 	COOLDOWN_DECLARE(safety_whistle_cooldown)
+
+/obj/item/clothing/mask/whistle/safety/examine(mob/user)
+	. = ..()
+	. += span_notice("You can change the selected mode by pressing the button.")
+	. += span_boldnotice("It is currently on [warn_mode].")
 
 /obj/item/clothing/mask/whistle/safety/attack_hand(mob/user, list/modifiers)
 	. = ..()
+
+	if(warn_mode != OFF_MODE)
+		attempt_safety_whistling(user)
+		return
+
+	blow_whistle(user)
+
+/obj/item/clothing/mask/whistle/safety/proc/blow_whistle(user)
+
+/obj/item/clothing/mask/whistle/safety/attempt_safety_whistling(mob/user)
+	if(!COOLDOWN_FINISHED(src, safety_whistle_cooldown))
+		to_chat(user, span_warning("You try to blare the whistle alarm, but it hasn't recharged yet!"))
+		return
+
 	if(!COOLDOWN_FINISHED(src, whistle_cooldown))
 		return
-	COOLDOWN_START(src, whistle_cooldown, 25 SECONDS)
-	user.audible_message(span_warning("[user] blows on [src]!"))
-	playsound(src, 'sound/misc/whistle.ogg', 75, FALSE, 4)
+	blow_whistle(user)
 
 /obj/item/clothing/mask/whistle/safety/ui_action_click(mob/user, action)
-	. = ..()
-	for(var/mod_skin in mod.theme.skins)
-		skins[mod_skin] = image(icon = mod.icon, icon_state = "[mod_skin]-control")
+	var/list/modes_list = list()
+	for(var/i in whistle_modes)
+		modest_list[i] += image(icon = src.icon, icon_state = src.icon_state + i)
 	var/pick = show_radial_menu(user, src)
-	user.audible_message(span_warning("[user] blows on [src]!"))
-	playsound(src, 'sound/misc/whistle.ogg', 75, FALSE, 4)
+	icon_state = initial(icon_state) + pick
+	warn_mode = pick
 
 /datum/action/item_action/safety_whistle
 	name = "FWEEEP!"
