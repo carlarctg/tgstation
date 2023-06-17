@@ -228,11 +228,6 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 		modes_list[i] += image(icon = src.icon, icon_state = src.icon_state + whistle_modes[i])
 	warn_mode = show_radial_menu(user, src, modes_list)
 	icon_state = modes_list[warn_mode]
-	update_icons()
-
-/obj/item/clothing/mask/whistle/safety/Initialize(...)
-	..()
-	update_icons()
 
 /obj/item/clothing/mask/whistle/safety/examine(mob/user)
 	. = ..()
@@ -253,7 +248,7 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	user.audible_message("<font color='red'size='5'><b>FWEET!</b></font>")
 	playsound(src, 'sound/misc/whistle.ogg', 75, FALSE, 4)
 
-/obj/item/clothing/mask/whistle/safety/attempt_safety_whistling(mob/user)
+/obj/item/clothing/mask/whistle/safety/proc/attempt_safety_whistling(mob/user)
 	if(!COOLDOWN_FINISHED(src, safety_whistle_cooldown) && COOLDOWN_FINISHED(src, whistle_cooldown))
 		to_chat(user, span_warning("You try to blare the whistle alarm, but it hasn't recharged yet!"))
 		blow_whistle(user)

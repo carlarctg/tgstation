@@ -46,6 +46,9 @@
 	handle_conversion(cast_on)
 	return TRUE
 
+/datum/action/cooldown/spell/pointed/dominate/proc/handle_conversion(mob/living/simple_animal/cast_on)
+	return
+
 /datum/action/cooldown/spell/pointed/dominate/crown
 	name = "Sway Peon"
 	desc = "This spell dominates the mind of a lesser creature, joining you in your court as a loyal servant."

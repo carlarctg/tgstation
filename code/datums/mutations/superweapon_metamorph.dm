@@ -112,7 +112,7 @@
 /// Finish the process, breaking the walls down in random order with random timing, maximum one second. Do the effects on the victim.
 /datum/mutation/human/superweapon/proc/finish_morpheus()
 
-	playsound(owner, 'sound/effects/blobattack.ogg', 50, TRUE)w
+	playsound(owner, 'sound/effects/blobattack.ogg', 50, TRUE)
 	for(var/obj/structure/alien/resin/wall/superweapon_cocoon/cocoon_wall in cocoon_bits)
 		addtimer(CALLBACK(src, PROC_REF(shwip), cocoon_wall), rand(0.2 SECONDS, 1 SECONDS)) // randomly breaks to cause a cool effect
 
@@ -397,10 +397,10 @@
 	desc = "A pod of living meat, this one has been hollowed out."
 	icon_state = "flesh_pod_open"
 
-/obj/structure/chrysalis_pod/take_damage/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
+/obj/structure/chrysalis_pod/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
 	return exposed_temperature > 300
 
-/obj/structure/chrysalis_pod/take_damage/atmos_expose(datum/gas_mixture/air, exposed_temperature)
+/obj/structure/chrysalis_pod/atmos_expose(datum/gas_mixture/air, exposed_temperature)
 	take_damage(5, BURN, 0, 0)
 
 #undef ADDED_MUTATIONS

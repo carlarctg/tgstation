@@ -20,7 +20,15 @@
 	icon_state = "fancycrown"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/reflect_probability = 50
-	var/datum/action/cooldown/spell/pointed/dominate/crown/sway_power = new(src)
+	var/datum/action/cooldown/spell/pointed/dominate/crown/sway_power
+
+/obj/item/clothing/head/costume/crown/fancy/Initialize(mapload)
+	. = ..()
+	sway_power = new(src)
+
+/obj/item/clothing/head/costume/crown/fancy/Destroy()
+	QDEL_NULL(sway_power)
+	. = ..()
 
 /obj/item/clothing/head/costume/crown/fancy/equipped(mob/user, slot)
 	. = ..()
@@ -35,7 +43,7 @@
 /obj/item/clothing/head/costume/crown/fancy/IsReflect(def_zone)
 	if(def_zone != BODY_ZONE_HEAD) // The crown has been polished to PERFECTION.
 		return FALSE
-	if (prob(hit_reflect_chance))
+	if (prob(reflect_probability))
 		return TRUE
 
 /datum/armor/royal_crown
