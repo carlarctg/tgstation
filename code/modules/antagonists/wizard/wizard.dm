@@ -300,6 +300,15 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 				Studying under [master.current.real_name], you have learned stealthy, \
 				robeless spells. You are able to cast knock and mindswap."))
 
+		if(APPRENTICE_WILD)
+			spells_to_grant = list(
+				/datum/action/cooldown/spell/aoe/knock,
+				/datum/action/cooldown/spell/pointed/mind_transfer,
+			)
+			to_chat(owner, span_bold("Your service has not gone unrewarded, however. \
+				Studying under [master.current.real_name], you have learned to unlock \
+				the secrets of wild magic, which will grant you three to four different spells every minute."))
+
 	for(var/spell_type in spells_to_grant)
 		var/datum/action/cooldown/spell/new_spell = new spell_type(owner)
 		new_spell.Grant(owner.current)

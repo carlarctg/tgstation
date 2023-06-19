@@ -5,6 +5,20 @@
 	spell_type = /datum/action/cooldown/spell/pointed/projectile/fireball
 	category = "Offensive"
 
+/datum/spellbook_entry/wild_magic
+	name = "Wild Magic"
+	desc = "Do you feel constrained by the need to limit your opinions to a small subset of available spells? \
+			Look no further! This 'spell' randomly replaces itself every minute with a new one, with a small chance \
+			for an iteration to contain two random spells! Now you can try everything out - just don't die. \
+			Buying this spell more than once will increase the amount of 'wild spells' you get every cycle."
+	cost = 2
+	category = "Offensive"
+
+/datum/spellbook_entry/summon/events/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book)
+	summon_events(user)
+	playsound(get_turf(user), 'sound/magic/castsummon.ogg', 50, TRUE)
+	return ..()
+
 /datum/spellbook_entry/spell_cards
 	name = "Spell Cards"
 	desc = "Blazing hot rapid-fire homing cards. Send your foes to the shadow realm with their mystical power!"
