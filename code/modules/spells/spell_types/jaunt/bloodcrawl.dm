@@ -28,6 +28,9 @@
 	RegisterSignal(grant_to, COMSIG_MOVABLE_MOVED, PROC_REF(update_status_on_signal))
 
 /datum/action/cooldown/spell/jaunt/bloodcrawl/Remove(mob/remove_from)
+	if(is_jaunting(remove_from))
+		exit_jaunt(remove_from, get_turf(src))
+		// Make sure people aren't trapped here FOREVER.
 	. = ..()
 	UnregisterSignal(remove_from, COMSIG_MOVABLE_MOVED)
 

@@ -12,4 +12,4 @@
 
 	summon_radius = 3
 	summon_type = list(/mob/living/basic/creature)
-	summon_amount = 10
+	summon_amount = 5
