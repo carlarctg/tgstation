@@ -13,11 +13,16 @@
 			Buying this spell more than once will increase the amount of 'wild spells' you get every cycle."
 	cost = 2
 	category = "Offensive"
+	spell_type = /datum/action/cooldown/spell/wild_magic
 
-/datum/spellbook_entry/summon/events/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book)
-	summon_events(user)
-	playsound(get_turf(user), 'sound/magic/castsummon.ogg', 50, TRUE)
-	return ..()
+/datum/spellbook_entry/summon_simians
+	name = "Summon Simians"
+	desc = "This spell reaches deep into the elemental plane of bananas (the monkey one, not the clown one), and \
+		summons monkeys and gorillas that will promptly flip out and attack everything in sight. Fun! \
+		Their lesser, easily manipulable minds will be convinced you are one of their allies, but only for a minute."
+	cost = 2
+	category = "Offensive"
+	spell_type = /datum/action/cooldown/spell/conjure/simian
 
 /datum/spellbook_entry/spell_cards
 	name = "Spell Cards"

@@ -13,15 +13,15 @@
 	spell_requirements = NONE
 
 	summon_radius = 0
-	summon_type = list(/obj/item/soulstone)
+	summon_type = list(/obj/item/soulstone/anybody)
 
 /datum/action/cooldown/spell/conjure/soulstone/cult
 	name = "Create Nar'sian Soulstone"
 	cooldown_time = 6 MINUTES
+	summon_type = list(/obj/item/soulstone)
 
 /datum/action/cooldown/spell/conjure/soulstone/noncult
 	name = "Create Soulstone"
-	summon_type = list(/obj/item/soulstone/anybody)
 
 /datum/action/cooldown/spell/conjure/soulstone/purified
 	name = "Create Purified Soulstone"

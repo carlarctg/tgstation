@@ -4,6 +4,9 @@
 	button_icon_state = "emp"
 	sound = 'sound/weapons/zapbang.ogg'
 
+	cooldown_time = 40 SECONDS
+	cooldown_reduction_per_rank = 5 SECONDS
+
 	school = SCHOOL_EVOCATION
 
 	/// The heavy radius of the EMP
@@ -19,9 +22,6 @@
 	name = "Disable Tech"
 	desc = "This spell disables all weapons, cameras and most other technology in range."
 	sound = 'sound/magic/disable_tech.ogg'
-
-	cooldown_time = 40 SECONDS
-	cooldown_reduction_per_rank = 5 SECONDS
 
 	invocation = "NEC CANTIO"
 	invocation_type = INVOCATION_SHOUT

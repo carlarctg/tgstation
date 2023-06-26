@@ -3,9 +3,11 @@
 	name = "Dispense Wizard Justice"
 	desc = "This spell dispenses wizard justice."
 
+	cooldown_time = 1.5 MINUTES
+
 	summon_radius = 3
 	summon_type = list(/mob/living/simple_animal/bot/secbot/ed209)
-	summon_amount = 10
+	summon_amount = 4
 
 /datum/action/cooldown/spell/conjure/summon_ed_swarm/post_summon(atom/summoned_object, atom/cast_on)
 	if(!istype(summoned_object, /mob/living/simple_animal/bot/secbot/ed209))

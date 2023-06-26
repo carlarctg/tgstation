@@ -79,6 +79,11 @@
 	if(QDELETED(src) || QDELETED(owner) || !can_cast_spell(feedback = FALSE))
 		return . | SPELL_CANCEL_CAST
 
+/datum/action/cooldown/spell/shapeshift/Destroy()
+	if(is_shifted(owner))
+		do_unshapeshift(owner)
+	. = ..()
+
 /datum/action/cooldown/spell/shapeshift/cast(mob/living/cast_on)
 	. = ..()
 	cast_on.buckled?.unbuckle_mob(cast_on, force = TRUE)

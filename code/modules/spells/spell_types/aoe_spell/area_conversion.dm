@@ -7,7 +7,7 @@
 	button_icon = 'icons/mob/actions/actions_cult.dmi'
 	button_icon_state = "areaconvert"
 
-	school = SCHOOL_TRANSMUTATION
+	school = SCHOOL_FORBIDDEN
 	cooldown_time = 5 SECONDS
 
 	invocation_type = INVOCATION_NONE

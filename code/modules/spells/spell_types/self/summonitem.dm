@@ -163,6 +163,7 @@
 	cooldown_time = 3.5 MINUTES
 
 	invocation_type = INVOCATION_NONE
+	school = SCHOOL_UNSET
 
 /datum/action/cooldown/spell/summonitem/abductor/try_link_item(mob/living/caster)
 	var/obj/item/potential_mark = caster.get_active_held_item()

@@ -7,7 +7,7 @@
 	button_icon = 'icons/mob/actions/actions_cult.dmi'
 	button_icon_state = "floorconstruct"
 
-	school = SCHOOL_CONJURATION
+	school = SCHOOL_FORBIDDEN
 	cooldown_time = 2 SECONDS
 	invocation_type = INVOCATION_NONE
 	spell_requirements = NONE
@@ -24,7 +24,7 @@
 	button_icon = 'icons/mob/actions/actions_cult.dmi'
 	button_icon_state = "lesserconstruct"
 
-	school = SCHOOL_CONJURATION
+	school = SCHOOL_FORBIDDEN
 	cooldown_time = 10 SECONDS
 	invocation_type = INVOCATION_NONE
 	spell_requirements = NONE
