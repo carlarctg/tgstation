@@ -191,21 +191,27 @@
 	for(var/datum/brain_trauma/trauma as anything in starting_traumas)
 		victim.gain_trauma(trauma, TRAUMA_RESILIENCE_ABSOLUTE)
 
+/datum/metamorph_type/proc/first_stage()
+	return
+
+/datum/metamorph_type/proc/second_stage()
+	return
+
+/datum/metamorph_type/proc/third_stage()
+	return
+
 /// Base proc called after the SW finishes cocooning
 /datum/metamorph_type/proc/on_chrysallis()
 	current_stage++
-	var/list/add_list = handle_chrysallis()
 
-	var/list/mutations_to_add = add_list[ADDED_MUTATIONS]
-	var/list/quirks_to_add = add_list[ADDED_QUIRKS]
-	var/list/traumas_to_add = add_list[ADDED_TRAUMAS]
+	switch(current_stage)
+		if(1)
+			first_stage()
+		if(2)
+			second_stage()
+		if(3)
+			third_stage()
 
-	for(var/datum/mutation/human/mut as anything in mutations_to_add)
-		add_enhanced_mutation(mut)
-	for(var/datum/quirk/quark as anything in quirks_to_add)
-		victim.add_quirk(quark, MUT_OTHER)
-	for(var/datum/brain_trauma/trauma as anything in traumas_to_add)
-		victim.gain_trauma(trauma, TRAUMA_RESILIENCE_ABSOLUTE)
 	return
 
 // superweapons cant use almost anything but their mutations and they even have bad back
@@ -218,10 +224,6 @@
 	mutation.synchronizer_coeff = 0.5 // less self-effects
 	mutation.energy_coeff = 0.5 // faster use
 
-// The proc that's changed by subtypes that returns a list of mutations, traits, and traumas to be added by the above proc.
-/datum/metamorph_type/proc/handle_chrysallis()
-	return
-
 // Psionics! Using 100% of your brain.
 /datum/metamorph_type/psionics
 	letter = "P"
@@ -231,22 +233,24 @@
 	starting_quirks = list(/datum/quirk/badback, /datum/quirk/frail, /datum/quirk/selfaware, /datum/quirk/item_quirk/signer)
 	starting_traumas = list(/datum/brain_trauma/special/quantum_alignment)
 
-/datum/metamorph_type/psionics/handle_chrysallis()
-	var/list/return_list = list()
-	switch(current_stage)
-		if(1)
-			// Stage 1. Glow purple and get an antenna! But you're mute. Thankfully you can sign.
-			return_list[ADDED_MUTATIONS] = list(/datum/mutation/human/glow/purple, /datum/mutation/human/antenna, /datum/mutation/human/mute)
-		if(2)
-			// Stage 2. Get telepathy, telekinesis, and you can see bluespace holes in space.
-			return_list[ADDED_TRAUMAS] = list(/datum/brain_trauma/special/bluespace_prophet)
-			return_list[ADDED_MUTATIONS] = list(/datum/mutation/human/telepathy, /datum/mutation/human/telekinesis)
-		if(3)
-			// Stage 3. LASER EYES! Whoops, you get the two void shuffle mutations and the trauma to boot. Also the laser eyes are weak. Everything at a price.
-			return_list[ADDED_TRAUMAS] = list(/datum/brain_trauma/special/existential_crisis)
-			return_list[ADDED_MUTATIONS] = list(/datum/mutation/human/laser_eyes/weak, /datum/mutation/human/badblink, /datum/mutation/human/void)
+// Stage 1. Glow purple and get an antenna! But you're mute. Thankfully you can sign.
+/datum/metamorph_type/psionics/first_stage()
+	add_enhanced_mutation(/datum/mutation/human/glow/purple)
+	add_enhanced_mutation(/datum/mutation/human/antenna)
+	add_enhanced_mutation(/datum/mutation/human/mute)
 
-	return return_list
+// Stage 2. Get telepathy, telekinesis, and you can see bluespace holes in space.
+/datum/metamorph_type/psionics/second_stage()
+	add_enhanced_mutation(/datum/mutation/human/mute)
+	victim.gain_trauma(/datum/brain_trauma/special/bluespace_prophet, TRAUMA_RESILIENCE_ABSOLUTE)
+
+// Stage 3. LASER EYES! Whoops, you get the two void shuffle mutations and the trauma to boot. Also the laser eyes are weak. Everything at a price.
+/datum/metamorph_type/psionics/third_stage()
+	add_enhanced_mutation(/datum/mutation/human/laser_eyes/weak)
+	add_enhanced_mutation(/datum/mutation/human/badblink)
+	add_enhanced_mutation(/datum/mutation/human/void)
+	victim.gain_trauma(/datum/brain_trauma/special/existential_crisis, TRAUMA_RESILIENCE_ABSOLUTE)
+	//victim.add_quirk(quark, MUT_OTHER)
 
 // Cryonics! Freeze your foes and drive everyone around you, including yourself, insane with your awful accent(s)
 /datum/metamorph_type/cryonics
@@ -257,22 +261,21 @@
 	starting_quirks = list(/datum/quirk/badback, /datum/quirk/glass_jaw, /datum/quirk/depression)
 	starting_mutations = list(/datum/mutation/human/cough, /datum/mutation/human/biotechcompat, /datum/mutation/human/geladikinesis, /datum/mutation/human/canadian)
 
-/datum/metamorph_type/cryonics/handle_chrysallis()
-	var/list/return_list = list()
-	switch(current_stage)
-		if(1)
-			// Stage 1, glow blue, can resist the COLD! Not much use by itself though.
-			return_list[ADDED_MUTATIONS] = list(/datum/mutation/human/glow/blue_light, /datum/mutation/human/temperature_adaptation/cryogenic_adaptation)
-		if(2)
-			// Stage 2, can fire freezing rays at the downside of becoming nearly unintelligible.
-			return_list[ADDED_MUTATIONS] = list(/datum/mutation/human/cryokinesis, /datum/mutation/human/frost)
-		if(3)
-			// Stage 3, get over your SAD and become festively jolly, get thermal vision!
-			victim.remove_quirk(/datum/quirk/depression)
-			return_list[ADDED_QUIRKS] = list(/datum/quirk/jolly)
-			return_list[ADDED_MUTATIONS] = list(/datum/mutation/human/thermal)
+// Stage 1, glow blue, can resist the COLD! Not much use by itself though.
+/datum/metamorph_type/cryonics/first_stage()
+	add_enhanced_mutation(/datum/mutation/human/glow/blue_light)
+	add_enhanced_mutation(/datum/mutation/human/temperature_adaptation/cryogenic_adaptation)
 
-	return return_list
+// Stage 2, can fire freezing rays at the downside of becoming nearly unintelligible.
+/datum/metamorph_type/cryonics/second_stage()
+	add_enhanced_mutation(/datum/mutation/human/cryokinesis)
+	add_enhanced_mutation(/datum/mutation/human/frost)
+
+// Stage 3, get over your SAD and become festively jolly, get thermal vision!
+/datum/metamorph_type/cryonics/third_stage()
+	victim.remove_quirk(/datum/quirk/depression)
+	victim.add_quirk(/datum/quirk/jolly, MUT_OTHER)
+	add_enhanced_mutation(/datum/mutation/human/thermal)
 
 /obj/structure/alien/weeds/superweapon_cocoon
 	name = "cocoon floor"
