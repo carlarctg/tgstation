@@ -1147,5 +1147,45 @@
 	if(CONFIG_GET(flag/security_has_maint_access))
 		access |= list(ACCESS_MAINT_TUNNELS)
 
+/datum/id_trim/job/vip_royal_prince
+	assignment = "Royal Prince"
+	trim_state = "trim_prince"
+	department_color = COLOR_PRISONER_BLACK // ignore the name
+	subdepartment_color = COLOR_PRISONER_BLACK // IGNOOOOOOOOOOOOOOORE MEE
+	sechud_icon_state = SECHUD_PRINCE
+	minimal_access = list(
+		ACCESS_COMMAND,
+		ACCESS_GATEWAY,
+		ACCESS_EVA,
+		ACCESS_TELEPORTER,
+		ACCESS_MEDICAL,
+		ACCESS_CARGO,
+		ACCESS_BRIG_ENTRANCE,
+		ACCESS_COURT,
+		)
+	extra_access = list(
+		ACCESS_MAINT_TUNNELS,
+		)
+	template_access = list()
+	job = /datum/job/royal_prince
+
+/datum/id_trim/job/vip_superweapon
+	assignment = "Nanotrasen Superweapon"
+	trim_state = "trim_superweapon"
+	department_color = COLOR_PRISONER_BLACK // ignore the name
+	subdepartment_color = COLOR_PRISONER_BLACK // IGNOOOOOOOOOOOOOOORE MEE
+	sechud_icon_state = SECHUD_SUPERWEAPON
+	minimal_access = list(
+		ACCESS_SCIENCE,
+		ACCESS_GENETICS,
+		ACCESS_XENOBIOLOGY,
+		ACCESS_MEDICAL,
+		)
+	extra_access = list(
+		ACCESS_MAINT_TUNNELS,
+		)
+	template_access = list()
+	job = /datum/job/nanotrasen_superweapon
+
 #undef POPULATION_SCALED_ACCESS
 #undef ALWAYS_GETS_ACCESS

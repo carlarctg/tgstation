@@ -1055,6 +1055,18 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_TASTEFULLY_THICK_ID_CARD, ROUNDSTART_TRAIT)
 
+/obj/item/card/id/advanced/vip
+	name = "VIP identification card"
+	desc = "A sleek black and gold card. Wearing this automatically makes you feel like the coolest dude around."
+	icon_state = "card_vip"
+	inhand_icon_state = "vip_id"
+	assigned_icon_state = "assigned_vip"
+	wildcard_slots = WILDCARD_LIMIT_VIP
+
+/obj/item/card/id/advanced/vip/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_TASTEFULLY_THICK_ID_CARD, ROUNDSTART_TRAIT)
+
 /obj/item/card/id/advanced/gold/captains_spare
 	name = "captain's spare ID"
 	desc = "The spare ID of the High Lord himself."

@@ -18,6 +18,11 @@
 	WILDCARD_NAME_COMMAND = list(limit = 1, usage = list()), \
 	WILDCARD_NAME_PRV_COMMAND = list(limit = 1, usage = list()) \
 )
+/// Wildcard slot define for VIPs. More common, no privacy.
+#define WILDCARD_LIMIT_VIP list( \
+	WILDCARD_NAME_COMMON = list(limit = 5, usage = list()), \
+	WILDCARD_NAME_COMMAND = list(limit = 1, usage = list()), \
+)
 /// Wildcard slot define for Captain gold cards. Can hold infinite of any Captain level wildcard.
 #define WILDCARD_LIMIT_GOLD list(WILDCARD_NAME_CAPTAIN = list(limit = -1, usage = list()))
 /// Wildcard slot define for select Syndicate-affiliated cards. Can hold infinite of any Syndicate level wildcard. Syndicate includes all station accesses.

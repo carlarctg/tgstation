@@ -16,7 +16,7 @@
 
 /obj/item/clothing/head/costume/crown/fancy
 	name = "magnificent crown"
-	desc = "A crown worn by only the highest emperors of <s>the land</s> space. Supremely polished, despite being made of gold it's a better mirror than anything you've ever seen! The jewel in the middle shines strangely in the light.."
+	desc = "A crown worn by only the highest emperors of <s>the land</s> space, or more accurately, some decrepit fiefdom in Sprout. Supremely polished, despite being made of gold it's a better mirror than anything you've ever seen! The beautiful emerald jewel in the middle shines strangely in the light.."
 	icon_state = "fancycrown"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/reflect_probability = 50
@@ -61,7 +61,7 @@
 /obj/item/clothing/gloves/plate/royal_gauntlets
 	name = "royal bejeweled gauntlets"
 	icon_state = "crusader"
-	desc = "Royal gauntlets with embedded microchips that grant the user the knowledge to do Fencing. Can't spend time learning fencing when you're busy with your princely duties!"
+	desc = "These gauntlets were a gift to this Ethereal royal family from Nanotrasen, to cement good relations between them. They grant the user the ability to practice advanced Fencing via microchips."
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
 	heat_protection = HANDS
@@ -109,8 +109,8 @@
 // Uniform has CM webbing pockets.
 
 /obj/item/clothing/under/royal_attire
-	name = "royal prince's attire"
-	desc = "A mastercrafted set of clothing with impeccable, majestuous jewels embedded and golden silk-threads spanning its whole thread. It even contains an extra set of pockets!"
+	name = "ethereal prince's attire"
+	desc = "An ethereal, beautiful attire made of luminescent threads and encased with deep turquoise and blue jewels. It even contains an extra set of pockets!"
 	icon_state = "captain_parade"
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
@@ -121,6 +121,7 @@
 
 /datum/armor/royal_attire
 	bio = 10
+	melee = 10
 	wound = 10
 
 /obj/item/clothing/under/royal_attire/Initialize(mapload)
@@ -131,7 +132,7 @@
 
 /obj/item/clothing/suit/armor/riot/knight/prince
 	name = "prince's own armor"
-	desc = "A very fancy suit of plate armor. A little encumbering, but surprisingly resistant to damage."
+	desc = "A very fancy if terribly outdated suit of plate armor. It has a fancy turquoise tabard. A little encumbering, but surprisingly resistant to damage."
 	icon_state = "knight_green"
 	inhand_icon_state = null
 	allowed = list(

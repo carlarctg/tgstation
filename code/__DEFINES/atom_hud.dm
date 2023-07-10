@@ -79,6 +79,10 @@
 #define SECHUD_CENTCOM "hudcentcom"
 #define SECHUD_SYNDICATE "hudsyndicate"
 
+//VIP
+#define SECHUD_PRINCE "hudprince"
+#define SECHUD_SUPERWEAPON "hudsuperweapon"
+
 #define SECHUD_ASSISTANT "hudassistant"
 #define SECHUD_ATMOSPHERIC_TECHNICIAN "hudatmospherictechnician"
 #define SECHUD_BARTENDER "hudbartender"

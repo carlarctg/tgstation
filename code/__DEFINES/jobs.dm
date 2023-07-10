@@ -33,6 +33,9 @@
 //No department
 #define JOB_ASSISTANT "Assistant"
 #define JOB_PRISONER "Prisoner"
+//VIPs
+#define JOB_VIP_PRINCE "Ethereal Prince"
+#define JOB_VIP_SUPERWEAPON "Nanotrasen Superweapon"
 //Command
 #define JOB_CAPTAIN "Captain"
 #define JOB_HEAD_OF_PERSONNEL "Head of Personnel"
@@ -138,9 +141,16 @@
 #define JOB_DISPLAY_ORDER_DETECTIVE 33
 #define JOB_DISPLAY_ORDER_SECURITY_OFFICER 34
 #define JOB_DISPLAY_ORDER_PRISONER 35
+//VIPs
+#define JOB_DISPLAY_ORDER_ROYAL_PRINCE 36
+#define JOB_DISPLAY_ORDER_SUPERWEAPON 37
 
 
 #define DEPARTMENT_UNASSIGNED "No Department"
+
+//VIPs
+#define DEPARTMENT_BITFLAG_VIP (1<<1)
+#define DEPARTMENT_VIP "VIP"
 
 #define DEPARTMENT_BITFLAG_SECURITY (1<<0)
 #define DEPARTMENT_SECURITY "Security"
