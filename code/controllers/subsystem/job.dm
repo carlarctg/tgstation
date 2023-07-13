@@ -106,6 +106,20 @@ SUBSYSTEM_DEF(job)
 	overflow_role = new_overflow.type
 	JobDebug("Overflow role set to : [new_overflow.type]")
 
+/datum/controller/subsystem/job/proc/generate_vip_job(vip_job)
+	var/datum/job/new_vip = ispath(vip_job) ? GetJobType(vip_job) : GetJob(vip_job)
+	if(!vip_job)
+		JobDebug("Failed to set new vip role: [vip_job]")
+		CRASH("generate_vip_job failed | vip_job: [isnull(vip_job) ? "null" : vip_job]")
+
+//	new_vip.spawn_positions = cap
+//	new_vip.total_positions = cap
+
+	new_vip.job_flags |= JOB_NEW_PLAYER_JOINABLE
+
+	SetupOccupations()
+
+	JobDebug("vip_job new role : [vip_job.type]")
 
 /datum/controller/subsystem/job/proc/SetupOccupations()
 	name_occupations = list()

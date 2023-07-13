@@ -30,7 +30,7 @@
 		/obj/item/reagent_containers/hypospray/medipen = 20,
 	)
 	rpg_title = "Most Royal Majesty"
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_ASSIGN_QUIRKS
 
 /datum/outfit/job/royal_prince
 	name = "Royal Prince"
@@ -58,6 +58,16 @@
 	box = /obj/item/storage/box/survival/centcom
 	chameleon_extras = //obj/item/gun/syringe
 	pda_slot = ITEM_SLOT_LPOCKET
+
+/datum/outfit/job/royal_prince/pre_equip(mob/living/carbon/human/human, visualsOnly = FALSE)
+	. = ..()
+	if(visualsOnly)
+		return
+
+	human.dna.features["ethcolor"] = pick(GLOB.color_list_ethereal)
+	human.set_species(/datum/species/ethereal)
+	var/chosen_name = human.dna.species.random_name(human.gender, unique = TRUE)
+	human.fully_replace_character_name(human.real_name,chosen_name)
 
 /datum/job/superweapon
 	title = "Nanotrasen Superweapon"
@@ -97,7 +107,7 @@
 		/obj/item/reagent_containers/hypospray/medipen/survival/luxury = 5
 	)
 	rpg_title = "Forsaken One"
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_ASSIGN_QUIRKS
 
 /datum/job/superweapon/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()

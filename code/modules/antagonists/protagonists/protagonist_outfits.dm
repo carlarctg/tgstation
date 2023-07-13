@@ -1,14 +1,3 @@
-/datum/outfit/royal_prince
-	name = "Royal Prince"
-
-	uniform = /obj/item/clothing/under/color/red
-	shoes = /obj/item/clothing/shoes/plate/red
-	suit = /obj/item/clothing/suit/armor/riot/knight/red
-	gloves = /obj/item/clothing/gloves/plate/red
-	head = /obj/item/clothing/head/costume/crown/fancy
-	r_hand = /obj/item/claymore/weak/prince
-	back = /obj/item/shield/buckler
-
 // Royal Prince VIP
 // Design: Very lootable, cannot really powergame with his own loot, but can reasonably defend himself with it. Objective to keep his own loot until roundend.
 // All clothing resists any damage, though it does not make the wearer xproof.

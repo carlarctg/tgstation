@@ -343,5 +343,37 @@
 	trait_to_give = STATION_TRAIT_BIGGER_PODS
 	blacklist = list(/datum/station_trait/cramped_escape_pods)
 
+/datum/station_trait/vip_visit
+	name = "VIP visit"
+	trait_type = STATION_TRAIT_POSITIVE
+	weight = 7
+	show_in_report = TRUE
+	var/datum/job/vip_job_to_open
+
+/datum/station_trait/vip_visit/get_report()
+	return "Attention station, a VIP is on track to visit your station. I forgot who though, so uh, good luck."
+
+/datum/station_trait/vip_visit/proc/generate_vip_job(datum/source)
+	SIGNAL_HANDLER
+	SSjob.generate_vip_job(vip_job_to_open)
+
+// The Pronce
+
+/datum/station_trait/vip_visit/royal_prince
+	name = "Royal visit"
+	vip_job_to_open = /datum/job/royal_prince
+
+/datum/station_trait/vip_visit/royal_prince/get_report()
+	return "A member of a minor Ethereal royal family is set to visit your station to finalize a trade agreement with Nanotrasen. Please treat them with the upmost of hospitality."
+
+// The Exporem
+
+/datum/station_trait/vip_visit/superweapon_dropoff
+	name = "Nanotrasen Experiment"
+	vip_job_to_open = /datum/job/royal_prince
+
+/datum/station_trait/vip_visit/superweapon_dropoff/get_report()
+	return "A volunteer subject of Nanotrasen Superweapon Division's biological research is on course towards your station as part of a 'live fire' experiment. Please ensure their safety as they develop their abilities."
+
 #undef PARTY_COOLDOWN_LENGTH_MIN
 #undef PARTY_COOLDOWN_LENGTH_MAX
