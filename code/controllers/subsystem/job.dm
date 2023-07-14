@@ -65,6 +65,9 @@ SUBSYSTEM_DEF(job)
 	/// Are we using the old job config system (txt) or the new job config system (TOML)? IF we are going to use the txt file, then we are in "legacy mode", and this will flip to TRUE.
 	var/legacy_mode = FALSE
 
+	/// List of 'extra' nonstandard jobs that we've added to the joinable list, bypassing NEW_PLAYER_JOINABLE. Currently used by VIPs, though theoretically you could manually put venus human trap heres or something.
+	var/list/extra_joinable_jobs = list()
+
 	/// This is just the message we prepen and put into all of the config files to ensure documentation. We use this in more than one place, so let's put it in the SS to make life a bit easier.
 	var/config_documentation = "## This is the configuration file for the job system.\n## This will only be enabled when the config flag LOAD_JOBS_FROM_TXT is enabled.\n\
 	## We use a system of keys here that directly correlate to the job, just to ensure they don't desync if we choose to change the name of a job.\n## You are able to change (as of now) four different variables in this file.\n\
@@ -106,9 +109,9 @@ SUBSYSTEM_DEF(job)
 	overflow_role = new_overflow.type
 	JobDebug("Overflow role set to : [new_overflow.type]")
 
-/datum/controller/subsystem/job/proc/generate_vip_job(vip_job)
+/*datum/controller/subsystem/job/proc/generate_vip_job(vip_job)
 	var/datum/job/new_vip = ispath(vip_job) ? GetJobType(vip_job) : GetJob(vip_job)
-	if(!vip_job)
+	if(!new_vip)
 		JobDebug("Failed to set new vip role: [vip_job]")
 		CRASH("generate_vip_job failed | vip_job: [isnull(vip_job) ? "null" : vip_job]")
 
@@ -119,9 +122,9 @@ SUBSYSTEM_DEF(job)
 
 	SetupOccupations()
 
-	JobDebug("vip_job new role : [vip_job.type]")
+	JobDebug("vip_job new role : [vip_job]")
 
-/datum/controller/subsystem/job/proc/SetupOccupations()
+*//datum/controller/subsystem/job/proc/SetupOccupations()
 	name_occupations = list()
 	type_occupations = list()
 
@@ -151,7 +154,7 @@ SUBSYSTEM_DEF(job)
 		new_all_occupations += job
 		name_occupations[job.title] = job
 		type_occupations[job_type] = job
-		if(job.job_flags & JOB_NEW_PLAYER_JOINABLE)
+		if((job.job_flags & JOB_NEW_PLAYER_JOINABLE) || (job_type in extra_joinable_jobs))
 			new_joinable_occupations += job
 			if(!LAZYLEN(job.departments_list))
 				var/datum/job_department/department = new_joinable_departments_by_type[/datum/job_department/undefined]

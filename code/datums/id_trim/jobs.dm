@@ -1185,7 +1185,7 @@
 		ACCESS_MAINT_TUNNELS,
 		)
 	template_access = list()
-	job = /datum/job/nanotrasen_superweapon
+	job = /datum/job/superweapon
 
 #undef POPULATION_SCALED_ACCESS
 #undef ALWAYS_GETS_ACCESS

@@ -18,6 +18,7 @@ type Job = {
 
 type Department = {
   color: string;
+  text_color: string;
   jobs: Record<string, Job>;
   open_slots: number;
 };
@@ -135,6 +136,10 @@ export const JobSelection = (props, context) => {
             {Object.entries(departments).map((departmentEntry) => {
               const departmentName = departmentEntry[0];
               const entry = departmentEntry[1];
+              const baseShade = Color.fromHex(entry.color)
+                .darken(60)
+                .toString();
+              const { text_color = baseShade } = entry;
               return (
                 <Box key={departmentName} minWidth="30%">
                   <StyleableSection
@@ -147,9 +152,7 @@ export const JobSelection = (props, context) => {
                             'white-space': 'nowrap',
                             'position': 'absolute',
                             'right': '1em',
-                            'color': Color.fromHex(entry.color)
-                              .darken(60)
-                              .toString(),
+                            'color': text_color,
                           }}>
                           {entry.open_slots +
                             (entry.open_slots === 1 ? ' slot' : ' slots') +
@@ -168,9 +171,7 @@ export const JobSelection = (props, context) => {
                         .toString(),
                     }}
                     textStyle={{
-                      'color': Color.fromHex(entry.color)
-                        .darken(80)
-                        .toString(),
+                      'color': text_color,
                     }}>
                     <Stack vertical>
                       {Object.entries(entry.jobs).map((job) => (

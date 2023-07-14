@@ -346,21 +346,23 @@
 /datum/station_trait/vip_visit
 	name = "VIP visit"
 	trait_type = STATION_TRAIT_POSITIVE
-	weight = 7
+	weight = 1
 	show_in_report = TRUE
 	var/datum/job/vip_job_to_open
 
+/datum/station_trait/vip_visit/New()
+	. = ..()
+	//SSjob.generate_vip_job(vip_job_to_open)
+	SSjob.extra_joinable_jobs |= vip_job_to_open
+
 /datum/station_trait/vip_visit/get_report()
 	return "Attention station, a VIP is on track to visit your station. I forgot who though, so uh, good luck."
-
-/datum/station_trait/vip_visit/proc/generate_vip_job(datum/source)
-	SIGNAL_HANDLER
-	SSjob.generate_vip_job(vip_job_to_open)
 
 // The Pronce
 
 /datum/station_trait/vip_visit/royal_prince
 	name = "Royal visit"
+	weight = 1000000000000
 	vip_job_to_open = /datum/job/royal_prince
 
 /datum/station_trait/vip_visit/royal_prince/get_report()
@@ -370,7 +372,8 @@
 
 /datum/station_trait/vip_visit/superweapon_dropoff
 	name = "Nanotrasen Experiment"
-	vip_job_to_open = /datum/job/royal_prince
+	weight = 1000000000000
+	vip_job_to_open = /datum/job/superweapon
 
 /datum/station_trait/vip_visit/superweapon_dropoff/get_report()
 	return "A volunteer subject of Nanotrasen Superweapon Division's biological research is on course towards your station as part of a 'live fire' experiment. Please ensure their safety as they develop their abilities."

@@ -14,6 +14,8 @@
 	var/label_class = "undefineddepartment"
 	/// The color used in TGUI or similar menus.
 	var/ui_color = "#9689db"
+	/// The color of the departmental title used in TGUI or similar menus. By default null which turns into ui_color + 60 (HS)V, can be overriden to be a custom hex value.
+	var/text_color = null
 	/// Job singleton datums associated to this department. Populated on job initialization.
 	var/list/department_jobs = list()
 	/// For separatists, what independent name prefix does their nation get named?
@@ -141,7 +143,8 @@
 	department_experience_type = EXP_TYPE_SPECIAL
 	display_order = 9
 	label_class = "vip"
-	ui_color = "#070600"
+	ui_color = COLOR_PRISONER_BLACK
+	text_color = "#FDC052"
 
 /// Catch-all department for undefined jobs.
 /datum/job_department/undefined

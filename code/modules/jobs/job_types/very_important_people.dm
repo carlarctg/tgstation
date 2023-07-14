@@ -10,8 +10,8 @@
 	exp_granted_type = EXP_TYPE_SPECIAL
 	config_tag = "PRINCE"
 
-	outfit = /datum/outfit/royal_prince
-	plasmaman_outfit = /datum/outfit/royal_prince
+	outfit = /datum/outfit/job/royal_prince
+	plasmaman_outfit = /datum/outfit/job/royal_prince
 
 	paycheck = PAYCHECK_ZERO
 	paycheck_department = ""
@@ -21,7 +21,7 @@
 	display_order = JOB_DISPLAY_ORDER_ROYAL_PRINCE
 	bounty_types = CIV_JOB_BASIC
 	departments_list = list(
-		/datum/job_department/vip,
+		/datum/job_department/very_important_personnel,
 		)
 
 	family_heirlooms = list()
@@ -37,26 +37,26 @@
 	jobtype = /datum/job/royal_prince
 
 	id = /obj/item/card/id/advanced/vip
-	id_trim = /datum/id_trim/job/royal_prince
+	id_trim = /datum/id_trim/job/vip_royal_prince
 	uniform = /obj/item/clothing/under/royal_attire
 	suit = /obj/item/clothing/suit/armor/riot/knight/prince
 	suit_store = /obj/item/banner
 	backpack_contents = list(
 		/obj/item/shield/buckler = 1,
 		)
-	belt = //obj/item/storage/belt/medical/paramedic
+	//belt = //obj/item/storage/belt/medical/paramedic
 	ears = /obj/item/radio/headset/headset_com
 	head = /obj/item/clothing/head/costume/crown/fancy
 	gloves = /obj/item/clothing/gloves/plate/royal_gauntlets
 	shoes = /obj/item/clothing/shoes/magboots/royal_magboots
 	l_pocket = /obj/item/modular_computer/pda/clear
 
-	backpack = //obj/item/storage/backpack/saddlepack
-	satchel = //obj/item/storage/backpack/saddlepack
-	duffelbag = //obj/item/storage/backpack/duffelbag/med
+	backpack = /obj/item/storage/backpack/saddlepack
+	satchel = /obj/item/storage/backpack/saddlepack
+	duffelbag = /obj/item/storage/backpack/duffelbag/med
 
 	box = /obj/item/storage/box/survival/centcom
-	chameleon_extras = //obj/item/gun/syringe
+	//chameleon_extras = //obj/item/gun/syringe
 	pda_slot = ITEM_SLOT_LPOCKET
 
 /datum/outfit/job/royal_prince/pre_equip(mob/living/carbon/human/human, visualsOnly = FALSE)
@@ -92,6 +92,7 @@
 	display_order = JOB_DISPLAY_ORDER_SUPERWEAPON
 	bounty_types = CIV_JOB_MED
 	departments_list = list(
+		/datum/job_department/very_important_personnel,
 		/datum/job_department/medical,
 		/datum/job_department/science,
 		)
@@ -118,23 +119,23 @@
 	jobtype = /datum/job/superweapon
 
 	id = /obj/item/card/id/advanced/vip
-	id_trim = /datum/id_trim/job/superweapon
-	uniform = /obj/item/clothing/under/rank/medical/scrubs/hospital_gown
+	id_trim = /datum/id_trim/job/vip_superweapon
+	uniform = /obj/item/clothing/under/rank/medical/scrubs//hospital_gown
 	suit = null
 	backpack_contents = list(
 		/obj/item/shield/buckler = 1,
 		)
-	belt = //obj/item/storage/belt/medical/paramedic
+	//belt = //obj/item/storage/belt/medical/paramedic
 	ears = /obj/item/radio/headset/headset_medsci
 	head = null
 	gloves = null
-	shoes = /obj/item/clothing/shoes/sandals
+	shoes = /obj/item/clothing/shoes/sandal
 	l_pocket = /obj/item/modular_computer/pda/clear
 
-	backpack = //obj/item/storage/backpack/saddlepack
-	satchel = //obj/item/storage/backpack/saddlepack
-	duffelbag = //obj/item/storage/backpack/duffelbag/med
+	//backpack = //obj/item/storage/backpack/saddlepack
+	//satchel = //obj/item/storage/backpack/saddlepack
+	//duffelbag = //obj/item/storage/backpack/duffelbag/med
 
 	box = /obj/item/storage/box/survival/centcom
-	chameleon_extras = //obj/item/gun/syringe
+	//chameleon_extras = //obj/item/gun/syringe
 	pda_slot = null

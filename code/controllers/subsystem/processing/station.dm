@@ -66,6 +66,9 @@ PROCESSING_SUBSYSTEM_DEF(station)
 	var/neutral_trait_count = pick(10;0, 10;1, 3;2)
 	var/negative_trait_count = pick(20;0, 5;1, 1;2)
 
+	setup_trait(/datum/station_trait/vip_visit/royal_prince)
+	setup_trait(/datum/station_trait/vip_visit/superweapon_dropoff)
+
 	pick_traits(STATION_TRAIT_POSITIVE, positive_trait_count)
 	pick_traits(STATION_TRAIT_NEUTRAL, neutral_trait_count)
 	pick_traits(STATION_TRAIT_NEGATIVE, negative_trait_count)

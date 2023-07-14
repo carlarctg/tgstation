@@ -128,7 +128,7 @@
 	. = ..()
 	SSstation.announcer = /datum/centcom_announcer/medbot
 
-/datum/station_trait/protagonist
+/*/datum/station_trait/protagonist
 	name = "Announcement \"System\""
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 0
@@ -211,7 +211,7 @@
 	role_to_give = /datum/antagonist/protagonist/nanotrasen_superweapon
 	weight = 4
 	trait_flags = NONE
-
+*/
 /datum/station_trait/colored_assistants
 	name = "Colored Assistants"
 	trait_type = STATION_TRAIT_NEUTRAL

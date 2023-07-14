@@ -97,6 +97,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 		var/list/department_data = list(
 			"jobs" = department_jobs,
 			"color" = department.ui_color,
+			"text_color" = department.text_color ? department.text_color : FALSE,
 		)
 		departments[department.department_name] = department_data
 
