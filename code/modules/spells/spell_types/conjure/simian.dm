@@ -17,6 +17,10 @@
 	summon_type = list(/mob/living/carbon/human/species/monkey/angry, /mob/living/simple_animal/hostile/gorilla)
 	summon_amount = 4
 
+/datum/action/cooldown/spell/conjure/simian/level_spell(bypass_cap)
+	. = ..()
+	summon_amount++ // MORE, MOOOOORE
+
 /datum/action/cooldown/spell/conjure/simian/cast(atom/cast_on)
 	. = ..()
 	if(FACTION_MONKEY in owner.faction)
@@ -28,7 +32,9 @@
 	owner.faction.Remove(FACTION_MONKEY)
 
 /datum/action/cooldown/spell/conjure/simian/post_summon(atom/summoned_object, atom/cast_on)
-	if(istype(summoned_object, /mob/living/carbon/human/species/monkey))
+	var/mob/living/alive_dude = summoned_object
+	alive_dude.faction.Add(FACTION_MONKEY)
+	if(ismonkey(summoned_object))
 		create_monky(summoned_object)
 		return
 	//else if(istype(summoned_object, /mob/living/simple_animal/hostile/gorilla))
@@ -37,8 +43,9 @@
 /datum/action/cooldown/spell/conjure/simian/proc/create_monky(atom/summoned_object)
 	var/mob/living/carbon/human/species/monkey/summoned_monkey = summoned_object
 
-	var/obj/item/organ/internal/brain/primate/monky_brain = locate(summoned_monkey)
-	monky_brain?.tripping = FALSE // You fucked with Elemental Monkeys DOESNT WORK
+	//var/obj/item/organ/internal/brain/primate/monky_brain = locate(summoned_monkey)
+	//monky_brain?.tripping = FALSE // You fucked with Elemental Monkeys DOESNT WORK
+
 	// MONKEY ATTACK GORILLAS. INVERSE NOT TRUE
 
 	// Monkeys get a random gear tier, but it's more likely to be good the more leveled the spell is!
@@ -66,11 +73,12 @@
 
 	var/obj/item/weapon
 	if(monkey_gear_tier != 0)
-		weapon = pick(options)
-		weapon = new(summoned_monkey)
+		var/weapon_type = pick(options)
+		weapon = new weapon_type(summoned_monkey)
 		summoned_monkey.equip_to_slot_or_del(weapon, ITEM_SLOT_HANDS)
 
 	// Load the ammo
+	// bugg,ed nothinfg in syringe?
 	if(istype(weapon, /obj/item/gun/syringe/blowgun))
 		var/obj/item/reagent_containers/syringe/crude/tribal/syring = new(summoned_monkey)
 		weapon.attackby(syring, summoned_monkey)
@@ -80,13 +88,14 @@
 		weapon.attack_self(summoned_monkey)
 
 	var/list/static/monky_hats = list(
-		/obj/item/clothing/head/costume/garland = 1,
-		/obj/item/clothing/head/helmet/durathread = 2,
-		/obj/item/clothing/head/helmet/skull = 3,
+		// no t1
+		/obj/item/clothing/head/costume/garland = 2,
+		/obj/item/clothing/head/helmet/durathread = 3,
+		/obj/item/clothing/head/helmet/skull = 4,
 	)
 
-	// Not enough options here for each tier, let's cap at 3
-	monkey_gear_tier = min(monkey_gear_tier, 3)
+	// Not enough options here for each tier, let's cap at 4
+	monkey_gear_tier = min(monkey_gear_tier, 4)
 
 	options = list()
 	for(var/i in monky_hats)
@@ -94,9 +103,9 @@
 			options.Add(i)
 
 	var/obj/item/clothing
-	if(monkey_gear_tier != 0)
-		clothing = pick(options)
-		clothing = new(summoned_monkey)
+	if(monkey_gear_tier > 1)
+		var/clothing_type = pick(options)
+		clothing = new clothing_type(summoned_monkey)
 		summoned_monkey.equip_to_slot_or_del(clothing, ITEM_SLOT_HEAD)
 
 	summoned_monkey.fully_replace_character_name(summoned_monkey.real_name, "primal " + summoned_monkey.name)

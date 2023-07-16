@@ -66,6 +66,8 @@
 // Monkey AI controller blackboard keys
 
 #define BB_MONKEY_AGGRESSIVE "BB_monkey_aggressive"
+// If disabled will not trip on combat mode walkthru
+#define BB_MONKEY_TRIPPING "BB_monkey_tripping"
 #define BB_MONKEY_GUN_NEURONS_ACTIVATED "BB_monkey_gun_aware"
 #define BB_MONKEY_GUN_WORKED "BB_monkey_gun_worked"
 #define BB_MONKEY_BEST_FORCE_FOUND "BB_monkey_bestforcefound"

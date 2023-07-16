@@ -10,10 +10,6 @@
 	/// The duration the mutations will last afetr cast (keep this above the minimum cooldown)
 	var/mutation_duration = 10 SECONDS
 
-/datum/action/cooldown/spell/apply_mutations/New(Target)
-	. = ..()
-	spell_requirements |= SPELL_REQUIRES_HUMAN // The spell involves mutations, so it always require human / dna
-
 /datum/action/cooldown/spell/apply_mutations/Remove(mob/living/remove_from)
 	remove_mutations(remove_from)
 	return ..()
@@ -45,5 +41,5 @@
 	invocation = "BIRUZ BENNAR"
 	invocation_type = INVOCATION_SHOUT
 
-	mutations_to_add = list(/datum/mutation/human/laser_eyes, /datum/mutation/human/hulk)
+	mutations_to_add = list(/datum/mutation/human/laser_eyes, /datum/mutation/human/hulk/wizardly)
 	mutation_duration = 30 SECONDS

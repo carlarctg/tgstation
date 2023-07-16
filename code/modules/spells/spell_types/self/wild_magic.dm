@@ -39,8 +39,11 @@
 	var/list/barred_spells = list(
 			/datum/action/cooldown/spell/conjure/soulstone/cult,
 			/datum/action/cooldown/spell/summon_mob,
+			/datum/action/cooldown/spell/pointed/manse_link,
 	)
-	var/blacklisted_schools = list(SCHOOL_UNSET, SCHOOL_HOLY, SCHOOL_MIME, SCHOOL_FORBIDDEN)
+	var/forbidden_schools = list(SCHOOL_HOLY, SCHOOL_MIME, SCHOOL_FORBIDDEN)
+	// List of temporary objects created by odd happenings within rerolls.
+	var/list/temporary_objects = list()
 
 /datum/action/cooldown/spell/wild_magic/New(Target, original)
 	. = ..()
@@ -55,7 +58,7 @@
 				base_spell_options -= spell
 				continue
 			// Spells from a Wrong magical school, removed from the main pool but kept in a rare one for hijinks.
-			if(initial(spell.school) in blacklisted_schools)
+			if(initial(spell.school) in forbidden_schools)
 				base_spell_options -= spell
 				forb_spell_options += spell
 				continue
@@ -77,7 +80,6 @@
 	possible_wild_spells = base_spell_options
 	possible_rare_wild_spells = rare_spell_options
 	forbidden_wild_spells = forb_spell_options
-	START_PROCESSING(SSwild_magic, src)
 
 /datum/action/cooldown/spell/wild_magic/Destroy()
 	STOP_PROCESSING(SSwild_magic, src)
@@ -91,7 +93,7 @@
 		set_ritual()
 	else
 		set_holding()
-	build_all_button_icons()
+	owner.update_action_buttons()
 
 /datum/action/cooldown/spell/wild_magic/proc/set_ritual()
 	current_mode = RITUAL_MODE
@@ -103,8 +105,8 @@
 
 /datum/action/cooldown/spell/wild_magic/proc/set_holding()
 	current_mode = HOLDING_MODE
-	name = "Clutch Spell"
-	desc = "Mentally 'hold on' to a spell, allowing you to keep it for one more cycle. This is exhausting, and drains 30% of your stamina."
+	name = "Clutch Spell or Reroll"
+	desc = "Mentally 'hold on' to a spell, allowing you to keep it for one more cycle. This is exhausting, and drains 40% of your stamina. You can also use RMB and force a reroll, which is extremely draining and can be done only once every five minutes, blocking Clutching as well."
 	button_icon_state = "chuuni"
 	cooldown_time = 1.5 MINUTES
 	invocation = null
@@ -134,6 +136,7 @@
 	to_chat(cast_on, span_danger("Your essence spins in place quicker and quicker, until you can't stand feeling it no longer! You open your eyes and feel a tornado of violent, yet powerful magic inside you."))
 
 	whirlwind_energy++
+	START_PROCESSING(SSwild_magic, src)
 
 	if(ishuman(cast_on))
 		var/mob/living/carbon/human/human_cast_on = cast_on
@@ -152,12 +155,28 @@
 /datum/action/cooldown/spell/wild_magic/proc/cast_clutch(mob/living/cast_on)
 	var/list/clutchable_spells = list()
 	for(var/datum/action/cooldown/spell/clutched_spell as anything in current_wild_spells)
-		var/image/item_image = image(icon = clutched_spell.button_icon, icon_state = clutched_spell.base_icon_state)
-		clutchable_spells += list("[clutched_spell.name]" = item_image)
+		var/image/item_image = image(icon = clutched_spell.button_icon, icon_state = clutched_spell.button_icon_state)
+		clutchable_spells[clutched_spell.name] = item_image
 
-	var/choice = show_radial_menu(cast_on, choices = clutchable_spells)
+	var/choice = show_radial_menu(cast_on, anchor = cast_on, choices = clutchable_spells)
 
-	to_chat(cast_on, span_green("You prepare yourself to hold on to [choice], which will drain your stamina moderately but allow you to mantain it for one more minute."))
+	if(choice)
+		to_chat(cast_on, span_green("You prepare yourself to hold on to [choice], which will drain your stamina moderately but allow you to mantain it for one more minute."))
+		clutched_spell = choice
+		cooldown
+
+// doesnt work
+/datum/action/cooldown/spell/wild_magic/InterceptClickOn(mob/living/caller, params, atom/click_target) // 'cast_roll()'
+	if(!(LAZYACCESS(params2list(params), RIGHT_CLICK) && (current_mode == HOLDING_MODE)))
+		return FALSE
+	if(!IsAvailable(feedback = TRUE))
+		return FALSE
+	if(!do_after(caller, 2 SECONDS, timed_action_flags = IGNORE_USER_LOC_CHANGE|IGNORE_INCAPACITATED))
+		return FALSE
+	to_chat(caller, span_green("You focus your entire being and energy on forcing the magical whirlwind to change directions! You feel very exhausted."))
+	caller.adjustStaminaLoss(90)
+	reroll_spells()
+	StartCooldown(/*5*/ 0.5 MINUTES)
 
 /datum/action/cooldown/spell/wild_magic/level_spell(bypass_cap = FALSE)
 	..()
@@ -173,71 +192,115 @@
 	var/local_energy = whirlwind_energy
 
 	if(clutched_spell)
-		to_chat(owner, span_green("You hold onto [clutched_spell] as the whirlwind of magic inside you spins out of control."))
-		//owner.adjustStaminaLoss(40)
+		to_chat(owner, span_green("You hold onto [clutched_spell] as the whirlwind of magic inside you spins out of control, leaving you exhausted."))
+		var/mob/living/lowner = owner
+		lowner.adjustStaminaLoss(40)
 		local_energy--
 	else
 		to_chat(owner, span_green("The revolving whirlwind of magic inside your soul spins ever faster, altering your spell[length(current_wild_spells) > 1 ? "s" : ""]!"))
 
 	var/list/spells_to_delete = current_wild_spells - clutched_spell
 
+	QDEL_NULL(clutched_spell)
+
+	// Remove mime spell gesturing bypass
+	UnregisterSignal(owner, COMSIG_MOB_TRY_INVOKE_SPELL)
+	// Remove all temp. objects
+	QDEL_LIST(temporary_objects)
+	// Remove all previous spells
 	QDEL_LIST(spells_to_delete)
 
+	// There's only one attempt to summon a magic item per wild magic roll.
+	var/attempted_to_summon_item = FALSE
 	for(var/i in 1 to local_energy)
 
 		var/random_energy_flux = rand(1, 100)
-		// Increased luck the more leveled it is
+		// Increased luck the more leveled it is. The way it works is by reducing the number by how leveled your spell is.
+		// Which effectively means that each level is an increase of roughly 2% in luck.
+		// Doesn't sound like a lot, but consider it rolls for each spell in the list, and at level 5 that's 10% more luck for five rolls.
 		if(random_energy_flux > spell_level)
-			random_energy_flux = clamp(random_energy_flux, 1, random_energy_flux - spell_level)
+			random_energy_flux = clamp(random_energy_flux, 1, random_energy_flux - ((spell_level - 1) * 2))
 
 		var/datum/action/cooldown/spell/chosen_spell = pick(possible_wild_spells)
 
+		// Reroll a spell if it's a dupe, unless it doesn't feel like it. Or lands on the same thing.
+		if(is_type_in_list(chosen_spell, current_wild_spells) && prob(66))
+			chosen_spell = pick(possible_wild_spells)
+
+		// If the spell's going to level up, applied at the end of the chain.
 		var/level_spell = FALSE
+
+		// The magic item that's summoned if you get lucky enough, and don't have anything in your hands. Can't be dropped, disappears in one minute.
 		var/obj/item/magic_item
 		switch(random_energy_flux)
+			// 1% chance to get Lich or Splattercasting. As stated in the rare spells variable, this is unlikely, and fun.
 			if(1)
 				if(is_station_level(owner.z))
 					to_chat(owner, span_hypnophrase("Your soul is overflowing with magic!"))
 					chosen_spell = pick(possible_rare_wild_spells)
 				else
 					to_chat(owner, span_hypnophrase("A feeling of loss comes over you."))
+			// 2% chance to get spell you're not meant to get. (Within reason)
+			// If it's a heretic spell, you temporarily gain the ability to cast without a focus.
+			// If it's a mime spell, you temporarily go mute (and get a snowflake allowance for general spellcasting)
 			if(1 to 3)
-				to_chat(owner, span_hierophant("You're pretty sure you're not supposed to have this..."))
+				to_chat(owner, span_hypnophrase("You're pretty sure you're not supposed to have this..."))
 				chosen_spell = pick(forbidden_wild_spells)
-				if(initial(chosen_spell.school == SCHOOL_FORBIDDEN))
+				if(initial(chosen_spell.school) == SCHOOL_FORBIDDEN)
 					ADD_TRAIT(owner, TRAIT_ALLOW_HERETIC_CASTING, INNATE_TRAIT)
-					to_chat(owner, span_userdanger("You feel like you've gained some knowledge of the forbidden arts. Probably not a good thing."))
-				else if(initial(chosen_spell.school == SCHOOL_MIME))
+					to_chat(owner, span_hierophant("You feel like you've gained some knowledge of the forbidden arts. Probably not a good thing."))
+					// Not necessary, but fun flavor.
+					magic_item = new /obj/item/clothing/neck/heretic_focus(owner)
+					if(owner.equip_to_slot_or_del(magic_item, ITEM_SLOT_NECK))
+						to_chat(owner, span_warning("A forbidden necklace appears on your neck! It twitches uncomfortable in your presence, but stills."))
+						ADD_TRAIT(magic_item, TRAIT_NODROP, INNATE_TRAIT)
+						temporary_objects.Add(magic_item)
+				else if(initial(chosen_spell.school) == SCHOOL_MIME)
 					ADD_TRAIT(owner, TRAIT_MIMING, INNATE_TRAIT)
-					to_chat(owner, span_userdanger("You feel like keeping your mouth shut for now."))
-				addtimer(CALLBACK(src, PROC_REF(remove_temporary_trait)), 1 MINUTE)
+					RegisterSignal(owner, COMSIG_MOB_TRY_INVOKE_SPELL, PROC_REF(gesture_casting_override))
+					to_chat(owner, span_grey("You feel like keeping your mouth shut for now."))
+					// Not necessary, but fun flavor.
+					magic_item = new /obj/item/clothing/mask/gas/mime(owner)
+					if(owner.equip_to_slot_or_del(magic_item, ITEM_SLOT_MASK))
+						to_chat(owner, span_warning("A mime's mask appears on your face! You scream in terror! Wait, no you don't."))
+						ADD_TRAIT(magic_item, TRAIT_NODROP, INNATE_TRAIT)
+						temporary_objects.Add(magic_item)
+			// 2% chance to get a magic item, if your hands are empty.
 			if(3 to 5)
 				if(attempted_to_summon_item)
+					to_chat(owner, span_notice("You have a feeling of loss for a moment, then it passes."))
 					continue
 				attempted_to_summon_item = TRUE
+
 				var/list/static/possible_magic_items = list(
 					/obj/item/singularityhammer,
 					/obj/item/mjollnir,
 					/obj/item/highfrequencyblade/wizard,
 					/obj/item/necromantic_stone,
-				) + subtypesof(/obj/item/gun/magic/staff) - /obj/item/gun/magic/staff/healing
+				) + subtypesof(/obj/item/gun/magic/staff)
+
+				// Useless and unfun
+				possible_magic_items.Remove(list(/obj/item/gun/magic/staff/healing))
+
 				var/choice = pick(possible_magic_items)
 				magic_item = new choice(owner)
 				ADD_TRAIT(magic_item, TRAIT_NODROP, INNATE_TRAIT)
 				if(owner.equip_to_slot_or_del(magic_item, ITEM_SLOT_HANDS))
-					to_chat(owner, span_userdanger("\A [magic_item] appears in your hand! It feels brittle.."))
+					to_chat(owner, span_userdanger("\A [magic_item] appears in your hand! It glues itself to your hand, but it feels ephemeral in your grasp."))
 					chosen_spell = null
 					playsound(owner.loc, 'sound/magic/summon_magic.ogg', 25, TRUE)
-					QDEL_IN(magic_item, 1 MINUTES)
+					temporary_objects.Add(magic_item)
 				else
 					to_chat(owner, span_notice("You have a sad feeling for a moment, then it passes."))
 					qdel(magic_item)
+			// 3% chance for an extra roll! Yay!
 			if(5 to 9)
 				local_energy++
 				to_chat(owner, span_notice("You feel especially energetic!"))
+			// 4$ chance for that spell to get leveled up at the end.
 			if(9 to 13)
 				level_spell = TRUE
-				to_chat(owner, span_notice("You feel slightly more competent!"))
+				to_chat(owner, span_notice("You feel slightly more competent at casting [initial(chosen_spell.name)]!"))
 
 		if(chosen_spell)
 			var/datum/action/cooldown/spell/new_action = new chosen_spell(owner.mind || owner)
@@ -246,16 +309,17 @@
 				new_action.level_spell()
 			// Make it obvious it's a 'wild magic' spell, to avoid confusion.
 			new_action.background_icon_state = "bg_nature"
-			new_action.overlay_icon_state = "bg_nature_border"
-			build_all_button_icons()
+			//new_action.overlay_icon_state = "bg_nature_border" Keep the border though, to help clarify!
+			// The HUD gets weird if the buttons aren't updated.
+			owner.update_action_buttons()
 			RegisterSignal(new_action, COMSIG_QDELETING, PROC_REF(remove_from_list))
 			current_wild_spells += new_action
 
 /datum/action/cooldown/spell/wild_magic/proc/remove_from_list(datum/action/new_action)
 	current_wild_spells -= new_action
 
-/datum/action/cooldown/spell/wild_magic/proc/remove_temporary_trait()
-	REMOVE_TRAITS_IN(owner, INNATE_TRAIT)
+/datum/action/cooldown/spell/wild_magic/proc/gesture_casting_override()
+	return SPELL_INVOCATION_ALWAYS_SUCCEED
 
 /datum/action/cooldown/spell/wild_magic/get_spell_title()
 	switch(spell_level)
