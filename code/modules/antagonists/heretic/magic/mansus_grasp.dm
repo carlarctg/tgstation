@@ -7,7 +7,7 @@
 	button_icon_state = "mansus_grasp"
 	sound = 'sound/items/welder.ogg'
 
-	school = SCHOOL_EVOCATION
+	school = SCHOOL_FORBIDDEN
 	cooldown_time = 10 SECONDS
 
 	invocation = "R'CH T'H TR'TH!"
@@ -19,9 +19,6 @@
 
 /datum/action/cooldown/spell/touch/mansus_grasp/is_valid_target(atom/cast_on)
 	return TRUE // This baby can hit anything
-
-/datum/action/cooldown/spell/touch/mansus_grasp/can_cast_spell(feedback = TRUE)
-	return ..() && !!IS_HERETIC(owner)
 
 /datum/action/cooldown/spell/touch/mansus_grasp/on_antimagic_triggered(obj/item/melee/touch_attack/hand, atom/victim, mob/living/carbon/caster)
 	victim.visible_message(

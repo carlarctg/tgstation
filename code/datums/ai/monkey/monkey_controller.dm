@@ -53,8 +53,9 @@ have ways of interacting with a specific mob and control it.
 	. = ..()
 	if(. & AI_CONTROLLER_INCOMPATIBLE)
 		return
+	pawn = new_pawn
 	set_blackboard_key(BB_MONKEY_AGGRESSIVE, TRUE) //Angry cunt
-	set_blackboard_key(BB_MONKEY_TRIPPING, FALSE) //Don't FUCK with him
+	set_trip_mode(mode = FALSE)
 
 /datum/ai_controller/monkey/TryPossessPawn(atom/new_pawn)
 	if(!isliving(new_pawn))

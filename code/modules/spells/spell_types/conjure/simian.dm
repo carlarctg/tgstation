@@ -2,7 +2,7 @@
 	name = "Summon Simians"
 	desc = "This spell reaches deep into the elemental plane of bananas (the monkey one, not the clown one), and \
 		summons monkeys and gorillas that will promptly flip out and attack everything in sight. Fun! \
-		Their lesser, easily manipulable minds will be convinced you are one of their allies, but only for a minute."
+		Their lesser, easily manipulable minds will be convinced you are one of their allies, but only for a minute. Unless you also are a monkey."
 	button_icon_state = "bee"
 	sound = 'sound/ambience/antag/monkey.ogg'
 
@@ -14,12 +14,14 @@
 	invocation_type = INVOCATION_SHOUT
 
 	summon_radius = 2
-	summon_type = list(/mob/living/carbon/human/species/monkey/angry, /mob/living/simple_animal/hostile/gorilla)
+	summon_type = list(/mob/living/carbon/human/species/monkey/angry, /mob/living/carbon/human/species/monkey/angry, /mob/living/simple_animal/hostile/gorilla/lesser)
 	summon_amount = 4
 
 /datum/action/cooldown/spell/conjure/simian/level_spell(bypass_cap)
 	. = ..()
 	summon_amount++ // MORE, MOOOOORE
+	if(spell_level == spell_max_level) // We reward the faithful.
+		summon_type = list(/mob/living/carbon/human/species/monkey/angry, /mob/living/simple_animal/hostile/gorilla)
 
 /datum/action/cooldown/spell/conjure/simian/cast(atom/cast_on)
 	. = ..()
@@ -43,10 +45,8 @@
 /datum/action/cooldown/spell/conjure/simian/proc/create_monky(atom/summoned_object)
 	var/mob/living/carbon/human/species/monkey/summoned_monkey = summoned_object
 
-	//var/obj/item/organ/internal/brain/primate/monky_brain = locate(summoned_monkey)
-	//monky_brain?.tripping = FALSE // You fucked with Elemental Monkeys DOESNT WORK
-
-	// MONKEY ATTACK GORILLAS. INVERSE NOT TRUE
+	var/datum/ai_controller/monkey/monky_controller = summoned_monkey.ai_controller
+	monky_controller.set_trip_mode(mode = FALSE)
 
 	// Monkeys get a random gear tier, but it's more likely to be good the more leveled the spell is!
 	var/monkey_gear_tier = rand(0, 5) + (spell_level - 1)
