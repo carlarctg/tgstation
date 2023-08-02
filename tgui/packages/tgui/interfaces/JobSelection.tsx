@@ -57,9 +57,11 @@ export const JobEntry: SFC<{
               .toString(),
         'color': job.unavailable_reason
           ? '#616161' // Dark grey font
-          : Color.fromHex(department.color)
-            .darken(90)
-            .toString(),
+          : department.text_color
+            ? department.text_color
+            : Color.fromHex(department.color)
+              .darken(90)
+              .toString(),
         'font-size': '1.1rem',
         'cursor': job.unavailable_reason ? 'initial' : 'pointer',
       }}
@@ -136,10 +138,11 @@ export const JobSelection = (props, context) => {
             {Object.entries(departments).map((departmentEntry) => {
               const departmentName = departmentEntry[0];
               const entry = departmentEntry[1];
-              const baseShade = Color.fromHex(entry.color)
-                .darken(60)
-                .toString();
-              const { text_color = baseShade } = entry;
+              const text_color = entry.text_color
+                ? entry.text_color
+                : Color.fromHex(entry.color)
+                  .darken(60)
+                  .toString();
               return (
                 <Box key={departmentName} minWidth="30%">
                   <StyleableSection

@@ -136,16 +136,17 @@
 /datum/job_department/silicon/generate_nation_name()
 	return "United Nations" //For nations ruleset specifically, because all other sources of nation creation cannot choose silicons
 
+/// Catch-all department for undefined jobs.
+/datum/job_department/undefined
+	display_order = 9
+
 // 'Department' for VIPs. Only supposed to show up when there *are* VIP slots, closed or open.
 /datum/job_department/very_important_personnel
 	department_name = DEPARTMENT_VIP
 	department_bitflags = DEPARTMENT_BITFLAG_VIP
 	department_experience_type = EXP_TYPE_SPECIAL
-	display_order = 9
+	display_order = 10
 	label_class = "vip"
 	ui_color = COLOR_PRISONER_BLACK
-	text_color = "#FDC052"
+	text_color = "#cf9e44"
 
-/// Catch-all department for undefined jobs.
-/datum/job_department/undefined
-	display_order = 10

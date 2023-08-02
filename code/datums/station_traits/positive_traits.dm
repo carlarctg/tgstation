@@ -354,6 +354,7 @@
 	. = ..()
 	//SSjob.generate_vip_job(vip_job_to_open)
 	SSjob.extra_joinable_jobs |= vip_job_to_open
+	SSjob.SetupOccupations()
 
 /datum/station_trait/vip_visit/get_report()
 	return "Attention station, a VIP is on track to visit your station. I forgot who though, so uh, good luck."
