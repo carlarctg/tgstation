@@ -182,6 +182,9 @@
 /datum/job/proc/special_check_latejoin(client/latejoin)
 	return TRUE
 
+// Used in preferences.dm, line 406. If TRUE, lets preferences be set. If FALSE, sets pref to never.
+/datum/job/proc/handle_preference_setting(client/latejoin)
+	return TRUE
 
 /mob/living/proc/on_job_equipping(datum/job/equipping)
 	return

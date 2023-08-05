@@ -32,6 +32,16 @@
 	rpg_title = "Most Royal Majesty"
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_ASSIGN_QUIRKS
 
+/datum/job/royal_prince/handle_preference_setting(client/latejoin)
+	if(SSticker?.HasRoundStarted())
+		return FALSE
+
+	for(var/i in SSjob.extra_joinable_jobs)
+		var/datum/job/yob = i
+		if(initial(yob.config_tag) == src.config_tag)
+			return TRUE
+	return FALSE
+
 /datum/outfit/job/royal_prince
 	name = "Royal Prince"
 	jobtype = /datum/job/royal_prince
@@ -109,6 +119,15 @@
 	)
 	rpg_title = "Forsaken One"
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_ASSIGN_QUIRKS
+
+/datum/job/superweapon/handle_preference_setting(client/latejoin)
+	if(SSticker?.HasRoundStarted())
+		return FALSE
+
+	for(var/datum/job/yob in SSjob.extra_joinable_jobs)
+		if(SSjob.extra_joinable_jobs[(initial(yob.config_tag))] == src.config_tag)
+			return TRUE
+	return FALSE
 
 /datum/job/superweapon/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
