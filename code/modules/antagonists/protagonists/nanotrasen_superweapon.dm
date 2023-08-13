@@ -1,6 +1,6 @@
 /datum/antagonist/protagonist/nanotrasen_superweapon
 	name = "Nanotrasen superweapon"
-	outfit_type = /datum/outfit/superweapon
+	outfit_type = /datum/outfit/job/superweapon
 	min_age = 25
 	max_age = 50
 	var/letter = "T"

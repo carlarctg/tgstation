@@ -128,8 +128,8 @@
 	. = ..()
 	SSstation.announcer = /datum/centcom_announcer/medbot
 
-/*/datum/station_trait/protagonist
-	name = "Announcement \"System\""
+/datum/station_trait/protagonist
+	name = "VIP Guest"
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 0
 	show_in_report = TRUE
@@ -143,12 +143,14 @@
 	//The antag datum instance for the protagonist we are creating
 	var/datum/antagonist/antag_datum_instance
 
+#define COMSIG_NEW_VIP_ROLE "gingus"
 
 /datum/station_trait/protagonist/New()
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_PRE_GAMEMODE_SETUP, PROC_REF(on_gamemode_setup_handler))
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_GAMEMODE_SETUP, PROC_REF(after_gamemode_setup))
 	antag_datum_instance = new role_to_give() //Create this early for things such as family name to be setup
+	SEND_SIGNAL(SSticker, COMSIG_NEW_VIP_ROLE, antag_datum_instance)
 
 /// Checks if candidates are connected and if they are banned or don't want to be the antagonist.
 /datum/station_trait/protagonist/proc/trim_candidates(list/candidates)
@@ -158,9 +160,9 @@
 			candidates.Remove(candidate_player)
 			continue
 
-		if(candidate_player.mind.special_role) // No double antags!
-			candidates.Remove(candidate_player)
-			continue
+		//if(candidate_player.mind.special_role) // No double antags!
+		//	candidates.Remove(candidate_player)
+		//	continue
 
 		if(!(ROLE_PROTAGONIST in candidate_client.prefs.be_special) || is_banned_from(candidate_player.ckey, list(ROLE_PROTAGONIST, ROLE_SYNDICATE)))
 			candidates.Remove(candidate_player)
@@ -175,11 +177,11 @@
 /datum/station_trait/protagonist/proc/on_gamemode_setup_proper(datum/game_mode/game_mode_ref)
 	var/list/candidates = list()
 	for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
-		if(player.ready == PLAYER_READY_TO_PLAY && player.mind && player.check_preferences())
+		if(player.ready == PLAYER_READY_TO_PLAY && player.mind && locate(antag_datum_instance) in player.rolling_these_specials)
 			candidates.Add(player)
 	trim_candidates(candidates)
-	if(!candidates)
-		return null
+	if(length(candidates) < 1)
+		return to_chat(world, "no candidates we yeetin")
 	var/mob/dead/new_player/picked_player = pick(candidates)
 	picked_mind = picked_player.mind
 
@@ -187,31 +189,32 @@
 	picked_mind.special_role = ROLE_PROTAGONIST
 	SSstation.protagonists += picked_mind
 
-
 /datum/station_trait/protagonist/proc/after_gamemode_setup(datum/game_mode/game_mode_ref)
+	if(!picked_mind)
+		return to_chat(world, "no procne we yeetin")
 	SSjob.SendToLateJoin(picked_mind.current)
 	picked_mind.add_antag_datum(antag_datum_instance)
 
-/datum/station_trait/protagonist/scaredy_prince
+/datum/station_trait/protagonist/royal_prince
 	name = "Royal Visit"
-	report_message = "This station has received an esteemed guest! They will most likely be a high value target for any Syndicate invasions. Be sure to keep them safe! It seems this guest is a royal prince or princess! Although they are of royal blood, they don't seem to be the most brave person."
+	report_message = "A member of a minor Ethereal royal family is set to visit your station to finalize a trade agreement with Nanotrasen. They're seem a bit spooked of the supernatural, so try to keep them away from the chaplain. Please treat them with the upmost of hospitality."
 	role_to_give = /datum/antagonist/protagonist/scaredy_prince
 	weight = 4
 	trait_flags = NONE
 
 ///Pick a family name and put it in the title!
-/datum/station_trait/protagonist/scaredy_prince/New()
+/datum/station_trait/protagonist/royal_prince/New()
 	. = ..()
 	var/datum/antagonist/protagonist/scaredy_prince/prince_antag_datum = antag_datum_instance
-	name = "Royalty from house [prince_antag_datum.family_name]"
+	name = "Royal Visit from House [prince_antag_datum.family_name]"
 
-/datum/station_trait/protagonist/nanotrasen_superweapon
+/datum/station_trait/protagonist/superweapon_dropoff
 	name = "Superweapon"
-	report_message = "Central Command is sending the only surviving test subject in a superweapon project. You should be careful, they are incredibly frail and Syndicate Agents will see them as an easy target to cripple Nanotrasen."
+	report_message = "A volunteer subject of Nanotrasen Superweapon Division's biological research is on course towards your station as part of a 'live fire' experiment. Please ensure their safety as they develop their abilities."
 	role_to_give = /datum/antagonist/protagonist/nanotrasen_superweapon
 	weight = 4
 	trait_flags = NONE
-*/
+
 /datum/station_trait/colored_assistants
 	name = "Colored Assistants"
 	trait_type = STATION_TRAIT_NEUTRAL

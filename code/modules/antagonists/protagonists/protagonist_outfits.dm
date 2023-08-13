@@ -145,7 +145,7 @@
 // Ability to knight others, which adds Knight to their name and gives them minor combat buffs and airdropped gear (buckler, claymore, plate armor) at the cost of a massive mood penalty if away from their liege.
 // Can if willing summon a servant as a ghostrole, servants are very weak... Somehow but, well, serve the royal
 
-/datum/outfit/superweapon
+/datum/outfit/job/superweapon
 	name = "Nanotrasen Superweapon"
 
 	uniform = /obj/item/clothing/under/color/white

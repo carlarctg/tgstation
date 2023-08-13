@@ -74,8 +74,12 @@
 	if(visualsOnly)
 		return
 
-	human.dna.features["ethcolor"] = pick(GLOB.color_list_ethereal)
+	// We'll allow actual ethereals to keep their shit
+	if(isethereal(human))
+		return
+
 	human.set_species(/datum/species/ethereal)
+	human.dna.features["ethcolor"] = pick(GLOB.color_list_ethereal)
 	var/chosen_name = human.dna.species.random_name(human.gender, unique = TRUE)
 	human.fully_replace_character_name(human.real_name,chosen_name)
 

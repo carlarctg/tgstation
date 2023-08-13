@@ -158,6 +158,62 @@
 		base_icon_state = "not_ready"
 	update_appearance(UPDATE_ICON)
 
+///Button that appears before the game has started
+/atom/movable/screen/lobby/button/special_role
+	screen_loc = "TOP:-8,CENTER:-95"
+	icon = 'icons/hud/lobby/ready.dmi'
+	icon_state = "not_ready"
+	base_icon_state = "not_ready"
+	enabled = FALSE
+	// Instanced
+	var/datum/antagonist/role_to_give
+	var/total_buttons = 1
+
+#define COMSIG_NEW_VIP_ROLE "gingus"
+
+/atom/movable/screen/lobby/button/special_role/Initialize(mapload)
+	. = ..()
+	RegisterSignal(SSticker, COMSIG_NEW_VIP_ROLE, PROC_REF(show_or_add_vip_role))
+	RegisterSignal(SSticker, COMSIG_TICKER_ROUND_STARTING, PROC_REF(hide_button))
+
+/atom/movable/screen/lobby/button/special_role/proc/hide_button()
+	SIGNAL_HANDLER
+	set_button_status(FALSE)
+	UnregisterSignal(SSticker, COMSIG_NEW_VIP_ROLE) // New VIP roles are handled from the latejoin menu
+
+/**
+ * Adds a VIP role to the button. If it already has a special role, create a new button with the new one, as long as there aren't any buttons that already have it.
+ */
+/atom/movable/screen/lobby/button/special_role/proc/show_or_add_vip_role(datum/antagonist/antag_datum_instance)
+	SIGNAL_HANDLER
+	set_button_status(TRUE)
+	// If we register an added vip job but already have a role, attempt to create another button.
+	if(role_to_give)
+		// If there's any that already have that role, stop so we don't create dupes
+		for(var/atom/movable/screen/lobby/button/special_role/special_button in hud.mymob.client.screen)
+			if(special_button.role_to_give == antag_datum_instance)
+				return
+		// Increase this variable so we can multiply the Y value and continously lower new buttons
+		total_buttons++
+		var/atom/movable/screen/lobby/button/special_role/extra_button = new src.type()
+		extra_button.screen_loc = "TOP:35,CENTER:[95 - ((total_buttons -1) * 35)]"
+		extra_button.show_or_add_vip_role(antag_datum_instance)
+		return
+	role_to_give = antag_datum_instance
+
+/atom/movable/screen/lobby/button/special_role/Click(location, control, params)
+	. = ..()
+	if(!.)
+		return
+	var/mob/dead/new_player/new_player = hud.mymob
+	if(locate(role_to_give) in new_player.rolling_these_specials)
+		new_player.rolling_these_specials -= role_to_give
+		base_icon_state = "ready"
+	else
+		new_player.rolling_these_specials += role_to_give
+		base_icon_state = "not_ready"
+	update_appearance(UPDATE_ICON)
+
 ///Shown when the game has started
 /atom/movable/screen/lobby/button/join
 	screen_loc = "TOP:-13,CENTER:-58"
