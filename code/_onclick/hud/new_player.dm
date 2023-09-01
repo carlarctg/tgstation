@@ -160,7 +160,7 @@
 
 ///Button that appears before the game has started
 /atom/movable/screen/lobby/button/special_role
-	screen_loc = "TOP:-8,CENTER:-95"
+	screen_loc = "TOP:-20,CENTER:25"
 	icon = 'icons/hud/lobby/ready.dmi'
 	icon_state = "not_ready"
 	base_icon_state = "not_ready"
@@ -173,13 +173,50 @@
 
 /atom/movable/screen/lobby/button/special_role/Initialize(mapload)
 	. = ..()
+	set_button_status(FALSE)
 	RegisterSignal(SSticker, COMSIG_NEW_VIP_ROLE, PROC_REF(show_or_add_vip_role))
-	RegisterSignal(SSticker, COMSIG_TICKER_ROUND_STARTING, PROC_REF(hide_button))
+	RegisterSignal(SSdcs, COMSIG_TICKER_ROUND_STARTING, PROC_REF(hide_button))
+	for(var/datum/station_trait/station_trait as anything in SSstation.station_traits)
+		var/datum/station_trait/protagonist/protagonist_trait = station_trait
+		if(istype(protagonist_trait) && protagonist_trait.antag_datum_instance)
+			show_or_add_vip_role(protagonist_trait.antag_datum_instance)
 
 /atom/movable/screen/lobby/button/special_role/proc/hide_button()
 	SIGNAL_HANDLER
 	set_button_status(FALSE)
 	UnregisterSignal(SSticker, COMSIG_NEW_VIP_ROLE) // New VIP roles are handled from the latejoin menu
+
+
+/client/verb/sign_up_for_special_role()
+	set name = "Ready Special Role"
+	set category = "OOC"
+
+	var/mob/dead/new_player/gamer = usr
+
+	if(!istype(gamer))
+		return
+
+	var/list/elegible_roles
+	for(var/datum/station_trait/station_trait as anything in SSstation.station_traits)
+		var/datum/station_trait/protagonist/protagonist_trait = station_trait
+		if(istype(protagonist_trait) && protagonist_trait.antag_datum_instance)
+			LAZYADD(elegible_roles, protagonist_trait.antag_datum_instance)
+
+	if(!elegible_roles)
+		debug_world("no elegible roles")
+		return
+
+	var/chosen_role = elegible_roles[1]
+	if(length(elegible_roles) > 1)
+		chosen_role = tgui_input_list(usr, "What role", "nya", elegible_roles)
+
+	if(locate(chosen_role) in gamer.rolling_these_specials)
+		debug_world("You have signed out of [chosen_role]")
+		LAZYREMOVE(gamer.rolling_these_specials, chosen_role)
+		return
+
+	debug_world("You have signed up for [chosen_role]")
+	LAZYADD(gamer.rolling_these_specials, chosen_role)
 
 /**
  * Adds a VIP role to the button. If it already has a special role, create a new button with the new one, as long as there aren't any buttons that already have it.
@@ -190,13 +227,13 @@
 	// If we register an added vip job but already have a role, attempt to create another button.
 	if(role_to_give)
 		// If there's any that already have that role, stop so we don't create dupes
-		for(var/atom/movable/screen/lobby/button/special_role/special_button in hud.mymob.client.screen)
+		for(var/atom/movable/screen/lobby/button/special_role/special_button in hud?.mymob.client.screen)
 			if(special_button.role_to_give == antag_datum_instance)
 				return
 		// Increase this variable so we can multiply the Y value and continously lower new buttons
 		total_buttons++
 		var/atom/movable/screen/lobby/button/special_role/extra_button = new src.type()
-		extra_button.screen_loc = "TOP:35,CENTER:[95 - ((total_buttons -1) * 35)]"
+		extra_button.screen_loc = "TOP:-20,CENTER:[(25 * total_buttons) + 10]"
 		extra_button.show_or_add_vip_role(antag_datum_instance)
 		return
 	role_to_give = antag_datum_instance
@@ -207,10 +244,10 @@
 		return
 	var/mob/dead/new_player/new_player = hud.mymob
 	if(locate(role_to_give) in new_player.rolling_these_specials)
-		new_player.rolling_these_specials -= role_to_give
+		LAZYREMOVE(new_player.rolling_these_specials, role_to_give)
 		base_icon_state = "ready"
 	else
-		new_player.rolling_these_specials += role_to_give
+		LAZYADD(new_player.rolling_these_specials, role_to_give)
 		base_icon_state = "not_ready"
 	update_appearance(UPDATE_ICON)
 

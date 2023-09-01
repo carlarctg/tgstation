@@ -9,30 +9,11 @@
 	icon_state = "fancycrown"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/reflect_probability = 50
-	var/datum/action/cooldown/spell/pointed/dominate/crown/sway_power
-
-/obj/item/clothing/head/costume/crown/fancy/Initialize(mapload)
-	. = ..()
-	sway_power = new(src)
-
-/obj/item/clothing/head/costume/crown/fancy/Destroy()
-	QDEL_NULL(sway_power)
-	. = ..()
-
-/obj/item/clothing/head/costume/crown/fancy/equipped(mob/user, slot)
-	. = ..()
-	if(slot & ITEM_SLOT_HEAD)
-		sway_power.Grant(user)
-
-/obj/item/clothing/head/costume/crown/fancy/dropped(mob/user)
-	. = ..()
-	if(user.get_item_by_slot(ITEM_SLOT_HEAD) == src)
-		sway_power.Remove(user)
 
 /obj/item/clothing/head/costume/crown/fancy/IsReflect(def_zone)
-	if(def_zone != BODY_ZONE_HEAD) // The crown has been polished to PERFECTION.
+	if(def_zone != BODY_ZONE_HEAD)
 		return FALSE
-	if (prob(reflect_probability))
+	if (prob(reflect_probability)) // The crown has been polished to PERFECTION.
 		return TRUE
 
 /datum/armor/royal_crown
@@ -65,7 +46,7 @@
 
 /obj/item/clothing/gloves/plate/royal_gauntlets/dropped(mob/user)
 	. = ..()
-	if(user.get_item_by_slot(ITEM_SLOT_GLOVES) == src)
+	if(user?.get_item_by_slot(ITEM_SLOT_GLOVES) == src)
 		style.remove(user)
 
 // Boots: Baton knockdown immunity, can act as magboots with a bit less slowdown, maaaaaybe dash abil

@@ -138,6 +138,8 @@
 	blacklist = list()
 	///What role to give to the picked player
 	var/datum/antagonist/role_to_give
+	///What job to give to the picked player
+	var/datum/job/job_to_give
 	//The mind of the player that was picked
 	var/datum/mind/picked_mind
 	//The antag datum instance for the protagonist we are creating
@@ -150,7 +152,7 @@
 	RegisterSignal(SSdcs, COMSIG_GLOB_PRE_GAMEMODE_SETUP, PROC_REF(on_gamemode_setup_handler))
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_GAMEMODE_SETUP, PROC_REF(after_gamemode_setup))
 	antag_datum_instance = new role_to_give() //Create this early for things such as family name to be setup
-	SEND_SIGNAL(SSticker, COMSIG_NEW_VIP_ROLE, antag_datum_instance)
+	SEND_GLOBAL_SIGNAL(COMSIG_NEW_VIP_ROLE, antag_datum_instance)
 
 /// Checks if candidates are connected and if they are banned or don't want to be the antagonist.
 /datum/station_trait/protagonist/proc/trim_candidates(list/candidates)
@@ -164,9 +166,9 @@
 		//	candidates.Remove(candidate_player)
 		//	continue
 
-		if(!(ROLE_PROTAGONIST in candidate_client.prefs.be_special) || is_banned_from(candidate_player.ckey, list(ROLE_PROTAGONIST, ROLE_SYNDICATE)))
-			candidates.Remove(candidate_player)
-			continue
+		//if(!(ROLE_PROTAGONIST in candidate_client.prefs.be_special) || is_banned_from(candidate_player.ckey, list(ROLE_PROTAGONIST, ROLE_SYNDICATE)))
+		//	candidates.Remove(candidate_player)
+		//	continue
 
 /// Needs this because is_banned_from sleeps.
 /datum/station_trait/protagonist/proc/on_gamemode_setup_handler(datum/game_mode/game_mode_ref)
@@ -177,7 +179,7 @@
 /datum/station_trait/protagonist/proc/on_gamemode_setup_proper(datum/game_mode/game_mode_ref)
 	var/list/candidates = list()
 	for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
-		if(player.ready == PLAYER_READY_TO_PLAY && player.mind && locate(antag_datum_instance) in player.rolling_these_specials)
+		if(player.ready == PLAYER_READY_TO_PLAY && player.mind?.assigned_role != ROLE_PROTAGONIST && locate(antag_datum_instance) in player.rolling_these_specials)
 			candidates.Add(player)
 	trim_candidates(candidates)
 	if(length(candidates) < 1)
@@ -185,7 +187,7 @@
 	var/mob/dead/new_player/picked_player = pick(candidates)
 	picked_mind = picked_player.mind
 
-	picked_mind.assigned_role = ROLE_PROTAGONIST
+	picked_mind.assigned_role = new job_to_give()
 	picked_mind.special_role = ROLE_PROTAGONIST
 	SSstation.protagonists += picked_mind
 
@@ -199,6 +201,7 @@
 	name = "Royal Visit"
 	report_message = "A member of a minor Ethereal royal family is set to visit your station to finalize a trade agreement with Nanotrasen. They're seem a bit spooked of the supernatural, so try to keep them away from the chaplain. Please treat them with the upmost of hospitality."
 	role_to_give = /datum/antagonist/protagonist/scaredy_prince
+	job_to_give = /datum/job/royal_prince
 	weight = 4
 	trait_flags = NONE
 
@@ -212,6 +215,7 @@
 	name = "Superweapon"
 	report_message = "A volunteer subject of Nanotrasen Superweapon Division's biological research is on course towards your station as part of a 'live fire' experiment. Please ensure their safety as they develop their abilities."
 	role_to_give = /datum/antagonist/protagonist/nanotrasen_superweapon
+	job_to_give = /datum/job/superweapon
 	weight = 4
 	trait_flags = NONE
 

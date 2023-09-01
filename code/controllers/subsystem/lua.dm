@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(lua)
 /datum/controller/subsystem/lua/Initialize()
 	try
 		// Initialize the auxtools library
-		AUXTOOLS_CHECK(AUXLUA)
+		//AUXTOOLS_CHECK(AUXLUA)
 
 		// Set the wrappers for setting vars and calling procs
 		__lua_set_set_var_wrapper("/proc/wrap_lua_set_var")
