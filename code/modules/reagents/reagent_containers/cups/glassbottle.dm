@@ -970,4 +970,17 @@
 	list_reagents = list(/datum/reagent/consumable/menthol = 100)
 	age_restricted = TRUE
 
+// Potions!!!
+
+// Actually just normal reagent holders. Used in VR.
+
+/obj/item/reagent_containers/cup/glass/bottle/healing_potion
+	name = "healing potion"
+	desc = "A vibrant red draught that will ail your wounds and mend your ills. Smells like tomato."
+	list_reagents = list(/datum/reagent/medicine/sal_acid = 15, /datum/reagent/medicine/c2/libital = 15, /datum/reagent/medicine/oxandrolone = 15, /datum/reagent/medicine/c2/aiuri = 15, /datum/reagent/medicine/coagulant = 20, /datum/reagent/consumable/ethanol/bloody_mary)
+
+/obj/item/reagent_containers/cup/glass/bottle/small/endurance_potion
+	name = "endurance potion"
+	list_reagents = list(/datum/reagent/medicine/c2/penthrite = 25)
+
 #undef BOTTLE_KNOCKDOWN_DEFAULT_DURATION

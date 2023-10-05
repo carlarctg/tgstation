@@ -1,0 +1,3715 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ag" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/fakebasalt,
+/area/space)
+"ak" = (
+/obj/structure/table/wood,
+/turf/open/floor/wood/tile,
+/area/space)
+"al" = (
+/obj/structure/table/wood,
+/obj/item/book/granter/action/spell/blind/wgw{
+	icon_state = "book"
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"ar" = (
+/obj/structure/table_frame/wood,
+/turf/open/floor/wood/tile,
+/area/space)
+"aD" = (
+/turf/closed/indestructible/rock,
+/area/space)
+"aG" = (
+/obj/structure/flora/rock/pile/icy/style_random,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"aM" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/costume/dutch,
+/obj/item/clothing/suit/chaplainsuit/armor/witchhunter,
+/obj/item/clothing/head/helmet/chaplain/witchunter_hat,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/iron/grimy,
+/area/space)
+"aO" = (
+/obj/item/book/granter/action/spell/blind/wgw{
+	icon_state = "book"
+	},
+/turf/open/space/basic,
+/area/space)
+"bC" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/open/floor/wood/parquet,
+/area/space)
+"bG" = (
+/turf/closed/mineral/ash_rock,
+/area/space)
+"bV" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/wood/tile,
+/area/space)
+"cg" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/apple,
+/obj/item/food/grown/apple,
+/obj/item/food/grown/apple,
+/obj/item/food/grown/apple,
+/turf/open/floor/stone,
+/area/space)
+"cE" = (
+/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
+/turf/open/floor/wood/large,
+/area/space)
+"cT" = (
+/obj/structure/flora/ash/fireblossom,
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"dd" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood/tile,
+/area/space)
+"dq" = (
+/obj/structure/fake_stairs/wood/directional/north,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space)
+"dA" = (
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/turf/open/floor/wood/parquet,
+/area/space)
+"dD" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/shoes/plate/blue,
+/obj/item/clothing/gloves/plate/blue,
+/obj/item/clothing/suit/chaplainsuit/armor/templar,
+/obj/item/clothing/head/helmet/chaplain{
+	pixel_y = 9
+	},
+/turf/open/floor/iron/grimy,
+/area/space)
+"dK" = (
+/obj/item/book/granter/crafting_recipe/boneyard_notes,
+/turf/open/floor/wood,
+/area/space)
+"em" = (
+/obj/structure/barricade/wooden/crude/snow,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/machinery/door/puzzle/keycard/library,
+/turf/open/floor/wood/tile,
+/area/space)
+"eo" = (
+/obj/structure/chair/wood/wings,
+/turf/open/floor/wood/parquet,
+/area/space)
+"eZ" = (
+/obj/structure/chair/wood/wings{
+	dir = 4
+	},
+/turf/open/floor/wood/parquet,
+/area/space)
+"fo" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/turf/open/floor/wood/tile,
+/area/space)
+"fH" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/storage/backpack/duffelbag/clown/cream_pie,
+/obj/item/sticker/clown,
+/obj/item/sticker/clown,
+/obj/item/stamp/clown,
+/turf/open/indestructible/binary,
+/area/space)
+"gj" = (
+/obj/structure/mannequin/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/floor/wood/parquet,
+/area/space)
+"gl" = (
+/obj/structure/flora/bush/ferny/style_random,
+/turf/open/misc/grass,
+/area/space)
+"gR" = (
+/obj/structure/flora/ash/fireblossom,
+/obj/structure/flora/lunar_plant/style_3{
+	name = "eldritch plant"
+	},
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"gS" = (
+/obj/effect/decal/cleanable/generic,
+/turf/closed/wall/mineral/wood/nonmetal,
+/area/space)
+"gW" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/floor/wood/tile,
+/area/space)
+"hr" = (
+/obj/structure/table/wood,
+/obj/item/keycard/library,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/stone,
+/area/space)
+"hu" = (
+/turf/open/floor/wood/tile,
+/area/space)
+"hA" = (
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"hH" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/floor/fakebasalt,
+/area/space)
+"hR" = (
+/turf/open/misc/asteroid/moon,
+/area/space)
+"hT" = (
+/obj/structure/table/bronze,
+/obj/item/gun/ballistic/revolver/chaplain{
+	needs_burden = 0
+	},
+/obj/item/book/bible/booze,
+/turf/open/floor/stone,
+/area/space)
+"if" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood/large,
+/area/space)
+"ih" = (
+/obj/structure/table/bronze,
+/obj/item/knife/bloodletter{
+	force = 12
+	},
+/obj/item/flashlight/lantern/jade,
+/turf/open/floor/stone,
+/area/space)
+"ik" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/grimy,
+/area/space)
+"it" = (
+/mob/living/basic/pony,
+/obj/structure/railing{
+	dir = 9;
+	layer = 3.1
+	},
+/obj/structure/bed/dogbed,
+/turf/open/floor/stone,
+/area/space)
+"iM" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/wood,
+/area/space)
+"iT" = (
+/obj/structure/chair/wood/wings{
+	dir = 4
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"ja" = (
+/obj/item/book/manual/ancient_parchment,
+/obj/effect/turf_decal/siding/wood/corner,
+/turf/open/floor/wood,
+/area/space)
+"jE" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 6
+	},
+/turf/open/floor/fakebasalt,
+/area/space)
+"jN" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/pillow/clown,
+/obj/item/stack/sheet/mineral/bananium/five,
+/turf/open/floor/carpet/donk,
+/area/space)
+"kl" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/wood/tile,
+/area/space)
+"kp" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/wood/tile,
+/area/space)
+"ks" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/wood,
+/area/space)
+"kC" = (
+/obj/structure/bookcase/random/nonfiction,
+/turf/open/space/basic,
+/area/space)
+"lI" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/turf/open/floor/wood/large,
+/area/space)
+"lK" = (
+/turf/open/misc/ice,
+/area/space)
+"lQ" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"lW" = (
+/obj/item/clothing/neck/fake_heretic_amulet,
+/turf/open/space/basic,
+/area/space)
+"lZ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/fakebasalt,
+/area/space)
+"me" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/space)
+"mj" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/stone,
+/area/space)
+"mt" = (
+/turf/template_noop,
+/area/space)
+"mu" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"my" = (
+/obj/effect/mapping_helpers/engraving,
+/turf/closed/wall/mineral/wood/nonmetal,
+/area/space)
+"ng" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/turf/open/floor/stone,
+/area/space)
+"nv" = (
+/turf/open/floor/wood,
+/area/space)
+"nN" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/misc/asteroid/snow,
+/area/space)
+"nZ" = (
+/obj/structure/mannequin/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/floor/wood/parquet,
+/area/space)
+"oi" = (
+/obj/structure/fake_stairs/wood/directional/north,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space)
+"pd" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/wood/tile,
+/area/space)
+"pf" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/turf/open/floor/wood/tile,
+/area/space)
+"pm" = (
+/obj/structure/flora/bush/flowers_br/style_random,
+/turf/open/misc/asteroid/snow,
+/area/space)
+"pA" = (
+/obj/structure/flora/lunar_plant/style_3{
+	name = "eldritch plant"
+	},
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"qs" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/aloe,
+/obj/item/food/grown/aloe,
+/obj/item/food/grown/aloe,
+/obj/item/food/grown/ash_flora/cactus_fruit,
+/obj/item/food/grown/ash_flora/cactus_fruit,
+/obj/item/food/grown/ash_flora/cactus_fruit,
+/turf/open/floor/stone,
+/area/space)
+"qt" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"qB" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space)
+"qK" = (
+/obj/structure/flora/bush/flowers_yw/style_random,
+/turf/open/misc/grass,
+/area/space)
+"qU" = (
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"re" = (
+/obj/structure/fake_stairs/wood/directional/south,
+/turf/open/space/basic,
+/area/space)
+"rg" = (
+/obj/structure/chair/comfy/brown,
+/turf/open/floor/wood/tile,
+/area/space)
+"rq" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/misc/ashplanet/ash,
+/area/space)
+"rx" = (
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/turf/open/floor/iron/grimy,
+/area/space)
+"ry" = (
+/obj/item/book/codex_gigas,
+/turf/open/floor/wood,
+/area/space)
+"rA" = (
+/mob/living/basic/tree,
+/turf/open/misc/asteroid/snow,
+/area/space)
+"rW" = (
+/turf/closed/indestructible/binary,
+/area/space)
+"sc" = (
+/obj/effect/mob_spawn/corpse/human/charredskeleton,
+/turf/open/floor/fakebasalt,
+/area/space)
+"se" = (
+/obj/structure/barricade/wooden,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood/tile,
+/area/space)
+"sw" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/template_noop,
+/area/space)
+"sA" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/structure/statue/bone/rib,
+/turf/open/floor/fakebasalt,
+/area/space)
+"te" = (
+/obj/structure/chair/wood/wings,
+/obj/effect/decal/cleanable/food/flour,
+/turf/open/floor/wood/large,
+/area/space)
+"tz" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood/parquet,
+/area/space)
+"tI" = (
+/obj/item/book/random,
+/obj/structure/table_frame/wood,
+/turf/open/floor/wood/large,
+/area/space)
+"tY" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/stone_tile/block/cracked{
+	dir = 9
+	},
+/turf/open/floor/fakebasalt,
+/area/space)
+"tZ" = (
+/turf/open/floor/wood{
+	initial_gas_mix = "ICEMOON_ATMOS"
+	},
+/area/space)
+"ub" = (
+/obj/structure/bookcase/random/religion,
+/turf/open/floor/wood/large,
+/area/space)
+"uh" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/structure/flora/bush/flowers_br/style_random,
+/turf/open/misc/asteroid/snow,
+/area/space)
+"ui" = (
+/obj/structure/barricade/wooden/crude,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/machinery/door/puzzle/keycard/library,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/tile,
+/area/space)
+"up" = (
+/obj/item/chisel,
+/obj/structure/stone_tile/block/cracked{
+	dir = 5
+	},
+/turf/open/floor/fakebasalt,
+/area/space)
+"ut" = (
+/obj/structure/statue/bone/skull/half,
+/turf/open/floor/fakebasalt,
+/area/space)
+"uJ" = (
+/obj/structure/bookcase/random/adult,
+/turf/open/space/basic,
+/area/space)
+"uR" = (
+/obj/structure/table/wood,
+/obj/item/book/granter/action/spell/summon_cheese,
+/turf/open/floor/wood/large,
+/area/space)
+"uW" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/wood,
+/area/space)
+"vb" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/floor/wood/tile,
+/area/space)
+"vv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/stone,
+/area/space)
+"vw" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/space)
+"vO" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/wood/parquet,
+/area/space)
+"vX" = (
+/obj/item/codex_cicatrix,
+/turf/open/floor/wood,
+/area/space)
+"wa" = (
+/obj/structure/flora/bush/snow/style_random,
+/turf/open/misc/asteroid/snow,
+/area/space)
+"wp" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"xW" = (
+/obj/structure/chair/wood,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/stone,
+/area/space)
+"ya" = (
+/obj/structure/railing/corner/end/flip,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/grimy,
+/area/space)
+"yx" = (
+/obj/structure/flora/tree/pine/style_random,
+/turf/open/misc/asteroid/snow,
+/area/space)
+"yM" = (
+/obj/effect/decal/cleanable/grand_remains,
+/turf/open/floor/grass/lavaland,
+/area/space)
+"yO" = (
+/obj/structure/flora/tree/stump,
+/turf/open/misc/asteroid/snow,
+/area/space)
+"yT" = (
+/obj/item/book/bible/syndicate,
+/obj/effect/decal/cleanable/grand_remains,
+/turf/open/floor/wood,
+/area/space)
+"zx" = (
+/obj/structure/chair/wood/wings{
+	dir = 1
+	},
+/turf/open/floor/wood/parquet,
+/area/space)
+"zH" = (
+/obj/structure/table/wood,
+/turf/open/floor/wood/large,
+/area/space)
+"zP" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"Ac" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/fakepit,
+/area/space)
+"Ad" = (
+/obj/effect/decal/cleanable/vomit/nebula,
+/turf/open/floor/grass/lavaland,
+/area/space)
+"Ap" = (
+/obj/structure/chair/wood/wings,
+/turf/open/floor/wood/large,
+/area/space)
+"Az" = (
+/obj/item/book/granter/chuunibyou,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood/parquet,
+/area/space)
+"AC" = (
+/obj/effect/landmark/bitrunning/safehouse_spawn,
+/turf/template_noop,
+/area/space)
+"AK" = (
+/obj/structure/flora/bush/fullgrass/style_random,
+/turf/open/misc/grass,
+/area/space)
+"AU" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/item/skeleton_key,
+/turf/open/floor/fakebasalt,
+/area/space)
+"AY" = (
+/turf/closed/indestructible/necropolis,
+/area/space)
+"Bb" = (
+/obj/structure/fireplace,
+/turf/open/floor/stone,
+/area/space)
+"Bl" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/wood/large,
+/area/space)
+"Bu" = (
+/obj/machinery/smartfridge/drying_rack,
+/obj/item/food/raw_headcheese,
+/turf/open/floor/stone,
+/area/space)
+"Bw" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/fakepit,
+/area/space)
+"Cf" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/spawner/random/trash,
+/obj/structure/flora/lunar_plant/style_3{
+	name = "eldritch plant"
+	},
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"CH" = (
+/obj/structure/flora/lunar_plant/style_2{
+	name = "eldritch plant"
+	},
+/turf/open/misc/asteroid/moon,
+/area/space)
+"CX" = (
+/obj/structure/bookcase/random/adult,
+/turf/open/floor/wood/large,
+/area/space)
+"CZ" = (
+/obj/structure/bookcase/random/fiction,
+/turf/open/floor/wood/large,
+/area/space)
+"Do" = (
+/obj/structure/barricade/wooden/crude,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/machinery/door/puzzle/keycard/library,
+/turf/open/floor/wood/tile,
+/area/space)
+"Dp" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/bottle/wine/unlabeled{
+	pixel_y = 13
+	},
+/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
+	pixel_x = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/stone,
+/area/space)
+"Ds" = (
+/obj/structure/table/wood,
+/obj/item/shadowcloak,
+/obj/item/hatchet/wooden,
+/obj/item/clothing/glasses/meson{
+	icon_state = "geist_gazers";
+	worn_icon_state = "geist_gazers";
+	name = "glasses of truesight";
+	desc = "These glasses have been made with pure Plot-anium, allowing them the ablity to see inorganic things through walls. Nice."
+	},
+/turf/open/indestructible/binary,
+/area/space)
+"Dv" = (
+/obj/structure/railing{
+	dir = 4;
+	layer = 4.1
+	},
+/obj/structure/railing/corner/end{
+	dir = 8
+	},
+/turf/open/floor/stone,
+/area/space)
+"DD" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"DE" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space)
+"DL" = (
+/obj/structure/table/wood,
+/obj/item/book/granter/crafting_recipe/boneyard_notes,
+/turf/open/floor/wood/large,
+/area/space)
+"DT" = (
+/obj/structure/barricade/wooden/crude/snow,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/machinery/door/puzzle/keycard/library,
+/turf/open/floor/wood/tile,
+/area/space)
+"DV" = (
+/obj/item/chair/wood,
+/turf/open/floor/wood/large,
+/area/space)
+"Ek" = (
+/obj/structure/table/wood/fancy,
+/obj/item/paper,
+/obj/item/pen/fountain,
+/turf/open/floor/wood/large,
+/area/space)
+"El" = (
+/obj/structure/firepit,
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 6
+	},
+/turf/open/floor/fakebasalt,
+/area/space)
+"EB" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/fakepit,
+/area/space)
+"ED" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood/parquet,
+/area/space)
+"Fi" = (
+/obj/structure/displaycase/noalert,
+/turf/open/floor/wood/large,
+/area/space)
+"Fp" = (
+/obj/structure/fake_stairs/wood/directional/south,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space)
+"FG" = (
+/obj/structure/flora/lunar_plant/style_1{
+	name = "eldritch plant"
+	},
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"FI" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"FR" = (
+/obj/structure/falsewall/bananium{
+	base_icon_state = "riveted";
+	icon_state = "riveted-0";
+	icon = 'icons/turf/walls/riveted.dmi';
+	name = "wall?"
+	},
+/turf/open/space/basic,
+/area/space)
+"FU" = (
+/turf/open/misc/ashplanet/ash,
+/area/space)
+"FV" = (
+/obj/structure/flora/ash/chilly,
+/turf/open/misc/asteroid/snow,
+/area/space)
+"FZ" = (
+/obj/structure/table_frame/wood,
+/obj/item/stack/sheet/mineral/wood,
+/turf/open/floor/wood/large,
+/area/space)
+"Gt" = (
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"GU" = (
+/obj/effect/decal/cleanable/vomit/purple,
+/turf/open/floor/grass/lavaland,
+/area/space)
+"GY" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/wood,
+/area/space)
+"HG" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/fakebasalt,
+/area/space)
+"HI" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/item/melee/roastingstick,
+/obj/item/food/raw_sausage,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"Is" = (
+/obj/structure/chair/wood/wings{
+	dir = 1
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"IT" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/ambrosia/gaia,
+/obj/item/food/grown/ambrosia/deus,
+/obj/item/food/grown/ambrosia/deus,
+/obj/item/food/grown/redbeet,
+/turf/open/floor/stone,
+/area/space)
+"IZ" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"Jn" = (
+/obj/structure/mineral_door/iron,
+/turf/open/space/basic,
+/area/space)
+"Js" = (
+/obj/structure/flora/rock/style_random,
+/turf/open/misc/grass,
+/area/space)
+"JB" = (
+/turf/open/floor/fakebasalt,
+/area/space)
+"JG" = (
+/obj/item/book/granter/action/spell/summon_cheese,
+/turf/open/space/basic,
+/area/space)
+"JV" = (
+/obj/effect/decal/cleanable/ash/large,
+/turf/open/floor/grass/lavaland,
+/area/space)
+"JY" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/space)
+"Ke" = (
+/obj/structure/flora/tree/stump,
+/turf/open/floor/grass/lavaland,
+/area/space)
+"Kn" = (
+/turf/closed/indestructible/rock/snow/ice,
+/area/space)
+"Ky" = (
+/turf/open/misc/asteroid/snow,
+/area/space)
+"KD" = (
+/obj/structure/mannequin/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/wood/parquet,
+/area/space)
+"KG" = (
+/turf/open/floor/iron/grimy,
+/area/space)
+"KZ" = (
+/obj/structure/fake_stairs/wood/directional/north,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/space/basic,
+/area/space)
+"Lb" = (
+/obj/structure/table/wood/poker,
+/obj/item/restraints/legcuffs/bola,
+/obj/item/restraints/legcuffs/bola,
+/obj/item/flashlight/flare/torch,
+/turf/open/floor/iron/grimy,
+/area/space)
+"Lr" = (
+/obj/structure/table_frame/wood,
+/turf/open/floor/wood/large,
+/area/space)
+"LJ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/open/floor/wood/tile,
+/area/space)
+"LP" = (
+/obj/structure/closet/crate/necropolis/bubblegum{
+	locked = 1
+	},
+/turf/open/space/basic,
+/area/space)
+"Ma" = (
+/obj/effect/decal/cleanable/ash/large,
+/obj/structure/flora/lunar_plant/style_3{
+	name = "eldritch plant"
+	},
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"Mg" = (
+/obj/structure/fake_stairs/wood/directional/north,
+/turf/open/space/basic,
+/area/space)
+"Mh" = (
+/obj/item/heretic_lintel,
+/turf/open/floor/wood/tile,
+/area/space)
+"Mw" = (
+/obj/structure/flora/tree/stump,
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"Mx" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/turf/open/floor/wood/tile,
+/area/space)
+"MF" = (
+/obj/item/book/granter/action/spell/smoke,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/turf/open/floor/wood/tile,
+/area/space)
+"Ng" = (
+/obj/structure/barricade/wooden/snowed,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood/tile,
+/area/space)
+"Nv" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 5
+	},
+/turf/open/floor/fakebasalt,
+/area/space)
+"NB" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/turf_decal/siding/wood/corner,
+/turf/open/floor/wood/tile,
+/area/space)
+"NC" = (
+/obj/item/paper/crumpled/ruins,
+/turf/open/floor/wood/tile,
+/area/space)
+"NE" = (
+/turf/open/floor/wood/parquet,
+/area/space)
+"Oa" = (
+/obj/structure/flora/rock/icy/style_random,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"Od" = (
+/obj/structure/table/wood/fancy,
+/obj/item/pen/charcoal,
+/turf/open/floor/wood/large,
+/area/space)
+"Oh" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/turf/open/floor/fakebasalt,
+/area/space)
+"Ov" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood/tile,
+/area/space)
+"OE" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/open/floor/fakebasalt,
+/area/space)
+"OF" = (
+/turf/closed/wall/mineral/iron,
+/area/space)
+"OI" = (
+/turf/closed/wall/mineral/wood/nonmetal,
+/area/space)
+"OJ" = (
+/obj/structure/flora/tree/jungle/small/style_random,
+/turf/open/misc/grass,
+/area/space)
+"Pp" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/statue/bone/skull,
+/turf/open/floor/fakebasalt,
+/area/space)
+"Pv" = (
+/obj/item/stack/sheet/mineral/wood,
+/turf/open/floor/wood/large,
+/area/space)
+"PE" = (
+/obj/structure/fake_stairs/wood/directional/south,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/space/basic,
+/area/space)
+"PL" = (
+/obj/item/clothing/under/rank/civilian/chaplain/divine_archer,
+/obj/item/clothing/suit/hooded/cloak/goliath,
+/obj/item/clothing/head/flatcap,
+/obj/structure/closet/cabinet,
+/turf/open/floor/iron/grimy,
+/area/space)
+"PS" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"Qj" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/stone,
+/area/space)
+"Qm" = (
+/turf/open/floor/fakepit,
+/area/space)
+"Qp" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/wood/tile,
+/area/space)
+"QR" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/wood,
+/area/space)
+"QX" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/wood/parquet,
+/area/space)
+"Ra" = (
+/turf/open/misc/grass,
+/area/space)
+"Rw" = (
+/obj/structure/closet/cardboard,
+/obj/item/storage/backpack/duffelbag/clown/syndie,
+/obj/item/clothing/shoes/clown_shoes/banana_shoes,
+/turf/open/indestructible/binary,
+/area/space)
+"RE" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/wood/parquet,
+/area/space)
+"RF" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/wood/large,
+/area/space)
+"RG" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/redbeet,
+/obj/item/food/grown/trumpet,
+/obj/item/food/grown/trumpet,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/stone,
+/area/space)
+"RV" = (
+/obj/effect/decal/cleanable/ash/large,
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"Sb" = (
+/turf/open/floor/carpet/donk,
+/area/space)
+"Sp" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/misc/asteroid/snow,
+/area/space)
+"St" = (
+/obj/structure/table/wood/fancy,
+/obj/item/flashlight/lantern/heirloom_moth,
+/turf/open/floor/wood/large,
+/area/space)
+"Sw" = (
+/obj/structure/bookcase/random/nonfiction,
+/turf/open/floor/wood/large,
+/area/space)
+"SO" = (
+/turf/open/space/basic,
+/area/space)
+"SR" = (
+/turf/open/floor/wood/large,
+/area/space)
+"Ta" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/fakebasalt,
+/area/space)
+"Td" = (
+/turf/open/floor/grass/lavaland,
+/area/space)
+"Ti" = (
+/obj/structure/bonfire/prelit,
+/obj/item/food/sausage,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"Tj" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/statue/bone/rib,
+/turf/open/floor/fakebasalt,
+/area/space)
+"Tp" = (
+/obj/item/book/fish_catalog,
+/turf/open/floor/wood/parquet,
+/area/space)
+"TU" = (
+/obj/structure/flora/lunar_plant/style_1{
+	name = "eldritch plant"
+	},
+/turf/open/misc/asteroid/moon,
+/area/space)
+"Ud" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"Ug" = (
+/obj/effect/decal/cleanable/fuel_pool,
+/turf/open/floor/wood/large,
+/area/space)
+"UK" = (
+/obj/item/paper/crumpled/ruins,
+/turf/open/floor/wood,
+/area/space)
+"UQ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/iron/grimy,
+/area/space)
+"Wd" = (
+/obj/effect/decal/cleanable/vomit/old/black_bile,
+/turf/open/floor/grass/lavaland,
+/area/space)
+"WD" = (
+/obj/structure/sign/poster/contraband/lusty_xenomorph,
+/turf/open/space/basic,
+/area/space)
+"WI" = (
+/obj/structure/table/wood/fancy,
+/obj/item/book/random,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"WY" = (
+/obj/item/chair/wood,
+/obj/item/food/sausage,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"Xo" = (
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/mineral/bananium,
+/area/space)
+"XT" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/wood/large,
+/area/space)
+"XY" = (
+/turf/open/floor/stone,
+/area/space)
+"Yc" = (
+/obj/item/gun/ballistic/bow/longbow,
+/obj/item/storage/bag/quiver,
+/obj/item/ammo_casing/arrow,
+/obj/item/ammo_casing/arrow,
+/obj/item/ammo_casing/arrow,
+/obj/item/ammo_casing/arrow,
+/obj/item/ammo_casing/arrow,
+/obj/item/ammo_casing/arrow,
+/obj/item/ammo_casing/arrow,
+/obj/item/ammo_casing/arrow,
+/obj/item/ammo_casing/arrow,
+/obj/item/ammo_casing/arrow,
+/obj/item/ammo_casing/arrow/holy/blazing,
+/obj/item/ammo_casing/arrow/holy/blazing,
+/obj/item/reagent_containers/cup/bottle/venom,
+/obj/structure/table/wood,
+/turf/open/floor/iron/grimy,
+/area/space)
+"Yf" = (
+/obj/structure/table/wood/poker,
+/obj/item/claymore/weak,
+/obj/item/shield/buckler{
+	block_chance = 50
+	},
+/turf/open/floor/iron/grimy,
+/area/space)
+"Yi" = (
+/obj/structure/table/wood,
+/obj/item/toy/cards/deck/tarot{
+	pixel_y = 4
+	},
+/turf/open/floor/stone,
+/area/space)
+"Yp" = (
+/obj/structure/fake_stairs/wood/directional/south,
+/obj/structure/barricade/wooden,
+/turf/open/space/basic,
+/area/space)
+"YD" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood/parquet,
+/area/space)
+"YI" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/effect/decal/cleanable/ash/large,
+/turf/open/floor/wood/tile,
+/area/space)
+"Zi" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/space)
+"ZC" = (
+/obj/item/clothing/under/costume/skeleton,
+/turf/open/space/basic,
+/area/space)
+"ZM" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/open/floor/wood/tile,
+/area/space)
+"ZT" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/space)
+
+(1,1,1) = {"
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+"}
+(2,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+OI
+OI
+OI
+OI
+Kn
+OI
+OI
+OI
+OI
+OI
+OI
+lI
+DD
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+rW
+"}
+(3,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+ub
+SR
+SR
+Kn
+Kn
+Kn
+Kn
+SR
+SR
+SR
+nZ
+OI
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+rW
+"}
+(4,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+Td
+Td
+Td
+Td
+SR
+SR
+SR
+SR
+SR
+SR
+ub
+SR
+ub
+SR
+SR
+SR
+Kn
+Kn
+Kn
+SR
+OI
+OI
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+rW
+"}
+(5,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+Td
+Td
+Td
+Td
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+ub
+SR
+SR
+SR
+SR
+SR
+SR
+Kn
+Kn
+Kn
+Kn
+Kn
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+rW
+"}
+(6,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+Td
+Td
+Td
+Td
+SR
+SR
+SR
+SR
+SR
+SR
+ub
+SR
+SR
+SR
+SR
+Fi
+Fi
+SR
+Fi
+Fi
+SR
+OI
+Kn
+Kn
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+rW
+"}
+(7,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+ub
+SR
+ub
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+OI
+Ky
+Ky
+rW
+Kn
+Kn
+Kn
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+rW
+"}
+(8,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+Bl
+SR
+SR
+Bl
+SR
+SR
+SR
+ub
+SR
+SR
+SR
+NE
+eZ
+eZ
+QX
+SR
+OI
+Ky
+Ky
+rA
+lK
+lK
+lK
+Kn
+Kn
+Kn
+SO
+SO
+SO
+SO
+SO
+SO
+rW
+"}
+(9,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+ub
+SR
+SR
+SR
+SR
+SR
+eo
+ak
+ak
+zx
+SR
+OI
+Ky
+Ky
+hR
+CH
+Oa
+Ky
+Ky
+FV
+Kn
+Kn
+Kn
+SO
+SO
+SO
+SO
+rW
+"}
+(10,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+ub
+SR
+ub
+SR
+SR
+SR
+eo
+ak
+ak
+zx
+SR
+OI
+Oa
+hR
+hR
+hR
+aG
+pm
+Ky
+wa
+Ky
+hR
+Kn
+Kn
+SO
+SO
+SO
+rW
+"}
+(11,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+ub
+SR
+SR
+SR
+QX
+dA
+dA
+NE
+SR
+OI
+Ky
+hR
+hR
+hR
+hR
+hR
+TU
+Ky
+Ky
+Ky
+Ky
+Kn
+Kn
+SO
+SO
+rW
+"}
+(12,1,1) = {"
+rW
+SO
+tZ
+tZ
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+ub
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+OI
+FV
+pm
+hR
+aG
+Oa
+hR
+hR
+Ky
+yx
+wa
+Ky
+lK
+Kn
+Kn
+Kn
+rW
+"}
+(13,1,1) = {"
+rW
+SO
+tZ
+tZ
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+ub
+SR
+ub
+SR
+SR
+ub
+SR
+ub
+SR
+ub
+SR
+OI
+wa
+Ky
+Ky
+lK
+WY
+hR
+hR
+hR
+pm
+Ky
+FV
+lK
+Ky
+Kn
+SO
+rW
+"}
+(14,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+Bl
+SR
+SR
+Bl
+SR
+SR
+SR
+ub
+SR
+SR
+ub
+SR
+ub
+SR
+ub
+SR
+OI
+Ky
+Ky
+lK
+lK
+hR
+Ti
+hR
+aG
+CH
+Ky
+Ky
+lK
+hR
+Kn
+Kn
+rW
+"}
+(15,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+ub
+SR
+SR
+SR
+SR
+ub
+SR
+ub
+SR
+ub
+SR
+OI
+hR
+Ky
+wa
+hR
+hR
+HI
+hR
+Oa
+Ky
+Ky
+Ky
+yx
+hR
+hR
+Kn
+rW
+"}
+(16,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+ub
+SR
+ub
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+OI
+hR
+Ky
+wa
+hR
+hR
+hR
+hR
+hR
+pm
+Ky
+Ky
+Ky
+Ky
+pm
+Kn
+rW
+"}
+(17,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+ub
+SR
+SR
+ub
+SR
+ub
+SR
+ub
+SR
+OI
+hR
+hR
+yx
+hR
+CH
+gl
+Ra
+hR
+hR
+hR
+gl
+AK
+Ra
+AK
+rW
+rW
+"}
+(18,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+ub
+SR
+SR
+SR
+SR
+ub
+SR
+ub
+SR
+ub
+SR
+OI
+hR
+Ky
+Ky
+Oa
+hR
+hR
+AK
+hR
+Ra
+AK
+AK
+qK
+aD
+aD
+aD
+rW
+"}
+(19,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+ub
+SR
+ub
+SR
+SR
+ub
+SR
+ub
+SR
+ub
+lI
+OI
+uh
+wa
+FV
+hR
+lK
+hR
+Ra
+AK
+AK
+Ra
+aD
+aD
+aD
+aD
+SO
+rW
+"}
+(20,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+Bl
+SR
+SR
+Bl
+SR
+SR
+SR
+ub
+SR
+SR
+SR
+SR
+SR
+SR
+lI
+DD
+OI
+Sp
+nN
+Ky
+Ky
+lK
+lK
+Ra
+qK
+aD
+aD
+SO
+SO
+aD
+aD
+SO
+rW
+"}
+(21,1,1) = {"
+rW
+OI
+OI
+SR
+SR
+CX
+OI
+OI
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+lI
+zP
+qt
+lQ
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+lI
+nZ
+OI
+OI
+OI
+gj
+nN
+Ky
+lK
+Ra
+Js
+aD
+aD
+SO
+SO
+SO
+SO
+SO
+SO
+rW
+"}
+(22,1,1) = {"
+rW
+OI
+OI
+SR
+SR
+CX
+OI
+OI
+SR
+SR
+SR
+SR
+SR
+OI
+ZM
+pd
+hu
+NB
+gW
+gS
+PS
+Sw
+SR
+Sw
+SR
+SR
+SR
+XT
+if
+OI
+OI
+OI
+OI
+OI
+ZT
+Ky
+yO
+AK
+mt
+mt
+mt
+mt
+mt
+AC
+SO
+SO
+SO
+rW
+"}
+(23,1,1) = {"
+rW
+CX
+CX
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+fo
+OI
+ED
+NE
+YD
+OI
+LJ
+SR
+Sw
+SR
+Sw
+SR
+WI
+St
+SR
+me
+oi
+dd
+em
+Ng
+Fp
+JY
+Ky
+Ky
+Ra
+mt
+mt
+mt
+mt
+mt
+mt
+SO
+SO
+SO
+rW
+"}
+(24,1,1) = {"
+rW
+SR
+SR
+SR
+al
+Is
+SR
+SR
+SR
+CZ
+OI
+CZ
+SR
+Mx
+tz
+JY
+vX
+vw
+tz
+kp
+SR
+Sw
+SR
+Sw
+SR
+rg
+Ek
+SR
+UK
+KZ
+bV
+DT
+se
+re
+nv
+Ky
+Ra
+Ra
+mt
+mt
+mt
+mt
+mt
+mt
+SO
+SO
+SO
+rW
+"}
+(25,1,1) = {"
+rW
+SR
+SR
+te
+zH
+SR
+SR
+SR
+SR
+OI
+OI
+OI
+SR
+hu
+NE
+nv
+yT
+dK
+NE
+NC
+SR
+SR
+SR
+SR
+SR
+hu
+Od
+SR
+GY
+Mg
+my
+OI
+my
+Yp
+nv
+Ky
+gl
+qK
+mt
+mt
+mt
+mt
+mt
+mt
+SO
+SO
+SO
+rW
+"}
+(26,1,1) = {"
+rW
+SR
+SR
+SR
+uR
+Is
+SR
+SR
+SR
+CZ
+OI
+CZ
+SR
+pf
+RE
+Zi
+ry
+ja
+RE
+pd
+SR
+Sw
+SR
+Sw
+SR
+YI
+FZ
+SR
+ks
+Mg
+Ov
+Do
+kl
+re
+nv
+Td
+Td
+Ra
+mt
+mt
+mt
+mt
+mt
+mt
+SO
+SO
+SO
+rW
+"}
+(27,1,1) = {"
+rW
+CX
+CX
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+gW
+OI
+ED
+Tp
+Az
+OI
+vb
+lQ
+Sw
+SR
+Sw
+SR
+Pv
+tI
+SR
+uW
+dq
+Qp
+ui
+se
+PE
+Zi
+Td
+Td
+AK
+mt
+mt
+mt
+mt
+mt
+mt
+SO
+SO
+SO
+rW
+"}
+(28,1,1) = {"
+rW
+OI
+OI
+SR
+SR
+CX
+OI
+OI
+SR
+SR
+SR
+SR
+SR
+OI
+LJ
+kp
+Mh
+MF
+fo
+OI
+PS
+Sw
+SR
+Sw
+SR
+SR
+SR
+Ug
+QR
+my
+OI
+OI
+OI
+my
+iM
+FU
+Td
+Ra
+mt
+mt
+mt
+mt
+mt
+sw
+SO
+SO
+SO
+rW
+"}
+(29,1,1) = {"
+rW
+OI
+OI
+cE
+SR
+CX
+OI
+OI
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+DE
+qB
+wp
+mu
+SR
+SR
+SR
+Ug
+mu
+SR
+RF
+FI
+vO
+OI
+OI
+OI
+KD
+IZ
+rq
+Td
+Td
+gl
+Ra
+JV
+aD
+aD
+aD
+SO
+SO
+SO
+rW
+"}
+(30,1,1) = {"
+rW
+SO
+SO
+SR
+SR
+SR
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+FI
+Ud
+OI
+bC
+IZ
+qU
+FU
+FU
+Td
+JV
+Ra
+AK
+Ra
+qK
+bG
+SO
+SO
+SO
+rW
+"}
+(31,1,1) = {"
+rW
+SO
+SO
+SO
+aO
+WD
+uJ
+uJ
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+Sw
+Sw
+Sw
+Sw
+SR
+Sw
+Sw
+Sw
+Sw
+FI
+OI
+Cf
+qU
+Mw
+FG
+FU
+FU
+Td
+Td
+Td
+OJ
+bG
+bG
+SO
+SO
+SO
+rW
+"}
+(32,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+JG
+uJ
+uJ
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+OI
+pA
+qU
+qU
+qU
+RV
+FU
+Td
+Td
+Td
+bG
+bG
+SO
+SO
+SO
+SO
+rW
+"}
+(33,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+Td
+Td
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+OI
+gR
+qU
+qU
+qU
+qU
+qU
+FU
+Ke
+Td
+Td
+bG
+bG
+SO
+SO
+SO
+rW
+"}
+(34,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+Td
+Td
+Td
+Td
+SO
+SO
+SO
+SO
+SR
+SR
+Sw
+Sw
+kC
+kC
+SR
+kC
+kC
+Sw
+Sw
+SR
+OI
+bG
+Ma
+pA
+qU
+qU
+cT
+qU
+FU
+Td
+JV
+Td
+rW
+SO
+SO
+SO
+rW
+"}
+(35,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+Td
+yM
+Td
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+OI
+bG
+pA
+OF
+Jn
+OF
+OF
+Jn
+OF
+OF
+OF
+OF
+bG
+SO
+SO
+SO
+rW
+"}
+(36,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+Td
+Td
+Td
+SO
+SO
+SO
+SO
+SR
+SR
+iT
+hu
+hu
+hu
+hu
+hu
+hu
+hu
+iT
+SR
+OI
+bG
+bG
+OF
+vv
+XY
+mj
+XY
+vv
+KG
+Lb
+OF
+bG
+SO
+SO
+SO
+rW
+"}
+(37,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+Td
+Td
+Td
+Td
+SO
+SO
+SO
+SO
+SR
+SR
+DL
+hu
+OE
+AU
+lZ
+Ac
+Oh
+hu
+zH
+SR
+OI
+Td
+bG
+OF
+Bb
+KG
+KG
+it
+OF
+dD
+Yf
+OF
+SO
+SO
+SO
+SO
+rW
+"}
+(38,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+Td
+GU
+Wd
+Ad
+SO
+SO
+SO
+SO
+SR
+Ap
+zH
+hu
+HG
+JB
+ut
+Qm
+Bw
+hu
+DL
+DV
+OI
+SO
+bG
+OF
+qs
+KG
+ya
+Dv
+OF
+OF
+OF
+OF
+SO
+SO
+SO
+SO
+rW
+"}
+(39,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+LP
+SO
+SO
+SO
+SO
+SO
+SO
+SR
+SR
+SR
+hu
+HG
+JB
+El
+Qm
+tY
+hu
+DV
+Lr
+OI
+SO
+SO
+OF
+IT
+KG
+KG
+mj
+XY
+KG
+ih
+OF
+SO
+SO
+SO
+SO
+rW
+"}
+(40,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+AY
+Gt
+lW
+SO
+SO
+SO
+SO
+hA
+SR
+zH
+hu
+EB
+Nv
+sc
+jE
+ag
+hu
+bG
+bG
+bG
+SO
+SO
+OF
+RG
+KG
+KG
+XY
+OF
+aM
+hT
+OF
+SO
+SO
+SO
+SO
+rW
+"}
+(41,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+ZC
+SO
+SO
+SO
+SO
+SO
+SR
+DV
+zH
+hu
+EB
+JB
+up
+JB
+Pp
+ar
+bG
+bG
+OI
+SO
+SO
+OF
+Bu
+ik
+KG
+mj
+OF
+OF
+OF
+OF
+SO
+SO
+SO
+SO
+rW
+"}
+(42,1,1) = {"
+rW
+SO
+SO
+SO
+Kn
+Kn
+Kn
+SO
+SO
+SO
+SO
+SO
+SO
+tZ
+tZ
+tZ
+tZ
+SO
+SO
+bG
+OI
+SR
+hu
+sA
+Ta
+Tj
+Ta
+hH
+bG
+bG
+bG
+OI
+SO
+SO
+OF
+cg
+UQ
+rx
+ng
+XY
+ik
+Yc
+OF
+SO
+SO
+SO
+SO
+rW
+"}
+(43,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+Kn
+Kn
+SO
+SO
+SO
+SO
+SO
+SO
+tZ
+tZ
+tZ
+tZ
+SO
+OI
+bG
+bG
+OI
+bG
+bG
+OI
+bG
+bG
+bG
+OI
+bG
+bG
+OI
+SO
+SO
+OF
+hr
+xW
+Yi
+Dp
+OF
+PL
+Ds
+rW
+rW
+SO
+SO
+SO
+rW
+"}
+(44,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+OI
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+OI
+SO
+SO
+OF
+OF
+OF
+OF
+FR
+OF
+OF
+OF
+OF
+rW
+SO
+SO
+SO
+rW
+"}
+(45,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+OI
+SO
+SO
+SO
+SO
+rW
+OF
+Qj
+FR
+Sb
+jN
+OF
+rW
+SO
+SO
+SO
+rW
+"}
+(46,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+OI
+SO
+SO
+SO
+SO
+rW
+rW
+rW
+OF
+Rw
+fH
+rW
+rW
+SO
+SO
+SO
+rW
+"}
+(47,1,1) = {"
+rW
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+SO
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+bG
+OI
+SO
+SO
+SO
+SO
+SO
+rW
+rW
+rW
+Xo
+OF
+rW
+rW
+SO
+SO
+SO
+rW
+"}
+(48,1,1) = {"
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+"}

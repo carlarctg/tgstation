@@ -3035,3 +3035,20 @@
 			. = UPDATE_MOB_HEALTH
 		if(SPT_PROB(10, seconds_per_tick))
 			affected_mob.emote(pick("twitch","choke","shiver","gag"))
+
+// No reagents suited my needs for VR magic potions so this will do
+/datum/reagent/abidonium
+	name = "Abidonium"
+	description = "A strange glowing liquid that will help you stand your ground in a fight."
+	color = "#ffc37e"
+	taste_description = "yomami"
+	overdose_threshold = 30
+	var/static/list/traits_to_add = list(TRAIT_STUNIMMUNE, TRAIT_HARDLY_WOUNDED, TRAIT_COAGULATING)
+
+/datum/reagent/love/on_mob_metabolize(mob/living/metabolizer)
+	. = ..()
+	ADD_TRAIT(metabolizer, traits_to_add, REF(src))
+
+/datum/reagent/love/on_mob_delete(mob/living/affected_mob)
+	. = ..()
+	REMOVE_TRAIT(metabolizer, traits_to_add, REF(src))

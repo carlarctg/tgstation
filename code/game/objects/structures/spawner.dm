@@ -33,6 +33,9 @@
 	mob_types = list(/mob/living/basic/syndicate/ranged)
 	faction = list(ROLE_SYNDICATE)
 
+/obj/structure/spawner/syndicate/stormtrooper
+	mob_types = list(/mob/living/basic/syndicate/melee/space/stormtrooper, /mob/living/basic/syndicate/melee/sword/space/stormtrooper, /mob/living/basic/syndicate/ranged/space/stormtrooper, /mob/living/basic/syndicate/ranged/smg/space/stormtrooper, /mob/living/basic/syndicate/ranged/shotgun/space/stormtrooper)
+
 /obj/structure/spawner/skeleton
 	name = "bone pit"
 	desc = "A pit full of bones, and some still seem to be moving..."

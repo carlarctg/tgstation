@@ -345,6 +345,16 @@ effective or pretty fucking useless.
 /obj/item/storage/toolbox/emergency/turret/nukie/set_faction(obj/machinery/porta_turret/turret, mob/user)
 	turret.faction = list(ROLE_SYNDICATE)
 
+/obj/item/storage/toolbox/emergency/turret/ert
+	name = "turret toolbox"
+	desc = "Contains one (1) state-of-the-art not-stolen-from-the-Syndicate perimeter defence turret, which will shoot all hostile wildlife near the user."
+	icon = 'icons/obj/storage/toolbox.dmi'
+	icon_state = "blue"
+	inhand_icon_state = "blue"
+
+/obj/item/storage/toolbox/emergency/turret/ert/set_faction(obj/machinery/porta_turret/turret, mob/user)
+	turret.faction = list(FACTION_NEUTRAL)
+
 /obj/machinery/porta_turret/syndicate/toolbox
 	icon_state = "toolbox_off"
 	base_icon_state = "toolbox"
