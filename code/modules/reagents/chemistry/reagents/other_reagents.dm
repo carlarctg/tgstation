@@ -3045,10 +3045,10 @@
 	overdose_threshold = 30
 	var/static/list/traits_to_add = list(TRAIT_STUNIMMUNE, TRAIT_HARDLY_WOUNDED, TRAIT_COAGULATING)
 
-/datum/reagent/love/on_mob_metabolize(mob/living/metabolizer)
+/datum/reagent/abidonium/on_mob_metabolize(mob/living/metabolizer)
 	. = ..()
 	ADD_TRAIT(metabolizer, traits_to_add, REF(src))
 
-/datum/reagent/love/on_mob_delete(mob/living/affected_mob)
+/datum/reagent/abidonium/on_mob_delete(mob/living/affected_mob)
 	. = ..()
 	REMOVE_TRAIT(metabolizer, traits_to_add, REF(src))

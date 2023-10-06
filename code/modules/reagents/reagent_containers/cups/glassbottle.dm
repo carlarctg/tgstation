@@ -977,10 +977,43 @@
 /obj/item/reagent_containers/cup/glass/bottle/healing_potion
 	name = "healing potion"
 	desc = "A vibrant red draught that will ail your wounds and mend your ills. Smells like tomato."
-	list_reagents = list(/datum/reagent/medicine/sal_acid = 15, /datum/reagent/medicine/c2/libital = 15, /datum/reagent/medicine/oxandrolone = 15, /datum/reagent/medicine/c2/aiuri = 15, /datum/reagent/medicine/coagulant = 20, /datum/reagent/consumable/ethanol/bloody_mary)
+	gulp_size = 30
+	amount_per_transfer_from_this = 30
+	possible_transfer_amounts = list(30)
+	list_reagents = list(/datum/reagent/medicine/sal_acid = 15, /datum/reagent/medicine/c2/libital = 15, /datum/reagent/medicine/oxandrolone = 15, /datum/reagent/medicine/c2/aiuri = 15, /datum/reagent/medicine/coagulant = 20, /datum/reagent/consumable/ethanol/bloody_mary = 20)
 
 /obj/item/reagent_containers/cup/glass/bottle/small/endurance_potion
 	name = "endurance potion"
-	list_reagents = list(/datum/reagent/medicine/c2/penthrite = 25)
+	desc = "A light orange potion that will help you stand your ground in a fight. Smells like fermented oranges."
+	gulp_size = 25
+	amount_per_transfer_from_this = 25
+	possible_transfer_amounts = list(25)
+	list_reagents = list(/datum/reagent/medicine/c2/penthrite = 20, /datum/reagent/abidonium = 20, /datum/reagent/consumable/ethanol/brave_bull = 10)
+
+/obj/item/reagent_containers/cup/tube/martyr_phial
+	name = "martyr phial"
+	desc = "A cursed, pitch black phial. It is rumoured to let you cheat death itself for a few moments, turning you into a ghastly ghoul before Death drags you back to its domain. Smells like asparagus."
+	gulp_size = 20
+	amount_per_transfer_from_this = 20
+	possible_transfer_amounts = list(20)
+	list_reagents = list(/datum/reagent/inverse/penthrite = 20)
+
+/obj/item/reagent_containers/cup/glass/bottle/small/stasis_potion
+	name = "stasis potion"
+	desc = "An icy blue potion that will encase you in solid ice nigh-instantly after drinking. Store quickly!"
+	gulp_size = 10
+	amount_per_transfer_from_this = 10
+	possible_transfer_amounts = list(10)
+	list_reagents = list(/datum/reagent/inverse/cryostylane = 50)
+
+/obj/item/reagent_containers/cup/glass/bottle/small/haste_potion
+	name = "haste potion"
+	desc = "A light red colored potion that will make you feel like the entire world (except your heart) is moving in slow motion. Its insides swirl violently."
+	gulp_size = 15
+	amount_per_transfer_from_this = 15
+	possible_transfer_amounts = list(15)
+	list_reagents = list(/datum/reagent/drug/kronkaine = 30, /datum/reagent/medicine/changelinghaste = 30)
+
+/obj/item/reagent_containers/cup/glass/bottle/hilarious_potion
 
 #undef BOTTLE_KNOCKDOWN_DEFAULT_DURATION
