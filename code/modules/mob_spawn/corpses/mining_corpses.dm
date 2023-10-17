@@ -71,20 +71,24 @@
 
 /// Corpse spawner used by snow legions with alternate costumes
 /obj/effect/mob_spawn/corpse/human/legioninfested/snow
+	var/override_costume = null
 
 /obj/effect/mob_spawn/corpse/human/legioninfested/snow/select_outfit()
-	var/corpse_theme = pick_weight(list(
+	var/static/list/corpse_themes = list(
 		"Miner" = 64,
 		"Clown" = 5,
 		"Golem" = 15,
 		"Settler" = 10,
-		pick(list(
-			"Cultist",
-			"Heremoth",
-			"Operative",
-			"Shadow",
-		)) = 4,
-	))
+		"Cultist" = 1,
+		"Heremoth" = 1,
+		"Operative" = 1,
+		"Shadow" = 1,
+		)
+
+	chosen_theme = pick(corpse_themes)
+
+	if(override_costume)
+		chosen_theme = override_costume
 
 	switch(corpse_theme)
 		if("Miner")
@@ -103,6 +107,9 @@
 			return /datum/outfit/syndicatecommandocorpse/lessenedgear
 		if("Shadow")
 			return /datum/outfit/consumed_shadowperson
+
+/obj/effect/mob_spawn/corpse/human/legioninfested/snow/forced_settler
+	override_costume = "Settler"
 
 /// Creates a dead legion-infested skeleton
 /obj/effect/mob_spawn/corpse/human/legioninfested/skeleton

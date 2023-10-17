@@ -1,22 +1,23 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ag" = (
-/obj/effect/turf_decal/siding/wood,
-/turf/open/floor/fakebasalt,
+/obj/structure/bookcase/random/religion,
+/turf/closed/indestructible/rock/snow/ice,
 /area/space)
 "ak" = (
 /obj/structure/table/wood,
-/turf/open/floor/wood/tile,
+/obj/item/book_of_babel,
+/turf/open/floor/carpet/blue,
 /area/space)
 "al" = (
 /obj/structure/table/wood,
 /obj/item/book/granter/action/spell/blind/wgw{
 	icon_state = "book"
 	},
-/turf/open/floor/wood/large,
+/turf/open/floor/carpet/black,
 /area/space)
 "ar" = (
 /obj/structure/table_frame/wood,
-/turf/open/floor/wood/tile,
+/turf/open/misc/asteroid/basalt,
 /area/space)
 "aD" = (
 /turf/closed/indestructible/rock,
@@ -34,10 +35,40 @@
 /turf/open/floor/iron/grimy,
 /area/space)
 "aO" = (
-/obj/item/book/granter/action/spell/blind/wgw{
-	icon_state = "book"
+/obj/structure/bonfire/prelit,
+/turf/open/floor/grass/lavaland,
+/area/space)
+"aV" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/effect/decal/cleanable/ash/large,
+/turf/open/floor/wood/large,
+/area/space)
+"bi" = (
+/obj/structure/trap/eldritch/mad,
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"bp" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 9
 	},
-/turf/open/space/basic,
+/obj/effect/turf_decal/weather/snow,
+/obj/item/stack/sheet/mineral/wood,
+/obj/item/shard,
+/turf/open/floor/wood/large,
+/area/space)
+"br" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/structure/trap/eldritch/tentacle,
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"by" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/effect/oneway{
+	dir = 1
+	},
+/turf/open/indestructible/necropolis/air,
 /area/space)
 "bC" = (
 /obj/effect/turf_decal/siding/wood{
@@ -47,6 +78,10 @@
 /area/space)
 "bG" = (
 /turf/closed/mineral/ash_rock,
+/area/space)
+"bH" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/carpet/green,
 /area/space)
 "bV" = (
 /obj/effect/turf_decal/siding/wood{
@@ -63,9 +98,24 @@
 /obj/item/food/grown/apple,
 /turf/open/floor/stone,
 /area/space)
+"cn" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/structure/bonfire/prelit,
+/turf/open/floor/grass/lavaland,
+/area/space)
+"cu" = (
+/obj/item/shard,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"cv" = (
+/obj/item/skeleton_key,
+/obj/effect/decal/remains/human,
+/obj/item/clothing/gloves/latex,
+/turf/open/misc/ice,
+/area/space)
 "cE" = (
 /obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
-/turf/open/floor/wood/large,
+/turf/open/floor/grass/lavaland,
 /area/space)
 "cT" = (
 /obj/structure/flora/ash/fireblossom,
@@ -101,8 +151,25 @@
 /turf/open/floor/iron/grimy,
 /area/space)
 "dK" = (
-/obj/item/book/granter/crafting_recipe/boneyard_notes,
-/turf/open/floor/wood,
+/obj/effect/mob_spawn/corpse/human/tigercultist/perforated,
+/turf/open/indestructible/binary,
+/area/space)
+"dM" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 10
+	},
+/obj/effect/mob_spawn/corpse/human/skeleton,
+/turf/open/floor/wood/large,
+/area/space)
+"dO" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 10
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"dQ" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/misc/ashplanet/rocky,
 /area/space)
 "em" = (
 /obj/structure/barricade/wooden/crude/snow,
@@ -110,17 +177,56 @@
 	dir = 8
 	},
 /obj/machinery/door/puzzle/keycard/library,
+/obj/effect/oneway,
 /turf/open/floor/wood/tile,
 /area/space)
 "eo" = (
 /obj/structure/chair/wood/wings,
 /turf/open/floor/wood/parquet,
 /area/space)
+"eq" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/turf/open/misc/asteroid/moon,
+/area/space)
+"ey" = (
+/obj/structure/stone_tile/surrounding/cracked{
+	dir = 6
+	},
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"eC" = (
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
+/area/space)
 "eZ" = (
 /obj/structure/chair/wood/wings{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 10
+	},
 /turf/open/floor/wood/parquet,
+/area/space)
+"fk" = (
+/obj/structure/flora/ash/leaf_shroom,
+/turf/open/misc/asteroid/basalt,
 /area/space)
 "fo" = (
 /obj/effect/turf_decal/siding/wood{
@@ -136,6 +242,18 @@
 /obj/item/stamp/clown,
 /turf/open/indestructible/binary,
 /area/space)
+"fI" = (
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/mob/living/basic/pet/dog/corgi/puppy/void,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"ga" = (
+/obj/structure/flora/ash/seraka,
+/turf/open/misc/asteroid/basalt,
+/area/space)
 "gj" = (
 /obj/structure/mannequin/wood,
 /obj/effect/turf_decal/siding/wood{
@@ -147,6 +265,20 @@
 /obj/structure/flora/bush/ferny/style_random,
 /turf/open/misc/grass,
 /area/space)
+"gz" = (
+/obj/structure/table_frame/wood,
+/obj/structure/flora/lunar_plant/style_3{
+	name = "eldritch plant"
+	},
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"gC" = (
+/obj/effect/mob_spawn/corpse/human/skeleton,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
+/area/space)
 "gR" = (
 /obj/structure/flora/ash/fireblossom,
 /obj/structure/flora/lunar_plant/style_3{
@@ -156,7 +288,7 @@
 /area/space)
 "gS" = (
 /obj/effect/decal/cleanable/generic,
-/turf/closed/wall/mineral/wood/nonmetal,
+/turf/closed/indestructible/binary,
 /area/space)
 "gW" = (
 /obj/effect/turf_decal/siding/wood{
@@ -177,7 +309,14 @@
 /obj/structure/chair/wood/wings{
 	dir = 8
 	},
-/turf/open/floor/wood/large,
+/turf/open/floor/grass/lavaland,
+/area/space)
+"hG" = (
+/obj/effect/decal/remains/human{
+	color = "#272727";
+	name = "charred remains"
+	},
+/turf/open/indestructible/necropolis/air,
 /area/space)
 "hH" = (
 /obj/effect/turf_decal/siding/wood{
@@ -196,6 +335,12 @@
 /obj/item/book/bible/booze,
 /turf/open/floor/stone,
 /area/space)
+"ia" = (
+/obj/effect/oneway{
+	dir = 8
+	},
+/turf/open/misc/asteroid/moon,
+/area/space)
 "if" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/large,
@@ -212,6 +357,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/grimy,
 /area/space)
+"in" = (
+/obj/structure/chair/wood/wings{
+	dir = 4
+	},
+/obj/effect/turf_decal/weather/snow,
+/turf/open/floor/wood/parquet,
+/area/space)
 "it" = (
 /mob/living/basic/pony,
 /obj/structure/railing{
@@ -220,6 +372,38 @@
 	},
 /obj/structure/bed/dogbed,
 /turf/open/floor/stone,
+/area/space)
+"iy" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/closed/indestructible/rock/snow/ice,
+/area/space)
+"iC" = (
+/obj/structure/table/wood,
+/obj/item/book/codex_gigas,
+/obj/item/ammo_box/strilka310/lionhunter,
+/turf/open/floor/wood/large,
+/area/space)
+"iD" = (
+/obj/structure/stone_tile/slab/cracked,
+/obj/effect/mob_spawn/corpse/human/charredskeleton,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"iE" = (
+/obj/effect/mob_spawn/corpse/human/legioninfested/snow,
+/obj/effect/gibspawner/human/bodypartless,
+/obj/effect/gibspawner/human/bodypartless,
+/obj/item/assembly/flash,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
+/area/space)
+"iJ" = (
+/obj/item/stack/ore/glass/basalt,
+/obj/structure/flora/ash/fireblossom,
+/turf/open/misc/asteroid/basalt,
 /area/space)
 "iM" = (
 /obj/effect/turf_decal/siding/wood{
@@ -235,9 +419,12 @@
 /turf/open/floor/wood/large,
 /area/space)
 "ja" = (
-/obj/item/book/manual/ancient_parchment,
 /obj/effect/turf_decal/siding/wood/corner,
 /turf/open/floor/wood,
+/area/space)
+"jr" = (
+/obj/structure/statue/bone/skull,
+/turf/open/indestructible/necropolis/air,
 /area/space)
 "jE" = (
 /obj/structure/stone_tile/block/cracked{
@@ -251,6 +438,10 @@
 /obj/item/stack/sheet/mineral/bananium/five,
 /turf/open/floor/carpet/donk,
 /area/space)
+"jX" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood/large,
+/area/space)
 "kl" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -258,11 +449,18 @@
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood/tile,
 /area/space)
+"ko" = (
+/obj/structure/stone_tile/block/burnt{
+	dir = 8
+	},
+/obj/item/flashlight/flare/candle,
+/turf/open/indestructible/necropolis/air,
+/area/space)
 "kp" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
 	},
-/turf/open/floor/wood/tile,
+/turf/open/indestructible/binary,
 /area/space)
 "ks" = (
 /obj/effect/mapping_helpers/burnt_floor,
@@ -272,12 +470,31 @@
 /obj/structure/bookcase/random/nonfiction,
 /turf/open/space/basic,
 /area/space)
+"lt" = (
+/obj/structure/flora/rock/pile/icy/style_random,
+/obj/item/stack/sheet/mineral/wood,
+/turf/open/misc/asteroid/moon,
+/area/space)
 "lI" = (
 /obj/effect/turf_decal/siding/wood/corner,
 /turf/open/floor/wood/large,
 /area/space)
 "lK" = (
 /turf/open/misc/ice,
+/area/space)
+"lN" = (
+/obj/structure/stone_tile/surrounding/cracked{
+	dir = 1
+	},
+/obj/effect/rune/malformed,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"lP" = (
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/turf/open/misc/asteroid/moon,
 /area/space)
 "lQ" = (
 /obj/effect/turf_decal/siding/wood/corner{
@@ -287,13 +504,29 @@
 /area/space)
 "lW" = (
 /obj/item/clothing/neck/fake_heretic_amulet,
-/turf/open/space/basic,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"lY" = (
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 9
+	},
+/obj/structure/flora/bush/flowers_br/style_random,
+/turf/open/floor/wood/large,
 /area/space)
 "lZ" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
+/obj/structure/stone_tile/center/cracked,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"mc" = (
+/obj/structure/closet/crate/coffin,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
 	},
-/turf/open/floor/fakebasalt,
 /area/space)
 "me" = (
 /obj/effect/turf_decal/siding/wood/corner{
@@ -305,6 +538,14 @@
 "mj" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/stone,
+/area/space)
+"mq" = (
+/obj/structure/flora/bush/flowers_br/style_random,
+/obj/effect/mob_spawn/corpse/human/skeleton,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
 /area/space)
 "mt" = (
 /turf/template_noop,
@@ -319,20 +560,75 @@
 /obj/effect/mapping_helpers/engraving,
 /turf/closed/wall/mineral/wood/nonmetal,
 /area/space)
+"mA" = (
+/obj/machinery/smartfridge/drying_rack,
+/obj/item/clothing/suit/hooded/cultrobes/void,
+/obj/item/melee/sickly_blade/void,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
+/area/space)
+"mI" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 1
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"mW" = (
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/turf/open/indestructible/binary,
+/area/space)
 "ng" = (
 /obj/structure/chair/wood{
 	dir = 4
 	},
 /turf/open/floor/stone,
 /area/space)
+"nk" = (
+/obj/structure/flora/ash/cacti,
+/turf/open/misc/asteroid/basalt,
+/area/space)
+"np" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 1
+	},
+/turf/open/misc/asteroid/moon,
+/area/space)
 "nv" = (
 /turf/open/floor/wood,
+/area/space)
+"nF" = (
+/obj/effect/turf_decal/weather/snow/corner,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"nG" = (
+/obj/structure/table/wood,
+/obj/item/book/granter/action/origami,
+/turf/open/floor/wood/large,
 /area/space)
 "nN" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
 	},
 /turf/open/misc/asteroid/snow,
+/area/space)
+"nP" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/turf/open/misc/asteroid/moon,
+/area/space)
+"nX" = (
+/obj/item/ritual_totem,
+/turf/open/floor/wood/parquet,
 /area/space)
 "nZ" = (
 /obj/structure/mannequin/wood,
@@ -341,12 +637,75 @@
 	},
 /turf/open/floor/wood/parquet,
 /area/space)
+"oa" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/turf/open/misc/asteroid/moon,
+/area/space)
 "oi" = (
 /obj/structure/fake_stairs/wood/directional/north,
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /turf/open/space/basic,
+/area/space)
+"on" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/structure/flora/rock/style_random,
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"or" = (
+/obj/structure/chair/wood/wings{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 10
+	},
+/turf/open/floor/wood/parquet,
+/area/space)
+"ou" = (
+/obj/machinery/smartfridge/drying_rack,
+/obj/item/eldritch_potion/wounded{
+	pixel_y = 21
+	},
+/obj/item/eldritch_potion/duskndawn{
+	pixel_y = 17
+	},
+/obj/item/melee/sickly_blade/void,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"ov" = (
+/obj/structure/flora/lunar_plant/style_1{
+	name = "eldritch plant"
+	},
+/obj/item/food/meat/slab/human/mutant/skeleton,
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/turf/open/misc/asteroid/moon,
+/area/space)
+"oE" = (
+/obj/effect/mob_spawn/corpse/human/legioninfested/snow,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
+/area/space)
+"pc" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 8
+	},
+/turf/open/misc/asteroid/moon,
 /area/space)
 "pd" = (
 /obj/effect/turf_decal/siding/wood/corner{
@@ -356,17 +715,34 @@
 /area/space)
 "pf" = (
 /obj/effect/turf_decal/siding/wood/corner,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood/tile,
 /area/space)
 "pm" = (
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/misc/asteroid/snow,
 /area/space)
+"py" = (
+/obj/structure/table/wood,
+/obj/item/codex_cicatrix,
+/turf/open/floor/wood/large,
+/area/space)
 "pA" = (
 /obj/structure/flora/lunar_plant/style_3{
 	name = "eldritch plant"
 	},
 /turf/open/misc/ashplanet/rocky,
+/area/space)
+"pE" = (
+/obj/structure/chair/wood/wings{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/fuel_pool,
+/turf/open/floor/wood/large,
+/area/space)
+"qq" = (
+/obj/effect/decal/remains/human,
+/turf/open/misc/asteroid/moon,
 /area/space)
 "qs" = (
 /obj/structure/table/wood,
@@ -391,11 +767,35 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
-/turf/open/space/basic,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/wood/large,
+/area/space)
+"qJ" = (
+/obj/structure/statue/snow/snowman,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
 /area/space)
 "qK" = (
 /obj/structure/flora/bush/flowers_yw/style_random,
 /turf/open/misc/grass,
+/area/space)
+"qN" = (
+/obj/structure/table/wood,
+/turf/open/floor/carpet/blue,
+/area/space)
+"qQ" = (
+/obj/structure/table/wood,
+/obj/item/book/granter/martial/plasma_fist/nobomb{
+	icon_state = "scroll"
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"qR" = (
+/obj/effect/turf_decal/weather/snow/corner,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/misc/asteroid/moon,
 /area/space)
 "qU" = (
 /turf/open/misc/ashplanet/rocky,
@@ -406,7 +806,13 @@
 /area/space)
 "rg" = (
 /obj/structure/chair/comfy/brown,
-/turf/open/floor/wood/tile,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/carpet/green,
+/area/space)
+"rl" = (
+/obj/structure/displaycase/noalert,
+/obj/item/skeleton_key,
+/turf/open/floor/wood/large,
 /area/space)
 "rq" = (
 /obj/effect/decal/cleanable/ash,
@@ -419,12 +825,20 @@
 /turf/open/floor/iron/grimy,
 /area/space)
 "ry" = (
-/obj/item/book/codex_gigas,
-/turf/open/floor/wood,
+/obj/effect/mob_spawn/corpse/human/charredskeleton,
+/turf/open/indestructible/binary,
 /area/space)
 "rA" = (
 /mob/living/basic/tree,
 /turf/open/misc/asteroid/snow,
+/area/space)
+"rE" = (
+/obj/item/food/meat/slab/human/mutant/skeleton,
+/obj/structure/flora/rock/pile/icy/style_random,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
 /area/space)
 "rW" = (
 /turf/closed/indestructible/binary,
@@ -440,6 +854,11 @@
 	},
 /turf/open/floor/wood/tile,
 /area/space)
+"sm" = (
+/obj/structure/displaycase/noalert,
+/obj/item/gun/ballistic/rifle/lionhunter,
+/turf/open/floor/wood/large,
+/area/space)
 "sw" = (
 /obj/effect/baseturf_helper/virtual_domain,
 /turf/template_noop,
@@ -451,15 +870,36 @@
 /obj/structure/statue/bone/rib,
 /turf/open/floor/fakebasalt,
 /area/space)
+"sM" = (
+/obj/structure/table/wood,
+/obj/item/book/granter/crafting_recipe/boneyard_notes,
+/obj/item/ammo_box/strilka310/lionhunter,
+/turf/open/floor/wood/large,
+/area/space)
 "te" = (
 /obj/structure/chair/wood/wings,
 /obj/effect/decal/cleanable/food/flour,
-/turf/open/floor/wood/large,
+/turf/open/floor/carpet/black,
+/area/space)
+"tf" = (
+/obj/structure/bookcase/random/adult,
+/turf/open/floor/grass/lavaland,
+/area/space)
+"tg" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/turf/open/misc/asteroid/moon,
 /area/space)
 "tz" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
+/obj/item/ritual_totem,
 /turf/open/floor/wood/parquet,
 /area/space)
 "tI" = (
@@ -467,17 +907,26 @@
 /obj/structure/table_frame/wood,
 /turf/open/floor/wood/large,
 /area/space)
+"tP" = (
+/obj/structure/displaycase/noalert,
+/obj/item/knife/ritual,
+/turf/open/floor/wood/large,
+/area/space)
+"tR" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/misc/asteroid/moon,
+/area/space)
 "tY" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/stone_tile/block/cracked{
 	dir = 9
 	},
+/obj/effect/decal/cleanable/ash/large,
 /turf/open/floor/fakebasalt,
 /area/space)
 "tZ" = (
-/turf/open/floor/wood{
-	initial_gas_mix = "ICEMOON_ATMOS"
-	},
+/obj/structure/stone_tile/surrounding/cracked,
+/turf/open/indestructible/necropolis/air,
 /area/space)
 "ub" = (
 /obj/structure/bookcase/random/religion,
@@ -497,6 +946,7 @@
 	},
 /obj/machinery/door/puzzle/keycard/library,
 /obj/effect/mapping_helpers/broken_floor,
+/obj/effect/oneway,
 /turf/open/floor/wood/tile,
 /area/space)
 "up" = (
@@ -510,14 +960,29 @@
 /obj/structure/statue/bone/skull/half,
 /turf/open/floor/fakebasalt,
 /area/space)
+"uw" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/weather/snow,
+/turf/open/floor/wood/large,
+/area/space)
+"uG" = (
+/obj/structure/flora/ash/fireblossom,
+/turf/open/misc/asteroid/basalt,
+/area/space)
 "uJ" = (
 /obj/structure/bookcase/random/adult,
 /turf/open/space/basic,
 /area/space)
+"uN" = (
+/obj/structure/trap/eldritch/mad,
+/turf/open/misc/asteroid/basalt,
+/area/space)
 "uR" = (
 /obj/structure/table/wood,
 /obj/item/book/granter/action/spell/summon_cheese,
-/turf/open/floor/wood/large,
+/turf/open/floor/carpet/black,
 /area/space)
 "uW" = (
 /obj/effect/turf_decal/siding/wood/corner,
@@ -550,12 +1015,31 @@
 /turf/open/floor/wood/parquet,
 /area/space)
 "vX" = (
-/obj/item/codex_cicatrix,
-/turf/open/floor/wood,
+/obj/structure/table/wood,
+/obj/item/upgradescroll,
+/turf/open/floor/wood/large,
 /area/space)
 "wa" = (
 /obj/structure/flora/bush/snow/style_random,
 /turf/open/misc/asteroid/snow,
+/area/space)
+"wg" = (
+/obj/effect/mob_spawn/corpse/human/skeleton,
+/obj/item/clothing/suit/armor/vest/cuirass,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"wj" = (
+/obj/structure/statue/snow/snowlegion,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
+/area/space)
+"wo" = (
+/obj/structure/stone_tile/surrounding/cracked{
+	dir = 1
+	},
+/turf/open/indestructible/necropolis/air,
 /area/space)
 "wp" = (
 /obj/effect/turf_decal/siding/wood/corner{
@@ -564,6 +1048,32 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/wood/large,
+/area/space)
+"wT" = (
+/obj/structure/displaycase/noalert,
+/obj/item/reagent_containers/cup/bottle/potion/flight,
+/turf/open/floor/wood/large,
+/area/space)
+"xA" = (
+/obj/structure/flora/rock/style_random,
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"xM" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/item/kirbyplants/random,
+/turf/open/floor/wood/tile,
+/area/space)
+"xT" = (
+/obj/effect/turf_decal/weather/snow/corner,
+/obj/machinery/computer/security/wooden_tv,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"xV" = (
+/obj/effect/visible_heretic_influence,
 /turf/open/floor/wood/large,
 /area/space)
 "xW" = (
@@ -576,38 +1086,155 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/grimy,
 /area/space)
+"yq" = (
+/obj/structure/barricade/wooden/crude/snow,
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/turf/open/indestructible/binary,
+/area/space)
 "yx" = (
 /obj/structure/flora/tree/pine/style_random,
 /turf/open/misc/asteroid/snow,
 /area/space)
+"yD" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/flare/culttorch,
+/obj/item/toy/snowball{
+	color = "#FFFF00";
+	name = "snowcone snow";
+	desc = "Perfect for pelting at your former best friend.";
+	pixel_y = 7;
+	pixel_x = -8
+	},
+/obj/item/toy/snowball{
+	color = "#FFFF00";
+	name = "snowcone snow";
+	desc = "Perfect for pelting at your former best friend.";
+	pixel_y = 6;
+	pixel_x = 9
+	},
+/obj/item/melee/rune_carver{
+	pixel_x = 7
+	},
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
+/area/space)
+"yL" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 9
+	},
+/obj/item/stack/sheet/mineral/titanium{
+	amount = 5
+	},
+/turf/open/misc/asteroid/moon,
+/area/space)
 "yM" = (
-/obj/effect/decal/cleanable/grand_remains,
-/turf/open/floor/grass/lavaland,
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 9
+	},
+/turf/open/floor/wood/large,
 /area/space)
 "yO" = (
 /obj/structure/flora/tree/stump,
 /turf/open/misc/asteroid/snow,
 /area/space)
+"yP" = (
+/obj/structure/flora/bush/snow/style_random,
+/obj/effect/mob_spawn/corpse/human/skeleton,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
+/area/space)
+"yQ" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/wood/tile,
+/area/space)
 "yT" = (
-/obj/item/book/bible/syndicate,
 /obj/effect/decal/cleanable/grand_remains,
-/turf/open/floor/wood,
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/indestructible/binary,
+/area/space)
+"zc" = (
+/obj/structure/stone_tile/slab,
+/obj/item/antique,
+/obj/item/skeleton_key,
+/obj/structure/rack{
+	color = "#272727";
+	name = "charred rack"
+	},
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"zf" = (
+/obj/structure/table/wood,
+/obj/item/book/granter/chuunibyou,
+/turf/open/floor/wood/large,
+/area/space)
+"zj" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 5
+	},
+/obj/structure/statue/bone/rib{
+	dir = 4
+	},
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"zq" = (
+/obj/structure/trap/eldritch/tentacle,
+/turf/open/misc/ice,
+/area/space)
+"zs" = (
+/obj/item/flashlight/flare/candle,
+/obj/item/clothing/shoes/roman{
+	name = "ash tral roman sandals"
+	},
+/turf/open/indestructible/necropolis/air,
 /area/space)
 "zx" = (
 /obj/structure/chair/wood/wings{
 	dir = 1
 	},
-/turf/open/floor/wood/parquet,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
 /area/space)
 "zH" = (
 /obj/structure/table/wood,
+/obj/item/skeleton_key,
+/obj/item/reagent_containers/cup/soda_cans/shamblers/eldritch,
+/turf/open/floor/carpet/black,
+/area/space)
+"zI" = (
+/obj/effect/spawner/random/exotic/snow_gear,
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 9
+	},
 /turf/open/floor/wood/large,
 /area/space)
 "zP" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
-/turf/open/floor/wood/large,
+/turf/open/indestructible/binary,
+/area/space)
+"zX" = (
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 8
+	},
+/turf/open/floor/carpet/green,
 /area/space)
 "Ac" = (
 /obj/effect/turf_decal/siding/wood{
@@ -617,15 +1244,24 @@
 /area/space)
 "Ad" = (
 /obj/effect/decal/cleanable/vomit/nebula,
-/turf/open/floor/grass/lavaland,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"Af" = (
+/obj/item/stack/sheet/mineral/plasma/five,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"Aj" = (
+/obj/item/food/snowcones,
+/turf/open/floor/wood/large,
 /area/space)
 "Ap" = (
 /obj/structure/chair/wood/wings,
+/obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood/large,
 /area/space)
 "Az" = (
-/obj/item/book/granter/chuunibyou,
 /obj/effect/turf_decal/siding/wood,
+/obj/item/ritual_totem,
 /turf/open/floor/wood/parquet,
 /area/space)
 "AC" = (
@@ -650,18 +1286,38 @@
 /obj/structure/fireplace,
 /turf/open/floor/stone,
 /area/space)
+"Bk" = (
+/obj/structure/trap/eldritch/tentacle,
+/turf/open/floor/grass/lavaland,
+/area/space)
 "Bl" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/wood/large,
 /area/space)
 "Bu" = (
 /obj/machinery/smartfridge/drying_rack,
-/obj/item/food/raw_headcheese,
+/obj/item/food/raw_headcheese{
+	pixel_y = 23
+	},
 /turf/open/floor/stone,
 /area/space)
 "Bw" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/fakepit,
+/area/space)
+"By" = (
+/obj/structure/table/wood,
+/obj/item/book/granter/action/spell/summonitem,
+/turf/open/floor/wood/large,
+/area/space)
+"BP" = (
+/obj/structure/stone_tile/block/cracked,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"Cc" = (
+/obj/structure/table/wood,
+/obj/item/book/granter/action/spell/smoke,
+/turf/open/floor/wood/large,
 /area/space)
 "Cf" = (
 /obj/effect/turf_decal/siding/wood/corner{
@@ -673,11 +1329,38 @@
 	},
 /turf/open/misc/ashplanet/rocky,
 /area/space)
+"Cj" = (
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 8
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"Ck" = (
+/obj/item/clothing/shoes/winterboots/ice_boots/ice_trail,
+/turf/open/misc/ice,
+/area/space)
+"Cv" = (
+/turf/closed/wall/mineral/snow,
+/area/space)
 "CH" = (
 /obj/structure/flora/lunar_plant/style_2{
 	name = "eldritch plant"
 	},
 /turf/open/misc/asteroid/moon,
+/area/space)
+"CO" = (
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"CV" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/carpet/green,
 /area/space)
 "CX" = (
 /obj/structure/bookcase/random/adult,
@@ -685,6 +1368,24 @@
 /area/space)
 "CZ" = (
 /obj/structure/bookcase/random/fiction,
+/turf/open/indestructible/binary,
+/area/space)
+"Db" = (
+/obj/structure/stone_tile/surrounding/burnt,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"Dk" = (
+/obj/item/kirbyplants/random,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"Dm" = (
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 10
+	},
 /turf/open/floor/wood/large,
 /area/space)
 "Do" = (
@@ -693,13 +1394,11 @@
 	dir = 8
 	},
 /obj/machinery/door/puzzle/keycard/library,
+/obj/effect/oneway,
 /turf/open/floor/wood/tile,
 /area/space)
 "Dp" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/cup/glass/bottle/wine/unlabeled{
-	pixel_y = 13
-	},
 /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
 	pixel_x = 8
 	},
@@ -707,17 +1406,20 @@
 	pixel_x = -8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_containers/cup/glass/bottle/ritual_wine{
+	pixel_y = 15
+	},
 /turf/open/floor/stone,
 /area/space)
 "Ds" = (
 /obj/structure/table/wood,
 /obj/item/shadowcloak,
 /obj/item/hatchet/wooden,
-/obj/item/clothing/glasses/meson{
-	icon_state = "geist_gazers";
-	worn_icon_state = "geist_gazers";
+/obj/item/clothing/glasses/night{
+	desc = "These glasses have been made with pure Plot-anium, allowing them the ablity to see inorganic things through walls. Nice.";
 	name = "glasses of truesight";
-	desc = "These glasses have been made with pure Plot-anium, allowing them the ablity to see inorganic things through walls. Nice."
+	icon_state = "geist_gazers";
+	worn_icon_state = "geist_gazers"
 	},
 /turf/open/indestructible/binary,
 /area/space)
@@ -731,6 +1433,10 @@
 	},
 /turf/open/floor/stone,
 /area/space)
+"Dx" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/turf/closed/indestructible/rock/snow/ice,
+/area/space)
 "DD" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
@@ -741,12 +1447,18 @@
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 8
 	},
-/turf/open/space/basic,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/wood/large,
 /area/space)
 "DL" = (
 /obj/structure/table/wood,
 /obj/item/book/granter/crafting_recipe/boneyard_notes,
+/obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood/large,
+/area/space)
+"DP" = (
+/obj/structure/bookcase/random/religion,
+/turf/open/misc/asteroid/moon,
 /area/space)
 "DT" = (
 /obj/structure/barricade/wooden/crude/snow,
@@ -754,10 +1466,31 @@
 	dir = 4
 	},
 /obj/machinery/door/puzzle/keycard/library,
+/obj/effect/oneway,
 /turf/open/floor/wood/tile,
 /area/space)
 "DV" = (
 /obj/item/chair/wood,
+/obj/item/stack/ore/glass/basalt,
+/obj/structure/flora/ash/leaf_shroom,
+/turf/open/misc/asteroid/basalt,
+/area/space)
+"Eb" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/indestructible/binary,
+/area/space)
+"Ef" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 4
+	},
+/obj/effect/decal/remains/human,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"Ej" = (
+/obj/item/clothing/suit/costume/snowman,
+/obj/item/clothing/head/costume/snowman,
 /turf/open/floor/wood/large,
 /area/space)
 "Ek" = (
@@ -776,11 +1509,29 @@
 	},
 /turf/open/floor/fakebasalt,
 /area/space)
-"EB" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
+"Em" = (
+/obj/item/toy/snowball{
+	color = "#FFFF00";
+	name = "snowcone snow";
+	desc = "Perfect for pelting at your former best friend."
 	},
-/turf/open/floor/fakepit,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"Es" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/grass/lavaland,
+/area/space)
+"Et" = (
+/obj/structure/no_effect_signpost/void,
+/turf/open/misc/asteroid/snow,
+/area/space)
+"Ev" = (
+/obj/structure/bookcase/random/religion,
+/turf/open/misc/ice,
+/area/space)
+"EB" = (
+/obj/structure/table/wood,
+/turf/open/misc/asteroid/basalt,
 /area/space)
 "ED" = (
 /obj/effect/turf_decal/siding/wood{
@@ -788,9 +1539,18 @@
 	},
 /turf/open/floor/wood/parquet,
 /area/space)
+"EM" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/mob_spawn/corpse/human/skeleton,
+/turf/open/indestructible/binary,
+/area/space)
 "Fi" = (
-/obj/structure/displaycase/noalert,
-/turf/open/floor/wood/large,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
 /area/space)
 "Fp" = (
 /obj/structure/fake_stairs/wood/directional/south,
@@ -814,6 +1574,13 @@
 	},
 /turf/open/floor/wood/large,
 /area/space)
+"FQ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/item/kirbyplants/random,
+/turf/open/floor/wood/tile,
+/area/space)
 "FR" = (
 /obj/structure/falsewall/bananium{
 	base_icon_state = "riveted";
@@ -830,21 +1597,56 @@
 /obj/structure/flora/ash/chilly,
 /turf/open/misc/asteroid/snow,
 /area/space)
+"FW" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 6
+	},
+/turf/open/misc/asteroid/moon,
+/area/space)
+"FY" = (
+/obj/structure/stone_tile/surrounding,
+/obj/structure/stone_tile/center/cracked,
+/turf/open/indestructible/necropolis/air,
+/area/space)
 "FZ" = (
 /obj/structure/table_frame/wood,
 /obj/item/stack/sheet/mineral/wood,
 /turf/open/floor/wood/large,
 /area/space)
+"Gp" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 9
+	},
+/turf/open/misc/asteroid/moon,
+/area/space)
 "Gt" = (
+/obj/structure/stone_tile/surrounding/burnt,
+/obj/structure/stone_tile/center/burnt,
 /turf/open/indestructible/necropolis/air,
 /area/space)
+"Gz" = (
+/obj/structure/table/wood,
+/obj/item/heretic_lintel,
+/turf/open/floor/wood/large,
+/area/space)
 "GU" = (
-/obj/effect/decal/cleanable/vomit/purple,
-/turf/open/floor/grass/lavaland,
+/turf/open/indestructible/necropolis/air,
 /area/space)
 "GY" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/wood,
+/area/space)
+"Hj" = (
+/obj/structure/table/wood,
+/obj/item/book/granter/crafting_recipe/boneyard_notes,
+/turf/open/misc/asteroid/basalt,
+/area/space)
+"Hq" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/structure/statue/bone/rib,
+/turf/open/indestructible/necropolis/air,
 /area/space)
 "HG" = (
 /obj/effect/turf_decal/siding/wood{
@@ -860,11 +1662,43 @@
 /obj/item/food/raw_sausage,
 /turf/open/misc/asteroid/moon,
 /area/space)
+"HJ" = (
+/obj/structure/displaycase/noalert,
+/obj/item/antique,
+/turf/open/floor/wood/large,
+/area/space)
+"HK" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/open/indestructible/binary,
+/area/space)
+"HM" = (
+/obj/effect/visible_heretic_influence,
+/turf/open/misc/asteroid/basalt,
+/area/space)
 "Is" = (
 /obj/structure/chair/wood/wings{
 	dir = 1
 	},
-/turf/open/floor/wood/large,
+/turf/open/floor/carpet/black,
+/area/space)
+"IB" = (
+/obj/effect/spawner/random/exotic/snow_gear,
+/turf/open/misc/ice,
+/area/space)
+"IE" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/structure/bonfire/prelit,
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"IM" = (
+/obj/structure/closet/crate/necropolis/bubblegum{
+	locked = 1
+	},
+/obj/structure/stone_tile/slab/burnt,
+/obj/effect/rune/malformed,
+/turf/open/indestructible/necropolis/air,
 /area/space)
 "IT" = (
 /obj/structure/table/wood,
@@ -880,6 +1714,14 @@
 	},
 /turf/open/misc/ashplanet/rocky,
 /area/space)
+"Ji" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 10
+	},
+/obj/effect/mob_spawn/corpse/human/skeleton,
+/obj/item/melee/sickly_blade/void,
+/turf/open/misc/asteroid/moon,
+/area/space)
 "Jn" = (
 /obj/structure/mineral_door/iron,
 /turf/open/space/basic,
@@ -891,9 +1733,17 @@
 "JB" = (
 /turf/open/floor/fakebasalt,
 /area/space)
+"JD" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 1
+	},
+/obj/structure/displaycase/noalert,
+/obj/structure/closet/crate/necropolis,
+/turf/open/floor/wood/large,
+/area/space)
 "JG" = (
-/obj/item/book/granter/action/spell/summon_cheese,
-/turf/open/space/basic,
+/obj/structure/flora/rock/pile/style_random,
+/turf/open/misc/ashplanet/rocky,
 /area/space)
 "JV" = (
 /obj/effect/decal/cleanable/ash/large,
@@ -911,6 +1761,14 @@
 /area/space)
 "Kn" = (
 /turf/closed/indestructible/rock/snow/ice,
+/area/space)
+"Ku" = (
+/obj/effect/heretic_rune/big,
+/obj/item/melee/sickly_blade/ash,
+/obj/effect/rune/narsie{
+	color = "#272727"
+	},
+/turf/open/indestructible/necropolis/air,
 /area/space)
 "Ky" = (
 /turf/open/misc/asteroid/snow,
@@ -938,21 +1796,38 @@
 /obj/item/flashlight/flare/torch,
 /turf/open/floor/iron/grimy,
 /area/space)
+"Ll" = (
+/obj/structure/barricade/wooden/snowed,
+/turf/open/misc/asteroid/moon,
+/area/space)
 "Lr" = (
-/obj/structure/table_frame/wood,
-/turf/open/floor/wood/large,
+/turf/open/misc/asteroid/basalt,
+/area/space)
+"Ls" = (
+/obj/structure/stone_tile/surrounding/cracked,
+/obj/structure/stone_tile/center/cracked,
+/turf/open/indestructible/necropolis/air,
 /area/space)
 "LJ" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
+/obj/item/kirbyplants/random,
 /turf/open/floor/wood/tile,
 /area/space)
 "LP" = (
-/obj/structure/closet/crate/necropolis/bubblegum{
-	locked = 1
+/obj/effect/decal/cleanable/ash,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"LV" = (
+/obj/structure/stone_tile/cracked,
+/obj/structure/rack{
+	color = "#272727";
+	name = "charred rack"
 	},
-/turf/open/space/basic,
+/obj/item/eldritch_potion/wounded,
+/obj/item/eldritch_potion/crucible_soul,
+/turf/open/indestructible/necropolis/air,
 /area/space)
 "Ma" = (
 /obj/effect/decal/cleanable/ash/large,
@@ -966,8 +1841,7 @@
 /turf/open/space/basic,
 /area/space)
 "Mh" = (
-/obj/item/heretic_lintel,
-/turf/open/floor/wood/tile,
+/turf/open/indestructible/binary,
 /area/space)
 "Mw" = (
 /obj/structure/flora/tree/stump,
@@ -980,11 +1854,19 @@
 /turf/open/floor/wood/tile,
 /area/space)
 "MF" = (
-/obj/item/book/granter/action/spell/smoke,
-/obj/effect/turf_decal/siding/wood/corner{
-	dir = 8
+/obj/structure/flora/rock/pile/icy/style_random,
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 9
 	},
-/turf/open/floor/wood/tile,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"MR" = (
+/obj/item/food/meat/slab/human/mutant/skeleton,
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/turf/open/misc/asteroid/moon,
 /area/space)
 "Ng" = (
 /obj/structure/barricade/wooden/snowed,
@@ -995,6 +1877,31 @@
 	dir = 8
 	},
 /turf/open/floor/wood/tile,
+/area/space)
+"Nh" = (
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/rack{
+	color = "#272727";
+	name = "charred rack"
+	},
+/obj/item/reagent_containers/cup/beaker/eldritch,
+/obj/item/reagent_containers/cup/beaker/eldritch{
+	pixel_x = 7
+	},
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"Nr" = (
+/obj/structure/necropolis_arch,
+/obj/effect/decal/necropolis_gate_decal,
+/obj/structure/stone_tile/slab/cracked{
+	dir = 5
+	},
+/obj/effect/oneway{
+	dir = 1
+	},
+/turf/open/misc/ashplanet/rocky,
 /area/space)
 "Nv" = (
 /obj/structure/stone_tile/block/cracked{
@@ -1029,6 +1936,11 @@
 	},
 /turf/open/floor/fakebasalt,
 /area/space)
+"Ot" = (
+/obj/structure/displaycase/noalert,
+/obj/item/clothing/glasses/nightmare_vision,
+/turf/open/floor/wood/large,
+/area/space)
 "Ov" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -1045,12 +1957,31 @@
 "OF" = (
 /turf/closed/wall/mineral/iron,
 /area/space)
+"OH" = (
+/obj/structure/displaycase/noalert,
+/obj/structure/closet/crate/necropolis,
+/turf/open/floor/wood/large,
+/area/space)
 "OI" = (
 /turf/closed/wall/mineral/wood/nonmetal,
 /area/space)
 "OJ" = (
 /obj/structure/flora/tree/jungle/small/style_random,
 /turf/open/misc/grass,
+/area/space)
+"OO" = (
+/obj/effect/visible_heretic_influence,
+/turf/open/indestructible/binary,
+/area/space)
+"OU" = (
+/obj/structure/stone_tile/center/cracked,
+/obj/item/flashlight/flare/candle,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"OY" = (
+/obj/structure/table/wood,
+/obj/item/book/manual/ancient_parchment,
+/turf/open/floor/wood/large,
 /area/space)
 "Pp" = (
 /obj/effect/turf_decal/siding/wood,
@@ -1061,6 +1992,16 @@
 /obj/item/stack/sheet/mineral/wood,
 /turf/open/floor/wood/large,
 /area/space)
+"Px" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 6
+	},
+/obj/effect/decal/remains/human{
+	color = "#272727";
+	name = "charred remains"
+	},
+/turf/open/indestructible/necropolis/air,
+/area/space)
 "PE" = (
 /obj/structure/fake_stairs/wood/directional/south,
 /obj/effect/turf_decal/siding/wood{
@@ -1069,12 +2010,23 @@
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/space/basic,
 /area/space)
+"PG" = (
+/obj/effect/spawner/random/exotic/snow_gear,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
+/area/space)
 "PL" = (
 /obj/item/clothing/under/rank/civilian/chaplain/divine_archer,
 /obj/item/clothing/suit/hooded/cloak/goliath,
 /obj/item/clothing/head/flatcap,
 /obj/structure/closet/cabinet,
 /turf/open/floor/iron/grimy,
+/area/space)
+"PR" = (
+/obj/effect/visible_heretic_influence,
+/turf/open/floor/grass/lavaland,
 /area/space)
 "PS" = (
 /obj/effect/turf_decal/siding/wood{
@@ -1099,6 +2051,7 @@
 "QR" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/mapping_helpers/burnt_floor,
+/obj/effect/mob_spawn/corpse/human/charredskeleton,
 /turf/open/floor/wood,
 /area/space)
 "QX" = (
@@ -1107,6 +2060,28 @@
 /area/space)
 "Ra" = (
 /turf/open/misc/grass,
+/area/space)
+"Rl" = (
+/obj/structure/stone_tile/surrounding/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/center,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"Rn" = (
+/obj/structure/stone_tile/block/cracked,
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"Rt" = (
+/obj/structure/stone_tile/slab/cracked,
+/obj/effect/decal/remains/human{
+	color = "#272727";
+	name = "charred remains"
+	},
+/turf/open/indestructible/necropolis/air,
 /area/space)
 "Rw" = (
 /obj/structure/closet/cardboard,
@@ -1136,8 +2111,30 @@
 /obj/effect/decal/cleanable/ash/large,
 /turf/open/misc/ashplanet/rocky,
 /area/space)
+"RY" = (
+/obj/structure/stone_tile/slab/cracked,
+/obj/effect/oneway{
+	dir = 1
+	},
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"RZ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/indestructible/binary,
+/area/space)
 "Sb" = (
 /turf/open/floor/carpet/donk,
+/area/space)
+"Se" = (
+/obj/item/book/manual/ancient_parchment,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"Sh" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/wood/large,
 /area/space)
 "Sp" = (
 /obj/effect/turf_decal/siding/wood{
@@ -1154,20 +2151,98 @@
 /obj/structure/bookcase/random/nonfiction,
 /turf/open/floor/wood/large,
 /area/space)
+"Sz" = (
+/obj/item/storage/test_tube_rack{
+	name = "snowcone rack";
+	desc = "Welcome to the Himalayas!"
+	},
+/obj/item/food/snowcones/lemon{
+	desc = "No, no, no no, don't worry, It's lemon!";
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/obj/item/food/snowcones/lemon{
+	desc = "No, no, no no, don't worry, It's lemon!";
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/obj/item/food/snowcones/lemon{
+	desc = "No, no, no no, don't worry, It's lemon!";
+	pixel_x = 10;
+	pixel_y = 2
+	},
+/turf/open/misc/asteroid/moon,
+/area/space)
+"SA" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/effect/mob_spawn/corpse/human/charredskeleton,
+/turf/open/misc/ashplanet/rocky,
+/area/space)
+"SF" = (
+/obj/effect/decal/cleanable/ash/large,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"SJ" = (
+/obj/structure/stone_tile/slab,
+/obj/structure/rack{
+	color = "#272727";
+	name = "charred rack"
+	},
+/obj/item/melee/sickly_blade/ash,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"SK" = (
+/obj/item/melee/energy/sword/saber/blue{
+	active_force = 12;
+	desc = "Looks like he didn't quite manage it this time.";
+	name = "rusty lightsaber"
+	},
+/obj/item/stack/sheet/mineral/snow{
+	amount = 20
+	},
+/obj/item/stack/tile/mineral/snow,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
+/area/space)
 "SO" = (
 /turf/open/space/basic,
 /area/space)
+"SP" = (
+/obj/effect/mob_spawn/corpse/human/charredskeleton,
+/turf/open/floor/grass/lavaland,
+/area/space)
 "SR" = (
 /turf/open/floor/wood/large,
+/area/space)
+"SV" = (
+/obj/effect/oneway{
+	dir = 4
+	},
+/turf/open/misc/asteroid/basalt,
 /area/space)
 "Ta" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
+/obj/item/stack/ore/glass/basalt,
 /turf/open/floor/fakebasalt,
+/area/space)
+"Tc" = (
+/obj/structure/flora/rock/icy/style_random,
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 9
+	},
+/turf/open/misc/asteroid/moon,
 /area/space)
 "Td" = (
 /turf/open/floor/grass/lavaland,
+/area/space)
+"Tf" = (
+/obj/item/chair/wood,
+/obj/item/stack/ore/glass/basalt,
+/turf/open/misc/asteroid/basalt,
 /area/space)
 "Ti" = (
 /obj/structure/bonfire/prelit,
@@ -1182,8 +2257,21 @@
 /turf/open/floor/fakebasalt,
 /area/space)
 "Tp" = (
-/obj/item/book/fish_catalog,
-/turf/open/floor/wood/parquet,
+/obj/structure/flora/bush/snow/style_random,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
+/area/space)
+"TG" = (
+/obj/item/food/meat/slab/human/mutant/skeleton,
+/obj/item/reagent_containers/cup/bucket/wooden,
+/obj/effect/rune/convert,
+/turf/open/misc/asteroid/moon,
+/area/space)
+"TH" = (
+/obj/structure/bookcase/random/nonfiction,
+/turf/open/indestructible/binary,
 /area/space)
 "TU" = (
 /obj/structure/flora/lunar_plant/style_1{
@@ -1191,15 +2279,30 @@
 	},
 /turf/open/misc/asteroid/moon,
 /area/space)
+"TW" = (
+/obj/effect/visible_heretic_influence,
+/turf/open/floor/carpet/green,
+/area/space)
 "Ud" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
 	},
+/obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood/large,
+/area/space)
+"Uf" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/indestructible/binary,
 /area/space)
 "Ug" = (
 /obj/effect/decal/cleanable/fuel_pool,
 /turf/open/floor/wood/large,
+/area/space)
+"UH" = (
+/obj/item/shovel/serrated,
+/turf/open/misc/asteroid/moon,
 /area/space)
 "UK" = (
 /obj/item/paper/crumpled/ruins,
@@ -1210,34 +2313,149 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/iron/grimy,
 /area/space)
+"UT" = (
+/obj/structure/stone_tile/cracked,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"UU" = (
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"Va" = (
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/obj/effect/decal/cleanable/food/flour{
+	name = "snow";
+	desc = "Strange, this snow seems to have the consistency of flour."
+	},
+/obj/effect/heretic_rune/big,
+/obj/effect/rune/narsie{
+	color = "#272727"
+	},
+/turf/open/misc/asteroid/moon,
+/area/space)
+"VE" = (
+/turf/open/floor/carpet/green,
+/area/space)
+"VT" = (
+/obj/structure/stone_tile/slab/cracked,
+/obj/structure/table/greyscale{
+	color = "#272727";
+	name = "charred table"
+	},
+/obj/item/ammo_box/strilka310/lionhunter,
+/obj/item/clothing/mask/madness_mask,
+/obj/item/flashlight/flare/candle,
+/obj/item/clothing/neck/eldritch_amulet,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"VZ" = (
+/obj/structure/bookcase/random/religion,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
+/area/space)
 "Wd" = (
 /obj/effect/decal/cleanable/vomit/old/black_bile,
-/turf/open/floor/grass/lavaland,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"Wf" = (
+/mob/living/basic/bear/snow{
+	name = "Wampa";
+	desc = "Even insane heretics need company sometimes."
+	},
+/obj/effect/decal/remains/human,
+/turf/open/misc/ice,
+/area/space)
+"Wo" = (
+/obj/item/pickaxe,
+/obj/item/climbing_hook,
+/turf/open/misc/ice,
 /area/space)
 "WD" = (
-/obj/structure/sign/poster/contraband/lusty_xenomorph,
-/turf/open/space/basic,
+/obj/structure/flora/bush/flowers_br/style_random,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
 /area/space)
 "WI" = (
 /obj/structure/table/wood/fancy,
-/obj/item/book/random,
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
 	},
+/obj/item/book/bible/syndicate{
+	name = "Serpent's Tome";
+	deity_name = "The Serpent"
+	},
 /turf/open/floor/wood/large,
+/area/space)
+"WR" = (
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/effect/decal/remains/human{
+	color = "#272727";
+	name = "charred remains"
+	},
+/turf/open/indestructible/necropolis/air,
 /area/space)
 "WY" = (
 /obj/item/chair/wood,
 /obj/item/food/sausage,
 /turf/open/misc/asteroid/moon,
 /area/space)
+"Xl" = (
+/obj/effect/decal/cleanable/vomit/purple,
+/turf/open/floor/wood/large,
+/area/space)
+"Xn" = (
+/obj/structure/trap/eldritch/mad,
+/turf/open/indestructible/necropolis/air,
+/area/space)
 "Xo" = (
 /obj/effect/landmark/bitrunning/cache_spawn,
 /turf/open/floor/mineral/bananium,
 /area/space)
+"Xr" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 5
+	},
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"Xz" = (
+/obj/effect/oneway{
+	dir = 4
+	},
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"XD" = (
+/obj/effect/decal/cleanable/ash/large,
+/turf/open/misc/asteroid/basalt,
+/area/space)
+"XJ" = (
+/obj/structure/stone_tile/block/burnt,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"XL" = (
+/obj/item/chair/wood,
+/obj/structure/flora/rock/pile/style_random,
+/turf/open/misc/ashplanet/rocky,
+/area/space)
 "XT" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/wood/large,
+/area/space)
+"XX" = (
+/obj/effect/turf_decal/weather/snow/corner,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/wood/parquet,
 /area/space)
 "XY" = (
 /turf/open/floor/stone,
@@ -1276,10 +2494,38 @@
 	},
 /turf/open/floor/stone,
 /area/space)
+"Yl" = (
+/turf/open/floor/carpet/black,
+/area/space)
+"Yn" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 8
+	},
+/turf/open/floor/wood/large,
+/area/space)
+"Yo" = (
+/obj/structure/table/wood,
+/turf/open/floor/grass/lavaland,
+/area/space)
 "Yp" = (
 /obj/structure/fake_stairs/wood/directional/south,
 /obj/structure/barricade/wooden,
 /turf/open/space/basic,
+/area/space)
+"Yr" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 9
+	},
+/obj/effect/decal/remains/human{
+	color = "#272727";
+	name = "charred remains"
+	},
+/obj/effect/rune/malformed,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"Yt" = (
+/obj/item/food/meat/slab/human/mutant/skeleton,
+/turf/open/misc/asteroid/moon,
 /area/space)
 "YD" = (
 /obj/effect/turf_decal/siding/wood,
@@ -1288,7 +2534,28 @@
 "YI" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/effect/decal/cleanable/ash/large,
-/turf/open/floor/wood/tile,
+/turf/open/floor/grass/lavaland,
+/area/space)
+"YN" = (
+/turf/closed/indestructible/riveted/boss,
+/area/space)
+"YP" = (
+/obj/item/food/meat/slab/human/mutant/skeleton,
+/obj/effect/rune/convert,
+/turf/open/misc/ice,
+/area/space)
+"YT" = (
+/obj/item/stack/sheet/mineral/wood/fifty,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
+/area/space)
+"Zc" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 9
+	},
+/turf/open/floor/wood/large,
 /area/space)
 "Zi" = (
 /obj/effect/turf_decal/siding/wood/corner{
@@ -1296,21 +2563,56 @@
 	},
 /turf/open/floor/wood,
 /area/space)
+"Zn" = (
+/obj/structure/stone_tile/center/burnt,
+/obj/structure/stone_tile/surrounding/cracked{
+	dir = 8
+	},
+/obj/structure/table/greyscale{
+	color = "#272727";
+	name = "charred table"
+	},
+/obj/item/clothing/suit/hooded/cloak/goliath,
+/obj/item/clothing/under/costume/skeleton{
+	color = "#272727"
+	},
+/obj/item/flashlight/flare/candle,
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"Zw" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/closed/indestructible/binary,
+/area/space)
 "ZC" = (
-/obj/item/clothing/under/costume/skeleton,
-/turf/open/space/basic,
+/obj/structure/stone_tile/block/burnt{
+	dir = 8
+	},
+/turf/open/indestructible/necropolis/air,
+/area/space)
+"ZE" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 6
+	},
+/obj/structure/trap/eldritch/tentacle,
+/turf/open/misc/asteroid/moon,
 /area/space)
 "ZM" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
-/turf/open/floor/wood/tile,
+/turf/open/indestructible/binary,
 /area/space)
 "ZT" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
 /turf/open/floor/wood,
+/area/space)
+"ZU" = (
+/obj/item/chair/wood/wings,
+/turf/open/misc/asteroid/moon,
 /area/space)
 
 (1,1,1) = {"
@@ -1365,286 +2667,286 @@ rW
 "}
 (2,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-OI
-OI
-OI
-OI
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
 Kn
-OI
-OI
-OI
-OI
-OI
-OI
-lI
-DD
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+Kn
+rW
+Kn
+lK
+rW
+rW
+rW
+Kn
+rW
+rW
+rW
+rW
+rW
+rW
+Kn
+lK
+Kn
+Dx
+iy
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
 rW
 "}
 (3,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-ub
-SR
-SR
+rW
+rW
+rW
+Kn
+Kn
+lK
+lK
+rW
+Cv
+Cv
+Kn
+mc
+Kn
+rW
+rW
+Kn
+rW
+Kn
+Kn
+ag
 Kn
 Kn
 Kn
 Kn
-SR
-SR
-SR
-nZ
-OI
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+Kn
+rW
+rW
+rW
+rW
+Zw
+Kn
+rW
+rW
+rW
+rW
+rW
+Kn
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
 rW
 "}
 (4,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-Td
-Td
-Td
-Td
-SR
-SR
-SR
-SR
-SR
-SR
-ub
-SR
-ub
-SR
-SR
-SR
+rW
+rW
+rW
 Kn
 Kn
 Kn
-SR
-OI
-OI
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+Kn
+rW
+lK
+lK
+Ji
+PG
+Cv
+Cv
+rW
+qq
+hR
+hR
+Kn
+VZ
+Fi
+VZ
+Fi
+Tp
+Fi
+Kn
+Kn
+Kn
+Kn
+Kn
+rW
+rW
+rW
+rW
+rW
+Kn
+Kn
+Kn
+Kn
+rW
+rW
+rW
+rW
+rW
+rW
+rW
 rW
 "}
 (5,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-Td
-Td
-Td
-Td
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-ub
-SR
-SR
-SR
-SR
-SR
-SR
+rW
+rW
+rW
 Kn
+lK
+Kn
+Kn
+Ck
+lK
+fI
+hR
+pc
+lP
+yq
+mW
+lP
+Cv
+ia
+zq
+Fi
+Fi
+ub
+Oa
+Fi
+WD
+Fi
+lK
+lK
 Kn
 Kn
 Kn
 Kn
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+rW
+rW
+Kn
+lK
+lK
+Kn
+Kn
+rW
+rW
+rW
+rW
+rW
+rW
 rW
 "}
 (6,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-Td
-Td
-Td
-Td
-SR
-SR
-SR
-SR
-SR
-SR
-ub
-SR
-SR
-SR
-SR
+Kn
+Kn
+Kn
+lK
+lK
+Kn
+Cv
+lK
+lK
+hR
+hR
+ZU
+Sz
+Cv
+Cv
+Kn
+Kn
+Oa
+lK
+DP
+hR
+hR
+Yt
+hR
 Fi
+dO
+Tp
+PG
 Fi
-SR
-Fi
-Fi
-SR
+lK
 OI
 Kn
 Kn
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+Kn
+Kn
+lK
+Kn
+Kn
+rW
+rW
+rW
+rW
+rW
+rW
+rW
 rW
 "}
 (7,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+Kn
+Kn
+Kn
+Kn
+lK
+Kn
+Cv
+Wo
+hR
+Ef
+Va
+hR
+Em
+Wf
+Cv
+Tp
+PG
+lK
+lK
+lt
+hR
+VZ
+Fi
+oE
+yM
 SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-ub
-SR
-ub
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
+dM
+WD
+aG
+PG
 OI
 Ky
 Ky
@@ -1652,49 +2954,49 @@ rW
 Kn
 Kn
 Kn
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+Kn
+rW
+rW
+Kn
+rW
+rW
+rW
+rW
+rW
 rW
 "}
 (8,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SR
-SR
-SR
-SR
-SR
-Bl
-SR
-SR
-Bl
-SR
-SR
-SR
-ub
-SR
-SR
+rW
+rW
+rW
+rW
+Kn
+Kn
+Kn
+wg
+FW
+mA
+nP
+hR
+hR
+YP
+Kn
+Fi
+Gp
+hR
+hR
+hR
+CH
+VZ
+WD
+zI
 SR
 NE
+in
 eZ
-eZ
-QX
-SR
+Dk
+hR
 OI
 Ky
 Ky
@@ -1703,48 +3005,48 @@ lK
 lK
 lK
 Kn
+rW
 Kn
 Kn
-SO
-SO
-SO
-SO
-SO
-SO
+Kn
+Kn
+rW
+rW
+rW
 rW
 "}
 (9,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-ub
-SR
-SR
-SR
-SR
-SR
+Kn
+rW
+rW
+PG
+Fi
+Cv
+yL
+xT
+yD
+YT
+np
+FW
+cv
+Kn
+PG
+MF
+hR
+hR
+lK
+Ev
+lK
+gC
+yM
+Ej
+XT
 eo
-ak
-ak
+qN
+qN
 zx
-SR
+Oa
 OI
 Ky
 Ky
@@ -1756,45 +3058,45 @@ Ky
 FV
 Kn
 Kn
+lK
+lK
 Kn
-SO
-SO
-SO
-SO
+rW
+rW
 rW
 "}
 (10,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
+Kn
+Cv
+qq
+pc
+tg
+Ll
+hR
+nF
+qJ
+Gp
+nF
+SK
+Kn
+Kn
+Tc
+hR
+hR
+Tp
+lK
 ub
-SR
+lY
 ub
 SR
 SR
 SR
 eo
 ak
-ak
-zx
-SR
+qN
+or
+TU
 OI
 Oa
 hR
@@ -1802,49 +3104,49 @@ hR
 hR
 aG
 pm
-Ky
+Et
 wa
 Ky
 hR
 Kn
 Kn
-SO
-SO
-SO
+Kn
+Kn
+rW
 rW
 "}
 (11,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
+rW
+hR
+hR
+Kn
+Kn
+Cv
+TG
+hR
+eq
+tR
+qR
+iE
+Cv
+mq
+hR
+MR
+eC
+WD
+yM
+uw
 SR
 ub
-SR
+xV
 SR
 SR
 QX
 dA
 dA
-NE
-SR
+XX
+WD
 OI
 Ky
 hR
@@ -1859,42 +3161,42 @@ Ky
 Ky
 Kn
 Kn
-SO
-SO
+Kn
+rW
 rW
 "}
 (12,1,1) = {"
 rW
-SO
-tZ
-tZ
-SO
-SO
-SO
-SO
-SO
-SO
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
+Cv
+hR
+nF
+Fi
+Kn
+Kn
+Cv
+ou
+lP
+lP
+nF
+rE
+Cv
+lK
+hR
+hR
+CH
+yM
+Bl
 ub
 SR
 SR
 SR
+Aj
+SR
+jX
 SR
 SR
-SR
-SR
-SR
-SR
-SR
+xV
+Dm
 OI
 FV
 pm
@@ -1915,29 +3217,29 @@ rW
 "}
 (13,1,1) = {"
 rW
-SO
-tZ
-tZ
-SO
-SO
-SO
-SO
-SO
-SO
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-ub
+rW
+hR
+nF
+Fi
+PG
+Kn
+Kn
+UH
+hR
+hR
+ia
+Kn
+Kn
+hR
+cu
+aG
+hR
+mI
 SR
 ub
 SR
+By
+XT
 SR
 ub
 SR
@@ -1960,40 +3262,40 @@ FV
 lK
 Ky
 Kn
-SO
+Kn
 rW
 "}
 (14,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SR
-SR
-SR
-SR
-SR
-Bl
-SR
-SR
-Bl
+rW
+lP
+nF
+Fi
+Kn
+Kn
+Kn
+Kn
+ia
+ia
+zq
+lK
+hR
+hR
+Fi
+TU
+Zc
+wT
 SR
 SR
 SR
 ub
 SR
 SR
-ub
+vX
 SR
-ub
+OY
 SR
-ub
+vX
 SR
 OI
 Ky
@@ -2015,24 +3317,24 @@ rW
 "}
 (15,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+rW
+qq
+nF
+Fi
+Kn
+Kn
+Kn
+lK
+zq
+zq
+lK
+lP
+hR
+bp
+Yn
+zX
 SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
+Ot
 SR
 ub
 SR
@@ -2065,24 +3367,24 @@ rW
 "}
 (16,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+rW
+rW
+hR
+Cv
+Kn
+Cv
+lK
+IB
+lK
+lK
+aG
+hR
+Fi
+JD
 SR
+VE
 SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
+OH
 SR
 ub
 SR
@@ -2116,29 +3418,29 @@ rW
 (17,1,1) = {"
 rW
 SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
+Kn
+hR
+Kn
+Kn
+yP
+Fi
+np
+Oa
+hR
+hR
+wj
+yM
+VE
+TW
+VE
+CV
+VE
 SR
 SR
 SR
 ub
 SR
-SR
+XT
 ub
 SR
 ub
@@ -2165,35 +3467,35 @@ rW
 "}
 (18,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+Kn
+Kn
+ia
+ZE
+Fi
+Fi
+oa
+Yt
+hR
+lK
+WD
+Zc
 SR
+OH
 SR
+VE
 SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
-ub
-SR
-SR
-SR
+OH
 SR
 ub
 SR
-ub
 SR
-ub
+SR
+SR
+vX
+jX
+qQ
+SR
+vX
 SR
 OI
 hR
@@ -2215,26 +3517,26 @@ rW
 "}
 (19,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+rW
+lK
+lK
+PG
+WD
+Gp
+CH
+lK
+lK
+Zc
+Cj
+Mh
 SR
+sm
 SR
+bH
 SR
+rl
 SR
-SR
-SR
-SR
-SR
-SR
-SR
-ub
+nG
 SR
 ub
 SR
@@ -2260,36 +3562,36 @@ aD
 aD
 aD
 aD
-SO
+rW
 rW
 "}
 (20,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+lK
+Oa
+ov
+pc
+pc
+aG
+Zc
+Yn
+Cj
 SR
 SR
+Mh
+Mh
+tP
 SR
+VE
 SR
-SR
-Bl
-SR
-SR
-Bl
+HJ
 SR
 SR
 SR
 ub
 SR
 SR
-SR
+XT
 SR
 SR
 SR
@@ -2306,33 +3608,33 @@ Ra
 qK
 aD
 aD
-SO
-SO
 aD
 aD
-SO
+aD
+aD
+rW
 rW
 "}
 (21,1,1) = {"
 rW
 OI
 OI
-SR
-SR
+yM
+uw
 CX
 OI
 OI
-SO
-SO
-SR
-SR
-SR
 SR
 SR
 SR
 SR
 lI
 zP
+Eb
+SR
+SR
+SR
+lI
 qt
 lQ
 SR
@@ -2355,19 +3657,19 @@ Ra
 Js
 aD
 aD
-SO
-SO
-SO
-SO
-SO
-SO
+aD
+aD
+aD
+aD
+aD
+rW
 rW
 "}
 (22,1,1) = {"
 rW
 OI
 OI
-SR
+xV
 SR
 CX
 OI
@@ -2375,14 +3677,14 @@ OI
 SR
 SR
 SR
-SR
-SR
+XT
+if
 OI
 ZM
-pd
+Eb
 hu
 NB
-gW
+xM
 gS
 PS
 Sw
@@ -2408,34 +3710,34 @@ mt
 mt
 mt
 AC
-SO
-SO
-SO
+aD
+aD
+rW
 rW
 "}
 (23,1,1) = {"
 rW
+rW
 CX
-CX
+SR
+UU
 SR
 SR
 SR
+jX
 SR
 SR
 SR
-SR
-SR
-SR
-SR
+FI
 fo
-OI
-ED
-NE
+rW
+RZ
+nX
 YD
-OI
-LJ
-SR
-Sw
+rW
+HK
+kp
+TH
 SR
 Sw
 SR
@@ -2458,37 +3760,37 @@ mt
 mt
 mt
 mt
-SO
-SO
-SO
+aD
+rW
+rW
 rW
 "}
 (24,1,1) = {"
 rW
-SR
-SR
-SR
+rW
+jX
+Yl
 al
 Is
+XT
 SR
 SR
-SR
-CZ
+iC
 OI
 CZ
-SR
+Mh
 Mx
 tz
-JY
-vX
+EM
+Mh
 vw
-tz
+Uf
 kp
 SR
+TH
+Mh
 Sw
-SR
-Sw
-SR
+VE
 rg
 Ek
 SR
@@ -2508,9 +3810,9 @@ mt
 mt
 mt
 mt
-SO
-SO
-SO
+rW
+rW
+rW
 rW
 "}
 (25,1,1) = {"
@@ -2519,27 +3821,27 @@ SR
 SR
 te
 zH
-SR
+Yl
 SR
 SR
 SR
 OI
 OI
-OI
-SR
-hu
-NE
-nv
+rW
+Mh
+Mh
+Mh
+Mh
 yT
 dK
-NE
+Mh
 NC
 SR
 SR
-SR
-SR
-SR
-hu
+Mh
+Mh
+Mh
+VE
 Od
 SR
 GY
@@ -2558,24 +3860,24 @@ mt
 mt
 mt
 mt
-SO
-SO
-SO
+aD
+aD
+rW
 rW
 "}
 (26,1,1) = {"
 rW
+Mh
 SR
-SR
-SR
+Yl
 uR
 Is
 SR
 SR
 SR
 CZ
-OI
-CZ
+rW
+sM
 SR
 pf
 RE
@@ -2588,7 +3890,7 @@ SR
 Sw
 SR
 Sw
-SR
+VE
 YI
 FZ
 SR
@@ -2608,29 +3910,29 @@ mt
 mt
 mt
 mt
-SO
-SO
-SO
+aD
+rW
+rW
 rW
 "}
 (27,1,1) = {"
 rW
-CX
-CX
+Mh
+Mh
+Mh
 SR
 SR
 SR
-SR
-SR
-SR
-SR
+OO
+Mh
+Mh
 SR
 SR
 SR
 gW
 OI
 ED
-Tp
+Mh
 Az
 OI
 vb
@@ -2658,31 +3960,31 @@ mt
 mt
 mt
 mt
-SO
-SO
-SO
+aD
+aD
+rW
 rW
 "}
 (28,1,1) = {"
 rW
 OI
 OI
-SR
-SR
+JV
+RF
 CX
 OI
 OI
+Ug
 SR
 SR
 SR
-SR
-SR
+if
 OI
 LJ
 kp
 Mh
-MF
-fo
+Mx
+FQ
 OI
 PS
 Sw
@@ -2708,9 +4010,9 @@ mt
 mt
 mt
 sw
-SO
-SO
-SO
+bG
+bG
+rW
 rW
 "}
 (29,1,1) = {"
@@ -2718,24 +4020,24 @@ rW
 OI
 OI
 cE
-SR
+RF
 CX
 OI
 OI
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+SR
+SR
+RF
+RF
 DE
 qB
+mu
+Mh
+SR
+Xl
+SR
 wp
 mu
-SR
+RF
 SR
 SR
 Ug
@@ -2758,31 +4060,31 @@ JV
 aD
 aD
 aD
-SO
-SO
-SO
+bG
+rW
+rW
 rW
 "}
 (30,1,1) = {"
 rW
-SO
-SO
+bG
+pA
+Es
+RF
+RF
+RF
+RF
+RF
+SR
+Es
+Td
+RF
+SR
+SR
+Mh
 SR
 SR
 SR
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
 SR
 SR
 SR
@@ -2808,41 +4110,41 @@ AK
 Ra
 qK
 bG
-SO
-SO
-SO
+bG
+rW
+rW
 rW
 "}
 (31,1,1) = {"
 rW
-SO
-SO
-SO
-aO
-WD
+bG
+bG
+JV
+Td
+Td
 uJ
 uJ
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+RF
+RF
+RF
+Td
+RF
+RF
+RF
+Mh
+RF
 SR
-SR
-Sw
-Sw
-Sw
-Sw
+Ug
+Ug
 SR
 Sw
+Cc
 Sw
 Sw
+SR
+Sw
+Sw
+Gz
 Sw
 FI
 OI
@@ -2858,38 +4160,38 @@ Td
 OJ
 bG
 bG
-SO
-SO
-SO
+bG
+bG
+rW
 rW
 "}
 (32,1,1) = {"
 rW
-SO
-SO
-SO
-SO
+bG
+bG
+SA
+dQ
 JG
-uJ
-uJ
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+tf
+tf
+Td
+RF
+RF
+Td
+RF
+RF
+RF
+Mh
+RF
+Sh
+RF
 SR
 SR
 SR
 SR
 SR
 SR
-SR
+RF
 SR
 SR
 SR
@@ -2907,42 +4209,42 @@ Td
 Td
 bG
 bG
-SO
-SO
-SO
-SO
+bG
+bG
+bG
+rW
 rW
 "}
 (33,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+bG
+OI
+bG
+Xn
+dQ
+xA
+dQ
+JG
+cn
+Es
+JV
+Es
 Td
+Mh
+RF
+RF
+SR
 Td
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+YI
+RF
+SR
+SR
+RF
 SR
 SR
 SR
-SR
-SR
-SR
-SR
-SR
-SR
-SR
+RF
+RF
 SR
 SR
 OI
@@ -2958,41 +4260,41 @@ Td
 Td
 bG
 bG
-SO
-SO
-SO
+bG
+rW
+rW
 rW
 "}
 (34,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+bG
+bG
+AY
+Xz
+bG
+OI
+bG
+pA
+on
+dQ
+pA
+JG
+PR
+SP
 Td
-Td
-Td
-Td
-SO
-SO
-SO
-SO
-SR
+Es
+RF
+JV
+Sh
 SR
 Sw
-Sw
+zf
 kC
 kC
 SR
 kC
 kC
-Sw
+py
 Sw
 SR
 OI
@@ -3008,31 +4310,35 @@ Td
 JV
 Td
 rW
-SO
-SO
-SO
+rW
+rW
+rW
 rW
 "}
 (35,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+bG
+bG
+AY
+GU
+AY
+AY
+bG
+bG
+OI
+bG
+bG
+bG
+bG
+YN
+YN
+YN
 Td
-yM
 Td
-SO
-SO
-SO
-SO
+RF
+SR
+SR
+RF
 SR
 SR
 SR
@@ -3040,11 +4346,7 @@ SR
 SR
 SR
 SR
-SR
-SR
-SR
-SR
-SR
+aV
 OI
 bG
 pA
@@ -3058,43 +4360,43 @@ OF
 OF
 OF
 bG
-SO
-SO
-SO
+bG
+bG
+rW
 rW
 "}
 (36,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+OI
+bG
+AY
+GU
+wo
+AY
+YN
+YN
+AY
+VT
+zc
+bG
+LV
+GU
+bG
+qU
 Td
-Td
-Td
-SO
-SO
-SO
-SO
+RF
+RF
 SR
-SR
+pE
+hu
+yQ
+hu
+ga
+hu
+hu
+yQ
 iT
-hu
-hu
-hu
-hu
-hu
-hu
-hu
-iT
-SR
+Lr
 OI
 bG
 bG
@@ -3108,45 +4410,45 @@ KG
 Lb
 OF
 bG
-SO
-SO
-SO
+bG
+bG
+rW
 rW
 "}
 (37,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-Td
-Td
-Td
-Td
-SO
-SO
-SO
-SO
-SR
-SR
+bG
+bG
+AY
+AY
+CO
+GU
+GU
+GU
+lN
+GU
+hG
+jr
+OU
+GU
+ey
+RY
+Bk
+aO
+RF
+RF
 DL
-hu
+yQ
 OE
 AU
-lZ
+JB
 Ac
 Oh
 hu
-zH
-SR
+EB
+iJ
 OI
-Td
+bG
 bG
 OF
 Bb
@@ -3157,47 +4459,47 @@ OF
 dD
 Yf
 OF
-SO
-SO
-SO
-SO
+bG
+bG
+rW
+rW
 rW
 "}
 (38,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-Td
+rW
+bG
+bG
+AY
+AY
+AY
+BP
+GU
+hG
+GU
+SF
 GU
 Wd
 Ad
-SO
-SO
-SO
-SO
-SR
+Db
+Nr
+bi
+Td
+RF
 Ap
-zH
-hu
+Yo
+Es
 HG
 JB
 ut
 Qm
 Bw
-hu
-DL
-DV
+Lr
+Hj
+XL
 OI
-SO
 bG
+rW
 OF
 qs
 KG
@@ -3207,47 +4509,47 @@ OF
 OF
 OF
 OF
-SO
-SO
-SO
-SO
+bG
+bG
+rW
+rW
 rW
 "}
 (39,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+rW
+bG
+bG
+bG
+AY
+YN
+Rn
+Hq
+zs
+Af
+Ku
 LP
-SO
-SO
-SO
-SO
-SO
-SO
-SR
-SR
-SR
-hu
+zj
+GU
+ey
+by
+br
+JV
+Td
+Es
+Es
+nk
 HG
 JB
 El
 Qm
 tY
-hu
+HM
 DV
-Lr
+gz
 OI
-SO
-SO
+bG
+rW
 OF
 IT
 KG
@@ -3257,47 +4559,47 @@ XY
 KG
 ih
 OF
-SO
-SO
-SO
-SO
+bG
+bG
+rW
+rW
 rW
 "}
 (40,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+rW
+rW
+bG
+bG
 AY
-Gt
+Rl
+Rt
+AY
+Nh
+LP
+Se
+iD
+YN
 lW
-SO
-SO
-SO
-SO
+GU
+GU
+pA
+JG
 hA
-SR
-zH
-hu
+Es
 EB
+fk
+Qm
 Nv
 sc
 jE
-ag
-hu
+JB
+uG
 bG
 bG
 bG
-SO
-SO
+bG
+rW
 OF
 RG
 KG
@@ -3307,37 +4609,37 @@ OF
 aM
 hT
 OF
-SO
-SO
-SO
-SO
+bG
+bG
+rW
+rW
 rW
 "}
 (41,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+rW
+rW
+rW
+rW
+rW
+Xr
+FY
+AY
+YN
+Zn
+WR
+ko
 ZC
-SO
-SO
-SO
-SO
-SO
-SR
-DV
-zH
-hu
+GU
+Yr
+YN
+bG
+on
+HM
+Tf
 EB
+XD
+Qm
 JB
 up
 JB
@@ -3345,9 +4647,9 @@ Pp
 ar
 bG
 bG
-OI
-SO
-SO
+rW
+rW
+rW
 OF
 Bu
 ik
@@ -3357,36 +4659,36 @@ OF
 OF
 OF
 OF
-SO
-SO
-SO
-SO
+bG
+rW
+rW
+rW
 rW
 "}
 (42,1,1) = {"
 rW
-SO
-SO
-SO
-Kn
-Kn
-Kn
-SO
-SO
-SO
-SO
-SO
-SO
-tZ
-tZ
-tZ
-tZ
-SO
-SO
+rW
+bG
+bG
+bG
+AY
+Px
+Gt
+IM
+AY
+rW
+YN
+AY
+AY
+XJ
+YN
+YN
+bG
+IE
 bG
 OI
-SR
-hu
+uG
+uN
 sA
 Ta
 Tj
@@ -3395,9 +4697,9 @@ hH
 bG
 bG
 bG
-OI
-SO
-SO
+rW
+bG
+bG
 OF
 cg
 UQ
@@ -3407,47 +4709,47 @@ XY
 ik
 Yc
 OF
-SO
-SO
-SO
-SO
+bG
+bG
+rW
+rW
 rW
 "}
 (43,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-Kn
-Kn
-SO
-SO
-SO
-SO
-SO
-SO
+rW
+rW
+bG
+OI
+AY
+SJ
+YN
+AY
+rW
+rW
+AY
+AY
+AY
 tZ
-tZ
-tZ
-tZ
-SO
-OI
-bG
+AY
+AY
 bG
 OI
 bG
-bG
-OI
-bG
-bG
+rW
+YN
+SV
 bG
 OI
 bG
 bG
+bG
 OI
-SO
-SO
+bG
+rW
+rW
+rW
+bG
 OF
 hr
 xW
@@ -3458,98 +4760,98 @@ PL
 Ds
 rW
 rW
-SO
-SO
-SO
+rW
+rW
+rW
 rW
 "}
 (44,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+rW
+rW
+rW
+bG
+bG
+AY
+AY
+bG
+rW
+bG
+bG
+bG
+AY
+GU
+AY
+YN
+YN
 OI
+rW
+YN
+UT
+Ls
+AY
 bG
 bG
 bG
 bG
 bG
+rW
+rW
+rW
+rW
 bG
-bG
-bG
-bG
-bG
-bG
-bG
-OI
-SO
-SO
 OF
 OF
-OF
+rW
 OF
 FR
 OF
 OF
 OF
 OF
+bG
+bG
 rW
-SO
-SO
-SO
+rW
 rW
 "}
 (45,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+rW
+rW
+rW
+bG
+YN
 bG
 bG
+rW
+rW
 bG
-bG
-bG
-bG
-bG
-bG
-bG
-bG
-bG
-bG
+YN
 bG
 OI
-SO
-SO
-SO
-SO
+lZ
+ZC
+GU
+GU
+ZC
+lZ
+GU
+tZ
+AY
+bG
+bG
+rW
+rW
+bG
+rW
+rW
+rW
+rW
+rW
+rW
+bG
+rW
 rW
 OF
 Qj
@@ -3557,49 +4859,49 @@ FR
 Sb
 jN
 OF
+bG
+bG
+bG
 rW
-SO
-SO
-SO
 rW
 "}
 (46,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+rW
+rW
+rW
 bG
 bG
 bG
 bG
+rW
+rW
 bG
 bG
+rW
+rW
+rW
+AY
+AY
+AY
 bG
+rW
+AY
+AY
+rW
+rW
+rW
 bG
-bG
-bG
-bG
-bG
-bG
-OI
-SO
-SO
-SO
-SO
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
 rW
 rW
 rW
@@ -3607,50 +4909,50 @@ OF
 Rw
 fH
 rW
+bG
 rW
-SO
-SO
-SO
+rW
+rW
 rW
 "}
 (47,1,1) = {"
 rW
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
-SO
+rW
+rW
+rW
+rW
 bG
 bG
 bG
+rW
 bG
 bG
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
 bG
-bG
-bG
-bG
-bG
-bG
-bG
-bG
+rW
+rW
+rW
+rW
+rW
+rW
+rW
+rW
 OI
-SO
-SO
-SO
-SO
-SO
+rW
+rW
+rW
+rW
+rW
 rW
 rW
 rW
@@ -3658,9 +4960,9 @@ Xo
 OF
 rW
 rW
-SO
-SO
-SO
+rW
+rW
+rW
 rW
 "}
 (48,1,1) = {"

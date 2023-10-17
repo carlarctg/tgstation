@@ -305,6 +305,9 @@ Difficulty: Extremely Hard
 	T.ChangeTurf(change_turf, flags = CHANGETURF_INHERIT_AIR)
 	addtimer(CALLBACK(T, TYPE_PROC_REF(/turf, ChangeTurf), reset_turf, null, CHANGETURF_INHERIT_AIR), duration, TIMER_OVERRIDE|TIMER_UNIQUE)
 
+/obj/item/clothing/shoes/winterboots/ice_boots/ice_trail/flavor
+	change_turf = /turf/open/misc/snow/actually_safe
+
 /obj/item/pickaxe/drill/jackhammer/demonic
 	name = "demonic jackhammer"
 	desc = "Cracks rocks at an inhuman speed, as well as being enhanced for combat purposes."

@@ -972,12 +972,12 @@
 
 // Potions!!!
 
-// Actually just normal reagent holders. Used in VR.
+// Actually just glorified bottles. Used in VR.
 
 /obj/item/reagent_containers/cup/glass/bottle/healing_potion
 	name = "healing potion"
 	desc = "A vibrant red draught that will ail your wounds and mend your ills. Smells like tomato."
-	gulp_size = 30
+	gulp_size = 15
 	amount_per_transfer_from_this = 30
 	possible_transfer_amounts = list(30)
 	list_reagents = list(/datum/reagent/medicine/sal_acid = 15, /datum/reagent/medicine/c2/libital = 15, /datum/reagent/medicine/oxandrolone = 15, /datum/reagent/medicine/c2/aiuri = 15, /datum/reagent/medicine/coagulant = 20, /datum/reagent/consumable/ethanol/bloody_mary = 20)
@@ -1000,20 +1000,42 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/small/stasis_potion
 	name = "stasis potion"
-	desc = "An icy blue potion that will encase you in solid ice nigh-instantly after drinking. Store quickly!"
-	gulp_size = 10
-	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(10)
-	list_reagents = list(/datum/reagent/inverse/cryostylane = 50)
+	desc = "An icy blue potion that will encase you in solid ice nigh-instantly after drinking. Store quickly! Smells like blueberry."
+	gulp_size = 5
+	amount_per_transfer_from_this = 5
+	possible_transfer_amounts = list(5)
+	list_reagents = list(/datum/reagent/inverse/cryostylane = 20)
 
 /obj/item/reagent_containers/cup/glass/bottle/small/haste_potion
 	name = "haste potion"
-	desc = "A light red colored potion that will make you feel like the entire world (except your heart) is moving in slow motion. Its insides swirl violently."
+	desc = "A light red colored potion that will make you feel like the entire world (except your heart) is moving in slow motion. Its insides swirl violently. Smells like strawberries."
 	gulp_size = 15
 	amount_per_transfer_from_this = 15
 	possible_transfer_amounts = list(15)
 	list_reagents = list(/datum/reagent/drug/kronkaine = 30, /datum/reagent/medicine/changelinghaste = 30)
 
 /obj/item/reagent_containers/cup/glass/bottle/hilarious_potion
+	name = "hilarious potion"
+	desc = "An incredibly funny pink potion! Just looking at it makes you smirk. Smells like bananas, unsurprisingly."
+	gulp_size = 15
+	amount_per_transfer_from_this = 15
+	possible_transfer_amounts = list(15)
+	list_reagents = list(/datum/reagent/drug/happiness = 45, /datum/reagent/consumable/laughter = 45)
+
+/obj/item/reagent_containers/cup/glass/bottle/dreadful_potion
+	name = "dreadful potion"
+	desc = "Nausea overcomes you just from glancing at this draught. I don't even know what it looks like. Smells pretty good though."
+	gulp_size = 25
+	amount_per_transfer_from_this = 25
+	possible_transfer_amounts = list(25)
+	list_reagents = list(/datum/reagent/drug/bath_salts = 25, /datum/reagent/drug/mushroomhallucinogen = 25, /datum/reagent/drug/kronkaine = 25, /datum/reagent/drug/kronkaine/gore = 25)
+
+/obj/item/reagent_containers/cup/glass/bottle/wyvern
+	name = "Wyvern's Draught"
+	desc = "A clear liquid that smells like clear poison. It is supposed to make the mind of the drinker more malleable, allowing them to quickly absorb new information, such as that from books. Magical books. Yes, this is for reading spellbooks faster."
+	gulp_size = 30
+	amount_per_transfer_from_this = 30
+	possible_transfer_amounts = list(30)
+	list_reagents = list(/datum/reagent/drug/kronkaine = 30, /datum/reagent/drug/kronkaine/gore = 30, /datum/reagent/drug/happiness = 30)
 
 #undef BOTTLE_KNOCKDOWN_DEFAULT_DURATION
