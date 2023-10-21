@@ -136,6 +136,7 @@
 	trait_flags = STATION_TRAIT_ABSTRACT
 	report_message = "This station has received an esteemed guest! They will most likely be a high value target for any Syndicate invasions. Be sure to keep them safe!"
 	blacklist = list()
+	sign_up_button = TRUE
 	///What role to give to the picked player
 	var/datum/antagonist/role_to_give
 	///What job to give to the picked player
@@ -196,6 +197,23 @@
 		return to_chat(world, "no procne we yeetin")
 	SSjob.SendToLateJoin(picked_mind.current)
 	picked_mind.add_antag_datum(antag_datum_instance)
+
+/datum/station_trait/protagonist/modify_lobby_button(atom/movable/screen/lobby/button/sign_up/lobby_button)
+	. = ..()
+	lobby_button.add_overlay(icon('icons/hud/lobby/signup_button.dmi', "role"))
+
+/datum/station_trait/protagonist/on_lobby_button_click(atom/movable/screen/lobby/button/sign_up/lobby_button, location, control, params, mob/dead/new_player/user)
+	if(LAZYFIND(user.rolling_these_specials, antag_datum_instance))
+		LAZYREMOVE(user.rolling_these_specials, antag_datum_instance)
+	else
+		LAZYADD(user.rolling_these_specials, antag_datum_instance)
+
+/datum/station_trait/protagonist/on_lobby_button_update_icon(atom/movable/screen/lobby/button/sign_up/lobby_button, updates)
+	var/mob/dead/new_player/user = locate(lobby_button.owner)
+	if(LAZYFIND(user.rolling_these_specials, antag_datum_instance))
+		lobby_button.base_icon_state = "signup_on"
+	else
+		lobby_button.base_icon_state = "signup"
 
 /datum/station_trait/protagonist/royal_prince
 	name = "Royal Visit"

@@ -22,6 +22,8 @@
 	var/trait_flags
 	/// Whether or not this trait can be reverted by an admin
 	var/can_revert = TRUE
+	/// Whether or not this trait has a lobby button.
+	var/sign_up_button = FALSE
 
 /datum/station_trait/New()
 	. = ..()
@@ -55,3 +57,15 @@
 		REMOVE_TRAIT(SSstation, trait_to_give, STATION_TRAIT)
 
 	qdel(src)
+
+/datum/station_trait/proc/modify_lobby_button(atom/movable/screen/lobby/button/sign_up/lobby_button)
+	RegisterSignal(lobby_button, COMSIG_CLICK, PROC_REF(on_lobby_button_click))
+	RegisterSignal(lobby_button, COMSIG_ATOM_UPDATE_ICON, PROC_REF(on_lobby_button_update_icon))
+
+/datum/station_trait/proc/on_lobby_button_click(atom/movable/screen/lobby/button/sign_up/lobby_button, location, control, params, mob/dead/new_player/user)
+	SIGNAL_HANDLER
+	return
+
+/datum/station_trait/proc/on_lobby_button_update_icon(atom/movable/screen/lobby/button/sign_up/lobby_button, updates)
+	SIGNAL_HANDLER
+	return

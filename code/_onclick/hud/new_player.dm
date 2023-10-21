@@ -10,8 +10,10 @@
 		return
 
 	var/list/buttons = subtypesof(/atom/movable/screen/lobby)
-	for(var/button_type in buttons)
-		var/atom/movable/screen/lobby/lobbyscreen = new button_type()
+	for(var/atom/movable/screen/lobby/lobbyscreen as anything in buttons)
+		if(!initial(lobbyscreen.always_create))
+			continue
+		lobbyscreen = new lobbyscreen()
 		lobbyscreen.SlowInit()
 		lobbyscreen.hud = src
 		static_inventory += lobbyscreen
@@ -19,10 +21,25 @@
 			var/atom/movable/screen/lobby/button/lobby_button = lobbyscreen
 			lobby_button.owner = REF(owner)
 
+	var/i = 1
+	for(var/datum/station_trait/trait as anything in SSstation.station_traits)
+		if(!trait.sign_up_button)
+			continue
+		var/atom/movable/screen/lobby/button/sign_up/sign_up_button = new()
+		sign_up_button.SlowInit()
+		sign_up_button.hud = src
+		sign_up_button.owner = REF(owner)
+		sign_up_button.screen_loc = "TOP:-[42+28*i],CENTER:-86"
+		static_inventory += sign_up_button
+		trait.modify_lobby_button(sign_up_button)
+		i++
+
 /atom/movable/screen/lobby
 	plane = SPLASHSCREEN_PLANE
 	layer = LOBBY_BUTTON_LAYER
 	screen_loc = "TOP,CENTER"
+	/// Should we create this lobby button everytime we create a new player hud?
+	var/always_create = TRUE
 
 /// Run sleeping actions after initialize
 /atom/movable/screen/lobby/proc/SlowInit()
@@ -112,6 +129,51 @@
 	preferences.current_window = PREFERENCE_TAB_CHARACTER_PREFERENCES
 	preferences.update_static_data(usr)
 	preferences.ui_interact(usr)
+
+///Button that appears before the game has started
+/atom/movable/screen/lobby/button/ready
+	screen_loc = "TOP:-8,CENTER:-65"
+	icon = 'icons/hud/lobby/ready.dmi'
+	icon_state = "not_ready"
+	base_icon_state = "not_ready"
+	var/ready = FALSE
+
+/atom/movable/screen/lobby/button/ready/Initialize(mapload)
+	. = ..()
+	switch(SSticker.current_state)
+		if(GAME_STATE_PREGAME, GAME_STATE_STARTUP)
+			RegisterSignal(SSticker, COMSIG_TICKER_ENTER_SETTING_UP, PROC_REF(hide_ready_button))
+		if(GAME_STATE_SETTING_UP)
+			set_button_status(FALSE)
+			RegisterSignal(SSticker, COMSIG_TICKER_ERROR_SETTING_UP, PROC_REF(show_ready_button))
+		else
+			set_button_status(FALSE)
+
+/atom/movable/screen/lobby/button/ready/proc/hide_ready_button()
+	SIGNAL_HANDLER
+	set_button_status(FALSE)
+	UnregisterSignal(SSticker, COMSIG_TICKER_ENTER_SETTING_UP)
+	RegisterSignal(SSticker, COMSIG_TICKER_ERROR_SETTING_UP, PROC_REF(show_ready_button))
+
+/atom/movable/screen/lobby/button/ready/proc/show_ready_button()
+	SIGNAL_HANDLER
+	set_button_status(TRUE)
+	UnregisterSignal(SSticker, COMSIG_TICKER_ERROR_SETTING_UP)
+	RegisterSignal(SSticker, COMSIG_TICKER_ENTER_SETTING_UP, PROC_REF(hide_ready_button))
+
+/atom/movable/screen/lobby/button/ready/Click(location, control, params)
+	. = ..()
+	if(!.)
+		return
+	var/mob/dead/new_player/new_player = hud.mymob
+	ready = !ready
+	if(ready)
+		new_player.ready = PLAYER_READY_TO_PLAY
+		base_icon_state = "ready"
+	else
+		new_player.ready = PLAYER_NOT_READY
+		base_icon_state = "not_ready"
+	update_appearance(UPDATE_ICON)
 
 ///Shown when the game has started
 /atom/movable/screen/lobby/button/join
@@ -314,3 +376,9 @@
 		return
 	var/mob/dead/new_player/new_player = hud.mymob
 	new_player.handle_player_polling()
+
+/atom/movable/screen/lobby/button/sign_up
+	icon = 'icons/hud/lobby/signup_button.dmi'
+	icon_state = "signup"
+	base_icon_state = "signup"
+	always_create = FALSE
