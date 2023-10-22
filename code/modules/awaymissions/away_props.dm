@@ -52,6 +52,59 @@
 				return reverse
 	return !reverse
 
+/obj/effect/identity_barrier
+	name = "identity barrier"
+	desc = "Lets a person through, then only allows that person to come and go."
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "medi_holo_no_anim"
+	anchored = TRUE
+	var/mob/living/allowed_entity
+
+/obj/effect/identity_barrier/Initialize(mapload)
+	. = ..()
+	update_description()
+
+/obj/effect/identity_barrier/proc/update_description()
+	desc = initial(desc)
+	if(allowed_entity)
+		desc += "It is currently bound to [allowed_entity]."
+	else
+		desc += "It is not currently bound to any entity."
+
+/obj/effect/oneway/CanAllowThrough(atom/movable/mover, border_dir)
+	. = ..()
+	// No point if this is false
+	if(!.)
+		return
+	// Any non-mob can pass. This does include teleport beacons, quantum inverters, etc etc, so be careful!
+	if(!ismob(mover))
+		return TRUE
+	var/mob/living/living_mover = mover
+	// No marked entity? Set this one as it.
+	if(isnull(allowed_entity))
+		allowed_entity = living_mover
+		update_description()
+		visible_message("[src] pulses as [mover] passes through, marking [mover.p_them()] as the only allowed creature!")
+		playsound(src, 'sound/magic/staff_chaos.ogg', 25, TRUE)
+		ASYNC
+			animate(src, transform = matrix()*2, alpha = 0, time = 5, flags = ANIMATION_END_NOW) //fade out
+			sleep(0.5 SECONDS)
+			animate(src, transform = matrix(), alpha = 255, time = 0, flags = ANIMATION_END_NOW)
+		return TRUE
+
+	// Yes marked entity and the mover is said entity? Let them through.
+	if(living_mover == allowed_entity)
+		return TRUE
+
+	// No success condition passed, blare out an error and return false.
+	ASYNC
+		var/oldcolor = color
+		color = rgb(255, 0, 0)
+		animate(src, color = oldcolor, time = 5)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 0.5 SECONDS)
+
+	return FALSE
+
 /obj/structure/pitgrate
 	name = "pit grate"
 	icon = 'icons/obj/smooth_structures/lattice.dmi'

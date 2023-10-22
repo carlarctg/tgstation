@@ -3051,4 +3051,4 @@
 
 /datum/reagent/abidonium/on_mob_delete(mob/living/affected_mob)
 	. = ..()
-	REMOVE_TRAIT(metabolizer, traits_to_add, REF(src))
+	REMOVE_TRAIT(affected_mob, traits_to_add, REF(src))

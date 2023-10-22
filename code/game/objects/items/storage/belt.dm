@@ -436,6 +436,11 @@
 	inhand_icon_state = "explorer2"
 	worn_icon_state = "explorer2"
 
+/obj/item/storage/belt/mining/alt/unrestricted/Initialize(mapload)
+	. = ..()
+	atom_storage.set_holdable(null)
+	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
+
 /obj/item/storage/belt/mining/healing/PopulateContents()
 	for(var/i in 1 to 2)
 		new /obj/item/reagent_containers/hypospray/medipen/survival/luxury(src)
@@ -455,6 +460,11 @@
 /obj/item/storage/belt/mining/primitive/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 5
+
+/obj/item/storage/belt/mining/primitive/unrestricted/Initialize(mapload)
+	. = ..()
+	atom_storage.set_holdable(null)
+	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
 
 /obj/item/storage/belt/soulstone
 	name = "soul stone belt"

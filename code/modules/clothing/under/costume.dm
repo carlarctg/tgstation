@@ -107,6 +107,9 @@
 	desc = "This gladiator uniform appears to be covered in ash and fairly dated."
 	has_sensor = NO_SENSORS
 
+/obj/item/clothing/under/costume/gladiator/ash_walker/darkened
+	color = "#727272"
+
 /obj/item/clothing/under/costume/maid
 	name = "maid costume"
 	desc = "Maid in China."

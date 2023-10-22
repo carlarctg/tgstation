@@ -85,12 +85,12 @@
 		"Shadow" = 1,
 		)
 
-	chosen_theme = pick(corpse_themes)
+	var/chosen_theme = pick(corpse_themes)
 
 	if(override_costume)
 		chosen_theme = override_costume
 
-	switch(corpse_theme)
+	switch(chosen_theme)
 		if("Miner")
 			return /datum/outfit/consumed_miner
 		if("Settler")

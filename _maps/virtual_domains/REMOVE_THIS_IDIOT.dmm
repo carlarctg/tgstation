@@ -583,11 +583,7 @@
 /turf/open/floor/mineral/titanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Dp" = (
-/obj/effect/mob_spawn/ghost_role/human/syndicatespace{
-	name = "VR Syndicate Assailant";
-	flavour_text = "Gear up and get to fighting soldier. Those NT scum want to raid our plasma operation and vault, we can't let them!";
-	important_text = "You are a VR enemy to up to 3 bitrunners. Kill them and bask in your glory before being de-rezzed."
-	},
+/obj/effect/mob_spawn/ghost_role/human/virtual_domain/syndicate_showdown,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "DT" = (
@@ -626,8 +622,8 @@
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "EH" = (
-/obj/structure/spawner/syndicate,
 /obj/structure/cable/layer1,
+/obj/structure/spawner/syndicate/stormtrooper,
 /turf/open/misc/asteroid/airless,
 /area/space)
 "Fa" = (
@@ -867,6 +863,15 @@
 /obj/item/gun/ballistic/automatic/pistol/m1911,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"Ol" = (
+/obj/effect/landmark/bitrunning/cache_spawn,
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
+/obj/structure/window/reinforced/plasma/spawner/directional/south,
+/obj/machinery/door/window/brigdoor{
+	dir = 4
+	},
+/turf/open/misc/asteroid/airless,
+/area/space)
 "Ox" = (
 /turf/open/space/basic,
 /area/space)
@@ -2444,7 +2449,7 @@ BJ
 BJ
 RF
 rK
-BJ
+Ol
 oP
 BJ
 BJ

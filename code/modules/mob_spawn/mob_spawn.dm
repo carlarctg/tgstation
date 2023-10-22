@@ -32,6 +32,14 @@
 	var/facial_haircolor
 	///sets a human's skin tone
 	var/skin_tone
+	///sets a human(oid)'s mutant color. used for lizards and slimepeople
+	var/mutcolor
+	///sets a humans gender (male, female, plural, pronoun)
+	var/mob_gender
+	///sets a humans physique (male or female). note that if not set there is a small chance to differ from assigned gender!
+	var/physique
+	/// LIST! sets eye colors. 1 is left, 2 is right, if 2 is unset 1 is used for right eye.
+	var/list/eye_colors
 	/// Weakref to the mob this spawner created - just if you needed to do something with it.
 	var/datum/weakref/spawned_mob_ref
 
@@ -76,11 +84,27 @@
 		if(facial_haircolor)
 			spawned_human.facial_hair_color = facial_haircolor
 		else
-			spawned_human.facial_hair_color = "#[random_color()]"
+			spawned_human.facial_hair_color = haircolor
 		if(skin_tone)
 			spawned_human.skin_tone = skin_tone
 		else
 			spawned_human.skin_tone = random_skin_tone()
+		if(mob_gender)
+			spawned_human.gender = mob_gender
+		else
+			spawned_human.gender = pick_weight(list(MALE = 50, FEMALE = 50, PLURAL = 10, NEUTER = 1)) // in the far future of 2XXX, the cis roam the earth
+		if(physique)
+			spawned_human.physique = physique
+		else if(spawned_human.gender in list(MALE, FEMALE) && prob(98))
+			spawned_human.physique = spawned_human.gender
+		else
+			spawned_human.physique = pick(MALE, FEMALE)
+		if(eye_colors)
+			spawned_human.eye_color_left = eye_colors[1]
+			spawned_human.eye_color_right = isnull(eye_colors[2]) ? eye_colors[1] : eye_colors[2]
+		else
+			spawned_human.eye_color_left = random_eye_color()
+			spawned_human.eye_color_right = prob(99) ? spawned_human.eye_color_left : random_eye_color()
 		spawned_human.update_body(is_creating = TRUE)
 
 /obj/effect/mob_spawn/proc/name_mob(mob/living/spawned_mob, forced_name)

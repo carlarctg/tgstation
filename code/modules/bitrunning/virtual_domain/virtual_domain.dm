@@ -32,3 +32,17 @@
 	var/test_only = FALSE
 	/// The safehouse to load into the map
 	var/datum/map_template/safehouse/safehouse_path = /datum/map_template/safehouse/den
+	/// Flags for the mission to do special stuff when loading.
+	var/mission_flags
+	/// At least this many candidates or it will cancel the loading!
+	var/mission_min_candidates = 0
+	/// Maximum amount possible of above.
+	var/mission_max_candidates = 1
+	/// Ghosts that will be spawned as, presumably, an antagonist in the map.
+	var/list/chosen_ghosts
+	/// The role that ghosts will get. Only used for poll text.
+	var/spawner_role = "Antagonist"
+
+/datum/lazy_template/virtual_domain/New(var/list/chosen_ghosts)
+	. = ..()
+	SEND_GLOBAL_SIGNAL("COMSIG_GLOBAL_VIRTUAL_DOMAIN_LOADED", chosen_ghosts)
