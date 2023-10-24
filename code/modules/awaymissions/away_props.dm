@@ -52,6 +52,8 @@
 				return reverse
 	return !reverse
 
+GLOBAL_LIST_EMPTY(identity_barriers)
+
 /obj/effect/identity_barrier
 	name = "identity barrier"
 	desc = "Lets a person through, then only allows that person to come and go."
@@ -59,10 +61,17 @@
 	icon_state = "medi_holo_no_anim"
 	anchored = TRUE
 	var/mob/living/allowed_entity
+	var/key = "default"
 
 /obj/effect/identity_barrier/Initialize(mapload)
 	. = ..()
 	update_description()
+	GLOB.identity_barriers += src
+
+/obj/effect/identity_barrier/Destroy(force)
+	allowed_entity = null
+	GLOB.identity_barriers -= src
+	. = ..()
 
 /obj/effect/identity_barrier/proc/update_description()
 	desc = initial(desc)
@@ -71,20 +80,28 @@
 	else
 		desc += "It is not currently bound to any entity."
 
-/obj/effect/oneway/CanAllowThrough(atom/movable/mover, border_dir)
+/obj/effect/identity_barrier/Bump(atom/bumped_atom)
 	. = ..()
 	// No point if this is false
 	if(!.)
 		return
 	// Any non-mob can pass. This does include teleport beacons, quantum inverters, etc etc, so be careful!
-	if(!ismob(mover))
+	if(!ismob(bumped_atom))
 		return TRUE
-	var/mob/living/living_mover = mover
-	// No marked entity? Set this one as it.
+	var/mob/living/living_mover = bumped_atom
+	// No marked entity set...
 	if(isnull(allowed_entity))
+		// We're going to check all other barriers. If they're part of the same system (key) and they also have this entity set, they won't allow them through.
+		for(var/obj/effect/identity_barrier/barrier in GLOB.identity_barriers)
+			// The entity is being greedy, bar entry.
+			if(barrier.key == src.key && barrier.allowed_entity == living_mover)
+				visible_message("[src] detects another barried keyed to [allowed_entity] and refuses [living_mover.p_them()] passage!")
+				flash_red()
+				return FALSE
+		// This is the first barrier in the system for them, let them through.
 		allowed_entity = living_mover
 		update_description()
-		visible_message("[src] pulses as [mover] passes through, marking [mover.p_them()] as the only allowed creature!")
+		visible_message("[src] pulses as [living_mover] passes through, marking [living_mover.p_them()] as the only allowed creature!")
 		playsound(src, 'sound/magic/staff_chaos.ogg', 25, TRUE)
 		ASYNC
 			animate(src, transform = matrix()*2, alpha = 0, time = 5, flags = ANIMATION_END_NOW) //fade out
@@ -97,6 +114,43 @@
 		return TRUE
 
 	// No success condition passed, blare out an error and return false.
+	flash_red()
+
+	return FALSE
+
+/obj/effect/identity_barrier/proc/flash_red()
+	var/oldcolor = color
+	color = rgb(255, 0, 0)
+	animate(src, color = oldcolor, time = 5)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 0.5 SECONDS)
+
+/obj/effect/faction_barrier
+	name = "faction barrier"
+	desc = "Only lets a specific faction enter!"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "medi_holo_no_anim"
+	anchored = TRUE
+	/// If the passing mob has any faction listed here it will be able to pass.
+	var/list/allowed_factions = list(FACTION_MONKEY)
+
+/obj/effect/faction_barrier/Bump(atom/bumped_atom)
+	. = ..()
+	// No point if this is false
+	if(!.)
+		return
+	// Any non-mob can pass. This does include teleport beacons, quantum inverters, etc etc, so be careful!
+	if(!ismob(bumped_atom))
+		return TRUE
+	var/mob/living/living_mover = bumped_atom
+	// Checks factions. If at least one is shared let them through.
+	if(faction_check(living_mover.faction, allowed_factions, exact_match = FALSE))
+		ASYNC
+			animate(src, transform = matrix()*2, alpha = 0, time = 5, flags = ANIMATION_END_NOW) //fade out
+			sleep(0.5 SECONDS)
+			animate(src, transform = matrix(), alpha = 255, time = 0, flags = ANIMATION_END_NOW)
+		return TRUE
+
+	// No success condition passed, blare out an error and return false.
 	ASYNC
 		var/oldcolor = color
 		color = rgb(255, 0, 0)
@@ -104,6 +158,9 @@
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 0.5 SECONDS)
 
 	return FALSE
+
+/obj/effect/faction_barrier/syndicate
+	allowed_factions = list(ROLE_SYNDICATE, FACTION_RUSSIAN)
 
 /obj/structure/pitgrate
 	name = "pit grate"

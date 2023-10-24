@@ -2,57 +2,59 @@
 "ag" = (
 /obj/structure/bookcase/random/religion,
 /turf/closed/indestructible/rock/snow/ice,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ak" = (
 /obj/structure/table/wood,
 /obj/item/book_of_babel,
 /turf/open/floor/carpet/blue,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "al" = (
 /obj/structure/table/wood,
 /obj/item/book/granter/action/spell/blind/wgw{
 	icon_state = "book"
 	},
 /turf/open/floor/carpet/black,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ar" = (
 /obj/structure/table_frame/wood,
 /turf/open/misc/asteroid/basalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "aD" = (
 /turf/closed/indestructible/rock,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "aG" = (
 /obj/structure/flora/rock/pile/icy/style_random,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "aL" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 5
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "aM" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/costume/dutch,
 /obj/item/clothing/suit/chaplainsuit/armor/witchhunter,
 /obj/item/clothing/head/helmet/chaplain/witchunter_hat,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/item/clothing/gloves/color/black,
+/obj/item/book/granter/action/spell/area_cleanse,
 /turf/open/floor/iron/grimy,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "aO" = (
 /obj/structure/bonfire/prelit,
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "aV" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/effect/decal/cleanable/ash/large,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "bi" = (
 /obj/structure/trap/eldritch/mad,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "bp" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 9
@@ -61,30 +63,28 @@
 /obj/item/stack/sheet/mineral/wood,
 /obj/item/shard,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "br" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/structure/trap/eldritch/tentacle,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "by" = (
 /obj/structure/stone_tile/slab/cracked{
 	dir = 4
 	},
-/obj/effect/oneway{
-	dir = 1
-	},
+/obj/effect/oneway,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "bC" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "bG" = (
 /turf/closed/mineral/ash_rock,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "bH" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/food/flour{
@@ -92,14 +92,14 @@
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/floor/carpet/green,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "bV" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "cg" = (
 /obj/structure/table/wood,
 /obj/item/food/grown/apple,
@@ -107,30 +107,30 @@
 /obj/item/food/grown/apple,
 /obj/item/food/grown/apple,
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "cn" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/structure/bonfire/prelit,
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "cu" = (
 /obj/item/shard,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "cv" = (
 /obj/item/skeleton_key,
 /obj/effect/decal/remains/human,
 /obj/item/clothing/gloves/latex,
 /turf/open/misc/ice,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "cE" = (
 /obj/structure/sign/poster/contraband/lusty_xenomorph/directional/north,
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "cT" = (
 /obj/structure/flora/ash/fireblossom,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "dd" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -140,56 +140,57 @@
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "dq" = (
 /obj/structure/fake_stairs/wood/directional/north,
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
 /turf/open/space/basic,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "dA" = (
 /obj/structure/chair/wood/wings{
 	dir = 8
 	},
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "dD" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/shoes/plate/blue,
-/obj/item/clothing/gloves/plate/blue,
 /obj/item/clothing/suit/chaplainsuit/armor/templar,
 /obj/item/clothing/head/helmet/chaplain{
 	pixel_y = 9
 	},
+/obj/item/clothing/gloves/tackler/plate,
+/obj/item/clothing/shoes/bhop/plate,
 /turf/open/floor/iron/grimy,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "dJ" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/effect/decal/cleanable/molten_object,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "dK" = (
 /obj/effect/mob_spawn/corpse/human/tigercultist/perforated,
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "dM" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 10
 	},
 /obj/effect/mob_spawn/corpse/human/skeleton,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "dO" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 10
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "dQ" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ea" = (
 /obj/structure/chair/wood/wings,
 /obj/effect/decal/cleanable/food/flour{
@@ -197,7 +198,7 @@
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ee" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 5
@@ -209,20 +210,22 @@
 	dir = 6
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "em" = (
 /obj/structure/barricade/wooden/crude/snow,
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /obj/machinery/door/puzzle/keycard/library,
-/obj/effect/oneway,
+/obj/effect/oneway{
+	dir = 1
+	},
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "eo" = (
 /obj/structure/chair/wood/wings,
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "eq" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 8
@@ -233,13 +236,13 @@
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ey" = (
 /obj/structure/stone_tile/surrounding/cracked{
 	dir = 6
 	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "eC" = (
 /obj/effect/decal/cleanable/food/flour{
 	name = "snow";
@@ -249,7 +252,7 @@
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "eZ" = (
 /obj/structure/chair/wood/wings{
 	dir = 4
@@ -262,25 +265,29 @@
 	dir = 10
 	},
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "fk" = (
 /obj/structure/flora/ash/leaf_shroom,
 /turf/open/misc/asteroid/basalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "fo" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
 	},
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "fH" = (
 /obj/structure/table/wood/fancy/orange,
 /obj/item/storage/backpack/duffelbag/clown/cream_pie,
 /obj/item/sticker/clown,
 /obj/item/sticker/clown,
 /obj/item/stamp/clown,
+/obj/item/reagent_containers/cup/glass/bottle/dreadful_potion{
+	pixel_y = 1;
+	pixel_x = 9
+	},
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "fI" = (
 /obj/effect/decal/cleanable/food/flour{
 	name = "snow";
@@ -288,102 +295,105 @@
 	},
 /mob/living/basic/pet/dog/corgi/puppy/void,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ga" = (
 /obj/structure/flora/ash/seraka,
 /turf/open/misc/asteroid/basalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "gj" = (
-/obj/structure/mannequin/wood,
+/obj/structure/mannequin/wood{
+	anchored = 1
+	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "gl" = (
 /obj/structure/flora/bush/ferny/style_random,
 /turf/open/misc/grass,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "gz" = (
 /obj/structure/table_frame/wood,
 /obj/structure/flora/lunar_plant/style_3{
 	name = "eldritch plant"
 	},
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "gC" = (
 /obj/effect/mob_spawn/corpse/human/skeleton,
 /turf/open/misc/snow/actually_safe{
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "gR" = (
 /obj/structure/flora/ash/fireblossom,
 /obj/structure/flora/lunar_plant/style_3{
 	name = "eldritch plant"
 	},
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "gS" = (
 /obj/effect/decal/cleanable/generic,
 /turf/closed/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "gW" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "hr" = (
 /obj/structure/table/wood,
 /obj/item/keycard/library,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "hu" = (
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "hA" = (
 /obj/structure/chair/wood/wings{
 	dir = 8
 	},
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "hG" = (
 /obj/effect/decal/remains/human{
 	color = "#272727";
 	name = "charred remains"
 	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "hH" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "hR" = (
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "hT" = (
 /obj/structure/table/bronze,
 /obj/item/gun/ballistic/revolver/chaplain{
 	needs_burden = 0
 	},
-/obj/item/book/bible/booze,
+/obj/item/reagent_containers/cup/glass/bottle/healing_potion,
+/obj/item/book/bible/blessing_bible,
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ia" = (
 /obj/effect/oneway{
-	dir = 8
+	dir = 4
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "if" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ih" = (
 /obj/structure/table/bronze,
 /obj/item/knife/bloodletter{
@@ -391,18 +401,18 @@
 	},
 /obj/item/flashlight/lantern/jade,
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ik" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/grimy,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "in" = (
 /obj/structure/chair/wood/wings{
 	dir = 4
 	},
 /obj/effect/turf_decal/weather/snow,
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "it" = (
 /mob/living/basic/pony,
 /obj/structure/railing{
@@ -411,28 +421,28 @@
 	},
 /obj/structure/bed/dogbed,
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "iw" = (
 /obj/structure/flora/rock/pile/icy/style_random,
 /obj/effect/turf_decal/weather/snow/corner,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "iy" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
 /turf/closed/indestructible/rock/snow/ice,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "iC" = (
 /obj/structure/table/wood,
 /obj/item/book/codex_gigas,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "iD" = (
 /obj/structure/stone_tile/slab/cracked,
 /obj/effect/mob_spawn/corpse/human/charredskeleton,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "iE" = (
 /obj/effect/mob_spawn/corpse/human/legioninfested/snow,
 /obj/effect/gibspawner/human/bodypartless,
@@ -442,118 +452,126 @@
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "iJ" = (
 /obj/item/stack/ore/glass/basalt,
 /obj/structure/flora/ash/fireblossom,
 /turf/open/misc/asteroid/basalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "iM" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "iT" = (
 /obj/structure/chair/wood/wings{
 	dir = 4
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
+"iW" = (
+/obj/item/ammo_box/strilka310/lionhunter,
+/turf/open/indestructible/binary,
+/area/icemoon/underground/explored/virtual_domain)
 "ja" = (
 /obj/effect/turf_decal/siding/wood/corner,
 /turf/open/floor/wood,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ji" = (
 /obj/structure/flora/rock/pile/style_random,
 /obj/effect/decal/cleanable/brimdust,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "jr" = (
 /obj/structure/statue/bone/skull,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "jE" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 6
 	},
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "jN" = (
 /obj/structure/table/wood/fancy/orange,
 /obj/item/pillow/clown,
 /obj/item/stack/sheet/mineral/bananium/five,
+/obj/item/reagent_containers/cup/glass/bottle/hilarious_potion{
+	pixel_x = -11;
+	pixel_y = 1
+	},
 /turf/open/floor/carpet/donk,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "jX" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "kl" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ko" = (
 /obj/structure/stone_tile/block/burnt{
 	dir = 8
 	},
 /obj/item/flashlight/flare/candle,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "kp" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
 	},
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ks" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "kC" = (
 /obj/structure/bookcase/random/nonfiction,
 /turf/open/space/basic,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "lt" = (
 /obj/structure/flora/rock/pile/icy/style_random,
 /obj/item/stack/sheet/mineral/wood,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "lI" = (
 /obj/effect/turf_decal/siding/wood/corner,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "lK" = (
 /turf/open/misc/ice,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "lN" = (
 /obj/structure/stone_tile/surrounding/cracked{
 	dir = 1
 	},
 /obj/effect/rune/malformed,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "lP" = (
 /obj/effect/decal/cleanable/food/flour{
 	name = "snow";
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "lQ" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "lW" = (
 /obj/item/clothing/neck/fake_heretic_amulet,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "lY" = (
 /obj/effect/decal/cleanable/food/flour{
 	name = "snow";
@@ -564,11 +582,11 @@
 	},
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "lZ" = (
 /obj/structure/stone_tile/center/cracked,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "mc" = (
 /obj/structure/closet/crate/coffin,
 /obj/effect/mob_spawn/ghost_role/virtual_domain/library_heretic/void,
@@ -576,18 +594,18 @@
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "me" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "mj" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "mq" = (
 /obj/structure/flora/bush/flowers_br/style_random,
 /obj/effect/mob_spawn/corpse/human/skeleton,
@@ -595,35 +613,32 @@
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "mt" = (
 /turf/template_noop,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "mu" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "my" = (
 /obj/effect/mapping_helpers/engraving,
 /turf/closed/wall/mineral/wood/nonmetal,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "mA" = (
-/obj/machinery/smartfridge/drying_rack,
-/obj/item/clothing/suit/hooded/cultrobes/void,
-/obj/item/melee/sickly_blade/void,
-/turf/open/misc/snow/actually_safe{
-	name = "light snow";
-	desc = "It's surprisingly easy on your feet."
+/obj/effect/identity_barrier{
+	key = "VR_library"
 	},
-/area/space)
+/turf/open/floor/stone,
+/area/icemoon/underground/explored/virtual_domain)
 "mI" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 1
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "mV" = (
 /obj/structure/flora/rock/icy/style_random,
 /obj/effect/turf_decal/weather/snow/corner{
@@ -633,48 +648,56 @@
 	dir = 9
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "mW" = (
 /obj/effect/decal/cleanable/food/flour{
 	name = "snow";
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ng" = (
 /obj/structure/chair/wood{
 	dir = 4
 	},
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "nk" = (
 /obj/structure/flora/ash/cacti,
 /turf/open/misc/asteroid/basalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "np" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 1
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
+"nu" = (
+/obj/structure/bookcase/random/nonfiction,
+/obj/item/reagent_containers/cup/bucket/wooden{
+	pixel_y = 21;
+	pixel_x = 9
+	},
+/turf/open/floor/grass/lavaland,
+/area/icemoon/underground/explored/virtual_domain)
 "nv" = (
 /turf/open/floor/wood,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "nF" = (
 /obj/effect/turf_decal/weather/snow/corner,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "nG" = (
 /obj/structure/table/wood,
 /obj/item/book/granter/action/origami,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "nN" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
 	},
 /turf/open/misc/asteroid/snow,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "nP" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 1
@@ -684,19 +707,21 @@
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "nX" = (
 /obj/item/ritual_totem,
 /obj/effect/decal/cleanable/food/salt,
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "nZ" = (
-/obj/structure/mannequin/wood,
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
+/obj/structure/mannequin/wood{
+	anchored = 1
+	},
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "oa" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 9
@@ -706,19 +731,19 @@
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "oi" = (
 /obj/structure/fake_stairs/wood/directional/north,
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /turf/open/space/basic,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "on" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/structure/flora/rock/style_random,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "or" = (
 /obj/structure/chair/wood/wings{
 	dir = 1
@@ -731,7 +756,7 @@
 	dir = 10
 	},
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ou" = (
 /obj/machinery/smartfridge/drying_rack,
 /obj/item/eldritch_potion/wounded{
@@ -742,7 +767,7 @@
 	},
 /obj/item/melee/sickly_blade/void,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ov" = (
 /obj/structure/flora/lunar_plant/style_1{
 	name = "eldritch plant"
@@ -753,57 +778,57 @@
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "oE" = (
 /obj/effect/mob_spawn/corpse/human/legioninfested/snow,
 /turf/open/misc/snow/actually_safe{
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "pc" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 8
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "pd" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
 	},
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "pf" = (
 /obj/effect/turf_decal/siding/wood/corner,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "pm" = (
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/misc/asteroid/snow,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "py" = (
 /obj/structure/table/wood,
 /obj/item/codex_cicatrix,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "pA" = (
 /obj/structure/flora/lunar_plant/style_3{
 	name = "eldritch plant"
 	},
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "pE" = (
 /obj/structure/chair/wood/wings{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/fuel_pool,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "qq" = (
 /obj/effect/decal/remains/human,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "qs" = (
 /obj/structure/table/wood,
 /obj/item/food/grown/aloe,
@@ -813,7 +838,7 @@
 /obj/item/food/grown/ash_flora/cactus_fruit,
 /obj/item/food/grown/ash_flora/cactus_fruit,
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "qt" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
@@ -822,83 +847,85 @@
 	dir = 4
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "qB" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "qJ" = (
 /obj/structure/statue/snow/snowman,
 /turf/open/misc/snow/actually_safe{
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "qK" = (
 /obj/structure/flora/bush/flowers_yw/style_random,
 /turf/open/misc/grass,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "qN" = (
 /obj/structure/table/wood,
 /turf/open/floor/carpet/blue,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "qQ" = (
 /obj/structure/table/wood,
 /obj/item/book/granter/martial/plasma_fist/nobomb{
 	icon_state = "scroll"
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "qR" = (
 /obj/effect/turf_decal/weather/snow/corner,
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "qU" = (
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "re" = (
 /obj/structure/fake_stairs/wood/directional/south,
 /turf/open/space/basic,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "rg" = (
 /obj/structure/chair/comfy/brown,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/carpet/green,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "rj" = (
 /obj/structure/flora/rock/icy/style_random,
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 1
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "rl" = (
 /obj/structure/displaycase/noalert,
 /obj/item/skeleton_key,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "rq" = (
 /obj/effect/decal/cleanable/ash,
 /turf/open/misc/ashplanet/ash,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "rx" = (
 /obj/structure/chair/wood{
 	dir = 4
 	},
 /turf/open/floor/iron/grimy,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ry" = (
 /obj/effect/mob_spawn/corpse/human/charredskeleton,
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "rA" = (
-/mob/living/basic/tree,
+/mob/living/basic/tree{
+	health = 100
+	},
 /turf/open/misc/asteroid/snow,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "rE" = (
 /obj/item/food/meat/slab/human/mutant/skeleton,
 /obj/structure/flora/rock/pile/icy/style_random,
@@ -906,57 +933,70 @@
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "rV" = (
 /obj/effect/decal/cleanable/brimdust,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "rW" = (
 /turf/closed/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "sc" = (
 /obj/effect/mob_spawn/corpse/human/charredskeleton,
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "se" = (
 /obj/structure/barricade/wooden,
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "sm" = (
 /obj/structure/displaycase/noalert,
 /obj/item/gun/ballistic/rifle/lionhunter,
-/obj/item/ammo_box/strilka310/lionhunter,
-/obj/item/ammo_box/strilka310/lionhunter,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "sw" = (
 /obj/effect/baseturf_helper/virtual_domain,
 /turf/template_noop,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "sA" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
 /obj/structure/statue/bone/rib,
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "sM" = (
 /obj/structure/table/wood,
 /obj/item/book/granter/crafting_recipe/boneyard_notes,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
+"sT" = (
+/obj/item/reagent_containers/cup/bucket/wooden{
+	pixel_x = 3;
+	pixel_y = -6
+	},
+/obj/item/reagent_containers/cup/bucket/wooden{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/item/reagent_containers/cup/bucket/wooden{
+	pixel_y = 3;
+	pixel_x = -1
+	},
+/turf/open/floor/stone,
+/area/icemoon/underground/explored/virtual_domain)
 "te" = (
 /obj/structure/chair/wood/wings,
 /obj/effect/decal/cleanable/food/flour,
 /turf/open/floor/carpet/black,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "tf" = (
 /obj/structure/bookcase/random/adult,
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "tg" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 8
@@ -966,7 +1006,7 @@
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "tz" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -974,21 +1014,21 @@
 /obj/item/ritual_totem,
 /obj/effect/decal/cleanable/food/salt,
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "tI" = (
 /obj/item/book/random,
 /obj/structure/table_frame/wood,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "tP" = (
 /obj/structure/displaycase/noalert,
 /obj/item/knife/ritual,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "tR" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "tY" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/stone_tile/block/cracked{
@@ -996,22 +1036,22 @@
 	},
 /obj/effect/decal/cleanable/ash/large,
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "tZ" = (
 /obj/structure/stone_tile/surrounding/cracked,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ub" = (
 /obj/structure/bookcase/random/religion,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "uh" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
 	},
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/misc/asteroid/snow,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ui" = (
 /obj/structure/barricade/wooden/crude,
 /obj/effect/turf_decal/siding/wood{
@@ -1019,99 +1059,107 @@
 	},
 /obj/machinery/door/puzzle/keycard/library,
 /obj/effect/mapping_helpers/broken_floor,
-/obj/effect/oneway,
+/obj/effect/oneway{
+	dir = 1
+	},
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "up" = (
 /obj/item/chisel,
 /obj/structure/stone_tile/block/cracked{
 	dir = 5
 	},
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ut" = (
 /obj/structure/statue/bone/skull/half,
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
+"uu" = (
+/obj/structure/water_source/puddle,
+/turf/open/floor/grass/lavaland,
+/area/icemoon/underground/explored/virtual_domain)
 "uw" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 8
 	},
 /obj/effect/turf_decal/weather/snow,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "uG" = (
 /obj/structure/flora/ash/fireblossom,
 /turf/open/misc/asteroid/basalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "uJ" = (
 /obj/structure/bookcase/random/adult,
 /turf/open/space/basic,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "uN" = (
 /obj/structure/trap/eldritch/mad,
 /turf/open/misc/asteroid/basalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "uR" = (
 /obj/structure/table/wood,
 /obj/item/book/granter/action/spell/summon_cheese,
 /turf/open/floor/carpet/black,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "uW" = (
 /obj/effect/turf_decal/siding/wood/corner,
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "vb" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "vc" = (
 /obj/effect/decal/cleanable/brimdust,
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "vv" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/identity_barrier{
+	key = "VR_library"
+	},
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "vw" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "vO" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
 	},
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "vX" = (
 /obj/structure/table/wood,
 /obj/item/upgradescroll,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "wa" = (
 /obj/structure/flora/bush/snow/style_random,
 /turf/open/misc/asteroid/snow,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "wg" = (
-/obj/effect/mob_spawn/corpse/human/skeleton,
-/obj/item/clothing/suit/armor/vest/cuirass,
-/turf/open/misc/asteroid/moon,
-/area/space)
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/stone,
+/area/icemoon/underground/explored/virtual_domain)
 "wj" = (
 /obj/structure/statue/snow/snowlegion,
 /turf/open/misc/snow/actually_safe{
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "wn" = (
 /obj/structure/flora/lunar_plant/style_1{
 	name = "eldritch plant"
@@ -1120,13 +1168,13 @@
 	dir = 10
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "wo" = (
 /obj/structure/stone_tile/surrounding/cracked{
 	dir = 1
 	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "wp" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
@@ -1136,46 +1184,46 @@
 	},
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "wN" = (
 /obj/effect/decal/cleanable/molten_object/large,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "wT" = (
 /obj/structure/displaycase/noalert,
 /obj/item/reagent_containers/cup/bottle/potion/flight,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "xA" = (
 /obj/structure/flora/rock/style_random,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "xM" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
 /obj/item/kirbyplants/random,
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "xT" = (
 /obj/effect/turf_decal/weather/snow/corner,
 /obj/machinery/computer/security/wooden_tv,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "xV" = (
 /obj/effect/visible_heretic_influence,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "xW" = (
 /obj/structure/chair/wood,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ya" = (
 /obj/structure/railing/corner/end/flip,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/grimy,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "yq" = (
 /obj/structure/barricade/wooden/crude/snow,
 /obj/effect/decal/cleanable/food/flour{
@@ -1183,11 +1231,15 @@
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "yx" = (
 /obj/structure/flora/tree/pine/style_random,
 /turf/open/misc/asteroid/snow,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
+"yy" = (
+/obj/structure/water_source/puddle,
+/turf/open/misc/ashplanet/ash,
+/area/icemoon/underground/explored/virtual_domain)
 "yD" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/flare/culttorch,
@@ -1208,11 +1260,12 @@
 /obj/item/melee/rune_carver{
 	pixel_x = 7
 	},
+/obj/item/reagent_containers/cup/glass/bottle/wyvern,
 /turf/open/misc/snow/actually_safe{
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "yL" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 9
@@ -1220,23 +1273,8 @@
 /obj/item/stack/sheet/mineral/titanium{
 	amount = 5
 	},
-/obj/item/storage/test_tube_rack{
-	name = "snowcone rack";
-	desc = "Welcome to the Himalayas!"
-	},
-/obj/item/reagent_containers/cup/beaker/eldritch{
-	pixel_x = 7
-	},
-/obj/item/reagent_containers/cup/beaker/eldritch{
-	pixel_x = -7
-	},
-/obj/item/food/snowcones/lemon{
-	desc = "No, no, no no, don't worry, It's lemon!";
-	pixel_x = 1;
-	pixel_y = 2
-	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "yM" = (
 /obj/effect/decal/cleanable/food/flour{
 	name = "snow";
@@ -1246,11 +1284,11 @@
 	dir = 9
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "yO" = (
 /obj/structure/flora/tree/stump,
 /turf/open/misc/asteroid/snow,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "yP" = (
 /obj/structure/flora/bush/snow/style_random,
 /obj/effect/mob_spawn/corpse/human/skeleton,
@@ -1258,17 +1296,17 @@
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "yQ" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "yT" = (
 /obj/effect/decal/cleanable/grand_remains,
 /obj/effect/landmark/bitrunning/cache_spawn,
 /obj/effect/visible_heretic_influence,
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "zc" = (
 /obj/structure/stone_tile/slab,
 /obj/item/antique,
@@ -1278,12 +1316,12 @@
 	name = "charred rack"
 	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "zf" = (
 /obj/structure/table/wood,
 /obj/item/book/granter/chuunibyou,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "zj" = (
 /obj/structure/stone_tile/slab/cracked{
 	dir = 5
@@ -1292,22 +1330,29 @@
 	dir = 4
 	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "zl" = (
 /obj/effect/decal/cleanable/food/salt,
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
+"zn" = (
+/obj/item/stack/sheet/mineral/wood,
+/turf/open/misc/snow/actually_safe{
+	name = "light snow";
+	desc = "It's surprisingly easy on your feet."
+	},
+/area/icemoon/underground/explored/virtual_domain)
 "zq" = (
 /obj/structure/trap/eldritch/tentacle,
 /turf/open/misc/ice,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "zs" = (
 /obj/item/flashlight/flare/candle,
 /obj/item/clothing/shoes/roman{
 	name = "ash tral roman sandals"
 	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "zx" = (
 /obj/structure/chair/wood/wings{
 	dir = 1
@@ -1316,26 +1361,26 @@
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "zH" = (
 /obj/structure/table/wood,
 /obj/item/skeleton_key,
 /obj/item/reagent_containers/cup/soda_cans/shamblers/eldritch,
 /turf/open/floor/carpet/black,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "zI" = (
 /obj/effect/spawner/random/exotic/snow_gear,
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 9
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "zP" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "zX" = (
 /obj/effect/decal/cleanable/food/flour{
 	name = "snow";
@@ -1345,7 +1390,7 @@
 	dir = 8
 	},
 /turf/open/floor/carpet/green,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ab" = (
 /obj/structure/flora/lunar_plant/style_2{
 	name = "eldritch plant"
@@ -1357,99 +1402,99 @@
 	dir = 6
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ac" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /turf/open/floor/fakepit,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ad" = (
 /obj/effect/decal/cleanable/vomit/nebula,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Af" = (
 /obj/item/stack/sheet/mineral/plasma/five,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Aj" = (
 /obj/item/food/snowcones,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ap" = (
 /obj/structure/chair/wood/wings,
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/effect/decal/cleanable/brimdust,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Av" = (
 /obj/structure/flora/rock/icy/style_random,
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 10
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Az" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/item/ritual_totem,
 /obj/effect/decal/cleanable/food/salt,
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "AC" = (
 /obj/effect/landmark/bitrunning/safehouse_spawn,
 /turf/template_noop,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "AK" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/misc/grass,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "AU" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /obj/item/skeleton_key,
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "AY" = (
 /turf/closed/indestructible/necropolis,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Bb" = (
 /obj/structure/fireplace,
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Bk" = (
 /obj/structure/trap/eldritch/tentacle,
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Bl" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Bu" = (
 /obj/machinery/smartfridge/drying_rack,
 /obj/item/food/raw_headcheese{
 	pixel_y = 23
 	},
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Bw" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/fakepit,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "By" = (
 /obj/structure/table/wood,
 /obj/item/book/granter/action/spell/summonitem,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "BP" = (
 /obj/structure/stone_tile/block/cracked,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Cc" = (
 /obj/structure/table/wood,
 /obj/item/book/granter/action/spell/smoke,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Cf" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
@@ -1459,7 +1504,7 @@
 	name = "eldritch plant"
 	},
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Cj" = (
 /obj/effect/decal/cleanable/food/flour{
 	name = "snow";
@@ -1469,46 +1514,46 @@
 	dir = 8
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ck" = (
 /obj/item/clothing/shoes/winterboots/ice_boots/ice_trail,
 /turf/open/misc/ice,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Cv" = (
 /turf/closed/wall/mineral/snow,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "CH" = (
 /obj/structure/flora/lunar_plant/style_2{
 	name = "eldritch plant"
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "CO" = (
 /obj/structure/stone_tile/cracked{
 	dir = 8
 	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "CV" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/carpet/green,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "CX" = (
 /obj/structure/bookcase/random/adult,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "CZ" = (
 /obj/structure/bookcase/random/fiction,
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Db" = (
 /obj/structure/stone_tile/surrounding/burnt,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Dk" = (
 /obj/item/kirbyplants/random,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Dm" = (
 /obj/effect/decal/cleanable/food/flour{
 	name = "snow";
@@ -1518,16 +1563,18 @@
 	dir = 10
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Do" = (
 /obj/structure/barricade/wooden/crude,
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /obj/machinery/door/puzzle/keycard/library,
-/obj/effect/oneway,
+/obj/effect/oneway{
+	dir = 1
+	},
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Dp" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
@@ -1541,7 +1588,7 @@
 	pixel_y = 15
 	},
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ds" = (
 /obj/structure/table/wood,
 /obj/item/shadowcloak,
@@ -1552,8 +1599,10 @@
 	icon_state = "geist_gazers";
 	worn_icon_state = "geist_gazers"
 	},
+/obj/item/reagent_containers/cup/glass/bottle/healing_potion,
+/obj/item/reagent_containers/cup/glass/bottle/healing_potion,
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Dv" = (
 /obj/structure/railing{
 	dir = 4;
@@ -1563,73 +1612,78 @@
 	dir = 8
 	},
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Dx" = (
 /obj/effect/turf_decal/siding/wood/corner,
 /turf/closed/indestructible/rock/snow/ice,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "DD" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "DE" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 8
 	},
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "DL" = (
 /obj/structure/table/wood,
 /obj/item/book/granter/crafting_recipe/boneyard_notes,
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "DP" = (
 /obj/structure/bookcase/random/religion,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "DT" = (
 /obj/structure/barricade/wooden/crude/snow,
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
 /obj/machinery/door/puzzle/keycard/library,
-/obj/effect/oneway,
+/obj/effect/oneway{
+	dir = 1
+	},
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "DV" = (
 /obj/item/chair/wood,
 /obj/item/stack/ore/glass/basalt,
 /obj/structure/flora/ash/leaf_shroom,
 /turf/open/misc/asteroid/basalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Eb" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
 	},
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ef" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 4
 	},
 /obj/effect/decal/remains/human,
+/obj/item/stack/sheet/mineral/titanium{
+	amount = 5
+	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ej" = (
 /obj/item/clothing/suit/costume/snowman,
 /obj/item/clothing/head/costume/snowman,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ek" = (
-/obj/structure/table/wood/fancy,
 /obj/item/paper,
 /obj/item/pen/fountain,
+/obj/structure/table/wood/fancy/red,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "El" = (
 /obj/structure/firepit,
 /obj/structure/stone_tile/block/cracked{
@@ -1639,7 +1693,7 @@
 	dir = 6
 	},
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Em" = (
 /obj/item/toy/snowball{
 	color = "#FFFF00";
@@ -1647,43 +1701,43 @@
 	desc = "Perfect for pelting at your former best friend."
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Es" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Et" = (
 /obj/structure/no_effect_signpost/void,
 /turf/open/misc/asteroid/snow,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ev" = (
-/obj/structure/bookcase/random/religion,
+/obj/item/stack/sheet/mineral/wood,
 /turf/open/misc/ice,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "EB" = (
 /obj/structure/table/wood,
 /turf/open/misc/asteroid/basalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ED" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/food/salt,
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "EM" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
 	},
 /obj/effect/mob_spawn/corpse/human/skeleton,
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Fi" = (
 /turf/open/misc/snow/actually_safe{
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Fp" = (
 /obj/structure/fake_stairs/wood/directional/south,
 /obj/effect/turf_decal/siding/wood{
@@ -1693,81 +1747,81 @@
 	dir = 8
 	},
 /turf/open/space/basic,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "FG" = (
 /obj/structure/flora/lunar_plant/style_1{
 	name = "eldritch plant"
 	},
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "FI" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 8
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "FQ" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
 	},
 /obj/item/kirbyplants/random,
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "FR" = (
 /obj/structure/falsewall/bananium{
-	base_icon_state = "riveted";
-	icon_state = "riveted-0";
-	icon = 'icons/turf/walls/riveted.dmi';
+	base_icon_state = "iron_wall";
+	icon_state = "iron_wall-0";
+	icon = 'icons/turf/walls/iron_wall.dmi';
 	name = "wall?"
 	},
-/turf/open/space/basic,
-/area/space)
+/turf/open/indestructible/binary,
+/area/icemoon/underground/explored/virtual_domain)
 "FU" = (
 /turf/open/misc/ashplanet/ash,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "FV" = (
 /obj/structure/flora/ash/chilly,
 /turf/open/misc/asteroid/snow,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "FW" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 6
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "FY" = (
 /obj/structure/stone_tile/surrounding,
 /obj/structure/stone_tile/center/cracked,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "FZ" = (
 /obj/structure/table_frame/wood,
 /obj/item/stack/sheet/mineral/wood,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Gp" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 9
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Gt" = (
 /obj/structure/stone_tile/surrounding/burnt,
 /obj/structure/stone_tile/center/burnt,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Gz" = (
 /obj/structure/table/wood,
 /obj/item/heretic_lintel,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "GU" = (
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "GY" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/wood,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ha" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/decal/cleanable/food/flour{
@@ -1775,25 +1829,25 @@
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Hj" = (
 /obj/structure/table/wood,
 /obj/item/book/granter/crafting_recipe/boneyard_notes,
 /turf/open/misc/asteroid/basalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Hq" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 8
 	},
 /obj/structure/statue/bone/rib,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "HG" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "HI" = (
 /obj/structure/chair/wood{
 	dir = 8
@@ -1801,32 +1855,40 @@
 /obj/item/melee/roastingstick,
 /obj/item/food/raw_sausage,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "HJ" = (
 /obj/structure/displaycase/noalert,
 /obj/item/antique,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "HK" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "HM" = (
 /obj/effect/visible_heretic_influence,
 /turf/open/misc/asteroid/basalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
+"Ir" = (
+/obj/structure/bookcase/random/nonfiction,
+/obj/item/reagent_containers/cup/bucket/wooden{
+	pixel_y = 21;
+	pixel_x = -7
+	},
+/turf/open/floor/wood/large,
+/area/icemoon/underground/explored/virtual_domain)
 "Is" = (
 /obj/structure/chair/wood/wings{
 	dir = 1
 	},
 /turf/open/floor/carpet/black,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "IB" = (
 /obj/effect/spawner/random/exotic/snow_gear,
 /turf/open/misc/ice,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ID" = (
 /obj/effect/turf_decal/siding/wood/corner,
 /obj/effect/decal/cleanable/food/flour{
@@ -1834,12 +1896,12 @@
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "IE" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/structure/bonfire/prelit,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "IM" = (
 /obj/structure/closet/crate/necropolis/bubblegum{
 	locked = 1
@@ -1847,7 +1909,7 @@
 /obj/structure/stone_tile/slab/burnt,
 /obj/effect/mob_spawn/ghost_role/virtual_domain/library_heretic/ash,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "IT" = (
 /obj/structure/table/wood,
 /obj/item/food/grown/ambrosia/gaia,
@@ -1855,13 +1917,13 @@
 /obj/item/food/grown/ambrosia/deus,
 /obj/item/food/grown/redbeet,
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "IZ" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
 	},
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ji" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 10
@@ -1869,114 +1931,121 @@
 /obj/effect/mob_spawn/corpse/human/skeleton,
 /obj/item/melee/sickly_blade/void,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Jn" = (
 /obj/structure/mineral_door/iron,
 /turf/open/space/basic,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Js" = (
 /obj/structure/flora/rock/style_random,
 /turf/open/misc/grass,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "JB" = (
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "JD" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 1
 	},
 /obj/structure/displaycase/noalert,
-/obj/structure/closet/crate/necropolis,
+/obj/structure/closet/crate/necropolis/tendril,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "JG" = (
 /obj/structure/flora/rock/pile/style_random,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "JK" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/effect/decal/cleanable/brimdust,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "JV" = (
 /obj/effect/decal/cleanable/ash/large,
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "JY" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ke" = (
 /obj/structure/flora/tree/stump,
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Kn" = (
 /turf/closed/indestructible/rock/snow/ice,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ku" = (
-/obj/effect/heretic_rune/big,
 /obj/item/melee/sickly_blade/ash,
 /obj/effect/rune/narsie{
-	color = "#272727"
+	color = "#272727";
+	alpha = 150
 	},
+/obj/effect/heretic_rune/big,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ky" = (
 /turf/open/misc/asteroid/snow,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "KD" = (
-/obj/structure/mannequin/wood,
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
 /obj/effect/mapping_helpers/burnt_floor,
+/obj/structure/mannequin/wood{
+	anchored = 1
+	},
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "KG" = (
 /turf/open/floor/iron/grimy,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "KZ" = (
 /obj/structure/fake_stairs/wood/directional/north,
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/space/basic,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Lb" = (
 /obj/structure/table/wood/poker,
 /obj/item/restraints/legcuffs/bola,
 /obj/item/restraints/legcuffs/bola,
 /obj/item/flashlight/flare/torch,
+/obj/item/reagent_containers/cup/glass/bottle/small/endurance_potion{
+	pixel_x = -6
+	},
+/obj/item/reagent_containers/cup/tube/martyr_phial,
 /turf/open/floor/iron/grimy,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ll" = (
 /obj/structure/barricade/wooden/snowed,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Lr" = (
 /turf/open/misc/asteroid/basalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ls" = (
 /obj/structure/stone_tile/surrounding/cracked,
 /obj/structure/stone_tile/center/cracked,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Lu" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/effect/decal/cleanable/brimdust,
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "LJ" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
 /obj/item/kirbyplants/random,
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "LP" = (
 /obj/effect/decal/cleanable/ash,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "LV" = (
 /obj/structure/stone_tile/cracked,
 /obj/structure/rack{
@@ -1986,42 +2055,42 @@
 /obj/item/eldritch_potion/wounded,
 /obj/item/eldritch_potion/crucible_soul,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ma" = (
 /obj/effect/decal/cleanable/ash/large,
 /obj/structure/flora/lunar_plant/style_3{
 	name = "eldritch plant"
 	},
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Mg" = (
 /obj/structure/fake_stairs/wood/directional/north,
 /turf/open/space/basic,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Mh" = (
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Mw" = (
 /obj/structure/flora/tree/stump,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Mx" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 8
 	},
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "MF" = (
 /obj/structure/flora/rock/pile/icy/style_random,
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 9
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "MO" = (
 /obj/effect/decal/cleanable/brimdust,
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "MR" = (
 /obj/item/food/meat/slab/human/mutant/skeleton,
 /obj/effect/decal/cleanable/food/flour{
@@ -2029,7 +2098,7 @@
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ng" = (
 /obj/structure/barricade/wooden/snowed,
 /obj/effect/turf_decal/siding/wood{
@@ -2039,7 +2108,7 @@
 	dir = 8
 	},
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Nh" = (
 /obj/structure/stone_tile/cracked{
 	dir = 8
@@ -2053,107 +2122,110 @@
 	pixel_x = 7
 	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Nr" = (
 /obj/structure/necropolis_arch,
 /obj/effect/decal/necropolis_gate_decal,
 /obj/structure/stone_tile/slab/cracked{
 	dir = 5
 	},
-/obj/effect/oneway{
-	dir = 1
-	},
+/obj/effect/oneway,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Nv" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 5
 	},
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "NB" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/turf_decal/siding/wood/corner,
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "NC" = (
 /obj/item/paper/crumpled/ruins,
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "NE" = (
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Oa" = (
 /obj/structure/flora/rock/icy/style_random,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Od" = (
-/obj/structure/table/wood/fancy,
 /obj/item/pen/charcoal,
+/obj/structure/table/wood/fancy/red,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Oh" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
 	},
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ot" = (
 /obj/structure/displaycase/noalert,
 /obj/item/clothing/glasses/nightmare_vision,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ov" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "OE" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "OF" = (
 /turf/closed/wall/mineral/iron,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "OH" = (
 /obj/structure/displaycase/noalert,
-/obj/structure/closet/crate/necropolis,
+/obj/structure/closet/crate/necropolis/tendril,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "OI" = (
 /turf/closed/wall/mineral/wood/nonmetal,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "OJ" = (
 /obj/structure/flora/tree/jungle/small/style_random,
 /turf/open/misc/grass,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "OO" = (
 /obj/effect/visible_heretic_influence,
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "OU" = (
 /obj/structure/stone_tile/center/cracked,
 /obj/item/flashlight/flare/candle,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "OY" = (
 /obj/structure/table/wood,
 /obj/item/book/manual/ancient_parchment,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
+"Pd" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/item/reagent_containers/cup/bucket/wooden,
+/turf/open/floor/grass/lavaland,
+/area/icemoon/underground/explored/virtual_domain)
 "Pp" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/statue/bone/skull,
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Pv" = (
 /obj/item/stack/sheet/mineral/wood,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Px" = (
 /obj/structure/stone_tile/slab/cracked{
 	dir = 6
@@ -2163,7 +2235,7 @@
 	name = "charred remains"
 	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "PE" = (
 /obj/structure/fake_stairs/wood/directional/south,
 /obj/effect/turf_decal/siding/wood{
@@ -2171,73 +2243,75 @@
 	},
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/space/basic,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "PG" = (
 /obj/effect/spawner/random/exotic/snow_gear,
 /turf/open/misc/snow/actually_safe{
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "PL" = (
 /obj/item/clothing/under/rank/civilian/chaplain/divine_archer,
-/obj/item/clothing/suit/hooded/cloak/goliath,
 /obj/item/clothing/head/flatcap,
 /obj/structure/closet/cabinet,
 /obj/item/clothing/suit/armor/vest/cuirass,
+/obj/item/reagent_containers/cup/glass/bottle/small/stasis_potion,
+/obj/item/reagent_containers/cup/glass/bottle/small/haste_potion,
+/obj/item/clothing/gloves/divine_archer,
 /turf/open/floor/iron/grimy,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "PR" = (
 /obj/effect/visible_heretic_influence,
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "PS" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Qj" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Qm" = (
 /turf/open/floor/fakepit,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Qp" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood/tile,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "QR" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/effect/mob_spawn/corpse/human/charredskeleton,
 /turf/open/floor/wood,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "QX" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ra" = (
 /turf/open/misc/grass,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Rl" = (
 /obj/structure/stone_tile/surrounding/cracked{
 	dir = 4
 	},
 /obj/structure/stone_tile/center,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Rn" = (
 /obj/structure/stone_tile/block/cracked,
 /obj/structure/stone_tile/cracked{
 	dir = 4
 	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Rt" = (
 /obj/structure/stone_tile/slab/cracked,
 /obj/effect/decal/remains/human{
@@ -2245,77 +2319,84 @@
 	name = "charred remains"
 	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Rw" = (
 /obj/structure/closet/cardboard,
 /obj/item/storage/backpack/duffelbag/clown/syndie,
 /obj/item/clothing/shoes/clown_shoes/banana_shoes,
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "RE" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/food/salt,
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "RF" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "RG" = (
 /obj/structure/table/wood,
 /obj/item/food/grown/redbeet,
 /obj/item/food/grown/trumpet,
 /obj/item/food/grown/trumpet,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/sign/poster/official/bless_this_spess/directional/north,
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "RV" = (
 /obj/effect/decal/cleanable/ash/large,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "RY" = (
 /obj/structure/stone_tile/slab/cracked,
-/obj/effect/oneway{
-	dir = 1
-	},
+/obj/effect/oneway,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "RZ" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/food/salt,
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Sb" = (
 /turf/open/floor/carpet/donk,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Se" = (
-/obj/item/book/manual/ancient_parchment,
-/turf/open/indestructible/necropolis/air,
-/area/space)
+/obj/effect/identity_barrier{
+	key = "VR_library"
+	},
+/obj/structure/falsewall/bananium{
+	base_icon_state = "iron_wall";
+	icon_state = "iron_wall-0";
+	icon = 'icons/turf/walls/iron_wall.dmi';
+	name = "wall?"
+	},
+/turf/open/indestructible/binary,
+/area/icemoon/underground/explored/virtual_domain)
 "Sh" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Sp" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
 /turf/open/misc/asteroid/snow,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "St" = (
-/obj/structure/table/wood/fancy,
 /obj/item/flashlight/lantern/heirloom_moth,
+/obj/structure/table/wood/fancy/red,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Sw" = (
 /obj/structure/bookcase/random/nonfiction,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Sz" = (
 /obj/item/storage/test_tube_rack{
 	name = "snowcone rack";
@@ -2337,16 +2418,16 @@
 	pixel_y = 2
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "SA" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/effect/mob_spawn/corpse/human/charredskeleton,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "SF" = (
 /obj/effect/decal/cleanable/ash/large,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "SJ" = (
 /obj/structure/stone_tile/slab,
 /obj/structure/rack{
@@ -2355,7 +2436,7 @@
 	},
 /obj/item/melee/sickly_blade/ash,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "SK" = (
 /obj/item/melee/energy/sword/saber/blue{
 	active_force = 12;
@@ -2370,107 +2451,112 @@
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "SO" = (
 /turf/open/space/basic,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "SP" = (
 /obj/effect/mob_spawn/corpse/human/charredskeleton,
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "SR" = (
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "SV" = (
 /obj/effect/oneway{
-	dir = 4
+	dir = 8
 	},
 /turf/open/misc/asteroid/basalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ta" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
 /obj/item/stack/ore/glass/basalt,
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Tc" = (
 /obj/structure/flora/rock/icy/style_random,
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 9
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Td" = (
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Tf" = (
 /obj/item/chair/wood,
 /obj/item/stack/ore/glass/basalt,
 /obj/effect/decal/cleanable/brimdust,
 /turf/open/misc/asteroid/basalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ti" = (
 /obj/structure/bonfire/prelit,
 /obj/item/food/sausage,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Tj" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
 /obj/structure/statue/bone/rib,
 /turf/open/floor/fakebasalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Tp" = (
 /obj/structure/flora/bush/snow/style_random,
 /turf/open/misc/snow/actually_safe{
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "TG" = (
 /obj/item/food/meat/slab/human/mutant/skeleton,
 /obj/item/reagent_containers/cup/bucket/wooden,
 /obj/effect/rune/convert,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "TH" = (
 /obj/structure/bookcase/random/nonfiction,
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "TU" = (
 /obj/structure/flora/lunar_plant/style_1{
 	name = "eldritch plant"
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "TW" = (
 /obj/effect/visible_heretic_influence,
 /turf/open/floor/carpet/green,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ud" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
 	},
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Uf" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/food/salt,
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Ug" = (
 /obj/effect/decal/cleanable/fuel_pool,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "UH" = (
 /obj/item/shovel/serrated,
+/obj/structure/rack,
+/obj/item/reagent_containers/cup/beaker/eldritch,
+/obj/item/reagent_containers/cup/beaker/eldritch{
+	pixel_x = 5
+	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "UK" = (
 /obj/item/paper/crumpled/ruins,
 /obj/effect/decal/cleanable/food/flour{
@@ -2478,28 +2564,28 @@
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/floor/wood,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "UP" = (
 /obj/structure/flora/rock/icy/style_random,
 /obj/effect/turf_decal/weather/snow/corner,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "UQ" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/iron/grimy,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "UT" = (
 /obj/structure/stone_tile/cracked,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "UU" = (
 /obj/effect/decal/cleanable/food/flour{
 	name = "snow";
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Va" = (
 /obj/effect/decal/cleanable/food/flour{
 	name = "snow";
@@ -2509,12 +2595,15 @@
 	name = "snow";
 	desc = "Strange, this snow seems to have the consistency of flour."
 	},
-/obj/effect/heretic_rune/big,
 /obj/effect/rune/narsie{
-	color = "#272727"
+	color = "#272727";
+	alpha = 150
 	},
+/obj/effect/heretic_rune/big,
+/obj/effect/mob_spawn/corpse/human/skeleton,
+/obj/item/clothing/suit/armor/vest/cuirass,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Vz" = (
 /obj/structure/flora/lunar_plant/style_2{
 	name = "eldritch plant"
@@ -2523,10 +2612,10 @@
 	dir = 8
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "VE" = (
 /turf/open/floor/carpet/green,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "VT" = (
 /obj/structure/stone_tile/slab/cracked,
 /obj/structure/table/greyscale{
@@ -2538,55 +2627,53 @@
 /obj/item/flashlight/flare/candle,
 /obj/item/clothing/neck/eldritch_amulet,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "VU" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 10
 	},
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "VZ" = (
 /obj/structure/bookcase/random/religion,
 /turf/open/misc/snow/actually_safe{
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Wd" = (
 /obj/effect/decal/cleanable/vomit/old/black_bile,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Wf" = (
 /mob/living/basic/bear/snow{
 	name = "Wampa";
-	desc = "Even insane heretics need company sometimes."
+	desc = "Even insane heretics need company sometimes.";
+	faction = list("russian", "heretic")
 	},
 /obj/effect/decal/remains/human,
 /turf/open/misc/ice,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Wo" = (
 /obj/item/pickaxe,
 /obj/item/climbing_hook,
 /turf/open/misc/ice,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "WD" = (
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/misc/snow/actually_safe{
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "WI" = (
-/obj/structure/table/wood/fancy,
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
 	},
-/obj/item/book/bible/syndicate{
-	name = "Serpent's Tome";
-	deity_name = "The Serpent"
-	},
+/obj/structure/table/wood/fancy/red,
+/obj/item/book/bible/blessing_bible/syndicate,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "WR" = (
 /obj/structure/stone_tile/cracked{
 	dir = 8
@@ -2596,61 +2683,61 @@
 	name = "charred remains"
 	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "WY" = (
 /obj/item/chair/wood,
 /obj/item/food/sausage,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Xl" = (
 /obj/effect/decal/cleanable/vomit/purple,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Xn" = (
 /obj/structure/trap/eldritch/mad,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Xo" = (
 /obj/effect/landmark/bitrunning/cache_spawn,
 /turf/open/floor/mineral/bananium,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Xr" = (
 /obj/structure/stone_tile/slab/cracked{
 	dir = 5
 	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Xz" = (
 /obj/effect/oneway{
-	dir = 4
+	dir = 8
 	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "XD" = (
 /obj/effect/decal/cleanable/ash/large,
 /turf/open/misc/asteroid/basalt,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "XJ" = (
 /obj/structure/stone_tile/block/burnt,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "XL" = (
 /obj/item/chair/wood,
 /obj/structure/flora/rock/pile/style_random,
 /turf/open/misc/ashplanet/rocky,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "XT" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "XX" = (
 /obj/effect/turf_decal/weather/snow/corner,
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "XY" = (
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Yc" = (
 /obj/item/gun/ballistic/bow/longbow,
 /obj/item/storage/bag/quiver,
@@ -2669,40 +2756,43 @@
 /obj/item/reagent_containers/cup/bottle/venom,
 /obj/structure/table/wood,
 /turf/open/floor/iron/grimy,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Yf" = (
 /obj/structure/table/wood/poker,
 /obj/item/claymore/weak,
 /obj/item/shield/buckler{
 	block_chance = 50
 	},
+/obj/item/reagent_containers/cup/glass/bottle/healing_potion,
+/obj/item/reagent_containers/cup/glass/bottle/healing_potion,
+/obj/item/reagent_containers/cup/glass/bottle/healing_potion,
 /turf/open/floor/iron/grimy,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Yi" = (
 /obj/structure/table/wood,
 /obj/item/toy/cards/deck/tarot{
 	pixel_y = 4
 	},
 /turf/open/floor/stone,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Yl" = (
 /turf/open/floor/carpet/black,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Yn" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 8
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Yo" = (
 /obj/structure/table/wood,
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Yp" = (
 /obj/structure/fake_stairs/wood/directional/south,
 /obj/structure/barricade/wooden,
 /turf/open/space/basic,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Yr" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 9
@@ -2713,48 +2803,50 @@
 	},
 /obj/effect/rune/malformed,
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Yt" = (
 /obj/item/food/meat/slab/human/mutant/skeleton,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "YD" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/decal/cleanable/food/salt,
 /turf/open/floor/wood/parquet,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "YI" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/effect/decal/cleanable/ash/large,
 /turf/open/floor/grass/lavaland,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "YN" = (
 /turf/closed/indestructible/riveted/boss,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "YP" = (
 /obj/item/food/meat/slab/human/mutant/skeleton,
 /obj/effect/rune/convert,
 /turf/open/misc/ice,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "YT" = (
-/obj/item/stack/sheet/mineral/wood/fifty,
+/obj/machinery/smartfridge/drying_rack,
+/obj/item/clothing/suit/hooded/cultrobes/void,
+/obj/item/melee/sickly_blade/void,
 /turf/open/misc/snow/actually_safe{
 	name = "light snow";
 	desc = "It's surprisingly easy on your feet."
 	},
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Zc" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 9
 	},
 /turf/open/floor/wood/large,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Zi" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Zn" = (
 /obj/structure/stone_tile/center/burnt,
 /obj/structure/stone_tile/surrounding/cracked{
@@ -2764,48 +2856,51 @@
 	color = "#272727";
 	name = "charred table"
 	},
-/obj/item/clothing/suit/hooded/cloak/goliath,
 /obj/item/clothing/under/costume/skeleton{
 	color = "#272727"
 	},
 /obj/item/flashlight/flare/candle,
+/obj/item/reagent_containers/cup/glass/bottle/wyvern{
+	pixel_y = 13;
+	pixel_x = 10
+	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "Zw" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
 /turf/closed/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ZC" = (
 /obj/structure/stone_tile/block/burnt{
 	dir = 8
 	},
 /turf/open/indestructible/necropolis/air,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ZE" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 6
 	},
 /obj/structure/trap/eldritch/tentacle,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ZM" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
 /turf/open/indestructible/binary,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ZT" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 "ZU" = (
 /obj/item/chair/wood/wings,
 /turf/open/misc/asteroid/moon,
-/area/space)
+/area/icemoon/underground/explored/virtual_domain)
 
 (1,1,1) = {"
 rW
@@ -2978,7 +3073,7 @@ qq
 hR
 hR
 Kn
-VZ
+zn
 Fi
 VZ
 Fi
@@ -3030,7 +3125,7 @@ ia
 zq
 Fi
 Fi
-ub
+Pv
 Oa
 Fi
 WD
@@ -3130,7 +3225,7 @@ lK
 lK
 lt
 hR
-VZ
+zn
 Fi
 oE
 yM
@@ -3166,9 +3261,9 @@ rW
 Kn
 Kn
 Kn
-wg
+hR
 FW
-mA
+Fi
 nP
 hR
 hR
@@ -3280,7 +3375,7 @@ Tp
 lK
 ub
 lY
-ub
+OI
 SR
 SR
 SR
@@ -3378,7 +3473,7 @@ hR
 CH
 yM
 Bl
-ub
+OI
 SR
 SR
 UU
@@ -3435,7 +3530,7 @@ XT
 SR
 ub
 SR
-ub
+OI
 SR
 ub
 SR
@@ -3528,16 +3623,16 @@ zX
 SR
 Ot
 SR
-ub
+OI
 SR
 SR
 SR
 SR
-ub
-SR
-ub
+OI
 SR
 ub
+SR
+OI
 SR
 OI
 VU
@@ -3580,7 +3675,7 @@ OH
 SR
 ub
 UU
-ub
+OI
 SR
 SR
 SR
@@ -3633,11 +3728,11 @@ SR
 ub
 SR
 XT
-ub
+OI
 SR
 ub
 SR
-ub
+OI
 SR
 OI
 nF
@@ -3720,7 +3815,7 @@ lK
 lK
 Zc
 Cj
-Mh
+iW
 SR
 sm
 SR
@@ -3730,12 +3825,12 @@ rl
 SR
 nG
 SR
-ub
+OI
 SR
 SR
 ub
 SR
-ub
+OI
 SR
 ub
 lI
@@ -3929,9 +4024,9 @@ YD
 rW
 HK
 kp
-TH
+OI
 SR
-Sw
+OI
 SR
 WI
 St
@@ -4129,9 +4224,9 @@ Az
 OI
 vb
 lQ
-Sw
+OI
 SR
-Sw
+OI
 SR
 Pv
 tI
@@ -4281,8 +4376,8 @@ SR
 SR
 SR
 SR
-SR
-SR
+RF
+Es
 SR
 SR
 SR
@@ -4315,7 +4410,7 @@ JV
 Td
 Td
 uJ
-uJ
+OI
 RF
 RF
 RF
@@ -4331,11 +4426,11 @@ Ug
 wN
 Sw
 Cc
-Sw
-Sw
-SR
-Sw
-Sw
+nu
+uu
+Td
+Ir
+OI
 Gz
 Sw
 FI
@@ -4380,9 +4475,9 @@ RF
 SR
 SR
 SR
-SR
-SR
-SR
+Td
+Td
+Pd
 RF
 SR
 SR
@@ -4481,11 +4576,11 @@ Sh
 SR
 Sw
 zf
-kC
+OI
 kC
 SR
-kC
-kC
+Sw
+OI
 py
 Sw
 SR
@@ -4497,7 +4592,7 @@ qU
 qU
 cT
 qU
-FU
+yy
 Td
 JV
 Td
@@ -4593,7 +4688,7 @@ OI
 bG
 bG
 OF
-vv
+wg
 XY
 mj
 XY
@@ -4747,7 +4842,7 @@ IT
 KG
 KG
 mj
-XY
+mA
 KG
 ih
 OF
@@ -4769,7 +4864,7 @@ Rt
 AY
 Nh
 LP
-Se
+GU
 iD
 YN
 lW
@@ -4796,7 +4891,7 @@ OF
 RG
 KG
 KG
-XY
+sT
 OF
 aM
 hT
@@ -4897,7 +4992,7 @@ cg
 UQ
 rx
 ng
-XY
+mA
 ik
 Yc
 OF
@@ -5047,7 +5142,7 @@ rW
 rW
 OF
 Qj
-FR
+Se
 Sb
 jN
 OF

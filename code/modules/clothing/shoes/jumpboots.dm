@@ -46,3 +46,8 @@
 	actions_types = list(/datum/action/item_action/bhop/brocket)
 	jumpdistance = 20 //great for throwing yourself into walls and people at high speeds
 	jumpspeed = 5
+
+/obj/item/clothing/shoes/bhop/plate
+	name = "enchanted sabatons"
+	desc = "An enchanted pair of sabatons that allow the wearer to leap into action!"
+	icon_state = "jetboots"

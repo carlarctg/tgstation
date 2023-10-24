@@ -1,12 +1,12 @@
 /datum/lazy_template/virtual_domain/ruined_library
 	name = "Ruined Library (PvP)"
 	cost = BITRUNNER_COST_MEDIUM
-	desc = "Arm yourself and burn the heretics."
-	difficulty = BITRUNNER_DIFFICULTY_HIGH
-	extra_loot = list(/obj/item/toy/eldritch_book = 1)
-	help_text = "Several months ago, two followers of the forgotten gods took over a great library, slaughtering everyone inside. \
+	desc = "Several months ago, two followers of the forgotten gods took over a great library, slaughtering everyone inside. \
 	Now it's time to fight back! Prepare yourself from one of several questful classes to destroy them and take back the library.\
 	Be careful - these virtual creatures have glitched into true sapience and won't enjoy your attempt to destroy their home."
+	difficulty = BITRUNNER_DIFFICULTY_HIGH
+	extra_loot = list(/obj/item/toy/eldritch_book = 1)
+	help_text = "Arm yourself and burn the heretics."
 	key = "ruined_library"
 	map_name = "ruined_library"
 	reward_points = BITRUNNER_REWARD_HIGH
@@ -33,6 +33,7 @@
 
 /obj/effect/mob_spawn/ghost_role/virtual_domain/library_heretic
 	name = "Virtual Domain Library Heretic"
+	prompt_name = "Virtual Heretic"
 	icon = 'icons/obj/antags/cult/rune.dmi'
 	icon_state = "hierophant"
 	color = "#FFFFFF"
@@ -41,24 +42,32 @@
 	mob_species = /datum/species/human
 	flavour_text = "Protect the Library from intruders. Scavenge supplies to help you fend them off, and make sure they don't steal anything."
 	important_text = "Do not fight the other heretic! You two are allies in this mission."
-	var/path_type = PATH_SIDE
+	var/datum/heretic_knowledge/limited_amount/starting/path_to_research = /datum/heretic_knowledge/limited_amount/starting/base_knock
 
 /obj/effect/mob_spawn/ghost_role/virtual_domain/library_heretic/special(mob/living/spawned_mob, mob/mob_possessor)
 	. = ..()
+	// Make them a Heretic.
 	spawned_mob.mind.add_antag_datum(/datum/antagonist/heretic)
 	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(spawned_mob)
-	heretic_datum.knowledge_points = 10
-	heretic_datum.heretic_path = path_type
+	// Give them points.
+	heretic_datum.knowledge_points = 8
+	// Locate the base path.
+	path_to_research = locate(path_to_research) in heretic_datum.get_researchable_knowledge()
+	if(!path_to_research)
+		CRASH("could not find path to force research into [path_to_research]")
+	// Research it!
+	path_to_research.on_research(spawned_mob, heretic_datum)
 
 /obj/effect/mob_spawn/ghost_role/virtual_domain/library_heretic/ash
 	name = "Virtual Domain Ash Heretic"
+	prompt_name = "Virtual Ash Heretic"
 	color = "#FF0000"
 	mob_species = /datum/species/lizard
 	outfit = /datum/outfit/ash_heretic
 	mutcolor = "#b62020"
 	eye_colors = list("#ffee00", "#a09500")
 	you_are_text = "You are the Ash Heretic!"
-	path_type = PATH_ASH
+	path_to_research = /datum/heretic_knowledge/limited_amount/starting/base_ash
 
 /obj/effect/mob_spawn/ghost_role/virtual_domain/library_heretic/ash/special(mob/living/spawned_mob, mob/mob_possessor)
 	. = ..()
@@ -85,7 +94,7 @@
 
 	glasses = /obj/item/clothing/glasses/hud/health/night/cultblind/free
 	mask = null
-	back = /obj/item/storage/backpack/cultpack
+	back = null
 	uniform = /obj/item/clothing/under/costume/gladiator/ash_walker/darkened
 	suit = /obj/item/clothing/suit/hooded/cloak/goliath
 	belt = /obj/item/storage/belt/mining/primitive/unrestricted
@@ -93,12 +102,13 @@
 
 /obj/effect/mob_spawn/ghost_role/virtual_domain/library_heretic/void
 	name = "Virtual Domain Void Heretic"
+	prompt_name = "Virtual Void Heretic"
 	color = "#00FFFF"
 	outfit = /datum/outfit/void_heretic
 	haircolor = "#f7f3c5" // inbetween realistic and ethereal
 	skin_tone = "albino"
 	you_are_text = "You are the Void Heretic!"
-	path_type = PATH_VOID
+	path_to_research = /datum/heretic_knowledge/limited_amount/starting/base_void
 
 // Looks like an evil, uh, ice climber I guess??
 /datum/outfit/void_heretic
@@ -106,9 +116,9 @@
 
 	glasses = null
 	gloves = /obj/item/clothing/gloves/color/black
-	mask = /obj/item/clothing/mask/gas/explorer
+	mask = null
 	shoes = /obj/item/clothing/shoes/workboots/mining
-	back = /obj/item/storage/backpack/explorer
+	back = null
 	uniform = /obj/item/clothing/under/rank/cargo/miner/lavaland
 	belt = /obj/item/storage/belt/mining/alt/unrestricted
 	backpack_contents = list()

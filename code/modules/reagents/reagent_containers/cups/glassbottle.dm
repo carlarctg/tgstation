@@ -996,7 +996,7 @@
 	gulp_size = 20
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(20)
-	list_reagents = list(/datum/reagent/inverse/penthrite = 20)
+	list_reagents = list(/datum/reagent/inverse/penthrite = 10)
 
 /obj/item/reagent_containers/cup/glass/bottle/small/stasis_potion
 	name = "stasis potion"

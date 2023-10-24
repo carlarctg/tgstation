@@ -221,6 +221,18 @@
 		user.do_attack_animation(src, ATTACK_EFFECT_KICK)
 		take_damage(2)
 
+/obj/structure/displaycase/map_load_item
+	alert = FALSE
+
+/obj/structure/displaycase/map_load_item/Initialize(mapload)
+	. = ..()
+	if(!mapload)
+		return
+	var/obj/thingy = locate(/obj) in loc
+	thingy.forceMove(src)
+	showpiece = thingy
+	update_appearance()
+
 /obj/structure/displaycase_chassis
 	name = "display case chassis"
 	desc = "The wooden base of a display case."

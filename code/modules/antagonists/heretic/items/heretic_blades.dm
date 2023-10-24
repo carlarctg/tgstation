@@ -32,7 +32,7 @@
 	return ..()
 
 /obj/item/melee/sickly_blade/attack_self(mob/user)
-	if(is_centcom_level(z))
+	if(is_centcom_level(z) || is_reserved_level(z) || is_secret_level(z))
 		to_chat(user, span_warning("The Mansus can't help you here."))
 		return
 	var/turf/safe_turf = find_safe_turf(zlevels = z, extended_safety_checks = TRUE)

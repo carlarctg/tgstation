@@ -438,6 +438,7 @@
 
 /obj/item/storage/belt/mining/alt/unrestricted/Initialize(mapload)
 	. = ..()
+	atom_storage.max_slots = 9
 	atom_storage.set_holdable(null)
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
 
@@ -463,6 +464,7 @@
 
 /obj/item/storage/belt/mining/primitive/unrestricted/Initialize(mapload)
 	. = ..()
+	atom_storage.max_slots = 9
 	atom_storage.set_holdable(null)
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
 

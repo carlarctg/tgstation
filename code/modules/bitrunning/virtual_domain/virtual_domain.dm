@@ -32,8 +32,6 @@
 	var/test_only = FALSE
 	/// The safehouse to load into the map
 	var/datum/map_template/safehouse/safehouse_path = /datum/map_template/safehouse/den
-	/// Flags for the mission to do special stuff when loading.
-	var/mission_flags
 	/// At least this many candidates or it will cancel the loading!
 	var/mission_min_candidates = 0
 	/// Maximum amount possible of above.
