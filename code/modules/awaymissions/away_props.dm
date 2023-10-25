@@ -60,6 +60,7 @@ GLOBAL_LIST_EMPTY(identity_barriers)
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "medi_holo_no_anim"
 	anchored = TRUE
+	density = TRUE
 	var/mob/living/allowed_entity
 	var/key = "default"
 
@@ -80,7 +81,7 @@ GLOBAL_LIST_EMPTY(identity_barriers)
 	else
 		desc += "It is not currently bound to any entity."
 
-/obj/effect/identity_barrier/Bump(atom/bumped_atom)
+/obj/effect/identity_barrier/Bumped(atom/movable/bumped_atom)
 	. = ..()
 	// No point if this is false
 	if(!.)
@@ -130,10 +131,15 @@ GLOBAL_LIST_EMPTY(identity_barriers)
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "medi_holo_no_anim"
 	anchored = TRUE
+	density = TRUE
 	/// If the passing mob has any faction listed here it will be able to pass.
 	var/list/allowed_factions = list(FACTION_MONKEY)
 
-/obj/effect/faction_barrier/Bump(atom/bumped_atom)
+/obj/effect/faction_barrier/Initialize(mapload)
+	. = ..()
+	RegisterSignal(get_turf(src), COMSIG_TURF_PREPARE_STEP_SOUND)
+
+/obj/effect/faction_barrier/Bumped(atom/movable/bumped_atom)
 	. = ..()
 	// No point if this is false
 	if(!.)

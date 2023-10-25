@@ -579,6 +579,11 @@
 	icon = 'icons/effects/weather_effects.dmi'
 	duration = 3.2 SECONDS
 
+/obj/effect/temp_visual/bubbles
+	icon_state = "bubbles"
+	icon = 'icons/effects/effects.dmi'
+	duration = 0.5 SECONDS
+
 /obj/effect/temp_visual/sonar_ping
 	duration = 3 SECONDS
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF

@@ -1374,3 +1374,32 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
 	var/turf/our_turf = get_turf(src) // In case a locker ate us or something
 	our_turf.AddElement(/datum/element/bombable_turf)
 	return INITIALIZE_HINT_QDEL
+
+/obj/effect/mapping_helpers/buckler
+	name = "buckle helper"
+	icon = 'icons/turf/wall_overlays.dmi'
+	icon_state = "buckler"
+	late = TRUE
+	layer = ABOVE_NORMAL_TURF_LAYER
+
+/obj/effect/mapping_helpers/buckler/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/effect/mapping_helpers/buckler/LateInitialize()
+
+	var/mob/living/mob_to_buckle
+	var/obj/object_to_buckle
+
+	for(var/atom/movable/nearby_atom in get_turf(src))
+		if(isliving(nearby_atom) && isnull(mob_to_buckle))
+			mob_to_buckle = nearby_atom
+		else if(isobj(nearby_atom) && nearby_atom.can_buckle)
+			object_to_buckle = nearby_atom
+
+	if(mob_to_buckle && object_to_buckle)
+		object_to_buckle.buckle_mob(mob_to_buckle, force = TRUE)
+	else
+		stack_trace("Failed to find a mob and object to buckle up with a buckle mapping helper.")
+
+	qdel(src)

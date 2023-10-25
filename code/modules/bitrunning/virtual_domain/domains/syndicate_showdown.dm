@@ -45,7 +45,7 @@ become ? in spawn runes - FIXED?
 virtual domain desc uses short desc - FIXED
 wampa is bad - FIXED
 BLADSE WORK IN VR!!! - FIXED?
-invisbile tables front desk - FIXED
+invisbile tables front desk - FIXED - NOT FIXED???
 NORMAL BUG: drawing influence forces open cicatrix froever
 remov explorer gas mask from void ehretic - DONE
 move void rune from racks - DONE
@@ -54,14 +54,14 @@ move void eldritch flasks htey look bad - DOEN'
 skylalker corpse doesnt work
 make lgihtsber toy? NAH
 reduce amt of nooartrium to 10 - DONE
-sacrophagus is clsoed
+sacrophagus is clsoed - MEH
 ash wings break bad
 heretic paths arent forced - FIXED?
 remove some points due to having stuff already - DONE
 make narnar rune transparent n click passthru - half
-remove heretic backapck, let them put stuff in belt?
+remove heretic backapck, let them put stuff in belt? - done
 ashn pssg might allow for escapign. fix? same with crucible soul? nvm
 space phase is OP!!!!!
-need 2 add extinguishers still
-add some cheeeses to erp room
+need 2 add extinguishers still - DONE
+add some cheeeses to erp room - DONE
 */

@@ -56,6 +56,7 @@
 	if(!path_to_research)
 		CRASH("could not find path to force research into [path_to_research]")
 	// Research it!
+	path_to_research = new()
 	path_to_research.on_research(spawned_mob, heretic_datum)
 
 /obj/effect/mob_spawn/ghost_role/virtual_domain/library_heretic/ash
@@ -88,6 +89,8 @@
 	// Come on. It would be just TOO easy to own them with glass shards
 	ADD_TRAIT(human_spawn, TRAIT_PIERCEIMMUNE, SPECIES_TRAIT)
 
+make crucible soul interact with noteleport area falg
+
 // Looks like an evil ashwalker cultist
 /datum/outfit/ash_heretic
 	name = "Library Ash Heretic"
@@ -114,11 +117,11 @@
 /datum/outfit/void_heretic
 	name = "Library Void Heretic"
 
-	glasses = null
+	glasses = /obj/item/clothing/glasses/hud/health/night/cultblind/free
 	gloves = /obj/item/clothing/gloves/color/black
 	mask = null
 	shoes = /obj/item/clothing/shoes/workboots/mining
-	back = null
+	back = /obj/item/storage/backpack/explorer
 	uniform = /obj/item/clothing/under/rank/cargo/miner/lavaland
-	belt = /obj/item/storage/belt/mining/alt/unrestricted
+	belt = /obj/item/shovel/serrated
 	backpack_contents = list()

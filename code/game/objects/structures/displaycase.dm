@@ -228,10 +228,12 @@
 	. = ..()
 	if(!mapload)
 		return
-	var/obj/thingy = locate(/obj) in loc
-	thingy.forceMove(src)
-	showpiece = thingy
-	update_appearance()
+	for(var/obj/thingy in get_turf(src))
+		if(thingy != src || showpiece)
+			continue
+		thingy.forceMove(src)
+		showpiece = thingy
+		update_appearance()
 
 /obj/structure/displaycase_chassis
 	name = "display case chassis"

@@ -44,6 +44,11 @@
 	icon_state = "bit_ice"
 	area_flags = UNIQUE_AREA | NOTELEPORT | ABDUCTOR_PROOF | EVENT_PROTECTED | HIDDEN_AREA
 
+/area/icemoon/underground/explored/virtual_domain/noteleport
+	name = "Virtual Domain Ice Ruins No Teleport"
+	icon_state = "bit_notp"
+	area_flags = UNIQUE_AREA | ABDUCTOR_PROOF | EVENT_PROTECTED | HIDDEN_AREA
+
 /area/ruin/space/has_grav/powered/virtual_domain
 	name = "Virtual Domain Space Ruins"
 	icon = 'icons/area/areas_station.dmi'

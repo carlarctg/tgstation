@@ -352,12 +352,12 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 	var/baptize_verb = "BLESSES"
 	var/baptize_damtype = BURN
 	var/baptize_sfx = 'sound/weapons/sear.ogg'
-	var/baptize_effect = "light"
+	var/baptize_effect = "holy light"
 	var/blessing_color = COLOR_YELLOW
 
 /obj/item/book/bible/blessing_bible/Initialize(...)
 	. = ..()
-	add_filter("unspent_blessing", 2, list("type" = "drop_shadow", "color" = blessing_color, "alpha" = 0, "size" = 2))
+	add_filter("unspent_blessing", 2, list("type" = "drop_shadow", "color" = blessing_color, "alpha" = 255, "size" = 2))
 
 /obj/item/book/bible/blessing_bible/attack_self(mob/living/carbon/human/user, modifiers)
 	if(!uses || !istype(user))
@@ -373,7 +373,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 	user.emote("scream")
 	var/active_hand_zone = (!(user.active_hand_index % RIGHT_HANDS) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM)
 	user.apply_damage(5, baptize_damtype, active_hand_zone, attacking_item = src)
-	to_chat(user, span_notice("Your name appears on the inside cover, in [baptize_effect]."))
+	to_chat(user, span_notice("Your name appears on the inside cover, written in [baptize_effect]."))
 	owner_name = user.real_name
 
 /obj/item/book/bible/blessing_bible/examine(mob/user)

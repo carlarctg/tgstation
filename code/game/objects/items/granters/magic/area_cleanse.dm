@@ -1,7 +1,7 @@
 /obj/item/book/granter/action/spell/area_cleanse
 	granted_action = /datum/action/cooldown/spell/aoe/area_cleanse
 	action_name = "area cleanse"
-	icon_state = "bookaraecleanse"
+	icon_state = "bookareacleanse"
 	desc = "Essential reading for all stay-at-home wizards and witches."
 	remarks = list(
 		"This incantation sounds familiar...",

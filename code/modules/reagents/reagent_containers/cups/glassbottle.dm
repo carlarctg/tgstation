@@ -977,7 +977,7 @@
 /obj/item/reagent_containers/cup/glass/bottle/healing_potion
 	name = "healing potion"
 	desc = "A vibrant red draught that will ail your wounds and mend your ills. Smells like tomato."
-	gulp_size = 15
+	gulp_size = 30
 	amount_per_transfer_from_this = 30
 	possible_transfer_amounts = list(30)
 	list_reagents = list(/datum/reagent/medicine/sal_acid = 15, /datum/reagent/medicine/c2/libital = 15, /datum/reagent/medicine/oxandrolone = 15, /datum/reagent/medicine/c2/aiuri = 15, /datum/reagent/medicine/coagulant = 20, /datum/reagent/consumable/ethanol/bloody_mary = 20)
