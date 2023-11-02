@@ -10,8 +10,10 @@
 		return
 
 	var/list/buttons = subtypesof(/atom/movable/screen/lobby)
-	for(var/button_type in buttons)
-		var/atom/movable/screen/lobby/lobbyscreen = new button_type()
+	for(var/atom/movable/screen/lobby/lobbyscreen as anything in buttons)
+		if(!initial(lobbyscreen.always_create))
+			continue
+		lobbyscreen = new lobbyscreen()
 		lobbyscreen.SlowInit()
 		lobbyscreen.hud = src
 		static_inventory += lobbyscreen
@@ -19,10 +21,25 @@
 			var/atom/movable/screen/lobby/button/lobby_button = lobbyscreen
 			lobby_button.owner = REF(owner)
 
+	var/i = 1
+	for(var/datum/station_trait/trait as anything in SSstation.station_traits)
+		if(!trait.sign_up_button)
+			continue
+		var/atom/movable/screen/lobby/button/sign_up/sign_up_button = new()
+		sign_up_button.SlowInit()
+		sign_up_button.hud = src
+		sign_up_button.owner = REF(owner)
+		sign_up_button.screen_loc = "TOP:-[42+28*i],CENTER:-86"
+		static_inventory += sign_up_button
+		trait.modify_lobby_button(sign_up_button)
+		i++
+
 /atom/movable/screen/lobby
 	plane = SPLASHSCREEN_PLANE
 	layer = LOBBY_BUTTON_LAYER
 	screen_loc = "TOP,CENTER"
+	/// Should we create this lobby button everytime we create a new player hud?
+	var/always_create = TRUE
 
 /// Run sleeping actions after initialize
 /atom/movable/screen/lobby/proc/SlowInit()
@@ -155,99 +172,6 @@
 		base_icon_state = "ready"
 	else
 		new_player.ready = PLAYER_NOT_READY
-		base_icon_state = "not_ready"
-	update_appearance(UPDATE_ICON)
-
-///Button that appears before the game has started
-/atom/movable/screen/lobby/button/special_role
-	screen_loc = "TOP:-20,CENTER:25"
-	icon = 'icons/hud/lobby/ready.dmi'
-	icon_state = "not_ready"
-	base_icon_state = "not_ready"
-	enabled = FALSE
-	// Instanced
-	var/datum/antagonist/role_to_give
-	var/total_buttons = 1
-
-#define COMSIG_NEW_VIP_ROLE "gingus"
-
-/atom/movable/screen/lobby/button/special_role/Initialize(mapload)
-	. = ..()
-	set_button_status(FALSE)
-	RegisterSignal(SSticker, COMSIG_NEW_VIP_ROLE, PROC_REF(show_or_add_vip_role))
-	RegisterSignal(SSdcs, COMSIG_TICKER_ROUND_STARTING, PROC_REF(hide_button))
-	for(var/datum/station_trait/station_trait as anything in SSstation.station_traits)
-		var/datum/station_trait/protagonist/protagonist_trait = station_trait
-		if(istype(protagonist_trait) && protagonist_trait.antag_datum_instance)
-			show_or_add_vip_role(protagonist_trait.antag_datum_instance)
-
-/atom/movable/screen/lobby/button/special_role/proc/hide_button()
-	SIGNAL_HANDLER
-	set_button_status(FALSE)
-	UnregisterSignal(SSticker, COMSIG_NEW_VIP_ROLE) // New VIP roles are handled from the latejoin menu
-
-
-/client/verb/sign_up_for_special_role()
-	set name = "Ready Special Role"
-	set category = "OOC"
-
-	var/mob/dead/new_player/gamer = usr
-
-	if(!istype(gamer))
-		return
-
-	var/list/elegible_roles
-	for(var/datum/station_trait/station_trait as anything in SSstation.station_traits)
-		var/datum/station_trait/protagonist/protagonist_trait = station_trait
-		if(istype(protagonist_trait) && protagonist_trait.antag_datum_instance)
-			LAZYADD(elegible_roles, protagonist_trait.antag_datum_instance)
-
-	if(!elegible_roles)
-		debug_world("no elegible roles")
-		return
-
-	var/chosen_role = elegible_roles[1]
-	if(length(elegible_roles) > 1)
-		chosen_role = tgui_input_list(usr, "What role", "nya", elegible_roles)
-
-	if(locate(chosen_role) in gamer.rolling_these_specials)
-		debug_world("You have signed out of [chosen_role]")
-		LAZYREMOVE(gamer.rolling_these_specials, chosen_role)
-		return
-
-	debug_world("You have signed up for [chosen_role]")
-	LAZYADD(gamer.rolling_these_specials, chosen_role)
-
-/**
- * Adds a VIP role to the button. If it already has a special role, create a new button with the new one, as long as there aren't any buttons that already have it.
- */
-/atom/movable/screen/lobby/button/special_role/proc/show_or_add_vip_role(datum/antagonist/antag_datum_instance)
-	SIGNAL_HANDLER
-	set_button_status(TRUE)
-	// If we register an added vip job but already have a role, attempt to create another button.
-	if(role_to_give)
-		// If there's any that already have that role, stop so we don't create dupes
-		for(var/atom/movable/screen/lobby/button/special_role/special_button in hud?.mymob.client.screen)
-			if(special_button.role_to_give == antag_datum_instance)
-				return
-		// Increase this variable so we can multiply the Y value and continously lower new buttons
-		total_buttons++
-		var/atom/movable/screen/lobby/button/special_role/extra_button = new src.type()
-		extra_button.screen_loc = "TOP:-20,CENTER:[(25 * total_buttons) + 10]"
-		extra_button.show_or_add_vip_role(antag_datum_instance)
-		return
-	role_to_give = antag_datum_instance
-
-/atom/movable/screen/lobby/button/special_role/Click(location, control, params)
-	. = ..()
-	if(!.)
-		return
-	var/mob/dead/new_player/new_player = hud.mymob
-	if(locate(role_to_give) in new_player.rolling_these_specials)
-		LAZYREMOVE(new_player.rolling_these_specials, role_to_give)
-		base_icon_state = "ready"
-	else
-		LAZYADD(new_player.rolling_these_specials, role_to_give)
 		base_icon_state = "not_ready"
 	update_appearance(UPDATE_ICON)
 
@@ -452,3 +376,9 @@
 		return
 	var/mob/dead/new_player/new_player = hud.mymob
 	new_player.handle_player_polling()
+
+/atom/movable/screen/lobby/button/sign_up
+	icon = 'icons/hud/lobby/signup_button.dmi'
+	icon_state = "signup"
+	base_icon_state = "signup"
+	always_create = FALSE
