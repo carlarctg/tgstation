@@ -138,6 +138,10 @@
 	text_gain_indication = span_notice("You feel pressure building up behind your eyes.")
 	layer_used = FRONT_MUTATIONS_LAYER
 	limb_req = BODY_ZONE_HEAD
+	/// Modifies how much damage the projectile does. 20 by default.
+	var/laser_damage = 20
+	/// How much eye damage the target recieves after every shot.
+	var/eye_damage = 0
 
 /datum/mutation/human/laser_eyes/New(class_ = MUT_OTHER, timer, datum/mutation/human/copymut)
 	..()
@@ -174,12 +178,20 @@
 	LE.preparePixelProjectile(target, source, modifiers)
 	INVOKE_ASYNC(LE, TYPE_PROC_REF(/obj/projectile, fire))
 	playsound(source, 'sound/weapons/taser2.ogg', 75, TRUE)
+	if(eye_damage)
+		source.adjustOrganLoss(ORGAN_SLOT_EYES, eye_damage)
+		to_chat(source, span_warning("Ow! Your eyes hurt a bit after shooting ignited lasers out of them."))
+	return TRUE
 
 ///Projectile type used by laser eyes
 /obj/projectile/beam/laser/laser_eyes
 	name = "beam"
 	icon = 'icons/mob/effects/genetics.dmi'
 	icon_state = "eyelasers"
+
+/datum/mutation/human/laser/eyes/weak
+	laser_damage = 15
+	eye_damage = 5 // 20 shots before your retinas burn out!
 
 /datum/mutation/human/illiterate
 	name = "Illiterate"

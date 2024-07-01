@@ -419,10 +419,16 @@
 				value = capitalize(value)
 			message = replacetextEx(message,regex("\b[REGEX_QUOTE(key)]\b","ig"), value)
 		message = trim(message)
-		var/chosen_starting = pick(startings)
-		message = "[chosen_starting] [message]"
+		if(has_startings)
+			var/chosen_starting = pick(startings)
+			message = "[chosen_starting] [message]"
 
 		speech_args[SPEECH_MESSAGE] = message
+
+
+/datum/mutation/human/medieval/no_startings
+	has_startings = FALSE
+	locked = TRUE
 
 /datum/mutation/human/piglatin
 	name = "Pig Latin"
@@ -448,6 +454,90 @@
 	var/spoken_message = speech_args[SPEECH_MESSAGE]
 	spoken_message = piglatin_sentence(spoken_message)
 	speech_args[SPEECH_MESSAGE] = spoken_message
+
+/datum/mutation/human/frost
+	name = "Freeze Speech"
+	desc = "Subjects of this mutation feel an extremely aggravating tendency to replace words with 'similar' snow-or-christmas alternatives."
+	quality = MINOR_NEGATIVE
+	text_gain_indication = "<span class='notice'>You feel like it's the christmas season!</span>"
+	text_lose_indication = "<span class='notice'>You no longer feel the christmas joy.</span>"
+
+/datum/mutation/human/frost/New(class, timer, datum/mutation/human/copymut)
+	var/month = time2text(world.realtime, "Month")
+	if(month == "December" || month == "November")
+		text_gain_indication = "<span class='notice'>You feel like it's the christmas season! Probably because it is.</span>"
+		return
+	text_lose_indication = "<span class='notice'>You no longer feel the christmas joy. It's [month] anyways!</span>"
+
+/datum/mutation/human/frost/on_acquiring(mob/living/carbon/human/owner)
+	. = ..()
+	if(!.)
+		return
+	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+
+/datum/mutation/human/frost/on_losing(mob/living/carbon/human/owner)
+	if(..())
+		return
+	UnregisterSignal(owner, COMSIG_MOB_SAY)
+
+/datum/mutation/human/frost/proc/handle_speech(datum/source, list/speech_args)
+	SIGNAL_HANDLER
+
+	var/message = speech_args[SPEECH_MESSAGE]
+	if(message[1] != "*")
+		message = " [message]"
+		var/list/frost_words = strings("frost_replacement.json", "frost")
+
+		for(var/key in frost_words)
+			var/value = frost_words[key]
+			if(islist(value))
+				value = pick(value)
+
+			message = replacetextEx(message, " [uppertext(key)]", " [uppertext(value)]")
+			message = replacetextEx(message, " [capitalize(key)]", " [capitalize(value)]")
+			message = replacetextEx(message, " [key]", " [value]")
+		if(prob(10))
+			message += ", season's greetings!"
+	speech_args[SPEECH_MESSAGE] = trim(message)
+
+/datum/mutation/human/canadian
+	name = "Canadian"
+	desc = "Subjects of this mutation have a noted tendency to apologize profusely, alongside a taste for processed tree sap."
+	quality = MINOR_NEGATIVE
+	text_gain_indication = "<span class='notice'>You could go for some maple syrup, you think, eh?</span>"
+	text_lose_indication = "<span class='notice'>You're back to being a true-blooded American.</span>"
+
+/datum/mutation/human/canadian/on_acquiring(mob/living/carbon/human/owner)
+	. = ..()
+	if(!.)
+		return
+	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+
+/datum/mutation/human/canadian/on_losing(mob/living/carbon/human/owner)
+	if(..())
+		return
+	UnregisterSignal(owner, COMSIG_MOB_SAY)
+
+/datum/mutation/human/canadian/proc/handle_speech(datum/source, list/speech_args)
+	SIGNAL_HANDLER
+
+	var/message = speech_args[SPEECH_MESSAGE]
+	if(message[1] != "*")
+		message = " [message]"
+
+		var/list/canadian_words = strings("canadian_replacement.json", "canadian")
+
+		for(var/key in canadian_words)
+			var/value = canadian_words[key]
+			if(islist(value))
+				value = pick(value)
+
+			message = replacetextEx(message, " [uppertext(key)]", " [uppertext(value)]")
+			message = replacetextEx(message, " [capitalize(key)]", " [capitalize(value)]")
+			message = replacetextEx(message, " [key]", " [value]")
+		if(prob(30))
+			message += pick(", eh?", ", EH?")
+		speech_args[SPEECH_MESSAGE] = trim(message)
 
 #undef ALPHABET
 #undef VOWELS

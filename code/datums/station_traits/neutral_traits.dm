@@ -144,6 +144,28 @@
 	. = ..()
 	SSstation.announcer = /datum/centcom_announcer/medbot
 
+/datum/station_trait/protagonist/royal_prince
+	name = "Royal Visit"
+	report_message = "A member of a minor Ethereal royal family is set to visit your station to finalize a trade agreement with Nanotrasen. They're seem a bit spooked of the supernatural, so try to keep them away from the chaplain. Please treat them with the upmost of hospitality."
+	role_to_give = /datum/antagonist/protagonist/scaredy_prince
+	job_to_give = /datum/job/royal_prince
+	weight = 4
+	trait_flags = NONE
+
+///Pick a family name and put it in the title!
+/datum/station_trait/protagonist/royal_prince/New()
+	. = ..()
+	var/datum/antagonist/protagonist/scaredy_prince/prince_antag_datum = antag_datum_instance
+	name = "Royal Visit from House [prince_antag_datum.family_name]"
+
+/datum/station_trait/protagonist/superweapon_dropoff
+	name = "Superweapon"
+	report_message = "A volunteer subject of Nanotrasen Superweapon Division's biological research is on course towards your station as part of a 'live fire' experiment. Please ensure their safety as they develop their abilities."
+	role_to_give = /datum/antagonist/protagonist/nanotrasen_superweapon
+	job_to_give = /datum/job/superweapon
+	weight = 4
+	trait_flags = NONE
+
 /datum/station_trait/colored_assistants
 	name = "Colored Assistants"
 	trait_type = STATION_TRAIT_NEUTRAL

@@ -144,6 +144,8 @@
 	canSmoothWith = SMOOTH_GROUP_ALIEN_WEEDS + SMOOTH_GROUP_WALLS
 	///the range of the weeds going to be affected by the node
 	var/node_range = NODERANGE
+	///if the weeds die without a parent node that can link to them
+	var/dies_without_node = TRUE
 	///the parent node that will determine if we grow or die
 	var/obj/structure/alien/weeds/node/parent_node
 	///the list of turfs that the weeds will not be able to grow over
@@ -218,7 +220,7 @@
  * Called when the parent node is destroyed
  */
 /obj/structure/alien/weeds/proc/after_parent_destroyed()
-	if(!find_new_parent())
+	if(!find_new_parent() && dies_without_node)
 		var/random_time = rand(2 SECONDS, 8 SECONDS)
 		addtimer(CALLBACK(src, PROC_REF(do_qdel)), random_time)
 
@@ -311,7 +313,6 @@
 	name = "gelatinous floor"
 	desc = "A thick gelatinous surface covers the floor.  Someone get the galoshes."
 	color = "#4BAE56"
-
 
 #undef NODERANGE
 
