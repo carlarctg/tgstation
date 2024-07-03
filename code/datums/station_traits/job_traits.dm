@@ -176,6 +176,32 @@
 	. = ..()
 	overlays += "veteran_advisor"
 
+/datum/station_trait/job/nanotrasen_superweapon
+	name = "Nanotrasen Superweapon"
+	button_desc = "Sign up to become a test subject of the Nanotrasen Superweapons Divison, out on a field test."
+	weight = 2
+	report_message = "A volunteer test subject from our Superweapons Division has been shipped to your sector as a field test. Make sure they don't die."
+	show_in_report = TRUE
+	can_roll_antag = CAN_ROLL_NEVER
+	job_to_add = /datum/job/nanotrasen_superweapon
+
+/datum/station_trait/job/nanotrasen_superweapon/on_lobby_button_update_overlays(atom/movable/screen/lobby/button/sign_up/lobby_button, list/overlays)
+	. = ..()
+	overlays += "superweapon"
+
+/datum/station_trait/job/ethereal_prince
+	name = "Ethereal Prince"
+	button_desc = "Sign up to become a noble envoy of an Ethereal state, arriving to finalize some trade agreements."
+	weight = 2
+	report_message = "An Ethereal prince from, uh, somewhere, has arrived on the station to finalize a trade deal. Make sure to keep them safe, at least until it's sealed."
+	show_in_report = TRUE
+	can_roll_antag = CAN_ROLL_NEVER
+	job_to_add = /datum/job/ethereal_prince
+
+/datum/station_trait/job/ethereal_prince/on_lobby_button_update_overlays(atom/movable/screen/lobby/button/sign_up/lobby_button, list/overlays)
+	. = ..()
+	overlays += "prince"
+
 /datum/station_trait/job/human_ai
 	name = "Human AI"
 	button_desc = "Sign up to become the \"AI\"."

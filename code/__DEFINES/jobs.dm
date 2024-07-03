@@ -41,6 +41,7 @@
 //No department
 #define JOB_ASSISTANT "Assistant"
 #define JOB_PRISONER "Prisoner"
+
 //Command
 #define JOB_CAPTAIN "Captain"
 #define JOB_HEAD_OF_PERSONNEL "Head of Personnel"
@@ -48,13 +49,14 @@
 #define JOB_RESEARCH_DIRECTOR "Research Director"
 #define JOB_CHIEF_ENGINEER "Chief Engineer"
 #define JOB_CHIEF_MEDICAL_OFFICER "Chief Medical Officer"
-#define JOB_BRIDGE_ASSISTANT "Bridge Assistant"
-#define JOB_VETERAN_ADVISOR "Veteran Security Advisor"
+#define JOB_BRIDGE_ASSISTANT "Bridge Assistant" //trait job
+#define JOB_VETERAN_ADVISOR "Veteran Security Advisor" //trait job
+#define JOB_ETHEREAL_PRINCE "Ethereal Prince" //trait job
 //Silicon
 #define JOB_AI "AI"
 #define JOB_CYBORG "Cyborg"
 #define JOB_PERSONAL_AI "Personal AI"
-#define JOB_HUMAN_AI "Big Brother"
+#define JOB_HUMAN_AI "Big Brother" //trait job
 //Security
 #define JOB_WARDEN "Warden"
 #define JOB_DETECTIVE "Detective"
@@ -72,13 +74,14 @@
 #define JOB_PARAMEDIC "Paramedic"
 #define JOB_CHEMIST "Chemist"
 //Science
+#define JOB_NANOTRASEN_SUPERWEAPON "Nanotrasen Superweapon" //trait job
 #define JOB_SCIENTIST "Scientist"
 #define JOB_ROBOTICIST "Roboticist"
 #define JOB_GENETICIST "Geneticist"
 //Supply
 #define JOB_QUARTERMASTER "Quartermaster"
 #define JOB_CARGO_TECHNICIAN "Cargo Technician"
-#define JOB_CARGO_GORILLA "Cargo Gorilla"
+#define JOB_CARGO_GORILLA "Cargo Gorilla" //trait job
 #define JOB_SHAFT_MINER "Shaft Miner"
 #define JOB_BITRUNNER "Bitrunner"
 //Service
