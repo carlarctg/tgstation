@@ -9,7 +9,7 @@
 	. = ..()
 	var/mob/living/carbon/human/superweapon_human = owner.current
 
-	superweapon_human.maxHealth = 75
+	superweapon_human.maxHealth = 85
 	superweapon_human.health = min(superweapon_human.health, superweapon_human.maxHealth)
 
 	var/datum/mutation/human/superweapon/mutation = superweapon_human.dna.add_mutation(/datum/mutation/human/superweapon, MUT_OTHER)
