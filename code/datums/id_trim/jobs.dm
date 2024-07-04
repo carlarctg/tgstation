@@ -1256,7 +1256,7 @@
 	if(CONFIG_GET(flag/security_has_maint_access))
 		access |= list(ACCESS_MAINT_TUNNELS)
 
-/datum/id_trim/job/vip_royal_prince
+/datum/id_trim/job/ethereal_prince
 	assignment = "Royal Prince"
 	trim_state = "trim_prince"
 	department_color = COLOR_PRISONER_BLACK // ignore the name
@@ -1278,7 +1278,7 @@
 	template_access = list()
 	job = /datum/job/royal_prince
 
-/datum/id_trim/job/vip_superweapon
+/datum/id_trim/job/nanotrasen_superweapon
 	assignment = "Nanotrasen Superweapon"
 	trim_state = "trim_superweapon"
 	department_color = COLOR_PRISONER_BLACK // ignore the name

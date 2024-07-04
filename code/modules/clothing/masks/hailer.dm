@@ -212,6 +212,63 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 /datum/action/item_action/halt
 	name = "HALT!"
 
+#define OFF_MODE "No Alarm"
+#define SECURITY_MODE "Security Mode"
+#define ENGINEERING_MODE "Engineering Mode"
+#define MEDICAL_MODE "Medical Mode"
+
+/obj/item/clothing/mask/whistle/safety
+	name = "safety whistle"
+	icon_state = "safety_whistle_off"
+	desc = "A safety whistle that you can blow on in case you feel uncomfortable or need assistance!"
+	actions_types = list(/datum/action/item_action/safety_whistle)
+	var/warn_mode = MEDICAL_MODE
+	var/whistle_modes = list(OFF_MODE = "_off", SECURITY_MODE = "_security", ENGINEERING_MODE = "_engineering", MEDICAL_MODE = "_medical")
+	// There's two cooldowns. Whistle cooldown, which is inherited..
+	// And safety whistle cooldown, which is much longer and used if the whistle is blown on any of the 'on' modes.
+	COOLDOWN_DECLARE(safety_whistle_cooldown)
+
+/obj/item/clothing/mask/whistle/safety/ui_action_click(mob/user, action)
+	var/list/modes_list = list()
+	for(var/i in whistle_modes)
+		modes_list[i] += image(icon = src.icon, icon_state = src.icon_state + whistle_modes[i])
+	warn_mode = show_radial_menu(user, src, modes_list)
+	icon_state = modes_list[warn_mode]
+
+/obj/item/clothing/mask/whistle/safety/examine(mob/user)
+	. = ..()
+	. += span_notice("You can change the selected mode by pressing the button.")
+	. += span_boldnotice("It is currently on [warn_mode].")
+
+/obj/item/clothing/mask/whistle/safety/attack_hand(mob/user, list/modifiers)
+	. = ..()
+
+	if(warn_mode != OFF_MODE)
+		attempt_safety_whistling(user)
+		return
+
+	blow_whistle(user)
+
+/obj/item/clothing/mask/whistle/safety/proc/blow_whistle(mob/user)
+	COOLDOWN_START(src, whistle_cooldown, 10 SECONDS)
+	user.audible_message("<font color='red'size='5'><b>FWEET!</b></font>")
+	playsound(src, 'sound/misc/whistle.ogg', 75, FALSE, 4)
+
+/obj/item/clothing/mask/whistle/safety/proc/attempt_safety_whistling(mob/user)
+	if(!COOLDOWN_FINISHED(src, safety_whistle_cooldown) && COOLDOWN_FINISHED(src, whistle_cooldown))
+		to_chat(user, span_warning("You try to blare the whistle alarm, but it hasn't recharged yet!"))
+		blow_whistle(user)
+		return
+	...
+
+#undef OFF_MODE
+#undef SECURITY_MODE
+#undef ENGINEERING_MODE
+#undef MEDICAL_MODE
+
+/datum/action/item_action/safety_whistle
+	name = "FWEEEP!"
+
 /obj/item/clothing/mask/party_horn
 	name = "party horn"
 	desc = "A paper tube used at parties that makes a noise when blown into."

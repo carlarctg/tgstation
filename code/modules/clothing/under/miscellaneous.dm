@@ -140,3 +140,15 @@
 	sensor_mode = NO_SENSORS
 	can_adjust = FALSE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+
+/obj/item/clothing/under/misc/hospital_gown
+	name = "hospital gown"
+	desc = "For when you want that 'chronically ill medical patient' rizz."
+	icon = 'icons/obj/clothing/under/rnd.dmi'
+	worn_icon = 'icons/mob/clothing/under/rnd.dmi'
+	icon_state = "hospital_gown"
+	inhand_icon_state = "hospital_gown"
+	random_sensor = FALSE
+	sensor_mode = LOCKED_SENSORS
+	can_adjust = FALSE
+	//female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
