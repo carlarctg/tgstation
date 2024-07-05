@@ -18,15 +18,14 @@
 
 	liver_traits = list(TRAIT_ROYAL_METABOLISM)
 
-//	display_order = JOB_DISPLAY_ORDER_NANOTRASEN_SUPERWEAPON
+	display_order = JOB_DISPLAY_ORDER_ETHEREAL_PRINCE
 	departments_list = list(/datum/job_department/command)
 
-//	family_heirlooms = list(/obj/item/banner/command/mundane)
+	family_heirlooms = list(/obj/item/banner)
 
-//	mail_goodies = list(
-//		/obj/item/storage/fancy/cigarettes = 1,
-//		/obj/item/pen/fountain = 1,
-//	)
+	mail_goodies = list(
+		/obj/item/reagent_containers/cup/glass/bottle/wine_voltaic = 1,
+	)
 	rpg_title = "Pompous Prince"
 	allow_bureaucratic_error = FALSE
 	job_flags = STATION_JOB_FLAGS | STATION_TRAIT_JOB_FLAGS
@@ -37,10 +36,17 @@
 /datum/job/ethereal_prince/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
 
+	spawned.add_traits(list(
+		TRAIT_STRENGTH,
+		TRAIT_HATED_BY_DOGS, // fynny
+		TRAIT_HIGH_VALUE_RANSOM,
+	), JOB_TRAIT)
+
+	if(isethereal(spawned))
+		return .
+
 	spawned.dna.features["ethcolor"] = pick(GLOB.color_list_ethereal)
 	spawned.set_species(/datum/species/ethereal)
-
-//	ADD_TRAIT(spawned, TRAIT_NO_TWOHANDING, JOB_TRAIT)
 
 /datum/job/ethereal_prince/get_roundstart_spawn_point()
 	var/list/pompous_turfs = list()
@@ -69,34 +75,27 @@
 	id_trim = /datum/id_trim/job/ethereal_prince
 	backpack_contents = list()
 
-	uniform = //obj/item/clothing/under/royal_attire
-	neck = //obj/item/clothing/neck/cape/royal_cape
-	belt = //obj/item/clothing/belt/sabre/prince
-	ears = //obj/item/radio/headset/headset_command
+	uniform = /obj/item/clothing/under/royal_attire
+	neck = /obj/item/clothing/neck/cloak/prince
+	belt = /obj/item/clothing/belt/sabre/prince
+	ears = /obj/item/radio/headset/headset_com/loud
 	glasses = null
-	gloves = //obj/item/
-	head = null
-	shoes = /obj/item/clothing/shoes/sneakers/white
+	gloves = /obj/item/clothing/gloves/plate/royal_gauntlets
+	head = /obj/item/clothing/head/costume/crown/ethereal
+	shoes = /obj/item/clothing/shoes/magboots/royal_magboots
 	l_pocket = /obj/item/modular_computer/pda/clear
 	r_pocket = /obj/item/assembly/flash/handheld
 
 // Royal Prince VIP
 // Design: Very lootable, cannot really powergame with his own loot, but can reasonably defend himself with it. Objective to keep his own loot until roundend.
 // All clothing resists any damage, though it does not make the wearer xproof.
-// Crown: Can psychically sway basic and simple mobs to his side, temporarily? if hostile. Cool beam effect. Chance to deflect lasers aimed at the head (very shiny), maybe mini voice of god
 
-/obj/item/clothing/head/costume/crown/fancy
-	name = "magnificent crown"
+/obj/item/clothing/head/costume/crown/ethereal
+	name = "ethereal crown"
 	desc = "A crown worn by only the highest emperors of <s>the land</s> space, or more accurately, some decrepit fiefdom in Sprout. Supremely polished, and despite being made of gold it's a better mirror than anything you've ever seen! The beautiful emerald jewel in the middle shines strangely in the light.."
 	icon_state = "fancycrown"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	var/reflect_probability = 100
-
-/obj/item/clothing/head/costume/crown/fancy/IsReflect(def_zone)
-	if(def_zone != BODY_ZONE_HEAD)
-		return FALSE
-	if (prob(reflect_probability)) // The crown has been polished to PERFECTION.
-		return TRUE
+	reflect_probability = 100
 
 /datum/armor/royal_crown
 	melee = 10
@@ -106,6 +105,12 @@
 	bomb = 100
 	fire = 100
 	acid = 100
+
+/obj/item/clothing/neck/cloak/prince
+	name = "prince's cloak"
+	desc = "A beautiful, shimmering cloak. Its insides look, impossibly, like the deep cosmos, tinted emerald."
+	icon_state = "capcloak"
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 // Gloves: Very fancy gloves that are insulated?, Grant Fencing martial arts to the user if wielding an appropriate blade.
 // Fencing: Buffs block chances, adds krav maga like 'Stance' buttons, defensive to absorb and parry hits, offensive reduces attack cooldown, thrusting slows down but lets you attack from two tiles.
@@ -166,6 +171,8 @@
 	name = "ethereal prince's attire"
 	desc = "An ethereal, beautiful attire made of luminescent threads and encased with deep turquoise and blue jewels. It even contains an extra set of pockets!"
 	icon_state = "captain_parade"
+	strip_delay = 15 SECONDS
+	equip_delay_other = 15 SECONDS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 	icon = 'icons/obj/clothing/under/captain.dmi'
@@ -176,6 +183,7 @@
 /datum/armor/royal_attire
 	bio = 10
 	melee = 10
+	energy = 10
 	wound = 10
 
 /obj/item/clothing/under/royal_attire/Initialize(mapload)
@@ -188,6 +196,8 @@
 	name = "prince's own armor"
 	desc = "A very fancy if terribly outdated suit of plate armor. It has a fancy turquoise tabard. A little encumbering, but surprisingly resistant to damage."
 	icon_state = "knight_green"
+	strip_delay = 15 SECONDS
+	equip_delay_other = 15 SECONDS
 	inhand_icon_state = null
 	allowed = list(
 		/obj/item/banner,
@@ -217,6 +227,7 @@
 	inhand_icon_state = "sheath_prince"
 	worn_icon_state = "sheath_prince"
 	w_class = WEIGHT_CLASS_BULKY
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/melee/sabre/prince
 	name = "prince's sabre"

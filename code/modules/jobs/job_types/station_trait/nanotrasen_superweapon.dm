@@ -19,9 +19,9 @@
 	paycheck = PAYCHECK_ZERO // test subjects get paid in exposure (to radiation)
 	paycheck_department = ACCOUNT_SCI
 
-	liver_traits = list()
+	liver_traits = list(TRAIT_MEDICAL_METABOLISM) // science liver would make them spout scientist remarks when drunk
 
-//	display_order = JOB_DISPLAY_ORDER_NANOTRASEN_SUPERWEAPON
+	display_order = JOB_DISPLAY_ORDER_NANOTRASEN_SUPERWEAPON
 	departments_list = list(/datum/job_department/science, /datum/job_department/medical)
 
 //	family_heirlooms = list(/obj/item/banner/command/mundane)
@@ -46,6 +46,16 @@
 	send_supply_pod_to_area(spawned, drop_area, /obj/structure/closet/supplypod/centcompod)
 
 //	ADD_TRAIT(spawned, TRAIT_NO_TWOHANDING, JOB_TRAIT)
+	spawned.add_traits(list(
+		TRAIT_WOUND_LICKER,
+		TRAIT_SURGICALLY_ANALYZED, // they get bonuses to weird surgical stuff
+		TRAIT_SPECIAL_TRAUMA_BOOST,
+		TRAIT_HATED_BY_DOGS,
+		TRAIT_HIGH_VALUE_RANSOM,
+	), JOB_TRAIT)
+
+	var/datum/antagonist/protagonist/nanotrasen_superweapon/free_antag = new()
+	spawned.client.assign_antag_datum(free_antag)
 
 /datum/job/nanotrasen_superweapon/get_roundstart_spawn_point()
 	var/area/deployment_zone = prob(50) ? (GLOB.areas_by_type[/area/station/science/genetics]) : (GLOB.areas_by_type[/area/station/medical/treatment_center])
