@@ -22,6 +22,13 @@ GLOBAL_VAR_INIT(refid_filter, TYPEID(filter(type="angular_blur")))
 
 #define isgenerator(A) (istype(A, /generator))
 
+// you really shouldn't use these unless you know what you're doing
+#define _iselement(A) (istype(A, /datum/element))
+// seriously ninja will kill you
+#define _iscomponent(A) (istype(A, /datum/component))
+// you know what that _ is for? it's for 'dont use this'. so dont
+
+
 //Turfs
 //#define isturf(A) (istype(A, /turf)) This is actually a byond built-in. Added here for completeness sake.
 

@@ -650,6 +650,13 @@
 	modsuit_image.pixel_x = ((creature_x - looker.x) * 32)
 	modsuit_image.pixel_y = ((creature_y - looker.y) * 32)
 
+/obj/effect/temp_visual/dir_setting/inverse_sonar
+	icon_state = "four_dirs_empty"
+	duration = null
+	var/image/sonar_image
+	var/creature_x
+	var/creature_y
+
 /obj/effect/temp_visual/block //color is white by default, set to whatever is needed
 	name = "blocking glow"
 	icon_state = "block"
