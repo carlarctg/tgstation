@@ -38,16 +38,21 @@
 		// And we cant listen to a mob that doesnt yet exist.
 		// so im ditching ec holder
 
+	// downsides: flash vuln, cosntant hallucinations
+	// also narnar rips ur eyes out
+
 /obj/item/clothing/glasses/perceptomatrix/equipped(mob/user, slot)
 	. = ..()
 	if(slot != ITEM_SLOT_EYES)
 		return
-	component = user.AddComponent(/datum/component/inverse_sonar, sonar_icon_state = null, listening_signal = COMSIG_MOVABLE_MOVED, sonar_alert_text = "Anomalous resonances make you aware of someone's location...")
+	component = user.AddComponent(/datum/component/inverse_sonar, sonar_icon_state = "perception", listening_signal = COMSIG_MOVABLE_MOVED, sonar_alert_type = /atom/movable/screen/alert/perception_recipient)
 	ADD_TRAIT(user, TRAIT_XRAY_VISION, "[CLOTHING_TRAIT]_[REF(src)]")
+	user.throw_alert("perceptomatrix", /atom/movable/screen/alert/perception_owner)
 	user.update_sight()
 
 /obj/item/clothing/glasses/perceptomatrix/dropped(mob/user)
 	REMOVE_TRAIT(user, TRAIT_XRAY_VISION, "[CLOTHING_TRAIT]_[REF(src)]")
+	user.clear_alert("perceptomatrix", clear_override = TRUE) // idk i cant get it to work
 	qdel(component)
 	user.update_sight()
 	. = ..()
@@ -93,3 +98,17 @@
 		user.put_in_hands(core)
 	core = null
 	update_icon_state()
+
+/atom/movable/screen/alert/perception_owner
+	name = "Perceptual Resonance"
+	icon_state = "perception_invert"
+	desc = "You're emitting a wave of perceptual resonance. Anyone who you can see, can see you right back."
+
+/atom/movable/screen/alert/perception_recipient
+	name = "Perceptual Resonance"
+	icon_state = "perception"
+	desc = "Anomalous resonances make you aware of someone's location..."
+
+/atom/movable/screen/alert/perception_recipient/Initialize(mapload, datum/hud/hud_owner, mob/gazer)
+	. = ..()
+	desc = "Anomalous resonances make you aware of [gazer ? gazer : "someone"]'s location..."

@@ -61,6 +61,10 @@
 #define ALERT_TEMPERATURE_HOT "temphot"
 #define ALERT_TEMPERATURE_COLD "tempcold"
 
+/** Idk lol? */
+#define ALERT_PERCEPTION "perception"
+#define ALERT_PERCEPTION_INVERTED "perception_invert"
+
 /** Bitrunning */
 #define ALERT_BITRUNNER_CROWBAR "bitrunning_crowbar"
 #define ALERT_BITRUNNER_COMPLETED "bitrunning_complete"
