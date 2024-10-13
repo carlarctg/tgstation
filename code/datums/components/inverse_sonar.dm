@@ -11,7 +11,7 @@ When added onto an atom, it will create a visible image for every nearby cliente
 	var/sonar_icon_state
 	var/sonar_alert_type
 
-/datum/component/inverse_sonar/Initialize(sonar_icon, sonar_icon_state, listening_signal, sonar_alert_type = /atom/movable/screen/alert/inverse_sonar)
+/datum/component/inverse_sonar/Initialize(sonar_icon = 'icons/effects/effects.dmi', sonar_icon_state, listening_signal, sonar_alert_type = /atom/movable/screen/alert/inverse_sonar)
 
 	src.sonar_icon = sonar_icon
 	src.sonar_icon_state = sonar_icon_state
@@ -45,7 +45,8 @@ When added onto an atom, it will create a visible image for every nearby cliente
 	sonar_image.dir = parent_atom.dir
 
 	// Create the effect that will hold the inverse sonar and attach it.
-	var/obj/effect/temp_visual/dir_setting/inverse_sonar/new_sonar = new(parent_atom)
+	// needs to be located on the resonating mob. if its on the component holder it won't load, because out of sight
+	var/obj/effect/temp_visual/dir_setting/inverse_sonar/new_sonar = new(resonating_mob)
 	LAZYADDASSOC(sonars_to_mobs, resonating_mob, new_sonar)
 	new_sonar.setDir(parent_atom.dir)
 	new_sonar.sonar_image = sonar_image
@@ -71,7 +72,7 @@ When added onto an atom, it will create a visible image for every nearby cliente
 	// List of creatures currently viewing the user.
 	var/list/current_viewers
 
-	for(var/mob/living/entity in get_hearers_in_range(7, source))
+	for(var/mob/living/entity in get_hearers_in_range(10, source))
 		if(!entity.client || entity == source)
 			continue
 		//if(entity in get_viewers(7, parent))
