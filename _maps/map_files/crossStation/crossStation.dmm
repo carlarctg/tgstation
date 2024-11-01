@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/machinery/power/manufacturing/sorter,
+/turf/open/floor/pod/dark,
+/area/space)
 "an" = (
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 1
@@ -6,6 +10,10 @@
 /obj/structure/table/wood/fancy/blue,
 /obj/item/storage/toolbox/fishing,
 /turf/open/floor/iron,
+/area/space)
+"ao" = (
+/obj/machinery/byteforge,
+/turf/open/space/basic,
 /area/space)
 "ap" = (
 /obj/structure/railing/corner{
@@ -20,15 +28,13 @@
 	},
 /turf/open/floor/wood/tile,
 /area/space)
+"as" = (
+/obj/structure/railing/corner,
+/turf/open/floor/iron,
+/area/space)
 "au" = (
-/obj/machinery/big_manipulator,
-/obj/effect/big_manipulator_hand{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 10
-	},
-/turf/open/floor/pod/dark,
+/obj/structure/fluff/iced_abductor,
+/turf/open/space/basic,
 /area/space)
 "aB" = (
 /obj/structure/railing{
@@ -37,14 +43,23 @@
 /turf/open/misc/grass,
 /area/space)
 "aL" = (
-/obj/effect/big_manipulator_hand{
-	dir = 8
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "packageSort2"
 	},
-/turf/open/space/basic,
+/turf/open/floor/pod/dark,
 /area/space)
 "aY" = (
 /obj/structure/closet/athletic_mixed,
 /turf/open/floor/iron/white/small,
+/area/space)
+"aZ" = (
+/obj/item/exodrone{
+	name = "N";
+	tools = list("multitool", "translator")
+	},
+/obj/structure/sign/poster/contraband/free_drone/directional/north,
+/turf/open/floor/iron,
 /area/space)
 "bb" = (
 /obj/structure/table/wood,
@@ -68,11 +83,8 @@
 /turf/open/floor/wood/tile,
 /area/space)
 "bn" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "garbage"
-	},
-/turf/open/floor/catwalk_floor,
+/obj/machinery/computer/exoscanner_control,
+/turf/open/floor/iron,
 /area/space)
 "bx" = (
 /obj/effect/turf_decal/siding/white{
@@ -105,11 +117,11 @@
 /turf/open/floor/plastic,
 /area/space)
 "cb" = (
+/obj/machinery/brm,
 /obj/machinery/conveyor{
 	dir = 1;
 	id = "packageSort2"
 	},
-/obj/machinery/bouldertech/refinery/smelter,
 /obj/structure/railing{
 	dir = 4
 	},
@@ -117,6 +129,15 @@
 /area/space)
 "ch" = (
 /turf/open/floor/iron/checker,
+/area/space)
+"co" = (
+/turf/open/floor/iron/stairs,
+/area/space)
+"cw" = (
+/obj/machinery/disposal/delivery_chute{
+	dir = 1
+	},
+/turf/open/floor/pod/dark,
 /area/space)
 "cG" = (
 /obj/structure/railing{
@@ -127,7 +148,28 @@
 /turf/open/floor/wood/large,
 /area/space)
 "cJ" = (
-/obj/structure/disposaloutlet,
+/obj/effect/spawner/structure/window/survival_pod,
+/turf/open/space/basic,
+/area/space)
+"cN" = (
+/obj/machinery/conveyor,
+/turf/open/floor/catwalk_floor,
+/area/space)
+"cP" = (
+/obj/structure/window/reinforced/survival_pod/spawner/directional/east,
+/turf/open/floor/pod/dark,
+/area/space)
+"db" = (
+/obj/structure/railing,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/turf_decal/caution{
+	dir = 8
+	},
 /turf/open/floor/pod/dark,
 /area/space)
 "dg" = (
@@ -148,6 +190,21 @@
 /obj/machinery/piratepad/civilian,
 /turf/open/floor/iron,
 /area/space)
+"ei" = (
+/obj/structure/ore_box,
+/turf/open/space/basic,
+/area/space)
+"eB" = (
+/obj/structure/railing,
+/turf/open/floor/iron,
+/area/space)
+"fn" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "mining"
+	},
+/turf/open/space/basic,
+/area/space)
 "fp" = (
 /obj/effect/turf_decal/siding/wideplating_new/light{
 	dir = 10
@@ -158,8 +215,27 @@
 	},
 /turf/open/water/beach,
 /area/space)
-"fy" = (
+"fs" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/turf_decal/caution{
+	dir = 8
+	},
+/obj/item/card/mining_point_card,
+/obj/item/card/mining_point_card,
+/obj/item/card/mining_point_card,
+/obj/item/storage/belt/mining/alt,
+/obj/item/storage/belt/mining/alt,
 /turf/open/floor/pod/dark,
+/area/space)
+"fy" = (
+/obj/machinery/conveyor,
+/turf/open/floor/pod/light,
 /area/space)
 "fS" = (
 /obj/machinery/autolathe,
@@ -184,8 +260,25 @@
 	},
 /turf/open/water/beach,
 /area/space)
+"gz" = (
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "packageSort2"
+	},
+/obj/structure/plasticflaps,
+/turf/open/floor/pod/dark,
+/area/space)
 "gI" = (
-/obj/machinery/power/manufacturing/sorter,
+/obj/machinery/quantum_server,
+/turf/open/floor/iron,
+/area/space)
+"gT" = (
+/mob/living/basic/pet/gondola/gondolapod,
+/turf/open/space/basic,
+/area/space)
+"gW" = (
+/obj/structure/sign/warning/pods/directional/north,
+/obj/structure/railing/corner/end/flip,
 /turf/open/floor/pod/dark,
 /area/space)
 "hb" = (
@@ -202,6 +295,10 @@
 /obj/item/aquarium_upgrade/bioelec_gen,
 /turf/open/floor/iron,
 /area/space)
+"hO" = (
+/obj/machinery/computer/shuttle/mining,
+/turf/open/floor/pod/dark,
+/area/space)
 "hS" = (
 /obj/machinery/door/airlock,
 /turf/open/floor/iron,
@@ -215,6 +312,12 @@
 	dir = 6
 	},
 /turf/open/floor/iron,
+/area/space)
+"ir" = (
+/obj/structure/railing{
+	dir = 10
+	},
+/turf/open/floor/pod/light,
 /area/space)
 "it" = (
 /obj/structure/table/wood/fancy/black,
@@ -232,6 +335,16 @@
 	},
 /turf/open/floor/wood/tile,
 /area/space)
+"iJ" = (
+/obj/structure/disposaloutlet,
+/turf/open/floor/pod/dark,
+/area/space)
+"iN" = (
+/obj/structure/fluff/big_chain{
+	pixel_y = -16
+	},
+/turf/open/floor/catwalk_floor,
+/area/space)
 "jc" = (
 /obj/effect/turf_decal/siding/wideplating/light{
 	dir = 1
@@ -241,6 +354,20 @@
 "jx" = (
 /obj/machinery/vending/hydroseeds,
 /turf/open/floor/iron,
+/area/space)
+"jA" = (
+/obj/structure/fluff/divine,
+/turf/open/space/basic,
+/area/space)
+"jP" = (
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/pod/dark,
 /area/space)
 "kz" = (
 /obj/structure/rack,
@@ -253,14 +380,20 @@
 /turf/open/floor/iron/white/small,
 /area/space)
 "kD" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "packageSort2"
+/obj/structure/bouncy_castle,
+/turf/open/space/basic,
+/area/space)
+"kI" = (
+/obj/machinery/door/airlock/mining{
+	name = "Cargo Bay"
 	},
-/obj/structure/railing{
-	dir = 4
+/turf/open/floor/iron,
+/area/space)
+"kN" = (
+/obj/machinery/door/airlock/mining{
+	name = "Cargo Bay"
 	},
-/turf/open/floor/pod/dark,
+/turf/open/floor/pod/light,
 /area/space)
 "kT" = (
 /obj/structure/railing/corner/end/flip{
@@ -285,9 +418,16 @@
 /obj/machinery/door/airlock,
 /turf/open/space/basic,
 /area/space)
-"lV" = (
-/obj/structure/railing/corner,
+"lO" = (
+/obj/machinery/mech_bay_recharge_port{
+	dir = 2
+	},
 /turf/open/floor/iron,
+/area/space)
+"lV" = (
+/turf/open/floor/iron/stairs{
+	dir = 4
+	},
 /area/space)
 "ml" = (
 /obj/effect/turf_decal/siding/wideplating/light/corner{
@@ -303,6 +443,10 @@
 /obj/item/storage/toolbox/fishing,
 /turf/open/floor/iron/white/small,
 /area/space)
+"mB" = (
+/obj/structure/fluff/arc,
+/turf/open/space/basic,
+/area/space)
 "mI" = (
 /obj/structure/railing/corner/end{
 	dir = 8
@@ -313,16 +457,8 @@
 /turf/open/floor/iron/white/small,
 /area/space)
 "mR" = (
-/obj/docking_port/stationary{
-	dir = 2;
-	dwidth = 9;
-	height = 25;
-	name = "MetaStation emergency evac bay";
-	shuttle_id = "emergency_home";
-	width = 29
-	},
-/obj/machinery/door/airlock/external/glass,
-/turf/open/space/basic,
+/obj/structure/rack,
+/turf/open/floor/iron,
 /area/space)
 "mX" = (
 /obj/machinery/conveyor{
@@ -335,6 +471,17 @@
 	dir = 1
 	},
 /turf/open/floor/iron,
+/area/space)
+"ng" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/closet/wardrobe/miner,
+/turf/open/floor/pod/light,
+/area/space)
+"nO" = (
+/obj/machinery/vending/runic_vendor,
+/turf/open/space/basic,
 /area/space)
 "ot" = (
 /obj/structure/table/glass,
@@ -379,6 +526,12 @@
 	},
 /turf/open/water/beach,
 /area/space)
+"oM" = (
+/obj/structure/chair/comfy/shuttle/tactical{
+	pixel_y = 17
+	},
+/turf/open/floor/pod/light,
+/area/space)
 "oU" = (
 /turf/open/floor/wood,
 /area/space)
@@ -404,6 +557,10 @@
 /area/space)
 "pI" = (
 /obj/machinery/power/manufacturing/unloader,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "mining"
+	},
 /turf/open/space/basic,
 /area/space)
 "pJ" = (
@@ -429,6 +586,17 @@
 	},
 /turf/open/floor/iron,
 /area/space)
+"qk" = (
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "packageSort2"
+	},
+/obj/machinery/bouldertech/refinery,
+/obj/structure/railing/corner/end/flip{
+	dir = 8
+	},
+/turf/open/floor/pod/dark,
+/area/space)
 "qn" = (
 /obj/structure/railing{
 	dir = 9
@@ -444,15 +612,22 @@
 /turf/open/floor/pod/dark,
 /area/space)
 "qB" = (
-/obj/machinery/big_manipulator,
-/obj/effect/big_manipulator_hand{
-	dir = 8
+/obj/machinery/quantum_server{
+	color = "#FF0000"
 	},
-/turf/open/floor/pod/light,
+/turf/open/floor/iron,
+/area/space)
+"qD" = (
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "packageSort2"
+	},
+/obj/machinery/bouldertech/refinery/smelter,
+/turf/open/floor/pod/dark,
 /area/space)
 "qL" = (
-/obj/effect/spawner/structure/window/survival_pod,
-/turf/open/space/basic,
+/obj/structure/table/reinforced,
+/turf/open/floor/iron,
 /area/space)
 "qY" = (
 /obj/machinery/conveyor,
@@ -472,41 +647,70 @@
 /turf/open/floor/plastic,
 /area/space)
 "rp" = (
-/obj/machinery/conveyor,
-/turf/open/floor/catwalk_floor,
+/obj/machinery/computer/quantum_console,
+/turf/open/floor/iron,
 /area/space)
-"rQ" = (
+"rz" = (
 /obj/machinery/conveyor{
 	dir = 1;
-	id = "packageSort2"
+	id = "garbage"
 	},
 /obj/structure/plasticflaps,
-/turf/open/floor/pod/dark,
+/turf/open/floor/catwalk_floor,
+/area/space)
+"rJ" = (
+/obj/machinery/drone_dispenser/hivebot,
+/turf/open/space/basic,
+/area/space)
+"rP" = (
+/obj/machinery/big_manipulator,
+/obj/effect/big_manipulator_hand{
+	dir = 8
+	},
+/turf/open/floor/iron/recharge_floor,
+/area/space)
+"rQ" = (
+/turf/open/floor/catwalk_floor/iron_dark,
 /area/space)
 "rV" = (
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron/grimy,
 /area/space)
+"sx" = (
+/obj/machinery/door/airlock,
+/turf/open/floor/iron/cafeteria,
+/area/space)
 "sD" = (
-/obj/machinery/conveyor_switch,
+/turf/open/floor/glass/reinforced,
+/area/space)
+"sK" = (
 /obj/structure/railing{
-	dir = 6
+	dir = 4
 	},
-/turf/open/floor/pod/light,
+/obj/structure/table/reinforced,
+/turf/open/floor/iron,
 /area/space)
 "sM" = (
 /obj/structure/table/reinforced/titaniumglass,
-/turf/open/space/basic,
+/turf/open/floor/iron/cafeteria,
 /area/space)
 "sN" = (
 /turf/open/floor/plastic,
 /area/space)
+"sP" = (
+/obj/structure/mirror/directional/east,
+/turf/open/floor/iron/white/small,
+/area/space)
+"sS" = (
+/obj/structure/desk_bell/speed_demon,
+/turf/open/space/basic,
+/area/space)
 "sV" = (
-/obj/machinery/big_manipulator,
-/obj/effect/big_manipulator_hand{
-	dir = 4
-	},
-/turf/open/floor/pod/light,
+/turf/open/floor/pod/dark,
+/area/space)
+"sY" = (
+/obj/machinery/vending/cigarette/beach,
+/turf/open/space/basic,
 /area/space)
 "tr" = (
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
@@ -528,10 +732,14 @@
 /turf/closed/wall/mineral/titanium,
 /area/space)
 "tS" = (
-/obj/machinery/door/airlock/mining{
-	name = "Cargo Bay"
+/obj/structure/table/reinforced,
+/turf/open/space/basic,
+/area/space)
+"ue" = (
+/obj/effect/big_manipulator_hand{
+	dir = 8
 	},
-/turf/open/floor/pod/light,
+/turf/open/space/basic,
 /area/space)
 "uy" = (
 /obj/structure/railing/corner/end{
@@ -540,12 +748,26 @@
 /turf/open/floor/wood/large,
 /area/space)
 "uG" = (
-/obj/structure/railing,
+/obj/machinery/computer/exodrone_control_console,
 /turf/open/floor/iron,
+/area/space)
+"uZ" = (
+/obj/structure/railing/corner/end,
+/turf/open/floor/pod/light,
 /area/space)
 "ve" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/curtain/bounty,
+/turf/open/space/basic,
+/area/space)
+"vN" = (
+/obj/machinery/door/airlock/mining{
+	name = "Cargo Bay"
+	},
+/obj/structure/railing/corner/end{
+	dir = 4;
+	pixel_y = -4
+	},
 /turf/open/space/basic,
 /area/space)
 "wx" = (
@@ -575,8 +797,11 @@
 /turf/open/floor/iron,
 /area/space)
 "xJ" = (
-/obj/machinery/exoscanner,
-/turf/open/floor/iron/goonplaque,
+/obj/machinery/power/shuttle_engine/propulsion/burst{
+	pixel_y = 16;
+	dir = 1
+	},
+/turf/closed/wall/mineral/titanium/survival,
 /area/space)
 "yf" = (
 /obj/structure/railing/corner/end{
@@ -595,7 +820,7 @@
 /turf/open/water/beach,
 /area/space)
 "yz" = (
-/obj/structure/rack,
+/obj/structure/railing/corner/end/flip,
 /turf/open/floor/pod/dark,
 /area/space)
 "yE" = (
@@ -604,20 +829,41 @@
 "yS" = (
 /turf/closed/wall,
 /area/space)
+"zh" = (
+/obj/machinery/conveyor,
+/turf/open/floor/pod/dark,
+/area/space)
 "zk" = (
 /obj/structure/railing{
 	dir = 5
 	},
-/obj/structure/railing{
-	dir = 8
-	},
 /turf/open/floor/pod/dark,
+/area/space)
+"zr" = (
+/obj/structure/detectiveboard/directional/north,
+/obj/item/fish/chainsawfish{
+	pixel_y = 25;
+	desc = "Essential for 'opening' crates.";
+	force = 24;
+	block_chance = 0;
+	status = "dead";
+	icon_state_dead = "chainsawfish"
+	},
+/turf/open/space/basic,
+/area/space)
+"zE" = (
+/obj/structure/cannon/trash,
+/turf/open/space/basic,
 /area/space)
 "zL" = (
 /mob/living/basic/chick/permanent{
 	name = "\improper Chicken Little"
 	},
 /turf/open/floor/iron/cafeteria,
+/area/space)
+"Aa" = (
+/obj/machinery/porta_turret/centcom_shuttle/weak/mining,
+/turf/closed/wall/mineral/titanium/survival,
 /area/space)
 "Ab" = (
 /obj/structure/fake_stairs/wood/directional/east,
@@ -640,6 +886,10 @@
 /obj/structure/curtain/cloth/fancy/mechanical/start_closed,
 /turf/open/floor/wood/large,
 /area/space)
+"AF" = (
+/obj/structure/aquarium/crab,
+/turf/open/floor/pod/dark,
+/area/space)
 "AH" = (
 /obj/effect/turf_decal/siding/wideplating_new/light{
 	dir = 5
@@ -659,20 +909,39 @@
 /turf/open/water/beach,
 /area/space)
 "AO" = (
-/obj/machinery/disposal/delivery_chute{
-	dir = 1
+/obj/machinery/conveyor{
+	dir = 4
 	},
-/turf/open/floor/pod/dark,
+/turf/open/space/basic,
 /area/space)
 "Bb" = (
 /obj/structure/table/wood/fancy,
 /turf/open/floor/wood,
+/area/space)
+"Bi" = (
+/obj/machinery/conveyor{
+	dir = 5;
+	id = "garbage"
+	},
+/turf/open/space/basic,
 /area/space)
 "Bp" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 9
 	},
 /turf/open/floor/iron/grimy,
+/area/space)
+"Bu" = (
+/obj/machinery/conveyor,
+/obj/structure/plasticflaps,
+/turf/open/floor/catwalk_floor,
+/area/space)
+"BS" = (
+/obj/structure/closet/crate/cardboard{
+	opened = 1;
+	icon_state = "cardboardopen"
+	},
+/turf/open/space/basic,
 /area/space)
 "Cz" = (
 /obj/effect/turf_decal/siding/white,
@@ -696,18 +965,12 @@
 /turf/open/water/beach,
 /area/space)
 "Dy" = (
-/obj/machinery/brm,
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "packageSort2"
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/open/floor/pod/dark,
+/obj/structure/railing/corner,
+/turf/closed/wall,
+/area/space)
+"DR" = (
+/obj/machinery/vending/hotdog,
+/turf/open/space/basic,
 /area/space)
 "DU" = (
 /turf/closed/wall,
@@ -729,6 +992,31 @@
 "Et" = (
 /turf/open/floor/iron/cafeteria,
 /area/space)
+"Fn" = (
+/obj/structure/window/reinforced/survival_pod/spawner/directional/west,
+/turf/open/floor/pod/dark,
+/area/space)
+"Fs" = (
+/obj/item/boulder/artifact{
+	name = "Sisyphus";
+	desc = "The eternal ordeal, now purchasable at your local goods store for 4 dollars!";
+	drag_slowdown = 5;
+	slowdown = 5;
+	durability = 50;
+	pixel_y = -1;
+	pixel_x = 2
+	},
+/obj/structure/ore_container/food_trough/gutlunch_trough,
+/turf/open/space/basic,
+/area/space)
+"Fu" = (
+/obj/item/exodrone{
+	name = "V";
+	tools = list("laser", "drill", "welder")
+	},
+/obj/structure/sign/poster/contraband/free_drone/directional/north,
+/turf/open/floor/iron,
+/area/space)
 "Fw" = (
 /turf/open/misc/grass,
 /area/space)
@@ -747,8 +1035,15 @@
 /turf/open/floor/wood/tile,
 /area/space)
 "FS" = (
-/obj/structure/railing,
-/turf/open/floor/pod/light,
+/obj/machinery/door/airlock/survival_pod/glass,
+/turf/open/floor/pod/dark,
+/area/space)
+"FV" = (
+/obj/machinery/big_manipulator,
+/obj/effect/big_manipulator_hand{
+	dir = 4
+	},
+/turf/open/floor/iron,
 /area/space)
 "FZ" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
@@ -756,21 +1051,40 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/space)
+"Gb" = (
+/obj/machinery/vending/plasmaresearch,
+/turf/open/space/basic,
+/area/space)
 "Gg" = (
 /obj/structure/railing,
 /turf/open/misc/grass,
 /area/space)
 "Gi" = (
-/obj/machinery/conveyor{
-	dir = 4
+/obj/structure/railing{
+	dir = 6
 	},
-/obj/structure/railing,
+/obj/structure/rack,
+/obj/item/flashlight/lantern,
+/obj/item/flashlight/lantern/jade,
+/obj/item/flashlight/lantern,
+/turf/open/floor/pod/light,
+/area/space)
+"Gr" = (
+/obj/structure/closet/secure_closet/miner,
 /turf/open/floor/pod/dark,
+/area/space)
+"GA" = (
+/obj/structure/no_effect_signpost,
+/turf/open/space/basic,
 /area/space)
 "GD" = (
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 8
 	},
+/turf/open/floor/iron,
+/area/space)
+"GH" = (
+/obj/machinery/netpod,
 /turf/open/floor/iron,
 /area/space)
 "GV" = (
@@ -785,6 +1099,14 @@
 	},
 /turf/open/floor/wood/tile,
 /area/space)
+"HJ" = (
+/obj/machinery/vending/sovietsoda,
+/turf/open/space/basic,
+/area/space)
+"HK" = (
+/obj/structure/sign/departments/exodrone/directional/north,
+/turf/open/floor/iron,
+/area/space)
 "HV" = (
 /obj/structure/stairs_frame{
 	dir = 1;
@@ -794,11 +1116,15 @@
 /area/space)
 "Ig" = (
 /obj/machinery/conveyor{
-	dir = 1;
-	id = "garbage"
+	dir = 6
 	},
-/obj/structure/plasticflaps,
-/turf/open/floor/catwalk_floor,
+/turf/open/space/basic,
+/area/space)
+"Ij" = (
+/mob/living/basic/mining/lobstrosity/juvenile/lava{
+	name = "Clampy"
+	},
+/turf/open/floor/iron,
 /area/space)
 "IE" = (
 /obj/effect/turf_decal/loading_area{
@@ -819,10 +1145,17 @@
 /turf/open/floor/iron,
 /area/space)
 "Jh" = (
-/obj/structure/railing{
-	dir = 4
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "garbage"
 	},
-/turf/open/floor/pod/dark,
+/turf/open/floor/catwalk_floor,
+/area/space)
+"Ji" = (
+/obj/structure/billboard/smoothies{
+	pixel_y = 15
+	},
+/turf/closed/wall,
 /area/space)
 "Jj" = (
 /obj/structure/closet/secure_closet,
@@ -862,25 +1195,45 @@
 	},
 /turf/open/floor/plastic,
 /area/space)
+"KD" = (
+/obj/structure/railing{
+	dir = 6
+	},
+/obj/structure/closet/secure_closet/miner,
+/turf/open/floor/pod/dark,
+/area/space)
+"KJ" = (
+/obj/machinery/computer/security/mining,
+/turf/open/floor/pod/dark,
+/area/space)
 "KL" = (
 /obj/structure/railing{
 	dir = 6
 	},
 /turf/open/misc/grass,
 /area/space)
+"Lj" = (
+/obj/machinery/power/shuttle_engine/propulsion/burst{
+	pixel_y = -16
+	},
+/turf/closed/wall/mineral/titanium/survival,
+/area/space)
 "Mi" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "packageSort2"
-	},
-/obj/machinery/bouldertech/refinery,
-/obj/structure/railing{
-	dir = 6
-	},
-/turf/open/floor/pod/dark,
+/turf/open/floor/catwalk_floor,
 /area/space)
 "Mz" = (
 /turf/open/floor/wood/large,
+/area/space)
+"MD" = (
+/obj/structure/chair/comfy/shuttle/tactical{
+	pixel_y = 17
+	},
+/obj/machinery/vending/wallmed/directional/west,
+/turf/open/floor/pod/light,
+/area/space)
+"MR" = (
+/mob/living/basic/mining/legion/large,
+/turf/open/space/basic,
 /area/space)
 "MX" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
@@ -905,6 +1258,10 @@
 	},
 /turf/open/floor/wood/tile,
 /area/space)
+"NI" = (
+/obj/machinery/vending/robotics,
+/turf/open/space/basic,
+/area/space)
 "NR" = (
 /obj/machinery/mineral/ore_redemption,
 /turf/open/space/basic,
@@ -923,6 +1280,10 @@
 /obj/structure/plasticflaps,
 /turf/open/space/basic,
 /area/space)
+"OV" = (
+/obj/structure/geyser,
+/turf/open/space/basic,
+/area/space)
 "OX" = (
 /obj/machinery/rnd/production/techfab/department/service,
 /turf/open/floor/iron,
@@ -933,11 +1294,45 @@
 	},
 /turf/open/floor/plastic,
 /area/space)
+"PA" = (
+/obj/docking_port/stationary{
+	dir = 2;
+	dwidth = 9;
+	height = 25;
+	name = "MetaStation emergency evac bay";
+	shuttle_id = "emergency_home";
+	width = 29
+	},
+/obj/machinery/door/airlock/external/glass,
+/turf/open/space/basic,
+/area/space)
 "PM" = (
 /obj/effect/turf_decal/siding/wideplating_new/light{
 	dir = 9
 	},
 /turf/open/water/beach,
+/area/space)
+"PN" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/turf_decal/caution{
+	dir = 8
+	},
+/turf/open/floor/pod/dark,
+/area/space)
+"Qz" = (
+/obj/machinery/vending/engineering,
+/turf/open/space/basic,
+/area/space)
+"QD" = (
+/obj/structure/fluff/big_chain{
+	pixel_y = 48
+	},
+/turf/open/floor/catwalk_floor,
 /area/space)
 "QI" = (
 /obj/structure/bed/medical{
@@ -947,7 +1342,12 @@
 /turf/open/floor/plastic,
 /area/space)
 "QN" = (
-/obj/structure/table/reinforced,
+/obj/machinery/computer/order_console/mining,
+/obj/machinery/mining_weather_monitor/directional/north,
+/turf/open/floor/pod/dark,
+/area/space)
+"QS" = (
+/obj/structure/billboard/space_cola,
 /turf/open/space/basic,
 /area/space)
 "Re" = (
@@ -960,23 +1360,64 @@
 /obj/effect/turf_decal/siding/white/corner,
 /turf/open/water/beach,
 /area/space)
+"Rk" = (
+/obj/effect/spawner/random/environmentally_safe_anomaly,
+/turf/open/space/basic,
+/area/space)
+"Rr" = (
+/obj/structure/displaycase,
+/turf/open/space/basic,
+/area/space)
 "Ry" = (
 /obj/machinery/conveyor{
 	dir = 8
 	},
 /turf/open/floor/pod/dark,
 /area/space)
+"RI" = (
+/obj/machinery/smartfridge/survival_pod/preloaded,
+/turf/open/floor/pod/dark,
+/area/space)
+"RJ" = (
+/obj/structure/chair/comfy/shuttle/tactical{
+	pixel_y = 17
+	},
+/turf/open/floor/pod/dark,
+/area/space)
+"RY" = (
+/obj/structure/billboard/twenty_four_seven,
+/turf/open/space/basic,
+/area/space)
 "Si" = (
 /obj/structure/table/reinforced/rglass,
+/turf/open/space/basic,
+/area/space)
+"Sl" = (
+/obj/structure/fluff/preserved_borer,
 /turf/open/space/basic,
 /area/space)
 "Sq" = (
 /obj/machinery/hydroponics,
 /turf/open/floor/iron/checker,
 /area/space)
+"St" = (
+/obj/structure/billboard/twenty_four_seven{
+	pixel_y = 15
+	},
+/turf/closed/wall,
+/area/space)
+"Sy" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/rack,
+/obj/item/storage/toolbox/fishing,
+/obj/item/fishing_line/reinforced,
+/turf/open/floor/pod/light,
+/area/space)
 "Sz" = (
-/obj/item/boulder/artifact,
-/turf/open/floor/iron,
+/obj/machinery/turretid,
+/turf/closed/wall/mineral/titanium/survival,
 /area/space)
 "SA" = (
 /obj/machinery/door/airlock/multi_tile/public,
@@ -986,9 +1427,14 @@
 /obj/effect/decal/cleanable/food/tomato_smudge,
 /turf/open/floor/wood/large,
 /area/space)
+"Tc" = (
+/obj/machinery/exoscanner,
+/turf/open/floor/iron/goonplaque,
+/area/space)
 "Tl" = (
-/obj/machinery/conveyor,
-/turf/open/floor/pod/light,
+/obj/structure/railing/corner/end/flip,
+/obj/structure/closet/secure_closet/miner,
+/turf/open/floor/pod/dark,
 /area/space)
 "Tr" = (
 /obj/machinery/door/airlock/mining{
@@ -1011,6 +1457,9 @@
 	dir = 4
 	},
 /turf/open/floor/pod/dark,
+/area/space)
+"TS" = (
+/turf/open/floor/glass/plasma,
 /area/space)
 "Uc" = (
 /obj/structure/railing/corner/end{
@@ -1064,8 +1513,10 @@
 	},
 /area/space)
 "UY" = (
-/obj/machinery/conveyor,
-/turf/open/floor/pod/dark,
+/obj/vehicle/sealed/mecha/ripley/mining{
+	dir = 8
+	},
+/turf/open/floor/iron/recharge_floor,
 /area/space)
 "Vi" = (
 /turf/open/floor/pod/light,
@@ -1081,9 +1532,8 @@
 /turf/open/floor/wood/tile,
 /area/space)
 "Ws" = (
-/obj/machinery/conveyor,
-/obj/structure/plasticflaps,
-/turf/open/floor/catwalk_floor,
+/obj/structure/railing,
+/turf/open/floor/pod/light,
 /area/space)
 "Wz" = (
 /obj/machinery/light/floor,
@@ -1100,11 +1550,10 @@
 /turf/open/floor/iron/grimy,
 /area/space)
 "Xw" = (
-/mob/living/basic/goat/pete,
 /obj/structure/railing{
-	dir = 10
+	dir = 4
 	},
-/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/turf/open/floor/iron,
 /area/space)
 "XD" = (
 /obj/structure/rack,
@@ -1115,6 +1564,16 @@
 /obj/item/clothing/shoes/sandal/beach,
 /obj/item/clothing/shoes/sandal/beach,
 /turf/open/floor/iron/white/small,
+/area/space)
+"Yi" = (
+/obj/structure/railing{
+	dir = 5
+	},
+/obj/structure/rack,
+/obj/item/bodybag/environmental,
+/obj/item/bodybag/environmental,
+/obj/item/bodybag/environmental,
+/turf/open/floor/pod/light,
 /area/space)
 "Yw" = (
 /obj/structure/table/glass,
@@ -1157,6 +1616,12 @@
 "ZM" = (
 /obj/structure/hedge,
 /turf/open/space/basic,
+/area/space)
+"ZS" = (
+/obj/machinery/computer/mech_bay_power_console{
+	dir = 8
+	},
+/turf/open/floor/iron,
 /area/space)
 "ZW" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
@@ -18816,7 +19281,7 @@ yE
 yE
 yS
 yS
-mR
+PA
 yS
 yE
 yE
@@ -22155,14 +22620,14 @@ yE
 yE
 yE
 yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
 yE
 yE
 yE
@@ -22413,14 +22878,14 @@ yS
 yS
 yS
 yS
-yS
-yS
-yS
-yS
-yS
-yS
-yS
 yE
+yE
+yE
+yE
+yE
+yE
+yS
+yS
 yE
 yE
 yE
@@ -22669,6 +23134,7 @@ yE
 yE
 yE
 yE
+hc
 yE
 yE
 yE
@@ -22677,7 +23143,6 @@ yE
 yE
 yE
 yS
-yE
 yE
 yE
 yE
@@ -22926,6 +23391,7 @@ yE
 yE
 yE
 yE
+hc
 yE
 yE
 yE
@@ -22934,7 +23400,6 @@ yE
 yE
 yE
 yS
-yE
 yE
 yE
 yE
@@ -23171,14 +23636,7 @@ pN
 pN
 yE
 yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
+TS
 yE
 yE
 yE
@@ -23191,7 +23649,14 @@ yE
 yE
 yE
 yS
+zr
 yE
+yE
+yE
+yE
+yE
+yE
+yS
 yE
 yE
 yE
@@ -23440,15 +23905,15 @@ yE
 yE
 yE
 yE
-yE
-yE
+hc
+hc
+Fs
 yE
 yE
 yE
 yE
 yE
 yS
-yE
 yE
 yE
 yE
@@ -23683,29 +24148,29 @@ pN
 pN
 pN
 pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
 yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
+hc
+hc
+BS
 yE
 yE
 yE
 yE
 yS
-yE
 yE
 yE
 yE
@@ -23940,29 +24405,29 @@ pN
 pN
 pN
 pN
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yS
 pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+hc
+yS
+hc
+Tr
+hc
+yS
+yS
 pN
 pN
 pN
@@ -24212,14 +24677,14 @@ yS
 yS
 yE
 yE
-yE
-yE
+pN
+pN
 yE
 yE
 yE
 yE
 yS
-pN
+yS
 pN
 pN
 pN
@@ -24469,8 +24934,8 @@ yE
 yS
 yS
 yE
-yE
-yE
+pN
+pN
 yE
 yE
 yE
@@ -24709,11 +25174,11 @@ pN
 pN
 pN
 pN
-yE
+AO
 yS
 yE
 yE
-xJ
+Tc
 tJ
 yE
 yE
@@ -24721,13 +25186,13 @@ yE
 yE
 yE
 tJ
-xJ
+Tc
 yE
-yE
+RY
 yS
 yE
-yE
-yE
+pN
+pN
 yE
 yE
 yE
@@ -24966,16 +25431,16 @@ pN
 pN
 pN
 pN
-yE
+AO
 hc
 yE
 yE
 tJ
 tJ
 Ju
-qL
-qL
-qL
+cJ
+cJ
+cJ
 Ju
 tJ
 tJ
@@ -24983,8 +25448,8 @@ yE
 yE
 hc
 yE
-yE
-yE
+pN
+pN
 yE
 yE
 yE
@@ -25223,29 +25688,29 @@ pN
 pN
 pN
 pN
-yE
-Ws
-rp
-rp
-rp
+Ig
+Bu
+cN
+cN
+cN
 Og
-yE
-yE
-yE
-yE
-yE
+sV
+Vi
+Vi
+Vi
+sV
 Ju
 yE
 yE
 yE
 hc
 yE
-yE
-yE
-yE
-yE
-yE
-yE
+pN
+pN
+yS
+yS
+yS
+yS
 yS
 yE
 yE
@@ -25478,31 +25943,31 @@ yS
 yE
 pN
 pN
+Ij
+pN
+yE
+hc
+hc
+hc
+hc
+cJ
+Vi
+Vi
+sV
+Vi
+Vi
+cJ
+hc
+hc
+hc
+hc
+yE
 pN
 pN
-yE
-hc
-hc
-hc
-hc
-qL
-yE
-yE
-yE
-yE
-yE
-qL
-hc
-hc
-hc
-hc
-yE
-yE
-yE
-yE
-yE
-yE
-yE
+yS
+rp
+pN
+GH
 yS
 yE
 yE
@@ -25743,23 +26208,23 @@ yE
 yE
 bU
 bU
-yE
-yE
-yE
-yE
-yE
+Vi
+sV
+sV
+sV
+Vi
 bU
 bU
 yE
 yE
 bU
-yE
-yE
-yE
-yE
-yE
-yE
-yE
+pN
+pN
+pN
+yS
+gI
+pN
+pN
 yS
 yE
 yE
@@ -25999,24 +26464,24 @@ hc
 hc
 hc
 hc
-qL
-yE
-yE
-yE
-yE
-yE
-qL
+cJ
+Vi
+Vi
+sV
+Vi
+Vi
+cJ
 hc
 hc
 hc
 hc
 yE
-yE
-yE
-yE
-yE
-yE
-yE
+pN
+pN
+kI
+pN
+pN
+GH
 yS
 yE
 yE
@@ -26247,33 +26712,33 @@ yE
 yS
 yS
 yS
-yS
 pN
 pN
 pN
-yE
-Ig
-bn
-bn
-bn
+pN
+Bi
+rz
+Jh
+Jh
+Jh
 Og
-yE
-yE
-yE
-yE
-yE
+sV
+Vi
+Vi
+Vi
+sV
 Ju
 yE
 yE
-yE
+QS
 hc
-yE
-yE
-yE
-yE
-yE
-yE
-yE
+ao
+pN
+pN
+yS
+qB
+pN
+pN
 yS
 yE
 yE
@@ -26502,22 +26967,22 @@ yE
 yE
 yE
 yS
+bn
 pN
 pN
-yS
 pN
 pN
 pN
-yE
+fn
 hc
 yE
 yE
 tJ
 tJ
 Ju
-qL
-qL
-qL
+cJ
+cJ
+cJ
 Ju
 tJ
 tJ
@@ -26525,12 +26990,12 @@ yE
 yE
 hc
 yE
-yE
-yE
-yE
-yE
-yE
-yE
+pN
+pN
+yS
+qL
+pN
+GH
 yS
 yE
 yE
@@ -26553,11 +27018,11 @@ yE
 yE
 yE
 yE
+MR
 yE
-yE
-yE
-yE
-yE
+mB
+Qz
+sY
 yE
 yE
 yE
@@ -26759,9 +27224,9 @@ yE
 yE
 yE
 yS
+Fu
 pN
 pN
-yS
 pN
 pN
 pN
@@ -26769,7 +27234,7 @@ pI
 yS
 yE
 yE
-xJ
+Tc
 tJ
 yE
 yE
@@ -26777,10 +27242,9 @@ yE
 yE
 yE
 tJ
-xJ
+Tc
 yE
 yE
-yS
 yS
 yS
 Tr
@@ -26789,6 +27253,7 @@ yS
 yS
 yS
 yS
+yS
 yE
 yE
 yE
@@ -26812,9 +27277,9 @@ yE
 yE
 yE
 yE
-yE
-yE
-yE
+jA
+DR
+Gb
 yE
 yE
 yE
@@ -27016,9 +27481,9 @@ yE
 yE
 yE
 yS
+aZ
 pN
 pN
-yS
 pN
 pN
 pN
@@ -27038,13 +27503,13 @@ yE
 yE
 yS
 yS
-yE
-yE
-yE
-yE
-yE
-yE
-yE
+gW
+sV
+yz
+sV
+sV
+sV
+AF
 yS
 yE
 yE
@@ -27069,9 +27534,9 @@ yE
 yE
 yE
 yE
-yE
-yE
-yE
+au
+kD
+NI
 yE
 yE
 yE
@@ -27273,9 +27738,9 @@ yE
 yE
 yE
 yS
+uG
 pN
 pN
-yS
 pN
 pN
 pN
@@ -27293,6 +27758,15 @@ yS
 hc
 hc
 yS
+Dy
+ng
+Gi
+lV
+lV
+Yi
+Sy
+yS
+yS
 yS
 yE
 yE
@@ -27301,8 +27775,6 @@ yE
 yE
 yE
 yE
-yS
-yS
 yE
 yE
 yE
@@ -27317,18 +27789,11 @@ yE
 yE
 yE
 yE
+gT
 yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
+Sl
+zE
+nO
 yE
 yE
 yE
@@ -27532,32 +27997,32 @@ yE
 yS
 yS
 yS
+HK
+pN
+pN
+pN
+pN
+pN
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+ei
 yS
-pN
-pN
-pN
-pN
-pN
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yS
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
+Gr
+Tl
+KD
+Mi
+Mi
+Mi
+Mi
+Mi
+Mi
+Mi
 yS
 yS
 yE
@@ -27583,8 +28048,8 @@ yE
 yE
 yE
 yE
-yE
-yE
+OV
+HJ
 yE
 yE
 yE
@@ -27787,8 +28252,8 @@ yE
 yE
 yE
 yS
-yE
-yE
+tS
+tS
 yE
 pN
 pN
@@ -27805,16 +28270,16 @@ yE
 yE
 yE
 Tr
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
+sV
+Vi
+co
+Mi
+Mi
+Mi
+Mi
+Mi
+Mi
+Mi
 yS
 yE
 yE
@@ -27840,7 +28305,7 @@ yE
 yE
 yE
 yE
-yE
+Rr
 yE
 yE
 yE
@@ -28044,12 +28509,12 @@ yE
 yE
 yE
 yS
+tS
 yE
 yE
 yE
-yE
-yE
-yE
+tS
+tS
 yE
 yE
 yE
@@ -28062,21 +28527,25 @@ yE
 yE
 yE
 Tr
-yE
-yE
-yE
-yE
+sV
+Vi
+co
+Mi
+Aa
+Ju
+FS
+Ju
+Aa
+Mi
 yS
-yS
-yS
-yS
-yS
-yE
-yS
 yE
 yE
 yE
-yE
+rQ
+rQ
+rQ
+rQ
+rQ
 yE
 yE
 yE
@@ -28091,13 +28560,9 @@ yE
 yE
 yE
 yE
+Rk
 yE
-yE
-yE
-yE
-yE
-yE
-yE
+sS
 yE
 yE
 yE
@@ -28311,25 +28776,33 @@ pN
 Vi
 yS
 hc
-Tr
+vN
 hc
 hc
 yS
 yE
 yE
-yE
+ei
+yS
+hO
+uZ
+ir
+iN
+xJ
+MD
+cP
+Vi
+Lj
+QD
 yS
 yE
 yE
 yE
-yE
-yS
-yE
-yE
-yE
-yS
-yE
-yS
+rQ
+sD
+TS
+sD
+rQ
 yE
 yE
 yE
@@ -28344,15 +28817,7 @@ yE
 yE
 yE
 yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
+rJ
 yE
 yE
 yE
@@ -28541,11 +29006,11 @@ yE
 yE
 yS
 yS
+ot
 mK
 mK
 mK
-mK
-mK
+ot
 yS
 yS
 ZM
@@ -28567,34 +29032,34 @@ DU
 pN
 Vi
 yS
-fy
-fy
+qL
+pN
 zk
-Dy
+cb
 yS
-yS
+hc
 hc
 hc
 yS
 QN
-yE
-yE
-yE
+Vi
+Ws
+Mi
+Ju
+RJ
+RI
+sV
+FS
+Mi
 yS
 yE
 yE
 yE
-yS
-yE
-yS
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
+rQ
+TS
+sD
+TS
+rQ
 yE
 yE
 yE
@@ -28824,34 +29289,34 @@ hc
 pN
 Vi
 yS
-fy
-Vi
-qB
-Vi
-fy
-yz
-fy
-fy
+qL
+pN
+rP
+pN
+mR
+mR
+mR
+pN
 hc
-QN
-yE
-yE
-yE
+KJ
+Vi
+Ws
+iN
+xJ
+oM
+Fn
+Vi
+Lj
+QD
 yS
 yE
 yE
 yE
-yS
-yE
-yS
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
+rQ
+sD
+TS
+sD
+rQ
 yE
 yE
 yE
@@ -29080,35 +29545,35 @@ pN
 NR
 pN
 Vi
-tS
-fy
-Vi
-Vi
-Vi
-Vi
+kN
+pN
+pN
+pN
+pN
+pN
+FV
+pN
+pN
+Tr
 sV
 Vi
-fy
-Tr
-yE
-yE
-yE
-yE
-yS
-yS
-yS
-yS
-yS
-yE
+Ws
+Mi
+Aa
+Sz
+FS
+Ju
+Aa
+Mi
 yS
 yE
 yE
 yE
-yE
-yE
-yE
-yE
-yE
+rQ
+rQ
+rQ
+rQ
+rQ
 yE
 yE
 yE
@@ -29330,33 +29795,33 @@ pN
 pN
 pN
 pN
-Sz
+pN
 pN
 pN
 pN
 hc
-lV
+as
 Vi
 hc
-fy
-FS
-au
-Vi
-Vi
-Vi
-Vi
-fy
+qL
+pN
+rP
+Xw
+Xw
+pN
+Xw
+Xw
 hc
-QN
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
+fs
+PN
+db
+Mi
+Mi
+Mi
+Mi
+Mi
+Mi
+Mi
 yS
 yE
 yE
@@ -29589,24 +30054,24 @@ pN
 pN
 pN
 pN
-uG
+eB
 TO
 pw
 dl
 Ry
 hc
-Jh
-sD
-Gi
-cJ
-UY
-gI
-Tl
-AO
+sK
+dl
+jP
+iJ
+zh
+aa
+fy
+cw
 yS
-QN
-QN
-QN
+ZS
+lO
+UY
 yS
 yS
 yS
@@ -29827,9 +30292,9 @@ yS
 yS
 yS
 aY
-ot
+sP
 mK
-ot
+sP
 aY
 yS
 yS
@@ -29849,12 +30314,12 @@ pN
 IE
 mX
 qY
-UY
+zh
 qt
-rQ
-cb
-kD
-Mi
+gz
+qD
+aL
+qk
 yS
 hc
 Og
@@ -30353,9 +30818,9 @@ pN
 pN
 pN
 pN
+Ji
 yS
-yS
-yS
+St
 pN
 pN
 pN
@@ -30373,7 +30838,7 @@ yE
 yE
 yE
 yE
-aL
+ue
 yE
 yE
 yE
@@ -31119,7 +31584,7 @@ lM
 yS
 yS
 yS
-yE
+GA
 pN
 pN
 pN
@@ -34464,7 +34929,7 @@ Et
 Et
 Et
 zL
-yS
+St
 yE
 yE
 yE
@@ -34716,11 +35181,11 @@ TK
 pN
 pN
 yS
-lM
-yS
-sM
-sM
-yS
+Et
+Et
+Et
+Et
+Et
 yS
 yE
 yE
@@ -34972,13 +35437,13 @@ GD
 pW
 pN
 pN
-pN
-pN
-pN
-pN
-pN
-pN
-Jy
+yS
+sx
+yS
+sM
+sM
+Et
+yS
 yE
 yE
 yE
@@ -35223,19 +35688,19 @@ yE
 yE
 yE
 yE
+yE
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
 yS
-bD
-aB
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
 yE
 yE
 yE
@@ -35481,18 +35946,18 @@ yE
 yE
 yE
 yS
-Fw
-Gg
+bD
+aB
 pN
-ch
-ch
-ch
-Sq
-yS
-Si
-Si
-yS
-yS
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+Jy
 yE
 yE
 yE
@@ -35610,6 +36075,520 @@ yE
 yE
 "}
 (135,1,1) = {"
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yS
+Fw
+Gg
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+pN
+yE
+yE
+yE
+yE
+yS
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+"}
+(136,1,1) = {"
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yS
+Fw
+Gg
+pN
+ch
+ch
+ch
+Sq
+yS
+Si
+Si
+yS
+yS
+yE
+yE
+yE
+yE
+yS
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+yE
+"}
+(137,1,1) = {"
 yE
 yE
 yE
@@ -35866,7 +36845,7 @@ yE
 yE
 yE
 "}
-(136,1,1) = {"
+(138,1,1) = {"
 yE
 yE
 yE
@@ -36123,7 +37102,7 @@ yE
 yE
 yE
 "}
-(137,1,1) = {"
+(139,1,1) = {"
 yE
 yE
 yE
@@ -36380,7 +37359,7 @@ yE
 yE
 yE
 "}
-(138,1,1) = {"
+(140,1,1) = {"
 yE
 yE
 yE
@@ -36519,520 +37498,6 @@ Sq
 yS
 pN
 pN
-yS
-yE
-yE
-yE
-yE
-yE
-yS
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-"}
-(139,1,1) = {"
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yS
-yS
-yS
-pN
-yS
-yS
-Vt
-yS
-yS
-pN
-pN
-yS
-yE
-yE
-yE
-yE
-yE
-yS
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-"}
-(140,1,1) = {"
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yE
-yS
-ho
-yS
-pN
-yS
-UG
-pN
-pN
-pN
-pN
-yS
 yS
 yE
 yE
@@ -37284,13 +37749,13 @@ yS
 yS
 pN
 yS
+yS
+Vt
+yS
+yS
 pN
 pN
-pN
-pN
-pN
-Si
-yE
+yS
 yE
 yE
 yE
@@ -37537,17 +38002,17 @@ yE
 yE
 yE
 yS
-tr
-tr
-tr
-hS
+ho
+yS
+pN
+yS
+UG
 pN
 pN
 pN
 pN
-pN
-Si
-yE
+yS
+yS
 yE
 yE
 yE
@@ -37794,9 +38259,9 @@ yE
 yE
 yE
 yS
-tr
-tr
-tr
+yS
+yS
+pN
 yS
 pN
 pN
@@ -38054,7 +38519,7 @@ yS
 tr
 tr
 tr
-yS
+hS
 pN
 pN
 pN
@@ -38308,16 +38773,16 @@ yE
 yE
 yE
 yS
-Xw
+tr
 tr
 tr
 yS
-UG
 pN
 pN
 pN
 pN
-yS
+pN
+Si
 yE
 yE
 yE
