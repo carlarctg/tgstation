@@ -10,9 +10,12 @@
 	cost = 0
 
 /datum/spellbook_entry/summon/ghosts/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book)
+	..()
 	summon_ghosts(user)
 	playsound(get_turf(user), 'sound/effects/ghost2.ogg', 50, TRUE)
-	return ..()
+
+/datum/spellbook_entry/summon/ghosts/grant_spell_on_purchase()
+	return
 
 /datum/spellbook_entry/summon/guns
 	name = "Summon Guns"
@@ -28,9 +31,13 @@
 	return !CONFIG_GET(flag/no_summon_guns)
 
 /datum/spellbook_entry/summon/guns/buy_spell(mob/living/carbon/human/user,obj/item/spellbook/book)
+	..()
 	summon_guns(user, 10)
 	playsound(get_turf(user), 'sound/magic/castsummon.ogg', 50, TRUE)
-	return ..()
+	return
+
+/datum/spellbook_entry/summon/guns/grant_spell_on_purchase()
+	return
 
 /datum/spellbook_entry/summon/magic
 	name = "Summon Magic"
@@ -46,9 +53,13 @@
 	return !CONFIG_GET(flag/no_summon_magic)
 
 /datum/spellbook_entry/summon/magic/buy_spell(mob/living/carbon/human/user,obj/item/spellbook/book)
+	..()
 	summon_magic(user, 10)
 	playsound(get_turf(user), 'sound/magic/castsummon.ogg', 50, TRUE)
-	return ..()
+	return
+
+/datum/spellbook_entry/summon/magic/grant_spell_on_purchase()
+	return
 
 /datum/spellbook_entry/summon/events
 	name = "Summon Events"
@@ -67,9 +78,13 @@
 	return !CONFIG_GET(flag/no_summon_events)
 
 /datum/spellbook_entry/summon/events/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book)
+	..()
 	summon_events(user)
 	playsound(get_turf(user), 'sound/magic/castsummon.ogg', 50, TRUE)
-	return ..()
+	return
+
+/datum/spellbook_entry/summon/events/grant_spell_on_purchase()
+	return
 
 /datum/spellbook_entry/summon/curse_of_madness
 	name = "Curse of Madness"
@@ -77,11 +92,15 @@
 	cost = 4
 
 /datum/spellbook_entry/summon/curse_of_madness/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book)
+	..()
 	var/message = tgui_input_text(user, "Whisper a secret truth to drive your victims to madness", "Whispers of Madness")
 	if(!message)
 		return FALSE
 	curse_of_madness(user, message)
 	playsound(user, 'sound/magic/mandswap.ogg', 50, TRUE)
-	return ..()
+	return
+
+/datum/spellbook_entry/summon/curse_of_madness/grant_spell_on_purchase()
+	return
 
 #undef MINIMUM_THREAT_FOR_RITUALS

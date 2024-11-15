@@ -82,6 +82,11 @@
  * Return TRUE if the purchase was successful, FALSE otherwise
  */
 /datum/spellbook_entry/proc/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(user, COMSIG_PURCHASE_SPELL, src, book)
+	return grant_spell_on_purchase(user, book)
+
+/datum/spellbook_entry/proc/grant_spell_on_purchase(mob/living/carbon/human/user, obj/item/spellbook/book)
 	var/datum/action/cooldown/spell/existing = locate(spell_type) in user.actions
 	if(existing)
 		var/before_name = existing.name
@@ -195,12 +200,16 @@
 	var/obj/item/item_path
 
 /datum/spellbook_entry/item/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book)
+	..()
 	var/atom/spawned_path = new item_path(get_turf(user))
 	log_spellbook("[key_name(user)] bought [src] for [cost] points")
 	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
 	try_equip_item(user, spawned_path)
 	log_purchase(user.key)
 	return spawned_path
+
+/datum/spellbook_entry/item/grant_spell_on_purchase()
+	return
 
 /// Attempts to give the item to the buyer on purchase.
 /datum/spellbook_entry/item/proc/try_equip_item(mob/living/carbon/human/user, obj/item/to_equip)
@@ -219,6 +228,9 @@
 	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
 	log_purchase(user.key)
 	return TRUE
+
+/datum/spellbook_entry/summon/grant_spell_on_purchase()
+	return
 
 /// Non-purchasable flavor spells to populate the spell book with, for style.
 /datum/spellbook_entry/challenge

@@ -14,6 +14,14 @@
 	cost = 2
 	category = "Offensive"
 	spell_type = /datum/action/cooldown/spell/wild_magic
+	var/already_purchased
+
+/datum/spellbook_entry/wild_magic/grant_spell_on_purchase(mob/living/carbon/human/user, obj/item/spellbook/book)
+	if(already_purchased)
+		return // signal sent handles this
+
+	return ..()
+
 
 /datum/spellbook_entry/summon_simians
 	name = "Summon Simians"

@@ -45,12 +45,12 @@
 	to_chat(user, span_notice("\A [to_equip.name] has been summoned [was_equipped ? "on your waist" : "at your feet"]."))
 
 /datum/spellbook_entry/item/soulstones/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book)
-	. =..()
-	if(!.)
-		return
-
+	..()
 	var/datum/action/cooldown/spell/conjure/construct/bonus_spell = new(user.mind || user)
 	bonus_spell.Grant(user)
+
+/datum/spellbook_entry/summon/grant_spell_on_purchase()
+	return
 
 /datum/spellbook_entry/item/necrostone
 	name = "A Necromantic Stone"
