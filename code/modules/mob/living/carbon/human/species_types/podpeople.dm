@@ -9,6 +9,7 @@
 	)
 	inherent_traits = list(
 		TRAIT_PLANT_SAFE,
+		TRAIT_BONSAI,
 	)
 	external_organs = list(
 		/obj/item/organ/external/pod_hair = "None",
@@ -107,3 +108,18 @@
 
 /datum/species/pod/randomize_features(mob/living/carbon/human_mob)
 	randomize_external_organs(human_mob)
+
+// Subtype species of podpeople that have a bit more benefits and a bit less drawbacks. Used by wild magic.
+/datum/species/pod/dryad
+	name = "\improper Dryad"
+	plural_form = "Druids"
+	id = SPECIES_DRYAD
+	inherent_traits = list(
+		TRAIT_PLANT_SAFE,
+		TRAIT_BONSAI,
+	)
+	inherent_factions = list(FACTION_PLANTS, FACTION_JUNGLE, FACTION_VINES)
+	burnmod = 1
+	heatmod = 1.15
+	exotic_blood = /datum/reagent/consumable/nutriment/vitamin
+	changesource_flags = MIRROR_BADMIN

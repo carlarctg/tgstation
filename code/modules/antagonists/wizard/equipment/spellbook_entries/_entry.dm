@@ -83,7 +83,7 @@
  */
 /datum/spellbook_entry/proc/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(user, COMSIG_PURCHASE_SPELL, src, book)
+	SEND_SIGNAL(user, COMSIG_MOB_PURCHASE_SPELL, src, book)
 	return grant_spell_on_purchase(user, book)
 
 /datum/spellbook_entry/proc/grant_spell_on_purchase(mob/living/carbon/human/user, obj/item/spellbook/book)
@@ -224,6 +224,7 @@
 	buy_word = "Cast"
 
 /datum/spellbook_entry/summon/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book)
+	..()
 	log_spellbook("[key_name(user)] cast [src] for [cost] points")
 	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
 	log_purchase(user.key)

@@ -1,4 +1,4 @@
-
+/*
 #define HOLDING_MODE "Clutch Spell"
 #define RITUAL_MODE "Cast Ritual"
 
@@ -341,3 +341,4 @@
 			return "Perfect "
 
 	return ""
+*/

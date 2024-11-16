@@ -268,6 +268,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Stops all slipping and sliding from ocurring
 #define TRAIT_NO_SLIP_ALL "noslip_all"
 
+/// Stops all species change
+#define TRAIT_NO_SPECIES_CHANGE "no_species_change"
 #define TRAIT_NODEATH "nodeath"
 #define TRAIT_NOHARDCRIT "nohardcrit"
 #define TRAIT_NOSOFTCRIT "nosoftcrit"

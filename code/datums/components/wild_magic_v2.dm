@@ -50,10 +50,9 @@
 	START_PROCESSING(SSwild_magic, src)
 	parent.add_traits(wild_traits, REF(src))
 
-/datum/action/cooldown/spell/wild_magic/Destroy()
+/datum/component/wild_magic/Destroy()
 	parent.remove_traits(wild_traits, REF(src))
 	STOP_PROCESSING(SSwild_magic, src)
-	QDEL_NULL(clutched_spell)
 	QDEL_LIST(current_wild_spells)
 	QDEL_LIST(temporary_objects)
 	return ..()
@@ -62,7 +61,7 @@
 	. = ..()
 	RegisterSignal(parent, COMSIG_SPECIES_LOSS, PROC_REF(on_species_change))
 	RegisterSignal(parent, COMSIG_MOB_SPELL_PROJECTILE, PROC_REF(on_spell_projectile))
-	RegisterSignal(parent, COMSIG_PURCHASE_SPELL, PROC_REF(on_spell_purchase))
+	RegisterSignal(parent, COMSIG_MOB_PURCHASE_SPELL, PROC_REF(on_spell_purchase))
 
 /datum/component/wild_magic/proc/on_spell_purchase(mob/user, datum/spellbook_entry/wild_magic/entry_type)
 	SIGNAL_HANDLER
@@ -81,47 +80,9 @@
 /datum/component/wild_magic/process(seconds_per_tick)
 	reroll_spells()
 
-/datum/action/cooldown/spell/wild_magic
-	name = "Wild Sorcery"
-	desc = "A sorcerous ritual invented by now-extinct dryads, this sorcery \
-			effectively turns the essences of magic inside you into a constant, revolving tornado, bringing forth great power, \
-			but also making it impossible to wield specific spells for more than one minute.
-	button_icon_state = "splattercasting"
+/datum/component/wild_magic/proc/reroll_spells()
 
-	school = SCHOOL_TRANSMUTATION
-	cooldown_time = 1 SECONDS
-
-	invocation = "DRUUIDE' WHIRL!"
-	invocation_type = INVOCATION_SHOUT
-	spell_requirements = SPELL_REQUIRES_MIND
-	spell_max_level = 5
-
-/datum/action/cooldown/spell/wild_magic/cast(mob/living/cast_on)
-	. = ..()
-	if(ritual_finished)
-		return
-
-	if(DOING_INTERACTION(user, src))
-		return
-
-	to_chat(cast_on, span_green("You close your eyes and feel the magical essence inside you. You start to twist it, causing it to revolve in place..."))
-	//make clsoe eyes
-	cast_on.set_temp_blindness(3 SECONDS)
-
-	if(!do_after(cast_on, 3 SECONDS, src))
-		to_chat(cast_on, span_warning("Your focus is broken, and the essence inside slowly stills."))
-		cast_on.set_temp_blindness(0 SECONDS)
-		return
-
-	cast_on.set_temp_blindness(0 SECONDS)
-	playsound(cast_on, 'sound/effects/pope_entry.ogg', 100)
-	to_chat(cast_on, span_danger("Your essence spins in place quicker and quicker, until you can't stand feeling it no longer! You open your eyes and feel a tornado of violent, yet powerful magic inside you."))
-
-	whirlwind_energy++
-	cast_on.AddComponent(/datum/component/wild_magic)
-	qdel(src)
-
-/datum/action/cooldown/spell/wild_magic/proc/reroll_spells()
+	var/mob/living/owner = parent
 
 	playsound(owner, 'sound/magic/staff_healing.ogg', 25, TRUE)
 	to_chat(owner, span_green("The revolving whirlwind of magic inside your soul spins ever faster, reshaping your spell[length(current_wild_spells) > 1 ? "s" : ""]!"))
@@ -134,20 +95,12 @@
 	var/local_energy = whirlwind_energy
 	// Classic for loop as we have a chance to increase local_energy in the loop.
 	for(var/i = 1, i <= local_energy, i++)
-		var/random_energy_flux = rand(1, 100)
-		if(prob(spell_level)) // 1-5% chance of an extra spell (but it triggers each loop)
+		if(prob(whirlwind_energy)) // 1-5% chance of an extra spell (but it triggers each loop)
 			local_energy++
 			to_chat(owner, span_green("You feel a little bit more magical."))
 
-		var/datum/action/cooldown/spell/chosen_spell = pick(possible_wild_spells)
-
-		// Reroll a spell if it's a dupe, unless it doesn't feel like it. Or lands on the same thing again.
-		if(is_type_in_list(chosen_spell, current_wild_spells) && prob(90 - spell_level * 3))
-			chosen_spell = pick(possible_wild_spells)
-
-
-		// 1-5$ chance for a temporary magical object.
-		if(prob(spell_level))
+		// 1-5% chance for a temporary magical object.
+		if(prob(whirlwind_energy))
 			var/list/static/possible_magic_items = subtypesof(/obj/item/gun/magic/staff) + list(
 				/obj/item/singularityhammer,
 				/obj/item/mjollnir,
@@ -166,11 +119,15 @@
 				to_chat(owner, span_notice("You have a sad feeling for a moment, then it passes."))
 				qdel(magic_item)
 
+		var/datum/action/cooldown/spell/chosen_spell = pick(possible_wild_spells)
+
+		// If spell is a dupe, 90-75% chance of rerolling it once.
+		if(is_type_in_list(chosen_spell, current_wild_spells) && prob(90 - whirlwind_energy * 3))
+			chosen_spell = pick(possible_wild_spells)
+
 		if(chosen_spell)
 			var/datum/action/cooldown/spell/new_action = new chosen_spell(owner.mind || owner)
 			new_action.Grant(owner)
-			if(level_spell)
-				new_action.level_spell()
 			// Make it obvious it's a 'wild magic' spell, to avoid confusion.
 			new_action.background_icon_state = "bg_nature"
 			new_action.overlay_icon_state = "bg_nature_border"
@@ -185,23 +142,47 @@
 			upgrader.level_spell()
 			to_chat(owner, span_notice("You feel slightly more competent at casting [upgrader]!"))
 
-/datum/action/cooldown/spell/wild_magic/proc/remove_from_list(datum/action/new_action)
+/datum/component/wild_magic/proc/remove_from_list(datum/action/new_action)
 	current_wild_spells -= new_action
 
-/datum/action/cooldown/spell/wild_magic/get_spell_title()
-	switch(spell_level)
-		if(2)
-			return "Revolving "
-		if(3)
-			return "Whirlwind of "
-		if(4)
-			return "Hurricane of "
-		if(5)
-			return "Dryad's Own "
-		if(6)
-			return "Perfect "
+/datum/action/cooldown/spell/wild_magic
+	name = "Wild Sorcery"
+	desc = "A sorcerous ritual invented by now-extinct dryads, this sorcery \
+			effectively turns the essences of magic inside you into a constant, revolving tornado, bringing forth great power, \
+			but also making it impossible to wield specific spells for more than one minute."
+	button_icon_state = "splattercasting"
 
-	return ""
+	school = SCHOOL_TRANSMUTATION
+	cooldown_time = 1 SECONDS
+
+	invocation = "DRUUIDE' WHIRL!"
+	invocation_type = INVOCATION_SHOUT
+	spell_requirements = SPELL_REQUIRES_MIND
+	spell_max_level = 5
+
+/datum/action/cooldown/spell/wild_magic/cast(mob/living/cast_on)
+	. = ..()
+
+	if(DOING_INTERACTION(cast_on, src))
+		return
+
+	to_chat(cast_on, span_green("You close your eyes and feel the magical essence inside you. You start to twist it, causing it to revolve in place..."))
+	//make clsoe eyes
+	cast_on.set_temp_blindness(3 SECONDS)
+
+	if(!do_after(cast_on, 3 SECONDS, src))
+		to_chat(cast_on, span_warning("Your focus is broken, and the essence inside slowly stills."))
+		cast_on.set_temp_blindness(0 SECONDS)
+		return
+
+	cast_on.set_temp_blindness(0 SECONDS)
+	playsound(cast_on, 'sound/effects/pope_entry.ogg', 100)
+	to_chat(cast_on, span_danger("Your essence spins in place quicker and quicker, until you can't stand feeling it no longer! You open your eyes and feel a tornado of violent, yet powerful magic inside you."))
+
+	cast_on.set_species(/datum/species/pod/dryad)
+	cast_on.AddComponent(/datum/component/wild_magic)
+	qdel(src)
+
 
 // should never happen
 /datum/component/wild_magic/proc/on_species_change(mob/living/carbon/source, datum/species/lost_species)
