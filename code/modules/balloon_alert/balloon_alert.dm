@@ -8,7 +8,13 @@
 /// The amount of characters needed before this increase takes into effect
 #define BALLOON_TEXT_CHAR_LIFETIME_INCREASE_MIN 10
 
-/// Creates text that will float from the atom upwards to the viewer.
+/**
+ * Creates text that will float from the atom upwards to the viewer.
+ *
+ * Args:
+ * * mob/viewer: The mob the text will be shown to. Nullable (But only in the form of it won't runtime).
+ * * text: The text to be shown to viewer. Must not be null.
+ */
 /atom/proc/balloon_alert(mob/viewer, text)
 	SHOULD_NOT_SLEEP(TRUE)
 
@@ -34,11 +40,11 @@
 // if this would look bad on laggy clients.
 /atom/proc/balloon_alert_perform(mob/viewer, text)
 
-	var/client/viewer_client = viewer.client
+	var/client/viewer_client = viewer?.client
 	if (isnull(viewer_client))
 		return
 
-	var/bound_width = world.icon_size
+	var/bound_width = ICON_SIZE_X
 	if (ismovable(src))
 		var/atom/movable/movable_source = src
 		bound_width = movable_source.bound_width
@@ -58,7 +64,7 @@
 
 	animate(
 		balloon_alert,
-		pixel_y = world.icon_size * 1.2,
+		pixel_y = ICON_SIZE_Y * 1.2,
 		time = BALLOON_TEXT_TOTAL_LIFETIME(length_mult),
 		easing = SINE_EASING | EASE_OUT,
 	)

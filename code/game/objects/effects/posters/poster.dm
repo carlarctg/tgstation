@@ -74,11 +74,6 @@
 		if(!QDELING(src))
 			qdel(src) //we're now a poster, huzzah!
 
-/obj/item/poster/handle_atom_del(atom/deleting_atom)
-	if(deleting_atom == poster_structure)
-		poster_structure.moveToNullspace() //get it the fuck out of us since atom/destroy qdels contents and it'll cause a qdel loop
-	return ..()
-
 /obj/item/poster/Destroy(force)
 	QDEL_NULL(poster_structure)
 	return ..()
@@ -185,24 +180,20 @@
 			qdel(src)
 		else
 			to_chat(user, span_notice("You carefully remove the poster from the wall."))
-			roll_and_drop(Adjacent(user) ? get_turf(user) : loc)
+			roll_and_drop(Adjacent(user) ? get_turf(user) : loc, user)
 
 /obj/structure/sign/poster/attack_hand(mob/user, list/modifiers)
 	. = ..()
-	if(.)
+	if(. || !check_tearability())
 		return
+	tear_poster(user)
+
+/// Check to see if this poster is tearable and gives the user feedback if it is not.
+/obj/structure/sign/poster/proc/check_tearability(mob/user)
 	if(ruined)
-		return
-
-	visible_message(span_notice("[user] rips [src] in a single, decisive motion!") )
-	playsound(src.loc, 'sound/items/poster_ripped.ogg', 100, TRUE)
-	spring_trap(user)
-
-	var/obj/structure/sign/poster/ripped/R = new(loc)
-	R.pixel_y = pixel_y
-	R.pixel_x = pixel_x
-	R.add_fingerprint(user)
-	qdel(src)
+		balloon_alert(user, "already ruined!")
+		return FALSE
+	return TRUE
 
 /obj/structure/sign/poster/proc/spring_trap(mob/user)
 	var/obj/item/shard/payload = trap?.resolve()
@@ -221,15 +212,16 @@
 		return FALSE
 	return !user.gloves || !(user.gloves.body_parts_covered & HANDS) || HAS_TRAIT(user, TRAIT_FINGERPRINT_PASSTHROUGH) || HAS_TRAIT(user.gloves, TRAIT_FINGERPRINT_PASSTHROUGH)
 
-/obj/structure/sign/poster/proc/roll_and_drop(atom/location)
+/obj/structure/sign/poster/proc/roll_and_drop(atom/location, mob/user)
 	pixel_x = 0
 	pixel_y = 0
 	var/obj/item/poster/rolled_poster = new poster_item_type(location, src) // /obj/structure/sign/poster/wanted/roll_and_drop() has some snowflake handling due to icon memes, if you make a major change to this, don't forget to update it too. <3
-	forceMove(rolled_poster)
+	if(!user?.put_in_hands(rolled_poster))
+		forceMove(rolled_poster)
 	return rolled_poster
 
 //separated to reduce code duplication. Moved here for ease of reference and to unclutter r_wall/attackby()
-/turf/closed/wall/proc/place_poster(obj/item/poster/rolled_poster, mob/user)
+/turf/closed/proc/place_poster(obj/item/poster/rolled_poster, mob/user)
 	if(!rolled_poster.poster_structure)
 		to_chat(user, span_warning("[rolled_poster] has no poster... inside it? Inform a coder!"))
 		return
@@ -256,21 +248,32 @@
 
 	flick("poster_being_set", placed_poster)
 	placed_poster.forceMove(src) //deletion of the poster is handled in poster/Exited(), so don't have to worry about P anymore.
-	playsound(src, 'sound/items/poster_being_created.ogg', 100, TRUE)
+	playsound(src, 'sound/items/poster/poster_being_created.ogg', 100, TRUE)
 
 	var/turf/user_drop_location = get_turf(user) //cache this so it just falls to the ground if they move. also no tk memes allowed.
-	if(!do_after(user, PLACE_SPEED, placed_poster, extra_checks = CALLBACK(placed_poster, TYPE_PROC_REF(/obj/structure/sign/poster, snowflake_wall_turf_check), src)))
-		placed_poster.roll_and_drop(user_drop_location)
+	if(!do_after(user, PLACE_SPEED, placed_poster, extra_checks = CALLBACK(placed_poster, TYPE_PROC_REF(/obj/structure/sign/poster, snowflake_closed_turf_check), src)))
+		placed_poster.roll_and_drop(user_drop_location, user)
 		return
 
 	placed_poster.on_placed_poster(user)
 	return TRUE
 
-/obj/structure/sign/poster/proc/snowflake_wall_turf_check(atom/hopefully_still_a_wall_turf) //since turfs never get deleted but instead change type, make sure we're still being placed on a wall.
-	return iswallturf(hopefully_still_a_wall_turf)
+/obj/structure/sign/poster/proc/snowflake_closed_turf_check(atom/hopefully_still_a_closed_turf) //since turfs never get deleted but instead change type, make sure we're still being placed on a wall.
+	return isclosedturf(hopefully_still_a_closed_turf)
 
 /obj/structure/sign/poster/proc/on_placed_poster(mob/user)
 	to_chat(user, span_notice("You place the poster!"))
+
+/obj/structure/sign/poster/proc/tear_poster(mob/user)
+	visible_message(span_notice("[user] rips [src] in a single, decisive motion!") )
+	playsound(src.loc, 'sound/items/poster/poster_ripped.ogg', 100, TRUE)
+	spring_trap(user)
+
+	var/obj/structure/sign/poster/ripped/torn_poster = new(loc)
+	torn_poster.pixel_y = pixel_y
+	torn_poster.pixel_x = pixel_x
+	torn_poster.add_fingerprint(user)
+	qdel(src)
 
 // Various possible posters follow
 
@@ -287,7 +290,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/ripped, 32)
 	icon_state = "random_anything"
 	never_random = TRUE
 	random_basetype = /obj/structure/sign/poster
-	blacklisted_types = list(/obj/structure/sign/poster/traitor)
+	blacklisted_types = list(
+		/obj/structure/sign/poster/traitor,
+		/obj/structure/sign/poster/abductor,
+	)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/random, 32)
 

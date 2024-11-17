@@ -1,12 +1,12 @@
 /datum/action/cooldown/spell/pointed/projectile/star_blast
 	name = "Star Blast"
-	desc = "This spell fires a disk with cosmic energies at a target."
+	desc = "This spell fires a disk with cosmic energies at a target, spreading the star mark."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
 	button_icon_state = "star_blast"
 
-	sound = 'sound/magic/cosmic_energy.ogg'
+	sound = 'sound/effects/magic/cosmic_energy.ogg'
 	school = SCHOOL_FORBIDDEN
 	cooldown_time = 20 SECONDS
 
@@ -35,18 +35,18 @@
 
 /obj/projectile/magic/star_ball/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/effect_trail/cosmic_trail)
+	AddElement(/datum/element/effect_trail, /obj/effect/forcefield/cosmic_field/fast)
 
-/obj/projectile/magic/star_ball/on_hit(atom/target, blocked = FALSE, pierce_hit)
+/obj/projectile/magic/star_ball/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	var/mob/living/cast_on = firer
 	for(var/mob/living/nearby_mob in range(star_mark_range, target))
-		if(cast_on == nearby_mob)
+		if(cast_on == nearby_mob || cast_on.buckled == nearby_mob)
 			continue
 		nearby_mob.apply_status_effect(/datum/status_effect/star_mark, cast_on)
 
 /obj/projectile/magic/star_ball/Destroy()
-	playsound(get_turf(src), 'sound/magic/cosmic_energy.ogg', 50, FALSE)
+	playsound(get_turf(src), 'sound/effects/magic/cosmic_energy.ogg', 50, FALSE)
 	for(var/turf/cast_turf as anything in get_turfs())
 		new /obj/effect/forcefield/cosmic_field(cast_turf)
 	return ..()

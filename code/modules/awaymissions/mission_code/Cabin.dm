@@ -9,8 +9,6 @@
 /area/awaymission/cabin/snowforest
 	name = "Snow Forest"
 	icon_state = "away"
-	static_lighting = FALSE
-	base_lighting_alpha = 255
 
 /area/awaymission/cabin/snowforest/sovietsurface
 	name = "Snow Forest"
@@ -21,8 +19,6 @@
 	name = "Lumbermill"
 	icon_state = "away3"
 	requires_power = FALSE
-	static_lighting = FALSE
-	base_lighting_alpha = 255
 
 /area/awaymission/cabin/caves/sovietcave
 	name = "Soviet Bunker"
@@ -40,7 +36,7 @@
 /obj/structure/firepit
 	name = "firepit"
 	desc = "Warm and toasty."
-	icon = 'icons/obj/fireplace.dmi'
+	icon = 'icons/obj/fluff/fireplace.dmi'
 	icon_state = "firepit-active"
 	density = FALSE
 	var/active = TRUE
@@ -94,7 +90,7 @@
 	name = "lumbermill saw"
 	desc = "Faster then the cartoons!"
 	obj_flags = CAN_BE_HIT | EMAGGED
-	item_recycle_sound = 'sound/weapons/chainsawhit.ogg'
+	item_recycle_sound = 'sound/items/weapons/chainsawhit.ogg'
 
 /obj/machinery/recycler/lumbermill/recycle_item(obj/item/grown/log/L)
 	if(!istype(L))
@@ -107,7 +103,7 @@
 /obj/structure/ladder/unbreakable/rune
 	name = "\improper Teleportation Rune"
 	desc = "Could lead anywhere."
-	icon = 'icons/obj/rune.dmi'
+	icon = 'icons/obj/antags/cult/rune.dmi'
 	icon_state = "1"
 	color = rgb(0,0,255)
 

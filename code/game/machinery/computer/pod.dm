@@ -78,7 +78,7 @@
 			break
 	return data
 
-/obj/machinery/computer/pod/ui_act(action, list/params)
+/obj/machinery/computer/pod/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -139,7 +139,7 @@
 
 /obj/machinery/computer/pod/old/mass_driver_controller
 	name = "\improper Mass Driver Controller"
-	icon = 'icons/obj/airlock_machines.dmi'
+	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "airlock_control_standby"
 	icon_screen = null
 	density = FALSE

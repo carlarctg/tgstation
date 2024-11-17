@@ -12,10 +12,6 @@
 "d" = (
 /turf/open/floor/wood,
 /area/shuttle/escape)
-"e" = (
-/obj/machinery/light/directional/north,
-/turf/open/floor/carpet,
-/area/shuttle/escape)
 "f" = (
 /obj/structure/chair/comfy/teal,
 /turf/open/floor/carpet,
@@ -34,9 +30,7 @@
 /area/shuttle/escape)
 "k" = (
 /obj/machinery/light/directional/east,
-/obj/machinery/vending/boozeomat{
-	req_access = null
-	},
+/obj/machinery/vending/boozeomat,
 /obj/effect/turf_decal/tile/bar/opposingcorners,
 /turf/open/floor/iron,
 /area/shuttle/escape)
@@ -79,9 +73,7 @@
 /turf/open/floor/iron,
 /area/shuttle/escape)
 "s" = (
-/obj/machinery/door/window{
-	dir = 8
-	},
+/obj/machinery/door/window/left/directional/west,
 /obj/effect/turf_decal/tile/bar/opposingcorners,
 /turf/open/floor/iron,
 /area/shuttle/escape)
@@ -124,7 +116,6 @@
 /turf/open/floor/wood,
 /area/shuttle/escape)
 "B" = (
-/obj/machinery/light/directional/south,
 /obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/pen,
@@ -183,7 +174,7 @@ a
 "}
 (3,1,1) = {"
 a
-e
+h
 l
 h
 h

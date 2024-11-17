@@ -48,22 +48,31 @@
 	var/debug_mode = FALSE
 	/// Whether the shop is locked or not. If set to true, nothing can be purchased.
 	var/shop_locked = FALSE
+	/// Callback which returns true if you can choose to replace your objectives with different ones
+	var/datum/callback/can_replace_objectives
+	/// Callback which performs that operation
+	var/datum/callback/replace_objectives
+	///Reference to a contractor hub that the infiltrator can run, if they purchase it.
+	var/datum/contractor_hub/contractor_hub
 
 /datum/uplink_handler/New()
 	. = ..()
 	maximum_potential_objectives = CONFIG_GET(number/maximum_potential_objectives)
+
+/datum/uplink_handler/Destroy(force)
+	can_replace_objectives = null
+	replace_objectives = null
+	return ..()
 
 /// Called whenever an update occurs on this uplink handler. Used for UIs
 /datum/uplink_handler/proc/on_update()
 	SEND_SIGNAL(src, COMSIG_UPLINK_HANDLER_ON_UPDATE)
 	return
 
-/// Checks if traitor has enough reputation to purchase an item
-/datum/uplink_handler/proc/not_enough_reputation(datum/uplink_item/to_purchase)
-	return has_progression && progression_points < to_purchase.progression_minimum
-
 /// Checks for uplink flags as well as items restricted to roles and species
 /datum/uplink_handler/proc/check_if_restricted(datum/uplink_item/to_purchase)
+	if(!to_purchase.can_be_bought(src))
+		return FALSE
 	if((to_purchase in extra_purchasable))
 		return TRUE
 	if(!(to_purchase.purchasable_from & uplink_flag))
@@ -90,8 +99,8 @@
 		return FALSE
 
 	var/current_stock = item_stock[to_purchase.stock_key]
-	var/stock = current_stock != null? current_stock : INFINITY
-	if(telecrystals < to_purchase.cost || stock <= 0 || not_enough_reputation(to_purchase))
+	var/stock = current_stock != null ? current_stock : INFINITY
+	if(telecrystals < to_purchase.real_cost(src) || stock <= 0)
 		return FALSE
 
 	return TRUE
@@ -103,7 +112,7 @@
 	if(to_purchase.limited_stock != -1 && !(to_purchase.stock_key in item_stock))
 		item_stock[to_purchase.stock_key] = to_purchase.limited_stock
 
-	telecrystals -= to_purchase.cost
+	telecrystals -= to_purchase.real_cost(src)
 	to_purchase.purchase(user, src, source)
 
 	if(to_purchase.stock_key in item_stock)
@@ -112,6 +121,21 @@
 	SSblackbox.record_feedback("nested tally", "traitor_uplink_items_bought", 1, list("[initial(to_purchase.name)]", "[to_purchase.cost]"))
 	on_update()
 	return TRUE
+
+/datum/uplink_handler/proc/purchase_raw_tc(mob/user, amount, atom/movable/source)
+	if(shop_locked)
+		return FALSE
+	if(telecrystals < amount)
+		return FALSE
+
+	telecrystals -= amount
+	var/tcs = new /obj/item/stack/telecrystal(get_turf(user), amount)
+	user.put_in_hands(tcs)
+
+	log_uplink("[key_name(user)] purchased [amount] raw telecrystals from [source]'s uplink")
+	on_update()
+	return TRUE
+
 
 /// Generates objectives for this uplink handler
 /datum/uplink_handler/proc/generate_objectives()
@@ -227,7 +251,7 @@
 	if(!(to_take in potential_objectives))
 		return
 
-	user.playsound_local(get_turf(user), 'sound/traitor/objective_taken.ogg', vol = 100, vary = FALSE, channel = CHANNEL_TRAITOR)
+	user.playsound_local(get_turf(user), 'sound/music/antag/traitor/objective_taken.ogg', vol = 100, vary = FALSE, channel = CHANNEL_TRAITOR)
 	to_take.on_objective_taken(user)
 	to_take.objective_state = OBJECTIVE_STATE_ACTIVE
 	potential_objectives -= to_take
@@ -241,3 +265,12 @@
 		return
 
 	to_act_on.ui_perform_action(user, action)
+
+///Helper to add telecrystals to the uplink handler, calling set_telecrystals.
+/datum/uplink_handler/proc/add_telecrystals(amount)
+	set_telecrystals(telecrystals + amount)
+
+///Sets how many telecrystals the uplink handler has, then updates the UI for any players watching.
+/datum/uplink_handler/proc/set_telecrystals(amount)
+	telecrystals = amount
+	on_update()

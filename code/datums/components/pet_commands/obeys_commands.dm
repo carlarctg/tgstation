@@ -22,7 +22,7 @@
 		var/datum/pet_command/new_command = new command_path(parent)
 		available_commands[new_command.command_name] = new_command
 
-/datum/component/obeys_commands/Destroy(force, silent)
+/datum/component/obeys_commands/Destroy(force)
 	. = ..()
 	QDEL_NULL(available_commands)
 
@@ -59,19 +59,20 @@
 		return
 	if (!(user in source.ai_controller?.blackboard[BB_FRIENDS_LIST]))
 		return
-	examine_list += span_notice("[source.p_they(capitalized = TRUE)] seem[source.p_s()] happy to see you!")
+	examine_list += span_notice("[source.p_They()] seem[source.p_s()] happy to see you!")
 
 /// Displays a radial menu of commands
 /datum/component/obeys_commands/proc/display_menu(datum/source, mob/living/clicker)
 	SIGNAL_HANDLER
 
 	var/mob/living/living_parent = parent
-	if (IS_DEAD_OR_INCAP(living_parent))
+	if (IS_DEAD_OR_INCAP(living_parent) || !clicker.can_perform_action(living_parent))
 		return
 	if (!(clicker in living_parent.ai_controller?.blackboard[BB_FRIENDS_LIST]))
 		return // Not our friend, can't boss us around
 
 	INVOKE_ASYNC(src, PROC_REF(display_radial_menu), clicker)
+	return CLICK_ACTION_SUCCESS
 
 /// Actually display the radial menu and then do something with the result
 /datum/component/obeys_commands/proc/display_radial_menu(mob/living/clicker)

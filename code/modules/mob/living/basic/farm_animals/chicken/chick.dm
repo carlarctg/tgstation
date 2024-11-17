@@ -28,9 +28,22 @@
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	mob_size = MOB_SIZE_TINY
 	gold_core_spawnable = FRIENDLY_SPAWN
+	ai_controller = /datum/ai_controller/basic_controller/chick
 
 	/// What we grow into.
 	var/grow_as = /mob/living/basic/chicken
+
+/datum/emote/chick
+	mob_type_allowed_typecache = /mob/living/basic/chick
+	mob_type_blacklist_typecache = list()
+
+/datum/emote/chick/chirp
+	key = "chirp"
+	key_third_person = "chirps"
+	message = "chirps!"
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'sound/mobs/non-humanoids/chicken/chick_peep.ogg'
 
 /mob/living/basic/chick/Initialize(mapload)
 	. = ..()
@@ -39,7 +52,7 @@
 
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
-	AddElement(/datum/element/pet_bonus, "chirps!")
+	AddElement(/datum/element/pet_bonus, "chirp")
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_CHICKEN, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
 	AddElement(/datum/element/footstep, FOOTSTEP_MOB_CLAW)
 
@@ -62,3 +75,17 @@
 /// Variant of chick that just spawns in the holodeck so you can pet it. Doesn't grow up.
 /mob/living/basic/chick/permanent
 	grow_as = null
+
+/datum/ai_controller/basic_controller/chick
+	blackboard = list(
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
+		BB_FIND_MOM_TYPES = list(/mob/living/basic/chicken),
+	)
+
+	ai_traits = STOP_MOVING_WHEN_PULLED
+	ai_movement = /datum/ai_movement/basic_avoidance
+	idle_behavior = /datum/idle_behavior/idle_random_walk
+
+	planning_subtrees = list(
+		/datum/ai_planning_subtree/look_for_adult,
+	)

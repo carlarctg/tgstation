@@ -36,7 +36,7 @@
 /// These shuttles leave when the main emergency shuttle does but don't dock anywhere (to save space), so this counts as "escaped".
 #define ENDGAME_TRANSIT 3
 
-//positive value = cannot puchase
+//positive value = cannot purchase
 #define SHUTTLEPURCHASE_PURCHASABLE 0 //station can buy a shuttle
 #define SHUTTLEPURCHASE_PURCHASED 1 //station has already bought a shuttle, so cannot
 #define SHUTTLEPURCHASE_FORCED 2 //station was given a new shuttle through events or other shenanigans
@@ -62,6 +62,14 @@
 #define ENGINE_COEFF_MIN 0.5
 #define ENGINE_COEFF_MAX 2
 #define ENGINE_DEFAULT_MAXSPEED_ENGINES 5
+
+// Alert level related
+#define ALERT_COEFF_AUTOEVAC_NORMAL 2.5
+#define ALERT_COEFF_GREEN 2
+#define ALERT_COEFF_BLUE 1
+#define ALERT_COEFF_RED 0.5
+#define ALERT_COEFF_AUTOEVAC_CRITICAL 0.4
+#define ALERT_COEFF_DELTA 0.25
 
 //Docking error flags
 #define DOCKING_SUCCESS 0
@@ -89,8 +97,26 @@
 #define SHUTTLE_DEFAULT_SHUTTLE_AREA_TYPE /area/shuttle
 #define SHUTTLE_DEFAULT_UNDERLYING_AREA /area/space
 
-//Shuttle unlocks
+/// Shuttle unlocks
+// Needs Alien Technology researched.
 #define SHUTTLE_UNLOCK_ALIENTECH "abductor"
+// Needs bubblegum to die.
 #define SHUTTLE_UNLOCK_BUBBLEGUM "bubblegum"
+// Needs one to set the holodeck to Medieval Sim.
 #define SHUTTLE_UNLOCK_MEDISIM "holodeck"
+// Needs a rune to be cleared by a null rod.
 #define SHUTTLE_UNLOCK_NARNAR "narnar"
+// Needs someone to be polymorphed - Pride Mirror, Magic Mirror, Race Swap, Polymorph Staff/Wand. Badmin Mirror doesn't count, neither does xenobio.
+#define SHUTTLE_UNLOCK_WABBAJACK "wabbajack"
+// Needs cargo budget to be almost empty to be purchasable.
+#define SHUTTLE_UNLOCK_SCRAPHEAP "scrapheap"
+
+//Shuttle Events
+
+///Self destruct if this is returned in process
+#define SHUTTLE_EVENT_CLEAR 2
+
+///spawned stuff should float by the window and not hit the shuttle
+#define SHUTTLE_EVENT_MISS_SHUTTLE 1 << 0
+///spawned stuff should hit the shuttle
+#define SHUTTLE_EVENT_HIT_SHUTTLE 1 << 1

@@ -41,7 +41,7 @@
 		cost = get_total_cost(), \
 		contains = things_to_order,
 	)
-	var/datum/supply_order/new_order = new(
+	var/datum/supply_order/disposable/new_order = new(
 		pack = mining_pack,
 		orderer = purchaser,
 		orderer_rank = "Mining Vendor",
@@ -59,10 +59,10 @@
 	radio.talk_into(src, "A shaft miner has ordered equipment which will arrive on the cargo shuttle! Please make sure it gets to them as soon as possible!", radio_channel)
 	SSshuttle.shopping_list += new_order
 
-/obj/machinery/computer/order_console/mining/retrive_points(obj/item/card/id/id_card)
+/obj/machinery/computer/order_console/mining/retrieve_points(obj/item/card/id/id_card)
 	return round(id_card.registered_account.mining_points)
 
-/obj/machinery/computer/order_console/mining/ui_act(action, params)
+/obj/machinery/computer/order_console/mining/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(!.)
 		flick("mining-deny", src)
@@ -121,7 +121,7 @@
 /obj/machinery/computer/order_console/mining/proc/check_menu(obj/item/mining_voucher/voucher, mob/living/redeemer)
 	if(!istype(redeemer))
 		return FALSE
-	if(redeemer.incapacitated())
+	if(redeemer.incapacitated)
 		return FALSE
 	if(QDELETED(voucher))
 		return FALSE
@@ -149,7 +149,7 @@
 	icon_state = "data_1"
 
 	///Amount of points this card contains.
-	var/points = 500
+	var/points = 0
 
 /obj/item/card/mining_point_card/examine(mob/user)
 	. = ..()

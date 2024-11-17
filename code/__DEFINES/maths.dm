@@ -1,21 +1,11 @@
-// Remove these once we have Byond implementation.
-// ------------------------------------
-#define IS_NAN(a) (a != a)
-
-#define IS_INF__UNSAFE(a) (a == a && a-a != a-a)
-#define IS_INF(a) (isnum(a) && IS_INF__UNSAFE(a))
-
-#define IS_FINITE__UNSAFE(a) (a-a == a-a)
+#define IS_FINITE__UNSAFE(a) (!isinf(a) && !isnan(a))
 #define IS_FINITE(a) (isnum(a) && IS_FINITE__UNSAFE(a))
-// ------------------------------------
-// Aight dont remove the rest
 
 // Credits to Nickr5 for the useful procs I've taken from his library resource.
 // This file is quadruple wrapped for your pleasure
 // (
 
 #define NUM_E 2.71828183
-
 
 #define PI 3.1416
 #define INFINITY 1e31 //closer then enough
@@ -42,6 +32,10 @@
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
 
 #define ROUND_UP(x) ( -round(-(x)))
+
+/// Returns the number of digits in a number. Only works on whole numbers.
+/// This is marginally faster than string interpolation -> length
+#define DIGITS(x) (ROUND_UP(log(10, x)))
 
 // round() acts like floor(x, 1) by default but can't handle other values
 #define FLOOR(x, y) ( round((x) / (y)) * (y) )
@@ -185,21 +179,21 @@
 	var/pixel_x = 0
 	var/pixel_y = 0
 	for(var/i in 1 to increments)
-		pixel_x += sin(angle)+16*sin(angle)*2
-		pixel_y += cos(angle)+16*cos(angle)*2
+		pixel_x += sin(angle)+(ICON_SIZE_X/2)*sin(angle)*2
+		pixel_y += cos(angle)+(ICON_SIZE_Y/2)*cos(angle)*2
 	var/new_x = starting.x
 	var/new_y = starting.y
-	while(pixel_x > 16)
-		pixel_x -= 32
+	while(pixel_x > (ICON_SIZE_X/2))
+		pixel_x -= ICON_SIZE_X
 		new_x++
-	while(pixel_x < -16)
-		pixel_x += 32
+	while(pixel_x < -(ICON_SIZE_X/2))
+		pixel_x += ICON_SIZE_X
 		new_x--
-	while(pixel_y > 16)
-		pixel_y -= 32
+	while(pixel_y > (ICON_SIZE_Y/2))
+		pixel_y -= ICON_SIZE_Y
 		new_y++
-	while(pixel_y < -16)
-		pixel_y += 32
+	while(pixel_y < -(ICON_SIZE_Y/2))
+		pixel_y += ICON_SIZE_Y
 		new_y--
 	new_x = clamp(new_x, 1, world.maxx)
 	new_y = clamp(new_y, 1, world.maxy)
@@ -228,7 +222,7 @@
 #define EXP_DISTRIBUTION(desired_mean) ( -(1/(1/desired_mean)) * log(rand(1, 1000) * 0.001) )
 
 #define LORENTZ_DISTRIBUTION(x, s) ( s*tan(TODEGREES(PI*(rand()-0.5))) + x )
-#define LORENTZ_CUMULATIVE_DISTRIBUTION(x, y, s) ( (1/PI)*TORADIANS(arctan((x-y)/s)) + 1/2 )
+#define LORENTZ_CUMULATIVE_DISTRIBUTION(x, y, s) ( (1/PI)*TORADIANS(arctan((x-(y))/s)) + 1/2 )
 
 #define RULE_OF_THREE(a, b, x) ((a*x)/b)
 
@@ -240,11 +234,20 @@
 #define SPT_PROB(prob_per_second_percent, seconds_per_tick) (prob(100*SPT_PROB_RATE((prob_per_second_percent)/100, (seconds_per_tick))))
 // )
 
+// This value per these many units. Very unnecessary but helpful for readability (For example wanting 30 units of synthflesh to heal 50 damage - VALUE_PER(50, 30))
+#define VALUE_PER(value, per) (value / per)
+
 #define GET_TRUE_DIST(a, b) (a == null || b == null) ? -1 : max(abs(a.x -b.x), abs(a.y-b.y), abs(a.z-b.z))
 
 //We used to use linear regression to approximate the answer, but Mloc realized this was actually faster.
 //And lo and behold, it is, and it's more accurate to boot.
-#define CHEAP_HYPOTENUSE(Ax, Ay, Bx, By) (sqrt(abs(Ax - Bx) ** 2 + abs(Ay - By) ** 2)) //A squared + B squared = C squared
+#define CHEAP_HYPOTENUSE(Ax, Ay, Bx, By) (sqrt((Ax - Bx) ** 2 + (Ay - By) ** 2)) //A squared + B squared = C squared
 
 /// The number of cells in a taxicab circle (rasterized diamond) of radius X.
 #define DIAMOND_AREA(X) (1 + 2*(X)*((X)+1))
+
+/// Returns a random decimal between x and y.
+#define RANDOM_DECIMAL(x, y) LERP((x), (y), rand())
+
+#define SI_COEFFICIENT "coefficient"
+#define SI_UNIT "unit"

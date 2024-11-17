@@ -4,7 +4,7 @@
 	icon_state = "mining"
 	has_gravity = STANDARD_GRAVITY
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | FLORA_ALLOWED | CULT_PERMITTED
-	ambient_buzz = 'sound/ambience/magma.ogg'
+	ambient_buzz = 'sound/ambience/lavaland/magma.ogg'
 
 /area/mine/lobby
 	name = "Mining Station"
@@ -16,6 +16,10 @@
 
 /area/mine/storage/public
 	name = "Mining Station Public Storage"
+	icon_state = "mining_storage"
+
+/area/mine/lobby/raptor
+	name = "Nanotrasen Raptor Farm"
 	icon_state = "mining_storage"
 
 /area/mine/production
@@ -130,7 +134,7 @@
 	flags_1 = NONE
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | FLORA_ALLOWED
 	sound_environment = SOUND_AREA_LAVALAND
-	ambient_buzz = 'sound/ambience/magma.ogg'
+	ambient_buzz = 'sound/ambience/lavaland/magma.ogg'
 
 /area/lavaland/surface
 	name = "Lavaland"
@@ -189,8 +193,9 @@
 	has_gravity = STANDARD_GRAVITY
 	flags_1 = NONE
 	area_flags = UNIQUE_AREA | FLORA_ALLOWED
+	ambience_index = AMBIENCE_ICEMOON
 	sound_environment = SOUND_AREA_ICEMOON
-	ambient_buzz = 'sound/ambience/magma.ogg'
+	ambient_buzz = 'sound/ambience/lavaland/magma.ogg'
 
 /area/icemoon/surface
 	name = "Icemoon"
@@ -200,7 +205,6 @@
 	power_equip = FALSE
 	power_light = FALSE
 	requires_power = TRUE
-	ambience_index = AMBIENCE_MINING
 	area_flags = UNIQUE_AREA | FLORA_ALLOWED
 	min_ambience_cooldown = 70 SECONDS
 	max_ambience_cooldown = 220 SECONDS
@@ -209,7 +213,23 @@
 	name = "Icemoon Wastes"
 	outdoors = TRUE
 
-/area/icemoon/surface/outdoors/nospawn // this is the area you use for stuff to not spawn, but if you still want weather.
+/area/icemoon/surface/outdoors/Initialize(mapload)
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_BRIGHT_DAY))
+		base_lighting_alpha = 145
+	return ..()
+
+/// this is the area you use for stuff to not spawn, but if you still want weather.
+/area/icemoon/surface/outdoors/nospawn
+
+// unless you roll forested trait lol (fuck you time green)
+/area/icemoon/surface/outdoors/nospawn/New()
+	. = ..()
+	// this area SOMETIMES does map generation. Often it doesn't at all
+	// so it SHOULD NOT be used with the genturf turf type, as it is not always replaced
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_FORESTED))
+		map_generator = /datum/map_generator/cave_generator/icemoon/surface/forested
+		// flip this on, the generator has already disabled dangerous fauna
+		area_flags = MOB_SPAWN_ALLOWED | FLORA_ALLOWED
 
 /area/icemoon/surface/outdoors/noteleport // for places like the cursed spring water
 	area_flags = UNIQUE_AREA | FLORA_ALLOWED | NOTELEPORT
@@ -231,6 +251,12 @@
 	icon_state = "danger"
 	map_generator = /datum/map_generator/cave_generator/icemoon/surface
 
+/area/icemoon/surface/outdoors/unexplored/rivers/New()
+	. = ..()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_FORESTED))
+		map_generator = /datum/map_generator/cave_generator/icemoon/surface/forested
+		area_flags |= MOB_SPAWN_ALLOWED //flip this on, the generator has already disabled dangerous fauna
+
 /area/icemoon/surface/outdoors/unexplored/rivers/no_monsters
 	area_flags = UNIQUE_AREA | FLORA_ALLOWED | CAVES_ALLOWED
 
@@ -242,7 +268,6 @@
 	power_environ = FALSE
 	power_equip = FALSE
 	power_light = FALSE
-	ambience_index = AMBIENCE_MINING
 	area_flags = UNIQUE_AREA | FLORA_ALLOWED
 	min_ambience_cooldown = 70 SECONDS
 	max_ambience_cooldown = 220 SECONDS
@@ -271,3 +296,13 @@
 /area/icemoon/underground/explored // ruins can't spawn here
 	name = "Icemoon Underground"
 	area_flags = UNIQUE_AREA
+
+/area/icemoon/underground/explored/graveyard
+	name = "Graveyard"
+	area_flags = UNIQUE_AREA
+	ambience_index = AMBIENCE_SPOOKY
+	icon = 'icons/area/areas_station.dmi'
+	icon_state = "graveyard"
+
+/area/icemoon/underground/explored/graveyard/chapel
+	name = "Chapel Graveyard"

@@ -4,7 +4,7 @@
  * The component datum
  *
  * A component should be a single standalone unit
- * of functionality, that works by receiving signals from it's parent
+ * of functionality, that works by receiving signals from its parent
  * object to provide some single functionality (i.e a slippery component)
  * that makes the object it's attached to cause people to slip over.
  * Useful when you want shared behaviour independent of type inheritance
@@ -72,15 +72,13 @@
  *
  * Arguments:
  * * force - makes it not check for and remove the component from the parent
- * * silent - deletes the component without sending a [COMSIG_COMPONENT_REMOVING] signal
  */
-/datum/component/Destroy(force=FALSE, silent=FALSE)
+/datum/component/Destroy(force = FALSE)
 	if(!parent)
 		return ..()
 	if(!force)
 		_RemoveFromParent()
-	if(!silent)
-		SEND_SIGNAL(parent, COMSIG_COMPONENT_REMOVING, src)
+	SEND_SIGNAL(parent, COMSIG_COMPONENT_REMOVING, src)
 	parent = null
 	return ..()
 
@@ -169,12 +167,13 @@
 	return
 
 /**
- * Called when the component has a new source registered
+ * Called when the component has a new source registered.
+ * Return COMPONENT_INCOMPATIBLE to signal that the source is incompatible and should not be added
  */
-/datum/component/proc/on_source_add(source)
+/datum/component/proc/on_source_add(source, ...)
 	SHOULD_CALL_PARENT(TRUE)
 	if(dupe_mode != COMPONENT_DUPE_SOURCES)
-		CRASH("Component '[type]' does not use sources but has been given a source")
+		return COMPONENT_INCOMPATIBLE
 	LAZYOR(sources, source)
 
 /**
@@ -236,12 +235,12 @@
  */
 /datum/component/proc/_GetInverseTypeList(our_type = type)
 	//we can do this one simple trick
+	. = list(our_type)
 	var/current_type = parent_type
-	. = list(our_type, current_type)
 	//and since most components are root level + 1, this won't even have to run
 	while (current_type != /datum/component)
+		. += current_type
 		current_type = type2parent(current_type)
-	. += current_type
 
 // The type arg is casted so initial works, you shouldn't be passing a real instance into this
 /**
@@ -274,17 +273,17 @@
  */
 /datum/proc/GetExactComponent(datum/component/c_type)
 	RETURN_TYPE(c_type)
-	if(initial(c_type.dupe_mode) == COMPONENT_DUPE_ALLOWED || initial(c_type.dupe_mode) == COMPONENT_DUPE_SELECTIVE)
+	var/initial_type_mode = initial(c_type.dupe_mode)
+	if(initial_type_mode == COMPONENT_DUPE_ALLOWED || initial_type_mode == COMPONENT_DUPE_SELECTIVE)
 		stack_trace("GetComponent was called to get a component of which multiple copies could be on an object. This can easily break and should be changed. Type: \[[c_type]\]")
-	var/list/dc = _datum_components
-	if(!dc)
+	var/list/all_components = _datum_components
+	if(!all_components)
 		return null
-	var/datum/component/C = dc[c_type]
-	if(C)
-		if(length(C))
-			C = C[1]
-		if(C.type == c_type)
-			return C
+	var/datum/component/potential_component
+	if(length(all_components))
+		potential_component = all_components[c_type]
+	if(potential_component?.type == c_type)
+		return potential_component
 	return null
 
 /**
@@ -317,6 +316,17 @@
 	if(QDELING(src))
 		CRASH("Attempted to add a new component of type \[[component_type]\] to a qdeleting parent of type \[[type]\]!")
 
+	var/datum/component/new_component
+
+	if(!ispath(component_type, /datum/component))
+		if(!istype(component_type, /datum/component))
+			CRASH("Attempted to instantiate \[[component_type]\] as a component added to parent of type \[[type]\]!")
+		else
+			new_component = component_type
+			component_type = new_component.type
+	else if(component_type == /datum/component)
+		CRASH("[component_type] attempted instantiation!")
+
 	var/dupe_mode = initial(component_type.dupe_mode)
 	var/dupe_type = initial(component_type.dupe_type)
 	var/uses_sources = (dupe_mode == COMPONENT_DUPE_SOURCES)
@@ -326,17 +336,9 @@
 		CRASH("Attempted to add a normal component of type '[component_type]' to '[type]' with a source!")
 
 	var/datum/component/old_component
-	var/datum/component/new_component
-
-	if(ispath(component_type))
-		if(component_type == /datum/component)
-			CRASH("[component_type] attempted instantiation!")
-	else
-		new_component = component_type
-		component_type = new_component.type
 
 	raw_args[1] = src
-	if(dupe_mode != COMPONENT_DUPE_ALLOWED && dupe_mode != COMPONENT_DUPE_SELECTIVE)
+	if(dupe_mode != COMPONENT_DUPE_ALLOWED && dupe_mode != COMPONENT_DUPE_SELECTIVE && dupe_mode != COMPONENT_DUPE_SOURCES)
 		if(!dupe_type)
 			old_component = GetExactComponent(component_type)
 		else
@@ -369,10 +371,14 @@
 				if(COMPONENT_DUPE_SOURCES)
 					if(source in old_component.sources)
 						return old_component // source already registered, no work to do
-					old_component.on_source_add(source)
+
+					if(old_component.on_source_add(arglist(list(source) + raw_args.Copy(2))) == COMPONENT_INCOMPATIBLE)
+						stack_trace("incompatible source added to a [old_component.type]. Args: [json_encode(raw_args)]")
+						return null
 
 		else if(!new_component)
 			new_component = new component_type(raw_args) // There's a valid dupe mode but there's no old component, act like normal
+
 	else if(dupe_mode == COMPONENT_DUPE_SELECTIVE)
 		var/list/arguments = raw_args.Copy()
 		arguments[1] = new_component
@@ -384,12 +390,17 @@
 				break
 		if(!new_component && make_new_component)
 			new_component = new component_type(raw_args)
+
+	else if(dupe_mode == COMPONENT_DUPE_SOURCES)
+		new_component = new component_type(raw_args)
+		if(new_component.on_source_add(arglist(list(source) + raw_args.Copy(2))) == COMPONENT_INCOMPATIBLE)
+			stack_trace("incompatible source added to a [new_component.type]. Args: [json_encode(raw_args)]")
+			return null
+
 	else if(!new_component)
 		new_component = new component_type(raw_args) // Dupes are allowed, act like normal
 
 	if(!old_component && !QDELETED(new_component)) // Nothing related to duplicate components happened and the new component is healthy
-		if(uses_sources) // make sure they have the source added if they use sources
-			new_component.on_source_add(source)
 		SEND_SIGNAL(src, COMSIG_COMPONENT_ADDED, new_component)
 		return new_component
 
@@ -402,7 +413,7 @@
 	if(ispath(component_type))
 		component_type = GetExactComponent(component_type)
 	if(!component_type)
-		CRASH("Attempted to remove a null or non-existent component '[component_type]' from '[type]'")
+		return
 	component_type.on_source_remove(source)
 
 /**
@@ -468,15 +479,16 @@
 	var/list/dc = _datum_components
 	if(!dc)
 		return
-	var/comps = dc[/datum/component]
-	if(islist(comps))
-		for(var/datum/component/I in comps)
-			if(I.can_transfer)
-				target.TakeComponent(I)
-	else
-		var/datum/component/C = comps
-		if(C.can_transfer)
-			target.TakeComponent(comps)
+	for(var/component_key in dc)
+		var/component_or_list = dc[component_key]
+		if(islist(component_or_list))
+			for(var/datum/component/I in component_or_list)
+				if(I.can_transfer)
+					target.TakeComponent(I)
+		else
+			var/datum/component/C = component_or_list
+			if(C.can_transfer)
+				target.TakeComponent(C)
 
 /**
  * Return the object that is the host of any UI's that this component has

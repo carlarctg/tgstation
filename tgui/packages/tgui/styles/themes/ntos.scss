@@ -6,14 +6,14 @@
 @use 'sass:color';
 @use 'sass:meta';
 
-$nanotrasen: #384e68;
+$nanotrasen: hsl(213, 30%, 32%);
 
 @use '../colors.scss' with (
   $fg-map-keys: (),
-  $bg-map-keys: (),
+  $bg-map-keys: ()
 );
 @use '../base.scss' with (
-  $color-bg: color.scale($nanotrasen, $lightness: -45%),
+  $color-bg: color.scale($nanotrasen, $lightness: -45%)
 );
 
 .theme-ntos {

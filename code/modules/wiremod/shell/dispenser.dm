@@ -5,11 +5,11 @@
  */
 /obj/structure/dispenser_bot
 	name = "dispenser"
-	icon = 'icons/obj/wiremod.dmi'
+	icon = 'icons/obj/science/circuits.dmi'
 	icon_state = "setup_drone_arms"
 
 	density = FALSE
-	light_system = MOVABLE_LIGHT
+	light_system = OVERLAY_LIGHT
 	light_on = FALSE
 
 	var/max_weight = WEIGHT_CLASS_NORMAL
@@ -18,10 +18,9 @@
 	var/list/obj/item/stored_items = list()
 	var/locked = FALSE
 
-/obj/structure/dispenser_bot/deconstruct(disassembled)
+/obj/structure/dispenser_bot/atom_deconstruct(disassembled = TRUE)
 	for(var/obj/item/stored_item as anything in stored_items)
 		remove_item(stored_item)
-	return ..()
 
 /obj/structure/dispenser_bot/Destroy()
 	QDEL_LIST(stored_items)

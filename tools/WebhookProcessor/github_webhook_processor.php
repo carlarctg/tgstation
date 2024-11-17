@@ -236,11 +236,15 @@ function set_labels($payload, $labels, $remove) {
 function tag_pr($payload, $opened) {
 	//get the mergeable state
 	$url = $payload['pull_request']['url'];
-	$payload['pull_request'] = json_decode(github_apisend($url), TRUE);
+	$new_pull_request_payload = json_decode(github_apisend($url), TRUE);
+	if (isset($new_pull_request_payload['id']))
+		$payload['pull_request'] = $new_pull_request_payload;
 	if($payload['pull_request']['mergeable'] == null) {
 		//STILL not ready. Give it a bit, then try one more time
 		sleep(10);
-		$payload['pull_request'] = json_decode(github_apisend($url), TRUE);
+		$new_pull_request_payload = json_decode(github_apisend($url), TRUE);
+		if (isset($new_pull_request_payload['id']))
+			$payload['pull_request'] = $new_pull_request_payload;
 	}
 
 	$tags = array();
@@ -256,6 +260,8 @@ function tag_pr($payload, $opened) {
 			$tags[] = 'Revert';
 		if(strpos(strtolower($title), 'removes') !== FALSE)
 			$tags[] = 'Removal';
+		if(strpos(strtolower($title), 'unit test') !== FALSE)
+			$tags[] = 'Unit Tests';
 	}
 
 	$remove = array('Test Merge Candidate');
@@ -280,6 +286,7 @@ function tag_pr($payload, $opened) {
 	check_tag_and_replace($payload, '[dnm]', 'Do Not Merge', $tags);
 	check_tag_and_replace($payload, '[no gbp]', 'GBP: No Update', $tags);
 	check_tag_and_replace($payload, '[april fools]', 'April Fools', $tags);
+	check_tag_and_replace($payload, '[tm only]', 'Test Merge Only', $tags);
 
 	return array($tags, $remove);
 }
@@ -389,12 +396,12 @@ function handle_pr($payload) {
 
 	$repo_name = $payload['repository']['name'];
 
-	if (in_array($repo_name, $game_announce_whitelist)) {
-		game_announce($action, $payload, $pr_flags);
-	}
-
 	if (!is_blacklisted($discord_announce_blacklist, $repo_name)) {
 		discord_announce($action, $payload, $pr_flags);
+	}
+
+	if (in_array($repo_name, $game_announce_whitelist)) {
+		game_announce($action, $payload, $pr_flags);
 	}
 }
 
@@ -478,14 +485,21 @@ function game_announce($action, $payload, $pr_flags) {
 	$msg = '['.$payload['pull_request']['base']['repo']['full_name'].'] Pull Request '.$action.' by '.htmlSpecialChars($payload['sender']['login']).': <a href="'.$payload['pull_request']['html_url'].'">'.htmlSpecialChars('#'.$payload['pull_request']['number'].' '.$payload['pull_request']['user']['login'].' - '.$payload['pull_request']['title']).'</a>';
 
 	$game_servers = filter_announce_targets($servers, $payload['pull_request']['base']['repo']['owner']['login'], $payload['pull_request']['base']['repo']['name'], $action, $pr_flags);
-
-	$msg = '?announce='.urlencode($msg).'&payload='.urlencode(json_encode($payload));
+	$game_payload = array();
+	$game_payload['pull_request'] = array();
+	$game_payload['pull_request']['id'] = $payload['pull_request']['id'];
+	$msg = '?announce='.urlencode($msg).'&payload='.urlencode(json_encode($game_payload));
 
 	foreach ($game_servers as $serverid => $server) {
-		$server_message = $msg;
-		if (isset($server['comskey']))
-			$server_message .= '&key='.urlencode($server['comskey']);
-		game_server_send($server['address'], $server['port'], $server_message);
+		try {
+			$server_message = $msg;
+			if (isset($server['comskey']))
+				$server_message .= '&key='.urlencode($server['comskey']);
+			game_server_send($server['address'], $server['port'], $server_message);
+		} catch (exception $e) {
+			log_error('Error on line ' . $e->getLine() . ': ' . $e->getMessage());
+			continue;
+		}
 	}
 
 }
@@ -642,10 +656,10 @@ $no_changelog = false;
 function checkchangelog($payload) {
 	global $no_changelog;
 	if (!isset($payload['pull_request']) || !isset($payload['pull_request']['body'])) {
-		return;
+		return array();
 	}
 	if (!isset($payload['pull_request']['user']) || !isset($payload['pull_request']['user']['login'])) {
-		return;
+		return array();
 	}
 	$body = $payload['pull_request']['body'];
 
@@ -782,7 +796,7 @@ function game_server_send($addr, $port, $str) {
 	/* --- Create a socket and connect it to the server --- */
 	$server = socket_create(AF_INET,SOCK_STREAM,SOL_TCP) or exit("ERROR");
 	socket_set_option($server, SOL_SOCKET, SO_SNDTIMEO, array('sec' => 2, 'usec' => 0)); //sets connect and send timeout to 2 seconds
-	if(!socket_connect($server,$addr,$port)) {
+	if(!@socket_connect($server,$addr,$port)) {
 		return "ERROR: Connection failed";
 	}
 
@@ -799,9 +813,9 @@ function game_server_send($addr, $port, $str) {
 		$bytessent += $result;
 	}
 
-	/* --- Idle for a while until recieved bytes from game server --- */
-	$result = socket_read($server, 10000, PHP_BINARY_READ);
-	socket_close($server); // we don't need this anymore
+	/* --- Idle for a while until received bytes from game server --- */
+	$result = @socket_read($server, 10000, PHP_BINARY_READ);
+	@socket_close($server); // we don't need this anymore
 
 	if($result != "") {
 		if($result[0] == "\x00" || $result[1] == "\x83") { // make sure it's the right packet format

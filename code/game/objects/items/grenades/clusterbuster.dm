@@ -13,10 +13,18 @@
 	var/base_state = "clusterbang"
 	var/payload = /obj/item/grenade/flashbang/cluster
 	var/payload_spawner = /obj/effect/payload_spawner
-	var/prime_sound = 'sound/weapons/armbomb.ogg'
+	var/prime_sound = 'sound/items/weapons/armbomb.ogg'
 	var/min_spawned = 4
 	var/max_spawned = 8
 	var/segment_chance = 35
+
+/obj/item/grenade/clusterbuster/apply_grenade_fantasy_bonuses(quality)
+	min_spawned = modify_fantasy_variable("min_spawned", min_spawned, round(quality/2))
+	max_spawned = modify_fantasy_variable("max_spawned", max_spawned, round(quality/2))
+
+/obj/item/grenade/clusterbuster/remove_grenade_fantasy_bonuses(quality)
+	min_spawned = reset_fantasy_variable("min_spawned", min_spawned)
+	max_spawned = reset_fantasy_variable("max_spawned", max_spawned)
 
 /obj/item/grenade/clusterbuster/detonate(mob/living/lanced_by)
 	. = ..()
@@ -87,6 +95,7 @@
 		var/obj/item/grenade/grenade = new type(loc)
 		if(istype(grenade))
 			grenade.active = TRUE
+			grenade.type_cluster = TRUE
 			addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/grenade, detonate)), rand(RANDOM_DETONATE_MIN_TIME, RANDOM_DETONATE_MAX_TIME))
 		var/steps = rand(1, 4)
 		for(var/step in 1 to steps)
@@ -198,7 +207,7 @@
 	icon_state = "slimebang"
 	base_state = "slimebang"
 	payload_spawner = /obj/effect/payload_spawner/random_slime
-	prime_sound = 'sound/effects/bubbles.ogg'
+	prime_sound = 'sound/effects/bubbles/bubbles.ogg'
 
 /obj/item/grenade/clusterbuster/slime/volatile
 	payload_spawner = /obj/effect/payload_spawner/random_slime/volatile

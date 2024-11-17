@@ -15,13 +15,23 @@
 
 /obj/item/folder/biscuit/Initialize(mapload)
 	. = ..()
-	if(!isnull(contained_slip))
+	if(ispath(contained_slip, /obj/item/paper/paperslip))
 		contained_slip = new contained_slip(src)
 
 /obj/item/folder/biscuit/Destroy()
-	if(contained_slip)
+	if(isdatum(contained_slip))
 		QDEL_NULL(contained_slip)
 	return ..()
+
+/obj/item/folder/biscuit/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(contained_slip == gone)
+		contained_slip = null
+
+/obj/item/folder/biscuit/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+	. = ..()
+	if(isnull(contained_slip) && istype(arrived, /obj/item/paper/paperslip))
+		contained_slip = arrived
 
 /obj/item/folder/biscuit/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] tries to eat [src]! [user.p_theyre()] trying to commit suicide!"))
@@ -126,7 +136,7 @@
 	cracked = FALSE
 	has_been_sealed = TRUE
 	contents_hidden = TRUE
-	playsound(get_turf(user), 'sound/items/duct_tape_snap.ogg', 60)
+	playsound(get_turf(user), 'sound/items/duct_tape/duct_tape_snap.mp3', 60)
 	icon_state = "[sealed_icon]"
 	update_appearance()
 

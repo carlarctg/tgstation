@@ -41,6 +41,11 @@
 	stored.forceMove(get_turf(usr))
 	return
 
+/obj/item/borg/apparatus/get_proxy_attacker_for(atom/target, mob/user)
+	if(stored) // Use the stored item if available
+		return stored
+	return ..()
+
 /**
 * Attack_self will pass for the stored item.
 */
@@ -50,28 +55,28 @@
 	stored.attack_self(user)
 
 //Alt click drops the stored item.
-/obj/item/borg/apparatus/AltClick(mob/living/silicon/robot/user)
+/obj/item/borg/apparatus/click_alt(mob/living/silicon/robot/user)
 	if(!stored || !issilicon(user))
-		return ..()
+		return CLICK_ACTION_BLOCKING
 	stored.forceMove(user.drop_location())
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/borg/apparatus/pre_attack(atom/atom, mob/living/user, params)
-	if(!stored)
-		var/itemcheck = FALSE
-		for(var/storable_type in storable)
-			if(istype(atom, storable_type))
-				itemcheck = TRUE
-				break
-		if(itemcheck)
-			var/obj/item/item = atom
-			item.forceMove(src)
-			stored = item
-			RegisterSignal(stored, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_stored_updated_icon))
-			update_appearance()
-			return
-	else
-		stored.melee_attack_chain(user, atom, params)
-		return
+	if(istype(atom.loc, /mob/living/silicon/robot) || istype(atom.loc, /obj/item/robot_model) || HAS_TRAIT(atom, TRAIT_NODROP))
+		return ..() // Borgs should not be grabbing their own modules
+
+	var/itemcheck = FALSE
+	for(var/storable_type in storable)
+		if(istype(atom, storable_type))
+			itemcheck = TRUE
+			break
+	if(itemcheck)
+		var/obj/item/item = atom
+		item.forceMove(src)
+		stored = item
+		RegisterSignal(stored, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_stored_updated_icon))
+		update_appearance()
+		return TRUE
 	return ..()
 
 /**
@@ -93,10 +98,13 @@
 
 /obj/item/borg/apparatus/beaker
 	name = "beaker storage apparatus"
-	desc = "A special apparatus for carrying beakers without spilling the contents."
+	desc = "A special apparatus for carrying beakers, bottles, and test tubes without spilling their contents."
 	icon_state = "borg_beaker_apparatus"
-	storable = list(/obj/item/reagent_containers/cup/beaker,
-					/obj/item/reagent_containers/cup/bottle)
+	storable = list(
+		/obj/item/reagent_containers/cup/beaker,
+		/obj/item/reagent_containers/cup/bottle,
+		/obj/item/reagent_containers/cup/tube,
+	)
 
 /obj/item/borg/apparatus/beaker/Initialize(mapload)
 	add_glass()
@@ -125,7 +133,6 @@
 		else
 			. += "Nothing."
 
-		. += span_notice(" <i>Right-clicking</i> will splash the beaker on the ground.")
 	. += span_notice(" <i>Alt-click</i> will drop the currently stored beaker. ")
 
 /obj/item/borg/apparatus/beaker/update_overlays()
@@ -144,25 +151,20 @@
 		arm.pixel_y = arm.pixel_y - 5
 	. += arm
 
-/// Secondary attack spills the content of the beaker.
-/obj/item/borg/apparatus/beaker/pre_attack_secondary(atom/target, mob/living/silicon/robot/user)
-	var/obj/item/reagent_containers/stored_beaker = stored
-	if(!stored_beaker)
-		return ..()
-	stored_beaker.SplashReagents(drop_location(user))
-	loc.visible_message(span_notice("[user] spills the contents of [stored_beaker] all over the ground."))
-	return ..()
-
 /obj/item/borg/apparatus/beaker/extra
 	name = "secondary beaker storage apparatus"
 	desc = "A supplementary beaker storage apparatus."
 
 /obj/item/borg/apparatus/beaker/service
 	name = "beverage storage apparatus"
-	desc = "A special apparatus for carrying drinks without spilling the contents. Will resynthesize any drinks you pour out!"
+	desc = "A special apparatus for carrying drinks and condiment packets without spilling their contents. Will resynthesize any drinks (or other nutritional liquids) you pour out of glasses!"
 	icon_state = "borg_beaker_apparatus"
-	storable = list(/obj/item/reagent_containers/cup/glass,
-					/obj/item/reagent_containers/condiment)
+	storable = list(
+		/obj/item/reagent_containers/cup/glass,
+		/obj/item/reagent_containers/condiment,
+		/obj/item/reagent_containers/cup/coffeepot,
+		/obj/item/reagent_containers/cup/bottle/syrup_bottle,
+	)
 
 /obj/item/borg/apparatus/beaker/service/add_glass()
 	stored = new /obj/item/reagent_containers/cup/glass/drinkingglass(src)
@@ -182,6 +184,22 @@
 		return
 	handle_reflling(arrived)
 	return ..()
+
+///Used by the service borg drink apparatus upgrade, holds drink-related items
+/obj/item/borg/apparatus/beaker/drink
+	name = "secondary beverage storage apparatus"
+	desc = "A special apparatus for carrying drinks and condiment packets without spilling their contents. Will NOT resynthesize drinks unlike your standard apparatus."
+	icon_state = "borg_beaker_apparatus"
+	storable = list(
+		/obj/item/reagent_containers/cup/glass,
+		/obj/item/reagent_containers/condiment,
+		/obj/item/reagent_containers/cup/coffeepot,
+		/obj/item/reagent_containers/cup/bottle/syrup_bottle,
+		/obj/item/reagent_containers/cup/beaker,
+	)
+
+/obj/item/borg/apparatus/beaker/service2/add_glass()
+	stored = new /obj/item/reagent_containers/cup/glass/drinkingglass(src)
 
 /// allows medical cyborgs to manipulate organs without hands
 /obj/item/borg/apparatus/organ_storage
@@ -219,16 +237,16 @@
 		bag = mutable_appearance(icon, icon_state = "evidenceobj") // empty bag
 	. += bag
 
-/obj/item/borg/apparatus/organ_storage/AltClick(mob/living/silicon/robot/user)
-	. = ..()
-	if(stored)
-		var/obj/item/organ = stored
-		user.visible_message(span_notice("[user] dumps [organ] from [src]."), span_notice("You dump [organ] from [src]."))
-		cut_overlays()
-		organ.forceMove(get_turf(src))
-	else
+/obj/item/borg/apparatus/organ_storage/click_alt(mob/living/silicon/robot/user)
+	if(!stored)
 		to_chat(user, span_notice("[src] is empty."))
-	return
+		return CLICK_ACTION_BLOCKING
+
+	var/obj/item/organ = stored
+	user.visible_message(span_notice("[user] dumps [organ] from [src]."), span_notice("You dump [organ] from [src]."))
+	cut_overlays()
+	organ.forceMove(get_turf(src))
+	return CLICK_ACTION_SUCCESS
 
 ///Apparatus to allow Engineering/Sabo borgs to manipulate any material sheets.
 /obj/item/borg/apparatus/sheet_manipulator
@@ -302,8 +320,8 @@
 	return ..()
 
 /obj/item/borg/apparatus/service
-	name = "Service apparatus"
-	desc = "A special apparatus for carrying food, bowls, plates, oven trays, soup pots and paper."
+	name = "service apparatus"
+	desc = "A special apparatus for carrying food, seeds, grafts, bowls, plates, oven trays, soup pots and paper."
 	icon_state = "borg_service_apparatus"
 	storable = list(
 		/obj/item/food,
@@ -312,6 +330,9 @@
 		/obj/item/plate/oven_tray,
 		/obj/item/reagent_containers/cup/bowl,
 		/obj/item/reagent_containers/cup/soup_pot,
+		/obj/item/seeds,
+		/obj/item/graft,
+		/obj/item/fish,
 	)
 
 /obj/item/borg/apparatus/service/Initialize(mapload)

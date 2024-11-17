@@ -5,7 +5,8 @@
 	desc = "It's a useless heap of junk... <i>or is it?</i>"
 	icon = 'icons/mob/silicon/robots.dmi'
 	icon_state = "gib1"
-	layer = LOW_OBJ_LAYER
+	plane = GAME_PLANE
+	layer = BELOW_OBJ_LAYER
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6", "gib7")
 	blood_state = BLOOD_STATE_OIL
 	bloodiness = BLOOD_AMOUNT_PER_DECAL
@@ -25,18 +26,19 @@
 		return
 	if(mapload)
 		for (var/i in 1 to range)
-			if(prob(40) && (!isgroundlessturf(loc) || SSmapping.get_turf_below(loc)))
-				new /obj/effect/decal/cleanable/oil/streak(loc)
+			var/turf/my_turf = get_turf(src)
+			if(prob(40) && (!isgroundlessturf(my_turf) || GET_TURF_BELOW(my_turf)))
+				new /obj/effect/decal/cleanable/oil/streak(my_turf)
 			if (!step_to(src, get_step(src, direction), 0))
 				break
 		return
 
-	var/datum/move_loop/loop = SSmove_manager.move(src, direction, delay = delay, timeout = range * delay, priority = MOVEMENT_ABOVE_SPACE_PRIORITY)
+	var/datum/move_loop/loop = GLOB.move_manager.move(src, direction, delay = delay, timeout = range * delay, priority = MOVEMENT_ABOVE_SPACE_PRIORITY)
 	RegisterSignal(loop, COMSIG_MOVELOOP_POSTPROCESS, PROC_REF(spread_movement_effects))
 
 /obj/effect/decal/cleanable/robot_debris/proc/spread_movement_effects(datum/move_loop/has_target/source)
 	SIGNAL_HANDLER
-	if(isclosedturf(loc) || (isgroundlessturf(loc) && !SSmapping.get_turf_below(loc)))
+	if(NeverShouldHaveComeHere(loc))
 		return
 	if (prob(40))
 		new /obj/effect/decal/cleanable/oil/streak(loc)

@@ -25,7 +25,6 @@
 	// if user is affected by tower of babel, we remove the blocked languages
 	owner.remove_blocked_language(GLOB.all_languages, source = LANGUAGE_BABEL)
 	owner.remove_all_languages(source = LANGUAGE_BABEL)
-	owner.update_atom_languages()
 	if(owner.mind)
 		REMOVE_TRAIT(owner.mind, TRAIT_TOWER_OF_BABEL, trait_source)
 	return ..()
@@ -33,7 +32,7 @@
 // Used by wizard magic and tower of babel event
 /datum/status_effect/tower_of_babel/magical
 	id = "tower_of_babel_magic" // do we need a new id?
-	duration = -1
+	duration = STATUS_EFFECT_PERMANENT
 	trait_source = TRAUMA_TRAIT
 
 /datum/status_effect/tower_of_babel/magical/on_apply()
@@ -42,7 +41,7 @@
 		return
 
 	owner.emote("mumble")
-	owner.playsound_local(get_turf(owner), 'sound/magic/magic_block_mind.ogg', 75, vary = TRUE) // sound of creepy whispers
+	owner.playsound_local(get_turf(owner), 'sound/effects/magic/magic_block_mind.ogg', 75, vary = TRUE) // sound of creepy whispers
 	to_chat(owner, span_reallybig(span_hypnophrase("You feel a magical force affecting your speech patterns!")))
 
 /datum/status_effect/tower_of_babel/magical/on_remove()

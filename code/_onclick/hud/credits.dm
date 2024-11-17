@@ -1,6 +1,6 @@
 #define CREDIT_ROLL_SPEED 125
 #define CREDIT_SPAWN_SPEED 10
-#define CREDIT_ANIMATE_HEIGHT (14 * world.icon_size)
+#define CREDIT_ANIMATE_HEIGHT (14 * ICON_SIZE_Y)
 #define CREDIT_EASE_DURATION 22
 #define CREDITS_PATH "[global.config.directory]/contributors.dmi"
 
@@ -18,7 +18,7 @@
 	for(var/I in credit_order_for_this_round)
 		if(!credits)
 			return
-		_credits += new /atom/movable/screen/credit(null, I, src, credits_icon)
+		_credits += new /atom/movable/screen/credit(null, null, I, src, credits_icon)
 		sleep(CREDIT_SPAWN_SPEED)
 	sleep(CREDIT_ROLL_SPEED - CREDIT_SPAWN_SPEED)
 	remove_verb(src, /client/proc/ClearCredits)
@@ -39,15 +39,15 @@
 	var/client/parent
 	var/matrix/target
 
-/atom/movable/screen/credit/Initialize(mapload, credited, client/P, icon/I)
+/atom/movable/screen/credit/Initialize(mapload, datum/hud/hud_owner, credited, client/P, icon/I)
 	. = ..()
 	icon = I
 	parent = P
 	icon_state = credited
-	maptext = MAPTEXT(credited)
-	maptext_x = world.icon_size + 8
-	maptext_y = (world.icon_size / 2) - 4
-	maptext_width = world.icon_size * 3
+	maptext = MAPTEXT_PIXELLARI(credited)
+	maptext_x = ICON_SIZE_X + 8
+	maptext_y = (ICON_SIZE_Y / 2) - 4
+	maptext_width = ICON_SIZE_X * 3
 	var/matrix/M = matrix(transform)
 	M.Translate(0, CREDIT_ANIMATE_HEIGHT)
 	animate(src, transform = M, time = CREDIT_ROLL_SPEED)

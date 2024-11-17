@@ -2,7 +2,7 @@
 FROM debian:bullseye-slim
 
 # install required packages
-RUN apt-get update && apt-get upgrade && apt-get install -y wget curl espeak-ng &&\
+RUN apt-get update && apt-get upgrade -y && apt-get install -y wget curl espeak-ng &&\
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -26,6 +26,7 @@ RUN pip install Flask &&\
 	pip install waitress &&\
 	pip install llvmlite --ignore-installed &&\
 	pip install torch torchaudio --extra-index-url https://download.pytorch.org/whl/cu118 &&\
+	pip install pydub &&\
 	pip install TTS &&\
 	pip cache purge
 

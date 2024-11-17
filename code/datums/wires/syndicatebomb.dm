@@ -48,7 +48,7 @@
 
 		if(WIRE_PROCEED)
 			holder.visible_message(span_danger("[icon2html(B, viewers(holder))] The bomb buzzes ominously!"))
-			playsound(B, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
+			playsound(B, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 			var/seconds = B.seconds_remaining()
 			if(seconds >= 61) // Long fuse bombs can suddenly become more dangerous if you tinker with them.
 				B.detonation_timer = world.time + 600
@@ -69,7 +69,7 @@
 				B.detonation_timer += 100
 				B.delayedlittle = TRUE
 
-/datum/wires/syndicatebomb/on_cut(wire, mend)
+/datum/wires/syndicatebomb/on_cut(wire, mend, source)
 	var/obj/machinery/syndicatebomb/B = holder
 	switch(wire)
 		if(WIRE_BOOM,WIRE_BOOM2)
@@ -78,9 +78,9 @@
 				B.explode_now = TRUE
 				if(!istype(B.payload, /obj/machinery/syndicatebomb/training))
 					tell_admins(B)
-					// Cursed usr use but no easy way to get the cutter
-					if(isliving(usr))
-						add_memory_in_range(B, 7, /datum/memory/bomb_defuse_failure, protagonist = usr, antagonist = B)
+					if(isliving(source))
+						log_combat(source, holder, "cut the detonation wire for")
+						add_memory_in_range(B, 7, /datum/memory/bomb_defuse_failure, protagonist = source, antagonist = B)
 
 		if(WIRE_UNBOLT)
 			if(!mend && B.anchored)

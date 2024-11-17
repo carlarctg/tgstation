@@ -41,6 +41,9 @@
 	/// If every instance of these wires should be random. Prevents wires from showing up in station blueprints.
 	var/randomize = FALSE
 
+	/// Lazy assoc list of refs to mobs to refs to photos they have studied for wires
+	var/list/studied_photos
+
 /datum/wires/New(atom/holder)
 	..()
 	if(!istype(holder, holder_type))
@@ -116,7 +119,8 @@
 	randomize()
 
 /datum/wires/proc/repair()
-	cut_wires.Cut()//a negative times a negative equals a positive
+	for(var/wire in cut_wires)
+		cut(wire) // I KNOW I KNOW OK
 
 /datum/wires/proc/get_wire(color)
 	return colors[color]
@@ -152,23 +156,25 @@
 /datum/wires/proc/is_dud_color(color)
 	return is_dud(get_wire(color))
 
-/datum/wires/proc/cut(wire)
+/datum/wires/proc/cut(wire, source)
 	if(is_cut(wire))
 		cut_wires -= wire
-		on_cut(wire, mend = TRUE)
+		SEND_SIGNAL(src, COMSIG_MEND_WIRE(wire), wire)
+		on_cut(wire, mend = TRUE, source = source)
 	else
 		cut_wires += wire
-		on_cut(wire, mend = FALSE)
+		SEND_SIGNAL(src, COMSIG_CUT_WIRE(wire), wire)
+		on_cut(wire, mend = FALSE, source = source)
 
-/datum/wires/proc/cut_color(color)
-	cut(get_wire(color))
+/datum/wires/proc/cut_color(color, source)
+	cut(get_wire(color), source)
 
-/datum/wires/proc/cut_random()
-	cut(wires[rand(1, wires.len)])
+/datum/wires/proc/cut_random(source)
+	cut(wires[rand(1, wires.len)], source)
 
-/datum/wires/proc/cut_all()
+/datum/wires/proc/cut_all(source)
 	for(var/wire in wires)
-		cut(wire)
+		cut(wire, source)
 
 /datum/wires/proc/pulse(wire, user, force=FALSE)
 	if(!force && is_cut(wire))
@@ -188,14 +194,6 @@
 	if(S && istype(S) && S.attachable && !is_attached(color))
 		assemblies[color] = S
 		S.forceMove(holder)
-		/**
-		 * special snowflake check for machines
-		 * someone attached a signaler to the machines wires
-		 * move it to the machines component parts so it doesn't get moved out in dump_inventory_contents() which gets called a lot
-		 */
-		if(istype(holder, /obj/machinery))
-			var/obj/machinery/machine = holder
-			LAZYADD(machine.component_parts, S)
 		S.connected = src
 		S.on_attach() // Notify assembly that it is attached
 		return S
@@ -229,7 +227,7 @@
 /datum/wires/proc/get_status()
 	return list()
 
-/datum/wires/proc/on_cut(wire, mend = FALSE)
+/datum/wires/proc/on_cut(wire, mend = FALSE, source = null)
 	return
 
 /datum/wires/proc/on_pulse(wire, user)
@@ -263,8 +261,13 @@
 		return TRUE
 
 	// Station blueprints do that too, but only if the wires are not randomized.
-	if(user.is_holding_item_of_type(/obj/item/areaeditor/blueprints) && !randomize)
-		return TRUE
+	if(!randomize)
+		if(user.is_holding_item_of_type(/obj/item/blueprints))
+			return TRUE
+		if(!isnull(user.mind))
+			for(var/obj/item/photo/photo in user.held_items)
+				if(LAZYACCESS(studied_photos, REF(user.mind)) == REF(photo))
+					return TRUE
 
 	return FALSE
 
@@ -279,10 +282,41 @@
 /datum/wires/proc/always_reveal_wire(color)
 	return FALSE
 
+#define STUDY_INTERACTION_KEY "studying_photo"
+
+/**
+ * Attempts to study a photo for blueprints.
+ */
+/datum/wires/proc/try_study_photo(mob/user)
+	if(randomize)
+		return
+	if(isnull(user.mind))
+		return
+	if(DOING_INTERACTION(user, STUDY_INTERACTION_KEY))
+		return
+	if(LAZYACCESS(studied_photos, REF(user.mind)))
+		return
+	for(var/obj/item/photo/photo in user.held_items)
+		if(!photo.picture?.has_blueprints)
+			continue
+
+		var/study_length = 1 SECONDS * floor(min(photo.picture.psize_x, photo.picture.psize_y) / 32)
+		if(study_length >= 4 SECONDS)
+			to_chat(user, span_notice("<i>You squint [photo]... Hey, there's blueprints in the frame! Really wish the photo was zoomed in, though. \
+				It's rather difficult to make out the wires.</i>"))
+		else
+			to_chat(user, span_notice("<i>You glance at [photo], looking for wires in the pictured blueprints.</i>"))
+
+		if(do_after(user, study_length, holder, interaction_key = STUDY_INTERACTION_KEY, hidden = TRUE))
+			LAZYSET(studied_photos, REF(user.mind), REF(photo))
+		return
+
+#undef STUDY_INTERACTION_KEY
+
 /datum/wires/ui_host()
 	return holder
 
-/datum/wires/ui_status(mob/user)
+/datum/wires/ui_status(mob/user, datum/ui_state/state)
 	if(interactable(user))
 		return ..()
 	return UI_CLOSE
@@ -295,6 +329,7 @@
 	if (!ui)
 		ui = new(user, src, "Wires", "[holder.name] Wires")
 		ui.open()
+	try_study_photo(user)
 
 /datum/wires/ui_data(mob/user)
 	var/list/data = list()
@@ -313,7 +348,7 @@
 	data["proper_name"] = (proper_name != "Unknown") ? proper_name : null
 	return data
 
-/datum/wires/ui_act(action, params)
+/datum/wires/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(. || !interactable(usr))
 		return
@@ -326,7 +361,7 @@
 			if(I || isAdminGhostAI(usr))
 				if(I && holder)
 					I.play_tool_sound(holder, 20)
-				cut_color(target_wire)
+				cut_color(target_wire, source = L)
 				. = TRUE
 			else
 				to_chat(L, span_warning("You need wirecutters!"))

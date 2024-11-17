@@ -9,7 +9,7 @@
 	if(!..())
 		return FALSE
 	var/obj/item/relic/experiment = O
-	if(experiment.revealed)
+	if(experiment.activated)
 		return TRUE
 	return
 
@@ -55,7 +55,7 @@
 //******Modular Computer Bounties******
 /datum/bounty/item/science/ntnet
 	name = "Modular Tablets"
-	description = "Turns out that NTNet wasn't actually a fad afterall, who knew. Send some fully functional PDAs to help get us up to speed on the latest technology."
+	description = "Turns out that NTNet wasn't actually a fad after all, who knew. Send some fully functional PDAs to help get us up to speed on the latest technology."
 	reward = CARGO_CRATE_VALUE * 6
 	required_count = 4
 	wanted_types = list(/obj/item/modular_computer/pda = TRUE)
@@ -82,7 +82,7 @@
 	description = "Our big data division needs more powerful hardware to play 'Outbomb Cuban Pe-', err, to closely monitor threats in your sector. Send us a working modular computer console."
 	reward = CARGO_CRATE_VALUE * 6
 	required_count = 1
-	wanted_types = list(/obj/machinery/modular_computer/console = TRUE)
+	wanted_types = list(/obj/machinery/modular_computer = TRUE)
 	require_powered = FALSE
 
 /datum/bounty/item/science/ntnet/console/applies_to(obj/O)
@@ -97,7 +97,7 @@
 //******Anomaly Cores******
 /datum/bounty/item/science/ref_anomaly
 	name = "Refined Bluespace Core"
-	description = "We need a bluespace core to fit in a Phazon. Ship us one, please."
+	description = "We need a bluespace core to assemble a bag of holding. Ship us one, please."
 	reward = CARGO_CRATE_VALUE * 20
 	wanted_types = list(/obj/item/assembly/signaler/anomaly/bluespace = TRUE)
 

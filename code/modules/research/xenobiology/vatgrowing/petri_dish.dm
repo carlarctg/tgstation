@@ -2,7 +2,7 @@
 /obj/item/petri_dish
 	name = "petri dish"
 	desc = "This makes you feel well-cultured."
-	icon = 'icons/obj/xenobiology/vatgrowing.dmi'
+	icon = 'icons/obj/science/vatgrowing.dmi'
 	icon_state = "petri_dish"
 	w_class = WEIGHT_CLASS_TINY
 	///The sample stored on the dish
@@ -59,6 +59,7 @@
 		list(CELL_LINE_TABLE_COCKROACH, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 7),
 		list(CELL_LINE_TABLE_BLOBBERNAUT, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
 	)
+	name = "basic sample petri dish"
 
 /obj/item/petri_dish/random/Initialize(mapload)
 	. = ..()

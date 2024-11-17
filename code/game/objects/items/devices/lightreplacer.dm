@@ -34,14 +34,14 @@
 /obj/item/lightreplacer
 	name = "light replacer"
 	desc = "A device to automatically replace lights. Refill with broken or working light bulbs, or sheets of glass."
-	icon = 'icons/obj/janitor.dmi'
+	icon = 'icons/obj/service/janitor.dmi'
 	icon_state = "lightreplacer"
 	inhand_icon_state = "electronic"
 	worn_icon_state = "light_replacer"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	w_class = WEIGHT_CLASS_SMALL
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	slot_flags = ITEM_SLOT_BELT
 	force = 8
 
@@ -62,33 +62,45 @@
 	. = ..()
 	. += status_string()
 
-/obj/item/lightreplacer/pre_attack(atom/target, mob/living/user, params)
-	. = ..()
-	if(.)
-		return
-	return do_action(target, user) //if we are attacking a valid target[light, floodlight or turf] stop here
+/obj/item/lightreplacer/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	return do_action(interacting_with, user) ? ITEM_INTERACT_SUCCESS : NONE
+
+/obj/item/lightreplacer/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	// has no bluespace capabilities
+	if(!bluespace_toggle)
+		return NONE
+	// target not in range
+	if(interacting_with.z != user.z)
+		return NONE
+	// target not in view
+	if(!(interacting_with in view(7, get_turf(user))))
+		user.balloon_alert(user, "out of range!")
+		return ITEM_INTERACT_BLOCKING
+
+	//replace lights & stuff
+	return do_action(interacting_with, user) ? ITEM_INTERACT_SUCCESS : NONE
 
 /obj/item/lightreplacer/attackby(obj/item/insert, mob/user, params)
 	. = ..()
 	if(uses >= max_uses)
-		to_chat(user, span_warning("[src.name] is full."))
+		user.balloon_alert(user, "already full!")
 		return TRUE
 
 	if(istype(insert, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/glass_to_insert = insert
 		if(glass_to_insert.use(LIGHTBULB_COST))
 			add_uses(GLASS_SHEET_USES)
-			to_chat(user, span_notice("You insert a glass sheet into \the [src.name]. [status_string()]"))
+			user.balloon_alert(user, "glass inserted")
 		else
-			to_chat(user, span_warning("You need [LIGHTBULB_COST] glass to replace lights!"))
+			user.balloon_alert(user, "need [LIGHTBULB_COST] glass sheets!")
 		return TRUE
 
 	if(insert.type == /obj/item/shard) //we don't want to insert plasma, titanium or other types of shards
 		if(!user.temporarilyRemoveItemFromInventory(insert))
-			to_chat(user, span_notice("[insert] is stuck in your hand!"))
+			user.balloon_alert(user, "stuck in your hand!")
 			return TRUE
 		if(!add_shard(user)) //add_shard will display a message if it created a bulb from the shard so only display message when that does not happen
-			to_chat(user, span_notice("You insert [insert] into \the [src]. [status_string()]"))
+			user.balloon_alert(user, "shard inserted")
 		qdel(insert)
 		return TRUE
 
@@ -96,7 +108,7 @@
 		var/obj/item/light/light_to_insert = insert
 		//remove from player's hand
 		if(!user.temporarilyRemoveItemFromInventory(light_to_insert))
-			to_chat(user, span_notice("[insert] is stuck in your hand!"))
+			user.balloon_alert(user, "stuck in your hand!")
 			return TRUE
 
 		//insert light. display message only if adding a shard did not create a new bulb else the messages will conflict
@@ -106,7 +118,7 @@
 		else if(add_shard(user))
 			display_msg = FALSE
 		if(display_msg)
-			to_chat(user, span_notice("You insert [light_to_insert] into \the [src]. [status_string()]"))
+			user.balloon_alert(user, "light inserted")
 		qdel(light_to_insert)
 
 		return TRUE
@@ -121,7 +133,7 @@
 			if(src.uses >= max_uses)
 				break
 
-			//consume the item only if it's an light tube,bulb or shard
+			//consume the item only if it's a light tube, bulb or shard
 			loaded = FALSE
 			if(istype(item_to_check, /obj/item/light))
 				var/obj/item/light/found_light = item_to_check
@@ -146,20 +158,22 @@
 
 		if(!replaced_something)
 			if(uses == max_uses)
-				to_chat(user, span_warning("\The [src] is full!"))
+				user.balloon_alert(user, "already full!")
 			else
-				to_chat(user, span_warning("\The [storage_to_empty] contains no lights, glass sheets or shards."))
+				user.balloon_alert(user, "nothing usable in [storage_to_empty]!")
 			return TRUE
 
-		to_chat(user, span_notice("You fill \the [src] with lights from \the [storage_to_empty]. [status_string()]"))
+		user.balloon_alert(user, "lights inserted")
 		return TRUE
 
-/obj/item/lightreplacer/emag_act()
+/obj/item/lightreplacer/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		return
+		return FALSE
 	obj_flags |= EMAGGED
 	playsound(loc, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	update_appearance()
+	to_chat(user, span_warning("[src]'s lights are now filled with plasma! Be careful to only install them in disabled light fixtures, lest they explode!"))
+	return FALSE
 
 /obj/item/lightreplacer/update_name(updates)
 	. = ..()
@@ -190,9 +204,12 @@
 	return ..()
 
 /obj/item/lightreplacer/attack_self(mob/user)
+	var/on_a_light = FALSE //For if we are on the same tile as a light when we do this
 	for(var/obj/machinery/light/target in user.loc)
 		replace_light(target, user)
-	to_chat(user, status_string())
+		on_a_light = TRUE
+	if(!on_a_light) //So we don't give a balloon alert when we just used replace_light
+		user.balloon_alert(user, "[uses] lights, [bulb_shards]/[BULB_SHARDS_REQUIRED] fragments")
 
 /**
  * attempts to fix lights, flood lights & lights on a turf
@@ -206,7 +223,7 @@
 	if(istype(target, /obj/machinery/light))
 		if(replace_light(target, user) && bluespace_toggle)
 			user.Beam(target, icon_state = "rped_upgrade", time = 0.5 SECONDS)
-			playsound(src, 'sound/items/pshoom.ogg', 40, 1)
+			playsound(src, 'sound/items/pshoom/pshoom.ogg', 40, 1)
 		return TRUE
 
 	// if we are attacking a floodlight frame finish it
@@ -216,7 +233,7 @@
 			new /obj/machinery/power/floodlight(frame.loc)
 			if(bluespace_toggle)
 				user.Beam(target, icon_state = "rped_upgrade", time = 0.5 SECONDS)
-				playsound(src, 'sound/items/pshoom.ogg', 40, 1)
+				playsound(src, 'sound/items/pshoom/pshoom.ogg', 40, 1)
 			to_chat(user, span_notice("You finish \the [frame] with a light tube."))
 			qdel(frame)
 		return TRUE
@@ -229,30 +246,13 @@
 				light_replaced = TRUE
 		if(light_replaced && bluespace_toggle)
 			user.Beam(target, icon_state = "rped_upgrade", time = 0.5 SECONDS)
-			playsound(src, 'sound/items/pshoom.ogg', 40, 1)
+			playsound(src, 'sound/items/pshoom/pshoom.ogg', 40, 1)
 		return TRUE
 
 	return FALSE
 
-/obj/item/lightreplacer/afterattack(atom/target, mob/user, proximity)
-	. = ..()
-
-	// has no bluespace capabilities
-	if(!bluespace_toggle)
-		return
-	// target not in range
-	if(target.z != user.z)
-		return
-	// target not in view
-	if(!(target in view(7, get_turf(user))))
-		to_chat(user, span_warning("The \'Out of Range\' light on [src] blinks red."))
-		return
-
-	//replace lights & stuff
-	do_action(target, user)
-
 /obj/item/lightreplacer/proc/status_string()
-	return "It has [uses] light\s remaining (plus [bulb_shards] fragment\s)."
+	return "It has [uses] light\s remaining (plus [bulb_shards]/[BULB_SHARDS_REQUIRED] fragment\s)."
 
 /obj/item/lightreplacer/proc/Use(mob/user)
 	if(uses <= 0)
@@ -278,11 +278,14 @@
 		return TRUE
 	return FALSE
 
-/obj/item/lightreplacer/proc/Charge(mob/user)
-	charge += 1
-	if(charge > 3)
-		add_uses(1)
-		charge = 1
+#define LIGHT_CHARGE_COEFF 30000
+/obj/item/lightreplacer/proc/Charge(mob/user, coeff)
+	charge += coeff
+	if(charge > LIGHT_CHARGE_COEFF)
+		add_uses(floor(charge / LIGHT_CHARGE_COEFF))
+		charge = charge % LIGHT_CHARGE_COEFF
+
+#undef LIGHT_CHARGE_COEFF
 
 /obj/item/lightreplacer/proc/replace_light(obj/machinery/light/target, mob/living/user)
 	//Confirm that it's a light we're testing, because afterattack runs this for everything on a given turf and will runtime
@@ -290,11 +293,12 @@
 		return FALSE
 	//If the light source is ok then what are we doing here
 	if(target.status == LIGHT_OK)
-		to_chat(user, span_warning("There is a working [target.fitting] already inserted!"))
+		user.balloon_alert(user, "light already installed!")
 		return FALSE
 	//Were all out
 	if(!Use(user))
-		to_chat(user, span_warning("\The [src]'s refill light blinks red."))
+		//This balloon alert text is a little redundant, but I want to avoid a new player "yeah i know the light is empty" moment
+		user.balloon_alert(user, "light replacer empty!")
 		return FALSE
 
 	//remove any broken light on the fixture & add it as a shard
@@ -314,13 +318,18 @@
 	target.update()
 	//clean up
 	qdel(old_light)
-	to_chat(user, span_notice("You replace \the [target.fitting] with \the [src]."))
 
 	return TRUE
 
 /obj/item/lightreplacer/cyborg/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CYBORG_ITEM_TRAIT)
+
+/obj/item/lightreplacer/cyborg/advanced
+	name = "high capacity light replacer"
+	desc = "A higher capacity light replacer. Refill with broken or working lightbulbs, or sheets of glass."
+	icon_state = "lightreplacer_high"
+	max_uses = 50
 
 /obj/item/lightreplacer/blue
 	name = "bluespace light replacer"
@@ -329,7 +338,7 @@
 	bluespace_toggle = TRUE
 
 /obj/item/lightreplacer/blue/emag_act()
-	return  // balancing against longrange explosions
+	return FALSE  // balancing against longrange explosions
 
 #undef GLASS_SHEET_USES
 #undef LIGHTBULB_COST
