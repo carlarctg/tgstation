@@ -13,9 +13,6 @@
 	summon_ghosts(user)
 	playsound(get_turf(user), 'sound/effects/ghost2.ogg', 50, TRUE)
 
-/datum/spellbook_entry/summon/ghosts/grant_spell_on_purchase()
-	return
-
 /datum/spellbook_entry/summon/guns
 	name = "Summon Guns"
 	desc = "Nothing could possibly go wrong with arming a crew of lunatics just itching for an excuse to kill you. \

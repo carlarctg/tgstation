@@ -53,9 +53,6 @@
 	var/datum/action/cooldown/spell/conjure/construct/bonus_spell = new(user.mind || user)
 	bonus_spell.Grant(user)
 
-/datum/spellbook_entry/summon/grant_spell_on_purchase()
-	return
-
 /datum/spellbook_entry/item/necrostone
 	name = "A Necromantic Stone"
 	desc = "A Necromantic stone is able to resurrect three dead individuals as skeletal thralls for you to command."

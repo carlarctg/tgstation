@@ -9,6 +9,8 @@
 	var/list/current_wild_spells = list()
 	// Roughly how many spells/objects are given per cycle.
 	var/whirlwind_energy = 1
+	// cancels spell purchase if above var is at this val.
+	var/maximum_energy = 5
 	// Any of the spells in this list may be picked for rerolling. Local list, not global, which allows for admin abuse.
 	var/list/possible_wild_spells = list()
 	// Any of the objects in this list may be picked randomly. Local list, not global, which allows for admin abuse.
@@ -25,9 +27,11 @@
 	// traits added and removed by the component.
 	var/static/list/wild_traits = list(TRAIT_NO_SPECIES_CHANGE)
 
-/datum/component/wild_magic/Initialize(list/override_wild_spells, list/override_wild_spells)
+/datum/component/wild_magic/Initialize(whirlwind_energy = 1, list/override_wild_spells, list/override_wild_spells)
 	if(!iscarbon(parent))
 		return COMPONENT_INCOMPATIBLE
+
+	src.whirlwind_energy = whirlwind_energy
 
 	if(override_wild_spells)
 		possible_wild_spells = override_wild_spells
@@ -43,7 +47,7 @@
 			if(initial(spell.name) == "Spell")
 				continue
 			// Spells that aren't properly mantained
-			if(initial(spell.type) in typesof(barred_spells))
+			if(initial(spell.type) in typesof(barred_spell_types))
 				continue
 			possible_wild_spells |= spell
 
@@ -68,10 +72,15 @@
 	if(!istype(entry_type))
 		return
 
+	if(whirlwind_energy == maximum_energy)
+		return COMPONENT_CANCEL_SPELL_PURCHASE
+
 	whirlwind_energy++
 	reroll_spells()
 	playsound(user, 'sound/magic/staff_healing.ogg', 25, TRUE)
 	to_chat(user, span_green("Your internal whirlwind gains even more speed! You will roll at least [whirlwind_energy] new spells every minute."))
+
+	return COMPONENT_EMPTY_SPELL_PURCHASE
 
 /datum/component/wild_magic/UnregisterFromParent()
 	. = ..()
@@ -180,9 +189,8 @@
 	to_chat(cast_on, span_danger("Your essence spins in place quicker and quicker, until you can't stand feeling it no longer! You open your eyes and feel a tornado of violent, yet powerful magic inside you."))
 
 	cast_on.set_species(/datum/species/pod/dryad)
-	cast_on.AddComponent(/datum/component/wild_magic)
+	cast_on.AddComponent(/datum/component/wild_magic, whirlwind_energy = spell_level)
 	qdel(src)
-
 
 // should never happen
 /datum/component/wild_magic/proc/on_species_change(mob/living/carbon/source, datum/species/lost_species)

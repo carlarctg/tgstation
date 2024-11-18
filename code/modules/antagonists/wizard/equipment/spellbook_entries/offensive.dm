@@ -17,21 +17,6 @@
 	spell_type = /datum/action/cooldown/spell/wild_magic
 	var/already_purchased
 
-/datum/spellbook_entry/wild_magic/grant_spell_on_purchase(mob/living/carbon/human/user, obj/item/spellbook/book)
-	if(already_purchased)
-		return // signal sent handles this
-
-	return ..()
-
-
-/datum/spellbook_entry/summon_simians
-	name = "Summon Simians"
-	desc = "This spell reaches deep into the elemental plane of bananas (the monkey one, not the clown one), and \
-		summons monkeys and gorillas that will promptly flip out and attack everything in sight. Fun! \
-		Their lesser, easily manipulable minds will be convinced you are one of their allies, but only for a minute."
-	cost = 2
-	category = "Offensive"
-	spell_type = /datum/action/cooldown/spell/conjure/simian
 
 /datum/spellbook_entry/spell_cards
 	name = "Spell Cards"

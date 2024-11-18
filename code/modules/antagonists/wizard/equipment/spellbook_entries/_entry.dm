@@ -91,6 +91,15 @@
  * Return truthy if the purchase was successful, FALSE otherwise
  */
 /datum/spellbook_entry/proc/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book, log_buy = TRUE)
+
+	var/signal_value = SEND_SIGNAL(user, COMSIG_MOB_PURCHASE_SPELL, src)
+	if(signal_value & COMPONENT_CANCEL_SPELL_PURCHASE)
+		return FALSE
+
+	else if(signal_value & COMPONENT_EMPTY_SPELL_PURCHASE)
+		log_actions(user, src)
+		return TRUE
+
 	var/datum/action/cooldown/spell/existing = locate(spell_type) in user.actions
 	if(existing)
 		var/before_name = existing.name
@@ -110,16 +119,23 @@
 			log_purchase(user.key)
 		return existing
 
+	if(signal_value & COMPONENT_UPGRADE_OR_EMPTY_SPELL_PURCHASE)
+		log_actions(user, src)
+		return existing
+
 	//No same spell found - just learn it
 	var/datum/action/cooldown/spell/new_spell = new spell_type(user.mind || user)
 	new_spell.Grant(user)
 	to_chat(user, span_notice("You have learned [new_spell.name]."))
 
 	if(log_buy)
-		log_spellbook("[key_name(user)] learned [new_spell] for [cost] points")
-		SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
-		log_purchase(user.key)
+		log_actions(user, new_spell)
 	return new_spell
+
+/datum/spellbook_entry/proc/log_actions(mob/user, datum/purchase)
+	log_spellbook("[key_name(user)] learned [purchase] for [cost] points")
+	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
+	log_purchase(user.key)
 
 /datum/spellbook_entry/proc/log_purchase(key)
 	if(!islist(GLOB.wizard_spellbook_purchases_by_key[key]))
@@ -223,9 +239,6 @@
 	try_equip_item(user, spawned_path)
 	return spawned_path
 
-/datum/spellbook_entry/item/grant_spell_on_purchase()
-	return
-
 /// Attempts to give the item to the buyer on purchase.
 /datum/spellbook_entry/item/proc/try_equip_item(mob/living/carbon/human/user, obj/item/to_equip)
 	var/was_put_in_hands = user.put_in_hands(to_equip)
@@ -245,9 +258,6 @@
 		log_purchase(user.key)
 	book.update_static_data(user) // updates "times" var
 	return TRUE
-
-/datum/spellbook_entry/summon/grant_spell_on_purchase()
-	return
 
 /// Non-purchasable flavor spells to populate the spell book with, for style.
 /datum/spellbook_entry/challenge
