@@ -27,7 +27,7 @@
 	// traits added and removed by the component.
 	var/static/list/wild_traits = list(TRAIT_NO_SPECIES_CHANGE)
 
-/datum/component/wild_magic/Initialize(whirlwind_energy = 1, list/override_wild_spells, list/override_wild_spells)
+/datum/component/wild_magic/Initialize(whirlwind_energy = 1, list/override_wild_spells)
 	if(!iscarbon(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -36,23 +36,26 @@
 	if(override_wild_spells)
 		possible_wild_spells = override_wild_spells
 	else if(!length(possible_wild_spells))
-		for(var/datum/action/cooldown/spell/spell as anything in subtypesof(/datum/action/cooldown/spell))
-			// Spells that probably aren't magical whatsoever, remove outright
-			if(initial(spell.school) == SCHOOL_UNSET)
-				continue
-			// Spells from a Wrong magical school
-			if(initial(spell.school) in forbidden_schools)
-				continue
-			// code-only parent types, not actually usable - remove
-			if(initial(spell.name) == "Spell")
-				continue
-			// Spells that aren't properly mantained
-			if(initial(spell.type) in typesof(barred_spell_types))
-				continue
-			possible_wild_spells |= spell
+		init_wild_list()
 
 	START_PROCESSING(SSwild_magic, src)
 	parent.add_traits(wild_traits, REF(src))
+
+/datum/component/wild_magic/proc/init_wild_list()
+	for(var/datum/action/cooldown/spell/spell as anything in subtypesof(/datum/action/cooldown/spell))
+		// Spells that probably aren't magical whatsoever, remove outright
+		if(initial(spell.school) == SCHOOL_UNSET)
+			continue
+		// Spells from a Wrong magical school
+		if(initial(spell.school) in forbidden_schools)
+			continue
+		// code-only parent types, not actually usable - remove
+		if(initial(spell.name) == "Spell")
+			continue
+		// Spells that aren't properly mantained
+		if(initial(spell.type) in typesof(barred_spell_types))
+			continue
+		possible_wild_spells |= spell
 
 /datum/component/wild_magic/Destroy()
 	parent.remove_traits(wild_traits, REF(src))
@@ -110,23 +113,7 @@
 
 		// 1-5% chance for a temporary magical object.
 		if(prob(whirlwind_energy))
-			var/list/static/possible_magic_items = subtypesof(/obj/item/gun/magic/staff) + list(
-				/obj/item/singularityhammer,
-				/obj/item/mjollnir,
-				/obj/item/highfrequencyblade/wizard,
-				/obj/item/necromantic_stone,
-			)
-
-			var/choice = pick(possible_magic_items)
-			var/obj/item/magic_item = new choice(owner)
-			if(owner.equip_to_slot_or_del(magic_item, ITEM_SLOT_HANDS))
-				to_chat(owner, span_userdanger("\A [magic_item] appears in your hand!"))
-				chosen_spell = null
-				playsound(owner.loc, 'sound/magic/summon_magic.ogg', 25, TRUE)
-				temporary_objects.Add(magic_item)
-			else
-				to_chat(owner, span_notice("You have a sad feeling for a moment, then it passes."))
-				qdel(magic_item)
+			roll_magic_item()
 
 		var/datum/action/cooldown/spell/chosen_spell = pick(possible_wild_spells)
 
@@ -135,21 +122,43 @@
 			chosen_spell = pick(possible_wild_spells)
 
 		if(chosen_spell)
-			var/datum/action/cooldown/spell/new_action = new chosen_spell(owner.mind || owner)
-			new_action.Grant(owner)
-			// Make it obvious it's a 'wild magic' spell, to avoid confusion.
-			new_action.background_icon_state = "bg_nature"
-			new_action.overlay_icon_state = "bg_nature_border"
-			// The HUD gets weird if the buttons aren't updated.
-			owner.update_action_buttons()
-			RegisterSignal(new_action, COMSIG_QDELETING, PROC_REF(remove_from_list))
-			current_wild_spells += new_action
+			add_spell(chosen_spell)
 
 		// 3-15% chance to upgrade a random spell (could be one that already was!)
 		if(prob(spell_level * 3))
 			var/datum/action/cooldown/spell/upgrader = pick(current_wild_spells)
 			upgrader.level_spell()
 			to_chat(owner, span_notice("You feel slightly more competent at casting [upgrader]!"))
+
+/datum/component/wild_magic/proc/roll_magic_item()
+	var/list/static/possible_magic_items = subtypesof(/obj/item/gun/magic/staff) + list(
+		/obj/item/singularityhammer,
+		/obj/item/mjollnir,
+		/obj/item/highfrequencyblade/wizard,
+		/obj/item/necromantic_stone,
+	)
+
+	var/choice = pick(possible_magic_items)
+	var/obj/item/magic_item = new choice(owner)
+	if(owner.equip_to_slot_or_del(magic_item, ITEM_SLOT_HANDS))
+		to_chat(owner, span_userdanger("\A [magic_item] appears in your hand!"))
+		chosen_spell = null
+		playsound(owner.loc, 'sound/magic/summon_magic.ogg', 25, TRUE)
+		temporary_objects.Add(magic_item)
+	else
+		to_chat(owner, span_notice("You have a sad feeling for a moment, then it passes."))
+		qdel(magic_item)
+
+/datum/component/wild_magic/proc/add_spell(datum/action/cooldown/spell/chosen_spell)
+	var/datum/action/cooldown/spell/new_action = new chosen_spell(owner.mind || owner)
+	new_action.Grant(owner)
+	// Make it obvious it's a 'wild magic' spell, to avoid confusion.
+	new_action.background_icon_state = "bg_nature"
+	new_action.overlay_icon_state = "bg_nature_border"
+	// The HUD gets weird if the buttons aren't updated.
+	owner.update_action_buttons()
+	RegisterSignal(new_action, COMSIG_QDELETING, PROC_REF(remove_from_list))
+	current_wild_spells += new_action
 
 /datum/component/wild_magic/proc/remove_from_list(datum/action/new_action)
 	current_wild_spells -= new_action
