@@ -17,7 +17,6 @@
 	var/mouse_control_probability = 20
 	/// Allowed time between movements
 	COOLDOWN_DECLARE(move_cooldown)
-	hair_mask = HAIR_MASK_HIDE_ABOVE_45_DEG_LOW
 
 /// Admin variant of the chef hat where every mouse pilot input will always be transferred to the wearer
 /obj/item/clothing/head/utility/chefhat/i_am_assuming_direct_control
@@ -186,7 +185,6 @@
 	var/flask_path = /obj/item/reagent_containers/cup/glass/flask/det
 	/// Cooldown for retrieving precious candy corn with rmb
 	COOLDOWN_DECLARE(candy_cooldown)
-	hair_mask = HAIR_MASK_HIDE_ABOVE_45_DEG_LOW
 
 
 /datum/armor/fedora_det_hat
@@ -260,7 +258,6 @@
 	var/max_items = 4
 	///items above this weight cannot be put in the hat
 	var/max_weight = WEIGHT_CLASS_NORMAL
-	hair_mask = HAIR_MASK_HIDE_ABOVE_45_DEG_LOW
 
 /obj/item/clothing/head/fedora/inspector_hat/Initialize(mapload)
 	. = ..()

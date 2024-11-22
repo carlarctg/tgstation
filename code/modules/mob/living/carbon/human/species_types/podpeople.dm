@@ -108,24 +108,3 @@
 	))
 
 	return to_add
-
-// Subtype species of podpeople that have a bit more benefits and a bit less drawbacks. Used by wild magic.
-/datum/species/pod/dryad
-	name = "\improper Dryad"
-	plural_form = "Druids"
-	id = SPECIES_DRYAD
-	inherent_traits = list(
-		TRAIT_PLANT_SAFE,
-		TRAIT_BONSAI,
-	)
-	inherent_factions = list(FACTION_PLANTS, FACTION_JUNGLE, FACTION_VINES)
-	heatmod = 1.15
-	exotic_blood = /datum/reagent/consumable/nutriment/vitamin
-	changesource_flags = MIRROR_BADMIN
-
-/datum/species/pod/dryad/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load)
-	. = ..()
-	for(var/obj/item/bodypart/part in human_who_gained_species.bodyparts)
-		if(!(part.limb_id == SPECIES_PODPERSON))
-			continue
-		part.burn_modifier = 1.15

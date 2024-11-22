@@ -162,15 +162,6 @@
 /// from base of mob/swap_hand(): ()
 /// Performed after the hands are swapped.
 #define COMSIG_MOB_SWAP_HANDS "mob_swap_hands"
-///from base of /mob/verb/pointed: (atom/A)
-#define COMSIG_MOB_POINTED "mob_pointed"
-#define COMSIG_MOB_PURCHASE_SPELL "mob_purchase_spell"}
-	// Don't actually buy the spell.
-	#define COMPONENT_CANCEL_SPELL_PURCHASE (1<<0)
-	// Points are spent, but the spell isn't applied.
-	#define COMPONENT_EMPTY_SPELL_PURCHASE (1<<1)
-	// Empty purchase, *or* upgrade a pre-existing spell
-	#define COMPONENT_UPGRADE_OR_EMPTY_SPELL_PURCHASE (1<<2)
 ///Mob is trying to open the wires of a target [/atom], from /datum/wires/interactable(): (atom/target)
 #define COMSIG_TRY_WIRES_INTERACT "try_wires_interact"
 	#define COMPONENT_CANT_INTERACT_WIRES (1<<0)

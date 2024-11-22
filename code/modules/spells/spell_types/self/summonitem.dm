@@ -190,6 +190,13 @@
 	if(!.)
 		return .
 
+	antimagic_flags = MAGIC_RESISTANCE_MIND
+
+/datum/action/cooldown/spell/summonitem/abductor/can_link_to(obj/item/potential_mark, mob/living/caster)
+	. = ..()
+	if(!.)
+		return .
+
 	if(!istype(potential_mark, /obj/item/melee/baton/abductor))
 		to_chat(caster, span_warning("[potential_mark] has no translocation crystals to link to!"))
 		return FALSE

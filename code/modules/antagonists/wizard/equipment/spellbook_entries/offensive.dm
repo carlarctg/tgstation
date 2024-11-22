@@ -6,18 +6,6 @@
 	spell_type = /datum/action/cooldown/spell/pointed/projectile/fireball
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
-/datum/spellbook_entry/wild_magic
-	name = "Wild Magic"
-	desc = "Do you feel constrained by the need to limit your opinions to a small subset of available spells? \
-			Look no further! This 'spell' randomly replaces itself every minute with a new one, with a small chance \
-			for an iteration to contain two random spells! Now you can try everything out - just don't die. \
-			Buying this spell more than once will increase the amount of 'wild spells' you get every cycle."
-	cost = 2
-	category = "Offensive"
-	spell_type = /datum/action/cooldown/spell/wild_magic
-	var/already_purchased
-
-
 /datum/spellbook_entry/spell_cards
 	name = "Spell Cards"
 	desc = "Blazing hot rapid-fire homing cards. Send your foes to the shadow realm with their mystical power!"

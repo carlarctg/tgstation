@@ -4,5 +4,4 @@
 		"destruction.png" = 'icons/ui/contracts/destruction.png',
 		"healing.png" = 'icons/ui/contracts/healing.png',
 		"robeless.png" = 'icons/ui/contracts/robeless.png',
-		"wild.png" = 'icons/ui/contracts/robeless.png',
 	)
