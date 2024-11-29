@@ -45,6 +45,11 @@
 	desc = "Somehow, it is not melting under these conditions. Must be some very thick ice. Just as slippery too."
 	initial_gas_mix = COLD_ATMOS //it works with /turf/open/misc/asteroid/snow/temperatre
 
+/turf/open/misc/ice/standard_air
+	baseturfs = /turf/open/misc/ice/standard_air
+	desc = "Somehow, it is not melting under these conditions. Must be some very thick ice. Just as slippery too."
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS //it works with /turf/open/misc/asteroid/snow/standard_air
+
 //For when you want real, genuine ice in your kitchen's cold room.
 /turf/open/misc/ice/coldroom
 	desc = "Somehow, it is not melting under these conditions. Must be some very thick ice. Just as slippery too."

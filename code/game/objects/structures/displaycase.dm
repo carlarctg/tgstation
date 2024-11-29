@@ -229,7 +229,7 @@
 	if(!mapload)
 		return
 	for(var/obj/thingy in get_turf(src))
-		if(thingy != src || showpiece)
+		if(thingy == src || showpiece)
 			continue
 		thingy.forceMove(src)
 		showpiece = thingy

@@ -68,3 +68,11 @@
 /turf/open/misc/ashplanet/wateryrock/Initialize(mapload)
 	icon_state = "[icon_state][rand(1, 9)]"
 	. = ..()
+
+/turf/open/misc/ashplanet/ash/normal_air
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	planetary_atmos = FALSE
+
+/turf/open/misc/ashplanet/rocky/normal_air
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	planetary_atmos = FALSE

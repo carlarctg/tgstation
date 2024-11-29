@@ -89,7 +89,7 @@
 	// Come on. It would be just TOO easy to own them with glass shards
 	ADD_TRAIT(human_spawn, TRAIT_PIERCEIMMUNE, SPECIES_TRAIT)
 
-make crucible soul interact with noteleport area falg
+//make crucible soul interact with noteleport area falg
 
 // Looks like an evil ashwalker cultist
 /datum/outfit/ash_heretic

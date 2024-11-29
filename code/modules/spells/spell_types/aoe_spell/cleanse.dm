@@ -25,10 +25,9 @@
 
 	movable_atom.wash(CLEAN_ALL)
 
-
 	var/list/structures_in_view = list()
-	for(var/atom/movable/movable_atom in view(aoe_radius, caster))
-		if(is_type_in_list(movable_atom))
+	for(var/atom/movable/atomo in view(aoe_radius, caster))
+		if(is_type_in_list(movable_atom, elevated_structures))
 			structures_in_view |= movable_atom
 
 	var/cleaned
@@ -46,11 +45,11 @@
 /datum/action/cooldown/spell/aoe/area_cleanse/proc/handle_item(obj/item/cleaned_item, list/structures_in_view, atom/caster)
 
 	if(is_type_in_list(cleaned_item, GLOB.trash_loot))
-		if(isnull(cleaned_item.contents)) // if there's any kind of Stuff Inside that means it Might Be Important
+		if(cleaned_item.contents) // if there's any kind of Stuff Inside that means it Might Be Important
 			return
 		qdel(cleaned_item) // begone muck!
 
-	if(!locate(elevated_structures) in cleaned_item.loc && && isturf(cleaned_item.loc) && length(structures_in_view))
+	if(!(locate(elevated_structures) in cleaned_item.loc) && isturf(cleaned_item.loc) && length(structures_in_view))
 		var/atom/chosen_structure = pick(structures_in_view)
 		cleaned_item.throw_at(chosen_structure, aoe_radius, 2, spin = FALSE, gentle = TRUE)
 

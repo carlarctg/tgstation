@@ -34,5 +34,11 @@
 	if(is_station_level(z))
 		GLOB.station_turfs += src
 
+/turf/open/misc/grass/burnt
+	name = "burnt grass"
+	desc = "A patch of burnt grass."
+	icon_state = "sand"
+	base_icon_state = "sand"
+
 /turf/open/misc/grass/lavaland
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
