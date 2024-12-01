@@ -28,7 +28,7 @@
 	melee_damage_upper = 12
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
-	attack_sound = 'sound/weapons/bite.ogg'
+	attack_sound = 'sound/items/weapons/bite.ogg'
 	attack_vis_effect = ATTACK_EFFECT_BITE
 
 	faction = list(FACTION_HOSTILE)
@@ -56,7 +56,7 @@
 	. = ..()
 	AddComponent(/datum/component/seethrough_mob)
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_PINE, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
-	var/static/list/death_loot = list(/obj/item/stack/sheet/mineral/wood)
+	var/list/death_loot = string_list(list(/obj/item/stack/sheet/mineral/wood))
 	AddElement(/datum/element/death_drops, death_loot)
 	AddComponent(/datum/component/aggro_emote, emote_list = string_list(list("growls")), emote_chance = 20)
 
@@ -100,7 +100,7 @@
 
 /datum/ai_controller/basic_controller/tree
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 	)
 
 	ai_movement = /datum/ai_movement/basic_avoidance

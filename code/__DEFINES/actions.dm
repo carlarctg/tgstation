@@ -10,6 +10,8 @@
 #define AB_CHECK_INCAPACITATED (1<<4)
 ///Action button checks if user is jaunting
 #define AB_CHECK_PHASED (1<<5)
+///Action button checks if user is not on an open turf
+#define AB_CHECK_OPEN_TURF (1<<6)
 
 DEFINE_BITFIELD(check_flags, list(
 	"CHECK IF HANDS BLOCKED" = AB_CHECK_HANDS_BLOCKED,
@@ -18,6 +20,7 @@ DEFINE_BITFIELD(check_flags, list(
 	"CHECK IF CONSCIOUS" = AB_CHECK_CONSCIOUS,
 	"CHECK IF INCAPACITATED" = AB_CHECK_INCAPACITATED,
 	"CHECK IF TEMPORARILY INCORPOREAL" = AB_CHECK_PHASED,
+	"CHECK IF NOT ON AN OPEN TURF" = AB_CHECK_OPEN_TURF,
 ))
 
 ///Action button triggered with right click
@@ -41,3 +44,10 @@ DEFINE_BITFIELD(check_flags, list(
 #define UPDATE_BUTTON_BACKGROUND (1<<2)
 #define UPDATE_BUTTON_OVERLAY (1<<3)
 #define UPDATE_BUTTON_STATUS (1<<4)
+
+/// Takes in a typepath of a `/datum/action` and adds it to `src`.
+/// Only useful if you want to add the action and never desire to reference it again ever.
+#define GRANT_ACTION(typepath) do {\
+	var/datum/action/_ability = new typepath(src);\
+	_ability.Grant(src);\
+} while (FALSE)

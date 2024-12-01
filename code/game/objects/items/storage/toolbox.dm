@@ -6,7 +6,7 @@
 	inhand_icon_state = "toolbox_default"
 	lefthand_file = 'icons/mob/inhands/equipment/toolbox_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/toolbox_righthand.dmi'
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	force = 12
 	throwforce = 12
 	throw_speed = 2
@@ -16,10 +16,10 @@
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*5)
 	attack_verb_continuous = list("robusts")
 	attack_verb_simple = list("robust")
-	hitsound = 'sound/weapons/smash.ogg'
-	drop_sound = 'sound/items/handling/toolbox_drop.ogg'
-	pickup_sound = 'sound/items/handling/toolbox_pickup.ogg'
-	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
+	hitsound = 'sound/items/weapons/smash.ogg'
+	drop_sound = 'sound/items/handling/toolbox/toolbox_drop.ogg'
+	pickup_sound = 'sound/items/handling/toolbox/toolbox_pickup.ogg'
+	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 	var/latches = "single_latch"
 	var/has_latches = TRUE
 	wound_bonus = 5
@@ -33,7 +33,8 @@
 			if(prob(1))
 				latches = "triple_latch"
 	update_appearance()
-
+	atom_storage.open_sound = 'sound/items/handling/toolbox/toolbox_open.ogg'
+	atom_storage.rustle_sound = 'sound/items/handling/toolbox/toolbox_rustle.ogg'
 	AddElement(/datum/element/falling_hazard, damage = force, wound_bonus = wound_bonus, hardhat_safety = TRUE, crushes = FALSE, impact_sound = hitsound)
 
 /obj/item/storage/toolbox/update_overlays()
@@ -272,43 +273,40 @@
 	new /obj/item/gun_maintenance_supplies(src)
 	new /obj/item/gun_maintenance_supplies(src)
 
-//floorbot assembly
-/obj/item/storage/toolbox/attackby(obj/item/stack/tile/iron/T, mob/user, params)
-	var/list/allowed_toolbox = list(/obj/item/storage/toolbox/emergency, //which toolboxes can be made into floorbots
-							/obj/item/storage/toolbox/electrical,
-							/obj/item/storage/toolbox/mechanical,
-							/obj/item/storage/toolbox/artistic,
-							/obj/item/storage/toolbox/syndicate)
+//repairbot assembly
+/obj/item/storage/toolbox/tool_act(mob/living/user, obj/item/tool, list/modifiers)
+	if(!istype(tool, /obj/item/assembly/prox_sensor))
+		return ..()
+	var/static/list/allowed_toolbox = list(
+		/obj/item/storage/toolbox/artistic,
+		/obj/item/storage/toolbox/electrical,
+		/obj/item/storage/toolbox/emergency,
+		/obj/item/storage/toolbox/mechanical,
+		/obj/item/storage/toolbox/syndicate,
+	)
 
-	if(!istype(T, /obj/item/stack/tile/iron))
-		..()
-		return
 	if(!is_type_in_list(src, allowed_toolbox) && (type != /obj/item/storage/toolbox))
-		return
+		return ITEM_INTERACT_BLOCKING
 	if(contents.len >= 1)
 		balloon_alert(user, "not empty!")
-		return
-	if(T.use(10))
-		var/obj/item/bot_assembly/floorbot/B = new
-		B.toolbox = type
-		switch(B.toolbox)
-			if(/obj/item/storage/toolbox)
-				B.toolbox_color = "r"
-			if(/obj/item/storage/toolbox/emergency)
-				B.toolbox_color = "r"
-			if(/obj/item/storage/toolbox/electrical)
-				B.toolbox_color = "y"
-			if(/obj/item/storage/toolbox/artistic)
-				B.toolbox_color = "g"
-			if(/obj/item/storage/toolbox/syndicate)
-				B.toolbox_color = "s"
-		user.put_in_hands(B)
-		B.update_appearance()
-		B.balloon_alert(user, "tiles added")
-		qdel(src)
-	else
-		balloon_alert(user, "needs 10 tiles!")
-		return
+		return ITEM_INTERACT_BLOCKING
+	var/static/list/toolbox_colors = list(
+		/obj/item/storage/toolbox = "#445eb3",
+		/obj/item/storage/toolbox/emergency = "#445eb3",
+		/obj/item/storage/toolbox/electrical = "#b77931",
+		/obj/item/storage/toolbox/artistic = "#378752",
+		/obj/item/storage/toolbox/syndicate = "#3d3d3d",
+	)
+	var/obj/item/bot_assembly/repairbot/repair = new
+	repair.toolbox = type
+	var/new_color = toolbox_colors[type] || "#445eb3"
+	repair.set_color(new_color)
+	user.put_in_hands(repair)
+	repair.update_appearance()
+	repair.balloon_alert(user, "sensor added!")
+	qdel(tool)
+	qdel(src)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/storage/toolbox/haunted
 	name = "old toolbox"
@@ -347,6 +345,11 @@
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/c20r
 	extra_to_spawn = /obj/item/ammo_box/magazine/smgm45
 
+/obj/item/storage/toolbox/guncase/smartgun
+	name = "adielle smartgun case"
+	weapon_to_spawn = /obj/item/gun/ballistic/automatic/smartgun
+	extra_to_spawn = /obj/item/ammo_box/magazine/smartgun
+
 /obj/item/storage/toolbox/guncase/clandestine
 	name = "clandestine gun case"
 	weapon_to_spawn = /obj/item/gun/ballistic/automatic/pistol/clandestine
@@ -374,7 +377,7 @@
 
 /obj/item/storage/toolbox/guncase/revolver
 	name = "revolver gun case"
-	weapon_to_spawn = /obj/item/gun/ballistic/revolver/syndicate
+	weapon_to_spawn = /obj/item/gun/ballistic/revolver/badass/nuclear
 	extra_to_spawn = /obj/item/ammo_box/a357
 
 /obj/item/storage/toolbox/guncase/sword_and_board
@@ -385,7 +388,6 @@
 /obj/item/storage/toolbox/guncase/sword_and_board/PopulateContents()
 	new weapon_to_spawn (src)
 	new extra_to_spawn (src)
-	new /obj/item/mod/module/hat_stabilizer (src)
 	new /obj/item/clothing/head/costume/knight (src)
 
 /obj/item/storage/toolbox/guncase/cqc
@@ -396,14 +398,15 @@
 /obj/item/storage/toolbox/guncase/cqc/PopulateContents()
 	new weapon_to_spawn (src)
 	new extra_to_spawn (src)
-	new /obj/item/mod/module/hat_stabilizer (src)
 	new /obj/item/clothing/head/costume/snakeeater (src)
+	new /obj/item/storage/fancy/cigarettes/cigpack_syndicate (src)
 
 /obj/item/clothing/head/costume/snakeeater
 	name = "strange bandana"
 	desc = "A bandana. It seems to have a little carp embroidered on the inside, as well as the kanji '魚'."
 	icon_state = "snake_eater"
 	inhand_icon_state = null
+	clothing_traits = list(TRAIT_FISH_EATER)
 
 /obj/item/clothing/head/costume/knight
 	name = "fake medieval helmet"
@@ -417,7 +420,7 @@
 	dog_fashion = null
 
 /obj/item/storage/toolbox/guncase/doublesword
-	name = "double-energy sword weapon case"
+	name = "double-bladed energy sword weapon case"
 	weapon_to_spawn = /obj/item/dualsaber
 	extra_to_spawn = /obj/item/soap/syndie
 
@@ -442,8 +445,64 @@
 	weapon_to_spawn = /obj/effect/spawner/random/sakhno
 	extra_to_spawn = /obj/effect/spawner/random/sakhno/ammo
 
-/obj/item/storage/toolbox/guncase/soviet/plastikov
-	name = "ancient surplus gun case"
-	desc = "A gun case. Has the symbol of the Third Soviet Union stamped on the side."
-	weapon_to_spawn = /obj/item/gun/ballistic/automatic/plastikov
-	extra_to_spawn = /obj/item/food/rationpack //sorry comrade, cannot get you more ammo, here, have lunch
+/obj/item/storage/toolbox/guncase/monkeycase
+	name = "monkey gun case"
+	desc = "Everything a monkey needs to truly go ape-shit. There's a paw-shaped hand scanner lock on the front of the case."
+
+/obj/item/storage/toolbox/guncase/monkeycase/Initialize(mapload)
+	. = ..()
+	atom_storage.locked = STORAGE_SOFT_LOCKED
+
+/obj/item/storage/toolbox/guncase/monkeycase/attack_self(mob/user, modifiers)
+	if(!monkey_check(user))
+		return
+	return ..()
+
+/obj/item/storage/toolbox/guncase/monkeycase/attack_self_secondary(mob/user, modifiers)
+	attack_self(user, modifiers)
+	return
+
+/obj/item/storage/toolbox/guncase/monkeycase/attack_hand(mob/user, list/modifiers)
+	if(!monkey_check(user))
+		return
+	return ..()
+
+/obj/item/storage/toolbox/guncase/monkeycase/proc/monkey_check(mob/user)
+	if(atom_storage.locked == STORAGE_NOT_LOCKED)
+		return TRUE
+
+	if(is_simian(user))
+		atom_storage.locked = STORAGE_NOT_LOCKED
+		to_chat(user, span_notice("You place your paw on the paw scanner, and hear a soft click as [src] unlocks!"))
+		playsound(src, 'sound/items/click.ogg', 25, TRUE)
+		return TRUE
+	to_chat(user, span_warning("You put your hand on the hand scanner, and it rejects it with an angry chimpanzee screech!"))
+	playsound(src, SFX_SCREECH, 75, TRUE)
+	return FALSE
+
+/obj/item/storage/toolbox/guncase/monkeycase/PopulateContents()
+	switch(rand(1, 3))
+		if(1)
+			// Uzi with a boxcutter.
+			new /obj/item/gun/ballistic/automatic/mini_uzi/chimpgun(src)
+			new /obj/item/ammo_box/magazine/uzim9mm(src)
+			new /obj/item/ammo_box/magazine/uzim9mm(src)
+			new /obj/item/boxcutter/extended(src)
+		if(2)
+			// Thompson with a boxcutter.
+			new /obj/item/gun/ballistic/automatic/tommygun/chimpgun(src)
+			new /obj/item/ammo_box/magazine/tommygunm45(src)
+			new /obj/item/ammo_box/magazine/tommygunm45(src)
+			new /obj/item/boxcutter/extended(src)
+		if(3)
+			// M1911 with a switchblade and an extra banana bomb.
+			new /obj/item/gun/ballistic/automatic/pistol/m1911/chimpgun(src)
+			new /obj/item/ammo_box/magazine/m45(src)
+			new /obj/item/ammo_box/magazine/m45(src)
+			new /obj/item/switchblade/extended(src)
+			new /obj/item/food/grown/banana/bunch/monkeybomb(src)
+
+	// Banana bomb! Basically a tiny flashbang for monkeys.
+	new /obj/item/food/grown/banana/bunch/monkeybomb(src)
+	// Somewhere to store it all.
+	new /obj/item/storage/backpack/messenger(src)

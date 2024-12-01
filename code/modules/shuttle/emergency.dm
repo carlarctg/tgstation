@@ -88,6 +88,11 @@
 	if(!isliving(usr))
 		return
 
+	var/area/my_area = get_area(src)
+	if(!istype(my_area, /area/shuttle/escape))
+		say("Error - Network connectivity: Console has lost connection to the shuttle.")
+		return
+
 	var/mob/living/user = usr
 	. = FALSE
 
@@ -131,7 +136,7 @@
 			minor_announce("Early launch authorization revoked, [remaining] authorizations needed")
 
 	acted_recently += user
-	ui_interact(user)
+	SStgui.update_user_uis(user, src)
 
 /obj/machinery/computer/emergency_shuttle/proc/authorize(mob/living/user, source)
 	var/obj/item/card/id/ID = user.get_idcard(TRUE)
@@ -154,7 +159,7 @@
 /obj/machinery/computer/emergency_shuttle/proc/clear_recent_action(mob/user)
 	acted_recently -= user
 	if (!QDELETED(user))
-		ui_interact(user)
+		SStgui.update_user_uis(user, src)
 
 /obj/machinery/computer/emergency_shuttle/process()
 	// Launch check is in process in case auth_need changes for some reason
@@ -196,15 +201,21 @@
 			shuttle.setTimer(shuttle.timeLeft(1) + hijack_flight_time_increase) //give the guy more time to hijack if it's already in flight.
 	return shuttle.hijack_status
 
-/obj/machinery/computer/emergency_shuttle/AltClick(user)
-	if(isliving(user))
-		attempt_hijack_stage(user)
+/obj/machinery/computer/emergency_shuttle/click_alt(mob/living/user)
+	if(!isliving(user))
+		return NONE
+	attempt_hijack_stage(user)
+	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/computer/emergency_shuttle/proc/attempt_hijack_stage(mob/living/user)
 	if(!user.CanReach(src))
 		return
 	if(HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		to_chat(user, span_warning("You need your hands free before you can manipulate [src]."))
+		return
+	var/area/my_area = get_area(src)
+	if(!istype(my_area, /area/shuttle/escape))
+		say("Error - Network connectivity: Console has lost connection to the shuttle.")
 		return
 	if(!user?.mind?.get_hijack_speed())
 		to_chat(user, span_warning("You manage to open a user-mode shell on [src], and hundreds of lines of debugging output fly through your vision. It is probably best to leave this alone."))
@@ -282,13 +293,12 @@
 
 	obj_flags |= EMAGGED
 	SSshuttle.emergency.movement_force = list("KNOCKDOWN" = 60, "THROW" = 20)//YOUR PUNY SEATBELTS can SAVE YOU NOW, MORTAL
-	var/datum/species/S = new
 	for(var/i in 1 to 10)
 		// the shuttle system doesn't know who these people are, but they
 		// must be important, surely
 		var/obj/item/card/id/ID = new(src)
 		var/datum/job/J = pick(SSjob.joinable_occupations)
-		ID.registered_name = S.random_name(pick(MALE, FEMALE))
+		ID.registered_name = generate_random_name_species_based(species_type = /datum/species/human)
 		ID.assignment = J.title
 
 		authorized += ID
@@ -358,7 +368,13 @@
 	else
 		SSshuttle.emergency_last_call_loc = null
 
-	priority_announce("The emergency shuttle has been called. [red_alert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergency_last_call_loc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]", null, ANNOUNCER_SHUTTLECALLED, "Priority")
+	priority_announce(
+		text = "The emergency shuttle has been called. [red_alert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [(timeLeft(60 SECONDS))] minutes.[reason][SSshuttle.emergency_last_call_loc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]",
+		title = "Emergency Shuttle Dispatched",
+		sound = ANNOUNCER_SHUTTLECALLED,
+		sender_override = "Emergency Shuttle Uplink Alert",
+		color_override = "orange",
+		)
 
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin)
 	if(mode != SHUTTLE_CALL)
@@ -373,7 +389,13 @@
 		SSshuttle.emergency_last_call_loc = signalOrigin
 	else
 		SSshuttle.emergency_last_call_loc = null
-	priority_announce("The emergency shuttle has been recalled.[SSshuttle.emergency_last_call_loc ? " Recall signal traced. Results can be viewed on any communications console." : "" ]", null, ANNOUNCER_SHUTTLERECALLED, "Priority")
+	priority_announce(
+		text = "The emergency shuttle has been recalled.[SSshuttle.emergency_last_call_loc ? " Recall signal traced. Results can be viewed on any communications console." : "" ]",
+		title = "Emergency Shuttle Recalled",
+		sound = ANNOUNCER_SHUTTLERECALLED,
+		sender_override = "Emergency Shuttle Uplink Alert",
+		color_override = "orange",
+		)
 
 	SSticker.emergency_reason = null
 
@@ -462,7 +484,13 @@
 				mode = SHUTTLE_DOCKED
 				setTimer(SSshuttle.emergency_dock_time)
 				send2adminchat("Server", "The Emergency Shuttle has docked with the station.")
-				priority_announce("[SSshuttle.emergency] has docked with the station. You have [timeLeft(600)] minutes to board the Emergency Shuttle.", null, ANNOUNCER_SHUTTLEDOCK, "Priority")
+				priority_announce(
+					text = "[SSshuttle.emergency] has docked with the station. You have [DisplayTimeText(SSshuttle.emergency_dock_time)] to board the emergency shuttle.",
+					title = "Emergency Shuttle Arrival",
+					sound = ANNOUNCER_SHUTTLEDOCK,
+					sender_override = "Emergency Shuttle Uplink Alert",
+					color_override = "orange",
+				)
 				ShuttleDBStuff()
 				addtimer(CALLBACK(src, PROC_REF(announce_shuttle_events)), 20 SECONDS)
 
@@ -511,19 +539,25 @@
 					areas += E
 				hyperspace_sound(HYPERSPACE_LAUNCH, areas)
 				enterTransit()
-				mode = SHUTTLE_ESCAPE
-				launch_status = ENDGAME_LAUNCHED
-				setTimer(SSshuttle.emergency_escape_time * engine_coeff)
-				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, null, "Priority")
-				INVOKE_ASYNC(SSticker, TYPE_PROC_REF(/datum/controller/subsystem/ticker, poll_hearts))
-				SSmapping.mapvote() //If no map vote has been run yet, start one.
-
-				if(!is_reserved_level(z))
-					CRASH("Emergency shuttle did not move to transit z-level!")
 
 				//Tell the events we're starting, so they can time their spawns or do some other stuff
 				for(var/datum/shuttle_event/event as anything in event_list)
 					event.start_up_event(SSshuttle.emergency_escape_time * engine_coeff)
+
+				mode = SHUTTLE_ESCAPE
+				launch_status = ENDGAME_LAUNCHED
+				setTimer(SSshuttle.emergency_escape_time * engine_coeff)
+				priority_announce(
+					text = "The emergency shuttle has left the station. Estimate [timeLeft(60 SECONDS)] minutes until the shuttle docks at [command_name()].",
+					title = "Emergency Shuttle Departure",
+					sender_override = "Emergency Shuttle Uplink Alert",
+					color_override = "orange",
+				)
+				INVOKE_ASYNC(SSticker, TYPE_PROC_REF(/datum/controller/subsystem/ticker, poll_hearts))
+				INVOKE_ASYNC(SSvote, TYPE_PROC_REF(/datum/controller/subsystem/vote, initiate_vote), /datum/vote/map_vote, vote_initiator_name = "Map Rotation", forced = TRUE)
+
+				if(!is_reserved_level(z))
+					CRASH("Emergency shuttle did not move to transit z-level!")
 
 		if(SHUTTLE_STRANDED, SHUTTLE_DISABLED)
 			SSshuttle.checkHostileEnvironment()
@@ -566,7 +600,7 @@
 					destination_dock = "emergency_syndicate"
 					minor_announce("Corruption detected in \
 						shuttle navigation protocols. Please contact your \
-						supervisor.", "SYSTEM ERROR:", sound_override = 'sound/misc/announce_syndi.ogg')
+						supervisor.", "SYSTEM ERROR:", sound_override = 'sound/announcer/announcement/announce_syndi.ogg')
 
 				dock_id(destination_dock)
 				mode = SHUTTLE_ENDGAME
@@ -579,14 +613,19 @@
 	mode = SHUTTLE_ESCAPE
 	launch_status = ENDGAME_LAUNCHED
 	setTimer(SSshuttle.emergency_escape_time)
-	priority_announce("The Emergency Shuttle is preparing for direct jump. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, null, "Priority")
+	priority_announce(
+		text = "The emergency shuttle is preparing for direct jump. Estimate [timeLeft(60 SECONDS)] minutes until the shuttle docks at [command_name()].",
+		title = "Emergency Shuttle Transit Failure",
+		sender_override = "Emergency Shuttle Uplink Alert",
+		color_override = "orange",
+	)
 
 ///Generate a list of events to run during the departure
 /obj/docking_port/mobile/emergency/proc/setup_shuttle_events()
 	var/list/names = list()
 	for(var/datum/shuttle_event/event as anything in subtypesof(/datum/shuttle_event))
 		if(prob(initial(event.event_probability)))
-			event_list.Add(new event(src))
+			add_shuttle_event(event)
 			names += initial(event.name)
 	if(LAZYLEN(names))
 		log_game("[capitalize(name)] has selected the following shuttle events: [english_list(names)].")
@@ -708,7 +747,7 @@
 	return INITIALIZE_HINT_QDEL
 
 /obj/docking_port/stationary/random/icemoon
-	target_area = /area/icemoon/surface/outdoors
+	target_area = /area/icemoon/surface/outdoors/unexplored/rivers/no_monsters
 
 //Pod suits/pickaxes
 
@@ -717,16 +756,68 @@
 	name = "emergency space helmet"
 	icon_state = "syndicate-helm-orange"
 	inhand_icon_state = "syndicate-helm-orange"
+	slowdown = 1.5
 
 /obj/item/clothing/suit/space/orange
 	name = "emergency space suit"
 	icon_state = "syndicate-orange"
 	inhand_icon_state = "syndicate-orange"
-	slowdown = 3
+	slowdown = 1.5
 
 /obj/item/pickaxe/emergency
 	name = "emergency disembarkation tool"
 	desc = "For extracting yourself from rough landings."
+
+/datum/storage/pod
+	max_slots = 14
+	max_total_storage = WEIGHT_CLASS_BULKY * 14
+	/// If TRUE, we unlock regardless of security level
+	var/always_unlocked = FALSE
+
+/datum/storage/pod/open_storage(mob/to_show)
+	if(isliving(to_show) && SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_RED)
+		to_chat(to_show, span_warning("The storage unit will only unlock during a Red or Delta security alert."))
+		return FALSE
+	return ..()
+
+/datum/storage/pod/New(atom/parent, max_slots, max_specific_storage, max_total_storage)
+	. = ..()
+	// all of these are a type below what actually spawn with
+	// (IE all space suits instead of just the emergency ones)
+	// because an enterprising traitor might be able to hide things,
+	// like their syndicate toolbox or softsuit. may be fun?
+	var/static/list/exception_cache = typecacheof(list(
+		/obj/item/clothing/suit/space,
+		/obj/item/pickaxe,
+		/obj/item/storage/toolbox,
+	))
+	src.exception_hold = exception_cache
+	RegisterSignal(SSsecurity_level, COMSIG_SECURITY_LEVEL_CHANGED, PROC_REF(update_lock))
+	update_lock(new_level = SSsecurity_level.get_current_level_as_number())
+
+/datum/storage/pod/set_parent(atom/new_parent)
+	. = ..()
+	RegisterSignal(parent, COMSIG_ATOM_AFTER_SHUTTLE_MOVE, PROC_REF(pod_launch))
+
+/datum/storage/pod/proc/update_lock(datum/source, new_level)
+	SIGNAL_HANDLER
+	if(always_unlocked)
+		return
+
+	locked = (new_level < SEC_LEVEL_RED) ? STORAGE_FULLY_LOCKED : STORAGE_NOT_LOCKED
+	parent.update_appearance(UPDATE_ICON_STATE)
+	if(locked) // future todo : make `locked` a setter so this behavior can be built in (avoids exploits)
+		close_all()
+
+/datum/storage/pod/proc/pod_launch(datum/source, turf/old_turf)
+	SIGNAL_HANDLER
+	// This check is to ignore the movement of the shuttle from the transit level to the station as it is loaded in.
+	if(old_turf && is_reserved_level(old_turf.z))
+		return
+	// If the pod was launched, the storage will always open.
+	always_unlocked = TRUE
+	locked = STORAGE_NOT_LOCKED
+	parent.update_appearance(UPDATE_ICON_STATE)
 
 /obj/item/storage/pod
 	name = "emergency space suits"
@@ -735,11 +826,11 @@
 	density = FALSE
 	icon = 'icons/obj/storage/storage.dmi'
 	icon_state = "wall_safe_locked"
-	var/unlocked = FALSE
+	storage_type = /datum/storage/pod
 
 /obj/item/storage/pod/update_icon_state()
 	. = ..()
-	icon_state = "wall_safe[unlocked ? "" : "_locked"]"
+	icon_state = "wall_safe[atom_storage?.locked ? "_locked" : ""]"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/item/storage/pod, 32)
 
@@ -758,42 +849,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/item/storage/pod, 32)
 	new /obj/item/storage/toolbox/emergency(src)
 	new /obj/item/bodybag/environmental(src)
 	new /obj/item/bodybag/environmental(src)
-
-/obj/item/storage/pod/attackby(obj/item/W, mob/user, params)
-	if (can_interact(user))
-		return ..()
-
-/obj/item/storage/pod/attackby_secondary(obj/item/weapon, mob/user, params)
-	if (!can_interact(user))
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	return ..()
-
-/obj/item/storage/pod/attack_hand(mob/user, list/modifiers)
-	if (can_interact(user))
-		atom_storage?.show_contents(user)
-	return TRUE
-
-/obj/item/storage/pod/MouseDrop(over_object, src_location, over_location)
-	if(can_interact(usr))
-		return ..()
-
-/obj/item/storage/pod/attack_hand_secondary(mob/user, list/modifiers)
-	if(!can_interact(user))
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	return ..()
-
-/obj/item/storage/pod/AltClick(mob/user)
-	if(!can_interact(user))
-		return
-	return ..()
-
-/obj/item/storage/pod/can_interact(mob/user)
-	if(!..())
-		return FALSE
-	if(SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED || unlocked)
-		return TRUE
-	to_chat(user, "The storage unit will only unlock during a Red or Delta security alert.")
-	return FALSE
 
 /obj/docking_port/mobile/emergency/backup
 	name = "backup shuttle"

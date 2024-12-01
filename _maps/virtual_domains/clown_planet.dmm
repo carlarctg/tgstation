@@ -7,15 +7,15 @@
 /obj/machinery/light/small/directional/west,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "aI" = (
 /obj/item/bikehorn/airhorn,
 /turf/open/floor/carpet,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "aM" = (
 /obj/item/bikehorn,
 /turf/open/indestructible/honk,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "aP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -23,7 +23,7 @@
 /obj/effect/decal/cleanable/food/pie_smudge,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "ba" = (
 /obj/structure/mecha_wreckage/honker,
 /obj/structure/disposalpipe/segment{
@@ -31,7 +31,7 @@
 	invisibility = 101
 	},
 /turf/open/floor/plating,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "bi" = (
 /obj/item/bikehorn,
 /obj/structure/disposalpipe/segment{
@@ -39,17 +39,18 @@
 	},
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "bp" = (
 /turf/open/indestructible/light,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "bq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
 /turf/open/indestructible/white,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "by" = (
+/obj/effect/baseturf_helper/virtual_domain,
 /turf/closed/wall/r_wall,
 /area/lavaland/surface/outdoors/virtual_domain)
 "bQ" = (
@@ -59,26 +60,26 @@
 	},
 /obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "bR" = (
 /obj/item/paper/crumpled/bloody/ruins/lavaland/clown_planet/hope,
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/mapping_helpers/no_lava,
 /turf/open/floor/noslip,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "bU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
 /turf/open/floor/plating,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "cw" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "cM" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -87,7 +88,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "cW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
@@ -95,21 +96,21 @@
 	},
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "ed" = (
 /obj/structure/disposalpipe/segment{
 	invisibility = 101
 	},
 /obj/machinery/light/small/directional/west,
 /turf/open/indestructible/white,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "eE" = (
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/disposalpipe/segment{
 	invisibility = 101
 	},
 /turf/open/floor/plating,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "fh" = (
 /obj/effect/mob_spawn/corpse/human/damaged,
 /obj/effect/decal/cleanable/blood/old,
@@ -118,7 +119,13 @@
 	},
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
+"gd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
 "gr" = (
 /obj/effect/baseturf_helper/virtual_domain,
 /turf/template_noop,
@@ -127,25 +134,24 @@
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
-/obj/effect/baseturf_helper/virtual_domain,
 /turf/open/floor/plating,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "gH" = (
 /obj/item/bikehorn,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/indestructible/honk,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "gK" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
 /turf/open/indestructible/white,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "hK" = (
 /obj/item/clothing/head/cone,
 /obj/effect/mapping_helpers/no_lava,
 /turf/open/floor/noslip,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "hY" = (
 /turf/template_noop,
 /area/template_noop)
@@ -157,10 +163,10 @@
 	dir = 4
 	},
 /turf/open/floor/noslip,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "ik" = (
 /turf/open/lava/smooth,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "iR" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -174,7 +180,7 @@
 	invisibility = 101
 	},
 /turf/open/floor/plating,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "kn" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -182,7 +188,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "lj" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 4
@@ -198,7 +204,7 @@
 	},
 /obj/machinery/light/small/directional/east,
 /turf/open/indestructible/white,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "lr" = (
 /obj/item/bikehorn,
 /obj/effect/decal/cleanable/dirt,
@@ -207,60 +213,63 @@
 	},
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "lx" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "ly" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
 /turf/closed/indestructible/binary,
-/area/lavaland/surface/outdoors/virtual_domain)
+/area/virtual_domain/fullbright)
 "lP" = (
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "mD" = (
 /turf/open/floor/plating,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "mE" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "mF" = (
 /turf/open/floor/carpet,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "nE" = (
 /obj/effect/mapping_helpers/no_lava,
 /turf/closed/wall/r_wall,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "oA" = (
 /obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "oI" = (
 /obj/structure/table/glass,
 /obj/item/grown/bananapeel/bluespace,
 /turf/open/floor/carpet,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "pl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "ps" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
 /obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
+"qg" = (
+/turf/closed/wall/r_wall,
+/area/lavaland/surface/outdoors/virtual_domain)
 "qM" = (
 /obj/structure/disposalpipe/segment{
 	invisibility = 101
@@ -268,7 +277,7 @@
 /obj/machinery/light/small/directional/north,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "rg" = (
 /obj/item/coin/bananium,
 /obj/item/coin/bananium,
@@ -276,18 +285,12 @@
 /obj/item/coin/bananium,
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/carpet,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "rh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
 /turf/open/indestructible/white,
-/area/virtual_domain/powered)
-"rr" = (
-/obj/structure/disposalpipe/segment{
-	dir = 5
-	},
-/turf/closed/indestructible/binary,
 /area/lavaland/surface/outdoors/virtual_domain)
 "rH" = (
 /obj/structure/disposalpipe/junction/yjunction{
@@ -297,46 +300,39 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
-"rT" = (
-/obj/structure/disposalpipe/segment{
-	dir = 6
-	},
-/turf/closed/indestructible/binary,
 /area/lavaland/surface/outdoors/virtual_domain)
 "sq" = (
 /obj/machinery/light/directional/north,
 /obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "sT" = (
 /obj/structure/disposalpipe/sorting/mail/flip{
 	dir = 1
 	},
 /obj/effect/mapping_helpers/mail_sorting/supply/qm_office,
 /turf/closed/wall/r_wall,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "tq" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "tt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	invisibility = 101
 	},
 /turf/open/indestructible/light,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "tv" = (
 /obj/effect/mob_spawn/corpse/human/damaged,
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
-"tF" = (
-/obj/effect/baseturf_helper/virtual_domain,
-/turf/closed/indestructible/binary,
 /area/lavaland/surface/outdoors/virtual_domain)
+"tF" = (
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
 "tI" = (
 /obj/item/coin/bananium,
 /obj/item/coin/bananium,
@@ -344,15 +340,15 @@
 /obj/item/coin/bananium,
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/carpet,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "uX" = (
 /obj/effect/mapping_helpers/no_lava,
 /mob/living/basic/clown,
 /turf/open/floor/noslip,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "uY" = (
 /turf/closed/mineral/bananium,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "uZ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -362,28 +358,30 @@
 /obj/item/paper/crumpled/bloody/ruins/lavaland/clown_planet/escape,
 /obj/item/pen/fourcolor,
 /turf/open/indestructible/white,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "wz" = (
 /obj/machinery/light/small/directional/south,
 /obj/effect/mapping_helpers/no_lava,
 /mob/living/basic/clown,
 /turf/open/floor/noslip,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "xt" = (
-/obj/effect/landmark/bitrunning/safehouse_spawn,
+/obj/modular_map_root/safehouse{
+	key = "mine"
+	},
 /turf/template_noop,
 /area/virtual_domain/safehouse)
 "yd" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "yz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
 /turf/closed/wall/r_wall,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "yS" = (
 /obj/structure/marker_beacon/yellow,
 /turf/open/misc/asteroid/basalt/lava_land_surface/no_ruins,
@@ -395,16 +393,16 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "zm" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "zA" = (
 /obj/structure/statue/bananium/clown,
 /turf/open/floor/carpet,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "zF" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 4
@@ -413,14 +411,14 @@
 	dir = 8
 	},
 /turf/open/floor/noslip,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Aa" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
 /obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Bi" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -429,7 +427,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Cp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -437,7 +435,7 @@
 	},
 /obj/machinery/light/small/directional/west,
 /turf/open/indestructible/white,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Cs" = (
 /obj/item/bikehorn,
 /obj/structure/disposalpipe/segment{
@@ -446,10 +444,7 @@
 	},
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
-"Dh" = (
-/turf/closed/wall/r_wall,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Do" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -457,7 +452,7 @@
 	},
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "DL" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -465,35 +460,42 @@
 /obj/item/bikehorn,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Ex" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
+"Fb" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
 "FI" = (
 /obj/item/reagent_containers/cup/glass/trophy/gold_cup,
 /obj/structure/table/glass,
 /turf/open/floor/carpet,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Gg" = (
 /obj/structure/table/glass,
 /obj/item/gun/magic/staff/honk,
 /turf/open/floor/carpet,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Hq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
 /turf/open/floor/plating,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Hr" = (
 /obj/structure/table/glass,
 /obj/item/clothing/shoes/clown_shoes/banana_shoes,
 /turf/open/floor/carpet,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "HQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -501,10 +503,13 @@
 /obj/machinery/light/small/directional/east,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
-"Ie" = (
-/turf/closed/indestructible/binary,
 /area/lavaland/surface/outdoors/virtual_domain)
+"Ie" = (
+/obj/structure/disposalpipe/segment{
+	invisibility = 101
+	},
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
 "Iz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -512,20 +517,20 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "IN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
 /turf/closed/wall/r_wall,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "IY" = (
 /turf/open/indestructible/honk,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Jv" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/indestructible/honk,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "JB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -534,21 +539,21 @@
 /obj/machinery/light/small/directional/north,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Ka" = (
 /obj/effect/decal/cleanable/food/pie_smudge,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Kh" = (
 /obj/effect/mob_spawn/corpse/human/damaged,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/indestructible/honk,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "KG" = (
 /obj/item/pickaxe,
 /turf/open/indestructible/white,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "KI" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -563,18 +568,18 @@
 	},
 /obj/machinery/light/small/directional/east,
 /turf/open/indestructible/white,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Nv" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/indestructible/honk,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "NB" = (
 /obj/machinery/disposal/delivery_chute,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
 /turf/open/floor/carpet,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "NL" = (
 /obj/machinery/disposal/delivery_chute{
 	desc = "The following is engraved upon the chute: A FATE WORSE THAN DEATH LIES WITHIN";
@@ -584,12 +589,12 @@
 /obj/structure/disposalpipe/trunk,
 /obj/effect/mapping_helpers/no_lava,
 /turf/open/floor/noslip,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "NW" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/spray/waterflower/superlube,
 /turf/open/floor/carpet,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Ok" = (
 /obj/item/bikehorn,
 /obj/structure/disposalpipe/segment{
@@ -597,7 +602,7 @@
 	},
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Ov" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -605,7 +610,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "PJ" = (
 /obj/structure/disposalpipe/trunk,
 /obj/structure/disposaloutlet{
@@ -613,7 +618,7 @@
 	},
 /obj/effect/mapping_helpers/no_lava,
 /turf/open/floor/noslip,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "PM" = (
 /turf/open/misc/asteroid/basalt/lava_land_surface/no_ruins,
 /area/lavaland/surface/outdoors/virtual_domain)
@@ -624,20 +629,20 @@
 	},
 /obj/item/pickaxe,
 /turf/open/indestructible/white,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "QP" = (
 /turf/template_noop,
 /area/virtual_domain/safehouse)
 "QX" = (
 /obj/structure/closet/crate/secure/bitrunning/encrypted,
 /turf/open/floor/carpet,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Rh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
 /turf/open/indestructible/white,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Rx" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -646,12 +651,6 @@
 /obj/structure/table,
 /obj/item/flashlight/lamp/bananalamp,
 /turf/open/indestructible/white,
-/area/virtual_domain/powered)
-"RU" = (
-/obj/structure/disposalpipe/segment{
-	invisibility = 101
-	},
-/turf/closed/indestructible/binary,
 /area/lavaland/surface/outdoors/virtual_domain)
 "Sg" = (
 /obj/structure/disposalpipe/segment{
@@ -661,13 +660,13 @@
 /obj/effect/decal/cleanable/food/pie_smudge,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Sm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
 /turf/closed/wall/r_wall,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Tm" = (
 /obj/effect/decal/cleanable/food/pie_smudge,
 /obj/structure/disposalpipe/segment{
@@ -675,13 +674,13 @@
 	},
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Tx" = (
 /obj/structure/disposalpipe/segment{
 	invisibility = 101
 	},
 /turf/open/floor/plating,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "TH" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 4
@@ -690,67 +689,59 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "TK" = (
 /obj/structure/disposalpipe/segment{
 	invisibility = 101
 	},
 /turf/closed/wall/r_wall,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Ug" = (
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/carpet,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "UL" = (
 /obj/effect/decal/cleanable/oil,
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
 /turf/open/floor/plating,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "UN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
 /turf/open/floor/plating,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "UQ" = (
 /obj/structure/disposalpipe/segment{
 	invisibility = 101
 	},
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "UY" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
-"Vv" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	invisibility = 101
-	},
-/turf/closed/wall/r_wall,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Vx" = (
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	invisibility = 101
+	dir = 5
 	},
 /turf/closed/indestructible/binary,
-/area/lavaland/surface/outdoors/virtual_domain)
+/area/virtual_domain/fullbright)
 "VI" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
 /turf/closed/indestructible/binary,
-/area/lavaland/surface/outdoors/virtual_domain)
+/area/virtual_domain/fullbright)
 "VQ" = (
 /turf/open/floor/noslip,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Ww" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -759,40 +750,42 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /turf/open/indestructible/permalube,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "WB" = (
 /obj/machinery/disposal/delivery_chute{
 	dir = 1
 	},
 /obj/structure/disposalpipe/trunk,
 /turf/open/indestructible/white,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "WT" = (
-/obj/machinery/door/airlock/bananium,
-/turf/open/indestructible/honk,
-/area/virtual_domain/powered)
+/obj/machinery/door/airlock/bananium{
+	use_power = 0
+	},
+/turf/open/floor/carpet,
+/area/lavaland/surface/outdoors/virtual_domain)
 "WX" = (
 /turf/open/indestructible/white,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Xp" = (
 /obj/machinery/light/directional/south,
 /turf/open/indestructible/honk,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "XB" = (
 /obj/machinery/light/directional/north,
 /turf/open/indestructible/honk,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "Yb" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/indestructible/honk,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "YP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	invisibility = 101
 	},
 /turf/open/indestructible/white,
-/area/virtual_domain/powered)
+/area/lavaland/surface/outdoors/virtual_domain)
 "ZR" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -804,41 +797,41 @@
 /area/lavaland/surface/outdoors/virtual_domain)
 
 (1,1,1) = {"
-Ie
-Ie
-rT
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-rr
 hY
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
 hY
 hY
 hY
@@ -850,41 +843,41 @@ hY
 hY
 "}
 (2,1,1) = {"
-Ie
-Ie
-Vx
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Vx
 hY
+tF
+gd
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Vx
+tF
 hY
 hY
 hY
@@ -896,41 +889,41 @@ hY
 hY
 "}
 (3,1,1) = {"
-Ie
-Ie
-Vx
-Ie
-Ie
-Ie
-Ie
-Ie
-Dh
-Dh
-Dh
-Dh
-Dh
-Dh
-Dh
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Dh
-Dh
-Dh
-Dh
-Dh
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Vx
 hY
+tF
+Fb
+tF
+tF
+tF
+tF
+tF
+qg
+qg
+qg
+qg
+qg
+qg
+qg
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+qg
+qg
+qg
+qg
+qg
+tF
+tF
+tF
+tF
+tF
+tF
+Fb
+tF
 hY
 hY
 hY
@@ -942,41 +935,41 @@ hY
 hY
 "}
 (4,1,1) = {"
-Ie
-Ie
-Vx
-Ie
-Ie
-Ie
-Dh
-Dh
-Dh
-ik
-ik
-ik
-ik
-ik
-Dh
-Dh
-Ie
-Ie
-Ie
-Ie
-Ie
-Dh
-Dh
-ik
-ik
-ik
-Dh
-Dh
-Dh
-Ie
-Ie
-Ie
-Ie
-Vx
 hY
+tF
+Fb
+tF
+tF
+tF
+qg
+qg
+qg
+ik
+ik
+ik
+ik
+ik
+qg
+qg
+tF
+tF
+hY
+tF
+tF
+qg
+qg
+ik
+ik
+ik
+qg
+qg
+qg
+tF
+tF
+hY
+tF
+Fb
+tF
 hY
 hY
 hY
@@ -988,13 +981,13 @@ hY
 hY
 "}
 (5,1,1) = {"
-Ie
-Ie
-Vx
-Ie
-Ie
-Dh
-Dh
+hY
+tF
+Fb
+tF
+tF
+qg
+qg
 ik
 ik
 ik
@@ -1003,26 +996,26 @@ Sm
 Hq
 Sm
 ik
-Dh
-Dh
-Ie
-Ie
-Ie
-Dh
-Dh
+qg
+qg
+tF
+tF
+tF
+qg
+qg
 ik
 ik
 tq
 mD
 ik
 ik
-Dh
-Dh
-Ie
-Ie
-Ie
-Vx
-hY
+qg
+qg
+tF
+tF
+tF
+Fb
+tF
 hY
 hY
 hY
@@ -1034,12 +1027,12 @@ hY
 hY
 "}
 (6,1,1) = {"
-Ie
-Ie
-Vx
-Ie
-Dh
-Dh
+hY
+tF
+Fb
+tF
+qg
+qg
 ik
 ik
 IN
@@ -1050,11 +1043,11 @@ yZ
 aP
 Sm
 ik
-Dh
-Dh
-Dh
-Dh
-Dh
+qg
+qg
+qg
+qg
+qg
 Nv
 IY
 tq
@@ -1063,12 +1056,12 @@ ik
 ik
 ik
 ik
-Dh
-Dh
-Ie
-Ie
-Vx
-hY
+qg
+qg
+tF
+tF
+Fb
+tF
 hY
 hY
 hY
@@ -1080,27 +1073,27 @@ hY
 hY
 "}
 (7,1,1) = {"
-Ie
-Ie
-Vx
-Ie
-Dh
+hY
+tF
+Fb
+tF
+qg
 ik
 ik
-Dh
+qg
 Bi
 cw
 UQ
 lr
 UQ
 UY
-Vv
+KI
 ik
-Dh
+qg
 IY
 Jv
 IY
-Dh
+qg
 IY
 Jv
 Kh
@@ -1110,11 +1103,11 @@ ik
 tq
 ik
 ik
-Dh
-Ie
-Ie
-Vx
-hY
+qg
+tF
+tF
+Fb
+tF
 hY
 hY
 hY
@@ -1126,11 +1119,11 @@ hY
 hY
 "}
 (8,1,1) = {"
-Ie
-Ie
-Vx
-Dh
-Dh
+hY
+tF
+Fb
+qg
+qg
 ik
 IN
 Tm
@@ -1139,9 +1132,9 @@ Ww
 cw
 UQ
 Sm
-Vv
-Vv
-Dh
+KI
+KI
+qg
 zm
 oA
 IY
@@ -1152,15 +1145,15 @@ Jv
 IY
 IY
 IY
-Dh
+qg
 ik
 mD
 ik
-Dh
-Dh
-Ie
-Vx
-hY
+qg
+qg
+tF
+Fb
+tF
 hY
 hY
 hY
@@ -1172,30 +1165,30 @@ hY
 hY
 "}
 (9,1,1) = {"
-Ie
-Ie
-Vx
-Dh
+hY
+tF
+Fb
+qg
 ik
 ik
 UN
 UQ
 UY
 Ww
-Vv
+KI
 TH
-Vv
+KI
 YP
 Cp
 uY
-Dh
+qg
 sq
 oA
 IY
-Dh
-Dh
+qg
+qg
 Jv
-Dh
+qg
 IY
 IY
 IY
@@ -1203,25 +1196,25 @@ tq
 ik
 ik
 ik
-Dh
-Ie
-Vx
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
+qg
+tF
+Fb
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
 tF
 "}
 (10,1,1) = {"
-Ie
-Ie
-Vx
-Dh
+hY
+tF
+Fb
+qg
 ik
 IN
 UQ
@@ -1229,14 +1222,14 @@ UQ
 yZ
 Do
 Do
-Vv
+KI
 YP
 YP
 YP
 KG
 uY
-Dh
-Dh
+qg
+qg
 oA
 IY
 IY
@@ -1246,36 +1239,36 @@ IY
 gH
 Jv
 Xp
-Dh
+qg
 ik
 ik
-Dh
-by
+qg
+qg
 KI
+qg
+qg
+qg
+qg
+qg
+qg
+qg
+qg
 by
-by
-by
-by
-by
-by
-by
-by
-by
-Ie
+tF
 "}
 (11,1,1) = {"
-Ie
-Ie
-Vx
-Dh
+hY
+tF
+Fb
+qg
 ik
 yz
 fh
 UQ
 UY
-Vv
+KI
 Ww
-Vv
+KI
 YP
 YP
 tt
@@ -1285,7 +1278,7 @@ oA
 oA
 oA
 IY
-Dh
+qg
 IY
 IY
 Jv
@@ -1295,8 +1288,8 @@ IY
 ik
 tq
 ik
-Dh
-by
+qg
+qg
 iR
 PM
 PM
@@ -1306,14 +1299,14 @@ PM
 PM
 PM
 PM
-by
-Ie
+qg
+tF
 "}
 (12,1,1) = {"
-Ie
-Ie
-Vx
-Dh
+hY
+tF
+Fb
+qg
 ik
 Hq
 TK
@@ -1321,18 +1314,18 @@ qM
 yZ
 Ww
 Ww
-Vv
+KI
 YP
 PQ
 tt
 bp
 uY
-Dh
+qg
 oA
 oA
 IY
 IY
-Dh
+qg
 IY
 IY
 IY
@@ -1342,7 +1335,7 @@ ik
 tq
 ik
 ik
-by
+qg
 iR
 yS
 PM
@@ -1352,14 +1345,14 @@ PM
 PM
 yS
 PM
-by
-Ie
+qg
+tF
 "}
 (13,1,1) = {"
-Ie
-Ie
-Vx
-Dh
+tF
+tF
+Fb
+qg
 ik
 UN
 UQ
@@ -1368,27 +1361,27 @@ DL
 Ww
 yz
 lx
-Vv
+KI
 YP
 Lv
 WX
-Dh
-Dh
+qg
+qg
 oA
 IY
 IY
-Dh
-Dh
+qg
+qg
 IY
 IY
-Dh
+qg
 IY
 Jv
 ik
 mD
 tq
 ik
-by
+qg
 iR
 PM
 PM
@@ -1398,13 +1391,13 @@ PM
 PM
 PM
 PM
-by
-Ie
+qg
+tF
 "}
 (14,1,1) = {"
-Ie
-Dh
-Vv
+tF
+qg
+KI
 nE
 nE
 mD
@@ -1415,17 +1408,17 @@ Ex
 Tm
 UQ
 lx
-Vv
-Vv
+KI
+KI
 ps
 TK
 Sm
-Dh
-Dh
-Dh
+qg
+qg
+qg
 zA
 rg
-Dh
+qg
 XB
 IY
 Jv
@@ -1434,7 +1427,7 @@ IY
 ik
 tq
 ik
-by
+qg
 iR
 PM
 QP
@@ -1444,16 +1437,16 @@ QP
 QP
 xt
 PM
-by
-Ie
+qg
+tF
 "}
 (15,1,1) = {"
-Ie
-Dh
+tF
+qg
 ij
 hK
 nE
-Dh
+qg
 yz
 UQ
 UQ
@@ -1466,13 +1459,13 @@ Do
 Iz
 kn
 Ww
-Dh
-Dh
+qg
+qg
 FI
 mF
 mF
 mF
-Dh
+qg
 IY
 Jv
 Jv
@@ -1480,7 +1473,7 @@ IY
 ik
 tq
 ik
-by
+qg
 ZR
 PM
 QP
@@ -1490,12 +1483,12 @@ QP
 QP
 QP
 PM
-by
-Ie
+qg
+tF
 "}
 (16,1,1) = {"
-Ie
-Dh
+tF
+qg
 VQ
 uX
 NL
@@ -1513,20 +1506,20 @@ pl
 Do
 Ex
 UY
-Dh
+qg
 Ug
 oI
 NW
 mF
-Dh
-Dh
+qg
+qg
 Jv
 IY
 IY
 ik
 tq
 ik
-by
+qg
 PM
 PM
 QP
@@ -1536,16 +1529,16 @@ QP
 QP
 QP
 PM
-by
-Ie
+qg
+tF
 "}
 (17,1,1) = {"
-Ie
-Dh
+tF
+qg
 VQ
 bR
 wz
-Dh
+qg
 Hq
 UQ
 Sm
@@ -1568,11 +1561,11 @@ WT
 IY
 Jv
 IY
-Dh
+qg
 ik
 tq
 ik
-by
+qg
 PM
 PM
 QP
@@ -1582,12 +1575,12 @@ QP
 QP
 QP
 PM
-by
-Ie
+qg
+tF
 "}
 (18,1,1) = {"
-Ie
-Dh
+tF
+qg
 VQ
 uX
 PJ
@@ -1596,7 +1589,7 @@ sT
 kn
 Do
 Do
-Vv
+KI
 Do
 Ov
 UQ
@@ -1605,12 +1598,12 @@ Ok
 mE
 rH
 pl
-Dh
+qg
 mF
 Hr
 Gg
 mF
-Dh
+qg
 IY
 IY
 IY
@@ -1618,7 +1611,7 @@ IY
 ik
 tq
 ik
-by
+qg
 PM
 PM
 QP
@@ -1628,17 +1621,17 @@ QP
 QP
 QP
 PM
-by
-Ie
+qg
+tF
 "}
 (19,1,1) = {"
-Ie
-Dh
+tF
+qg
 zF
 uX
 nE
-Dh
-Dh
+qg
+qg
 Ww
 Ww
 Ww
@@ -1649,14 +1642,14 @@ lP
 Ex
 UY
 Ka
-Vv
+KI
 tv
-Dh
+qg
 FI
 mF
 mF
 QX
-Dh
+qg
 IY
 IY
 IY
@@ -1664,7 +1657,7 @@ IY
 ik
 tq
 ik
-by
+qg
 lj
 PM
 QP
@@ -1674,34 +1667,34 @@ QP
 QP
 QP
 PM
-by
-Ie
+qg
+tF
 "}
 (20,1,1) = {"
-Ie
-Dh
-Vv
+tF
+qg
+KI
 nE
 nE
 ik
-Dh
+qg
 Ww
 Ww
 Cs
 Do
 Do
-Vv
-Dh
-Dh
+KI
+qg
+qg
 bQ
-Dh
+qg
 ba
-Dh
+qg
 IY
-Dh
+qg
 zA
 tI
-Dh
+qg
 XB
 IY
 Jv
@@ -1710,7 +1703,7 @@ IY
 ik
 tq
 ik
-by
+qg
 iR
 PM
 QP
@@ -1720,33 +1713,33 @@ QP
 QP
 gr
 PM
-by
-Ie
+qg
+tF
 "}
 (21,1,1) = {"
-Ie
-Ie
-Vx
-Dh
+tF
+tF
+Fb
+qg
 ik
-Dh
-Dh
+qg
+qg
 Do
 Do
 Do
 Ww
 Do
-Vv
+KI
 rh
 ed
 gK
-Dh
+qg
 UL
 Sm
 IY
 IY
-Dh
-Dh
+qg
+qg
 Kh
 IY
 IY
@@ -1756,7 +1749,7 @@ ik
 tq
 mD
 ik
-by
+qg
 iR
 PM
 PM
@@ -1766,33 +1759,33 @@ PM
 PM
 PM
 PM
-by
-Ie
+qg
+tF
 "}
 (22,1,1) = {"
-Ie
-Ie
-Vx
-Dh
+hY
+tF
+Fb
+qg
 ik
-Dh
-Dh
+qg
+qg
 JB
 Sg
-Vv
+KI
 Ww
-Vv
+KI
 uZ
 YP
 bp
 bp
 uY
-Dh
+qg
 bQ
 oA
 IY
 IY
-Dh
+qg
 IY
 Jv
 IY
@@ -1802,7 +1795,7 @@ ik
 tq
 ik
 ik
-by
+qg
 iR
 PM
 PM
@@ -1812,22 +1805,22 @@ PM
 PM
 PM
 PM
-by
-Ie
+qg
+tF
 "}
 (23,1,1) = {"
-Ie
-Ie
-Vx
-Dh
+hY
+tF
+Fb
+qg
 ik
 cM
 eE
 lx
-Vv
+KI
 ki
 Ww
-Vv
+KI
 Rx
 YP
 bp
@@ -1835,7 +1828,7 @@ bp
 WB
 TK
 Aa
-Dh
+qg
 IY
 IY
 Jv
@@ -1844,11 +1837,11 @@ Jv
 IY
 aM
 Xp
-Dh
+qg
 tq
 ik
-Dh
-by
+qg
+qg
 iR
 PM
 PM
@@ -1858,17 +1851,17 @@ PM
 PM
 PM
 PM
-by
-Ie
+qg
+tF
 "}
 (24,1,1) = {"
-Ie
-Ie
-Vx
-Dh
+hY
+tF
+Fb
+qg
 ik
-Dh
-Dh
+qg
+qg
 lP
 Do
 Do
@@ -1879,7 +1872,7 @@ bq
 Rh
 WX
 uY
-Dh
+qg
 oA
 oA
 IY
@@ -1888,43 +1881,43 @@ Jv
 Jv
 IY
 IY
-Dh
-Dh
+qg
+qg
 ik
 mD
 ik
-Dh
-by
+qg
+qg
 KI
-by
-by
-by
-by
-by
-by
-by
-by
-by
-Ie
+qg
+qg
+qg
+qg
+qg
+qg
+qg
+qg
+qg
+tF
 "}
 (25,1,1) = {"
-Ie
-Ie
-Vx
-Dh
+hY
+tF
+Fb
+qg
 ik
-Dh
-Dh
+qg
+qg
 pl
 Do
-Vv
+KI
 Do
-Vv
-Vv
+KI
+KI
 rh
 lm
 uY
-Dh
+qg
 sq
 oA
 IY
@@ -1932,44 +1925,44 @@ IY
 IY
 IY
 IY
-Dh
+qg
 IY
 IY
 ik
 mD
 ik
 ik
-Dh
-Ie
-Vx
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
+qg
+tF
+Fb
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
 "}
 (26,1,1) = {"
-Ie
-Ie
-Vx
-Dh
+hY
+tF
+Fb
+qg
 ik
 ik
-Dh
+qg
 yd
 Do
 Do
 Do
 Ex
 lx
-Vv
-Dh
-Dh
+KI
+qg
+qg
 oA
 oA
 IY
@@ -1980,15 +1973,15 @@ aM
 IY
 IY
 IY
-Dh
+qg
 ik
 tq
 ik
-Dh
-Dh
-Ie
-Vx
-hY
+qg
+qg
+tF
+Fb
+tF
 hY
 hY
 hY
@@ -2000,41 +1993,41 @@ hY
 hY
 "}
 (27,1,1) = {"
-Ie
-Ie
-Vx
-Dh
-Dh
+hY
+tF
+Fb
+qg
+qg
 ik
-Dh
-Dh
+qg
+qg
 Ex
 lx
 HQ
 UQ
 UQ
 bU
-Dh
+qg
 ik
-Dh
+qg
 Yb
 IY
 IY
-Dh
+qg
 IY
 IY
-Dh
+qg
 IY
 IY
 ik
 mD
 ik
 ik
-Dh
-Ie
-Ie
-Vx
-hY
+qg
+tF
+tF
+Fb
+tF
 hY
 hY
 hY
@@ -2046,27 +2039,27 @@ hY
 hY
 "}
 (28,1,1) = {"
-Ie
-Ie
-Vx
-Ie
-Dh
-Dh
+hY
+tF
+Fb
+tF
+qg
+qg
 ik
 ik
-Dh
+qg
 mD
-Dh
+qg
 Ka
 lP
 mD
-Dh
+qg
 ik
-Dh
-Dh
-Dh
-Dh
-Dh
+qg
+qg
+qg
+qg
+qg
 IY
 IY
 IY
@@ -2075,12 +2068,12 @@ ik
 ik
 ik
 ik
-Dh
-Dh
-Ie
-Ie
-Vx
-hY
+qg
+qg
+tF
+tF
+Fb
+tF
 hY
 hY
 hY
@@ -2092,41 +2085,41 @@ hY
 hY
 "}
 (29,1,1) = {"
-Ie
-Ie
-Vx
-Ie
-Ie
-Dh
-Dh
+hY
+tF
+Fb
+tF
+tF
+qg
+qg
 ik
 ik
 ik
 tq
 tq
 tq
-Dh
+qg
 ik
-Dh
-Dh
-Ie
-Ie
-Ie
-Dh
-Dh
+qg
+qg
+tF
+tF
+tF
+qg
+qg
 ik
 ik
 mD
 tq
 ik
 ik
-Dh
-Dh
-Ie
-Ie
-Ie
-Vx
-hY
+qg
+qg
+tF
+tF
+tF
+Fb
+tF
 hY
 hY
 hY
@@ -2138,41 +2131,41 @@ hY
 hY
 "}
 (30,1,1) = {"
-Ie
-Ie
-Vx
-Ie
-Ie
-Ie
-Dh
-Dh
-Dh
-ik
-ik
-ik
-ik
-ik
-Dh
-Dh
-Ie
-Ie
-Ie
-Ie
-Ie
-Dh
-Dh
-ik
-ik
-ik
-Dh
-Dh
-Dh
-Ie
-Ie
-Ie
-Ie
-Vx
 hY
+tF
+Fb
+tF
+tF
+tF
+qg
+qg
+qg
+ik
+ik
+ik
+ik
+ik
+qg
+qg
+tF
+tF
+hY
+tF
+tF
+qg
+qg
+ik
+ik
+ik
+qg
+qg
+qg
+tF
+tF
+hY
+tF
+Fb
+tF
 hY
 hY
 hY
@@ -2184,41 +2177,41 @@ hY
 hY
 "}
 (31,1,1) = {"
-Ie
-Ie
-Vx
-Ie
-Ie
-Ie
-Ie
-Ie
-Dh
-Dh
-Dh
-Dh
-Dh
-Dh
-Dh
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Dh
-Dh
-Dh
-Dh
-Dh
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Vx
 hY
+tF
+Fb
+tF
+tF
+tF
+tF
+tF
+qg
+qg
+qg
+qg
+qg
+qg
+qg
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+qg
+qg
+qg
+qg
+qg
+tF
+tF
+tF
+tF
+tF
+tF
+Fb
+tF
 hY
 hY
 hY
@@ -2230,41 +2223,41 @@ hY
 hY
 "}
 (32,1,1) = {"
-Ie
-Ie
-VI
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-ly
 hY
+tF
+VI
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+Ie
+ly
+tF
 hY
 hY
 hY
@@ -2276,41 +2269,41 @@ hY
 hY
 "}
 (33,1,1) = {"
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
-Ie
 hY
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
+tF
 hY
 hY
 hY

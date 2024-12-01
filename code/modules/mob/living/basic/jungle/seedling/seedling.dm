@@ -30,7 +30,8 @@
 	lighting_cutoff_green = 20
 	lighting_cutoff_blue = 25
 	mob_size = MOB_SIZE_LARGE
-	attack_sound = 'sound/weapons/bladeslice.ogg'
+	faction = list(FACTION_PLANTS)
+	attack_sound = 'sound/items/weapons/bladeslice.ogg'
 	attack_vis_effect = ATTACK_EFFECT_SLASH
 	ai_controller = /datum/ai_controller/basic_controller/seedling
 	///the state of combat we are in
@@ -56,12 +57,12 @@
 
 /mob/living/basic/seedling/Initialize(mapload)
 	. = ..()
-	var/datum/action/cooldown/mob_cooldown/projectile_attack/rapid_fire/seedling/seed_attack = new(src)
-	seed_attack.Grant(src)
-	ai_controller.set_blackboard_key(BB_RAPIDSEEDS_ABILITY, seed_attack)
-	var/datum/action/cooldown/mob_cooldown/solarbeam/beam_attack = new(src)
-	beam_attack.Grant(src)
-	ai_controller.set_blackboard_key(BB_SOLARBEAM_ABILITY, beam_attack)
+	var/static/list/innate_actions = list(
+		/datum/action/cooldown/mob_cooldown/projectile_attack/rapid_fire/seedling = BB_RAPIDSEEDS_ABILITY,
+		/datum/action/cooldown/mob_cooldown/solarbeam = BB_SOLARBEAM_ABILITY,
+	)
+
+	grant_actions_by_list(innate_actions)
 
 	var/petal_color = pick(possible_colors)
 
@@ -77,25 +78,26 @@
 	petal_dead = mutable_appearance(icon, "[icon_state]_dead_overlay")
 	petal_dead.color = petal_color
 
-	AddElement(/datum/element/wall_smasher)
+	AddElement(/datum/element/wall_tearer, allow_reinforced = FALSE)
 	AddComponent(/datum/component/obeys_commands, seedling_commands)
-	RegisterSignal(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, PROC_REF(pre_attack))
 	RegisterSignal(src, COMSIG_KB_MOB_DROPITEM_DOWN, PROC_REF(drop_can))
 	update_appearance()
 
-/mob/living/basic/seedling/proc/pre_attack(mob/living/puncher, atom/target)
-	SIGNAL_HANDLER
+/mob/living/basic/seedling/early_melee_attack(atom/target, list/modifiers, ignore_cooldown)
+	. = ..()
+	if(!.)
+		return FALSE
 
 	if(istype(target, /obj/machinery/hydroponics))
 		treat_hydro_tray(target)
-		return COMPONENT_HOSTILE_NO_ATTACK
+		return FALSE
 
 	if(isnull(held_can))
-		return
+		return TRUE
 
 	if(istype(target, /obj/structure/sink) || istype(target, /obj/structure/reagent_dispensers))
-		INVOKE_ASYNC(held_can, TYPE_PROC_REF(/obj/item, melee_attack_chain), src, target)
-		return COMPONENT_HOSTILE_NO_ATTACK
+		held_can.melee_attack_chain(src, target)
+		return FALSE
 
 
 ///seedlings can water trays, remove weeds, or remove dead plants
@@ -206,15 +208,15 @@
 /mob/living/basic/seedling/meanie
 	maxHealth = 400
 	health = 400
-	faction = list(FACTION_JUNGLE)
+	faction = list(FACTION_JUNGLE, FACTION_PLANTS)
 	ai_controller = /datum/ai_controller/basic_controller/seedling/meanie
 	seedling_commands = list(
 		/datum/pet_command/idle,
 		/datum/pet_command/free,
 		/datum/pet_command/follow,
-		/datum/pet_command/point_targetting/attack,
-		/datum/pet_command/point_targetting/use_ability/solarbeam,
-		/datum/pet_command/point_targetting/use_ability/rapidseeds,
+		/datum/pet_command/point_targeting/attack,
+		/datum/pet_command/point_targeting/use_ability/solarbeam,
+		/datum/pet_command/point_targeting/use_ability/rapidseeds,
 	)
 
 //abilities
@@ -228,7 +230,6 @@
 	default_projectile_spread = 10
 	shot_count = 10
 	shot_delay = 0.2 SECONDS
-	melee_cooldown_time = 0 SECONDS
 	shared_cooldown = NONE
 	///how long we must charge up before firing off
 	var/charge_up_timer = 3 SECONDS
@@ -337,7 +338,7 @@
 		living_target.ignite_mob()
 		living_target.adjustFireLoss(30)
 
-	playsound(target_turf, 'sound/magic/lightningbolt.ogg', 50, TRUE)
+	playsound(target_turf, 'sound/effects/magic/lightningbolt.ogg', 50, TRUE)
 	if(!is_seedling)
 		return
 	var/mob/living/basic/seedling/seed_firer = firer

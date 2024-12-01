@@ -1,5 +1,3 @@
-#define STATION_RENAME_TIME_LIMIT 3000
-
 /obj/item/station_charter
 	name = "station charter"
 	icon = 'icons/obj/scrolls.dmi'
@@ -71,8 +69,8 @@
 	if(!response_timer_id)
 		return
 	var/turf/T = get_turf(src)
-	T.visible_message("<span class='warning'>The proposed changes disappear \
-		from [src]; it looks like they've been rejected.</span>")
+	T.visible_message(span_warning("The proposed changes disappear \
+		from [src]; it looks like they've been rejected."))
 	var/m = "[key_name(user)] has rejected the proposed station name."
 
 	message_admins(m)
@@ -119,5 +117,3 @@
 	SSblackbox.record_feedback("text", "station_renames", 1, "[station_name()]")
 	if(!unlimited_uses)
 		used = TRUE
-
-#undef STATION_RENAME_TIME_LIMIT

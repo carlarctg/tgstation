@@ -3,7 +3,7 @@
 	desc = "Our decoy brain has been implanted into a Man-Machine Interface. \
 		In order to maintain our secrecy, we can speak through the decoy as if a normal brain. \
 		The decoy brain will relay speech it hears to you in purple."
-	button_icon = 'icons/obj/assemblies/assemblies.dmi'
+	button_icon = 'icons/obj/devices/assemblies.dmi'
 	button_icon_state = "mmi_off"
 	dna_cost = CHANGELING_POWER_UNOBTAINABLE
 	ignores_fakedeath = TRUE // Can be used while fake dead
@@ -15,7 +15,7 @@
 	 * Set when created via the ling decoy component.
 	 * If the brain ends up being qdelled, this action will also be qdelled, and thus this ref is cleared.
 	 */
-	VAR_FINAL/obj/item/organ/internal/brain/brain_ref
+	VAR_FINAL/obj/item/organ/brain/brain_ref
 
 	/// A map view of the area around the MMI.
 	VAR_FINAL/atom/movable/screen/map_view/mmi_view

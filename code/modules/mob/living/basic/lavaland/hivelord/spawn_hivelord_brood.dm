@@ -9,9 +9,8 @@
 	click_to_activate = TRUE
 	cooldown_time = 2 SECONDS
 	melee_cooldown_time = 0
-	check_flags = AB_CHECK_CONSCIOUS | AB_CHECK_INCAPACITATED
 	shared_cooldown = NONE
-	/// If a mob is not clicked directly, inherit targetting data from this blackboard key and setting it upon this target key
+	/// If a mob is not clicked directly, inherit targeting data from this blackboard key and setting it upon this target key
 	var/ai_target_key = BB_BASIC_MOB_CURRENT_TARGET
 	/// What are we actually spawning?
 	var/spawn_type = /mob/living/basic/hivelord_brood
@@ -99,8 +98,8 @@
 
 	var/turf/my_turf = get_turf(src)
 	dir = get_dir(spawn_from, my_turf)
-	var/move_x = (my_turf.x - spawn_from.x) * world.icon_size
-	var/move_y = (my_turf.y - spawn_from.y) * world.icon_size
+	var/move_x = (my_turf.x - spawn_from.x) * ICON_SIZE_X
+	var/move_y = (my_turf.y - spawn_from.y) * ICON_SIZE_Y
 	pixel_x = -move_x
 	pixel_y = -move_y
 

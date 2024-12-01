@@ -13,7 +13,7 @@
 	icon_keyboard = "tech_key"
 	light_color = LIGHT_COLOR_CYAN
 	req_access = list()
-	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON|INTERACT_MACHINE_SET_MACHINE
+	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON
 	/// ID of the attached shuttle
 	var/shuttleId
 	/// Possible destinations of the attached shuttle
@@ -174,7 +174,7 @@
 		else
 			return SHUTTLE_CONSOLE_ERROR
 
-/obj/machinery/computer/shuttle/ui_act(action, params)
+/obj/machinery/computer/shuttle/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return

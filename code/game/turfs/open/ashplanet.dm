@@ -15,8 +15,8 @@
 	clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	tiled_dirt = FALSE
+	rust_resistance = RUST_RESISTANCE_ORGANIC
 	var/smooth_icon = 'icons/turf/floors/ash.dmi'
-
 
 /turf/open/misc/ashplanet/Initialize(mapload)
 	. = ..()
@@ -64,11 +64,13 @@
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	rust_resistance = RUST_RESISTANCE_ORGANIC
 
 /turf/open/misc/ashplanet/wateryrock/Initialize(mapload)
 	icon_state = "[icon_state][rand(1, 9)]"
 	. = ..()
 
+<<<<<<< HEAD
 /turf/open/misc/ashplanet/ash/normal_air
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = FALSE
@@ -76,3 +78,7 @@
 /turf/open/misc/ashplanet/rocky/normal_air
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = FALSE
+=======
+/turf/open/misc/ashplanet/wateryrock/lavaland_atmos
+	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
+>>>>>>> upstream/master

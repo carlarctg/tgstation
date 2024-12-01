@@ -100,9 +100,6 @@ SUBSYSTEM_DEF(shuttle)
 	/// Wishlist items made by crew for cargo to purchase at their leisure.
 	var/list/request_list = list()
 
-	/// A listing of previously delivered supply packs.
-	var/list/order_history = list()
-
 	/// A list of job accesses that are able to purchase any shuttles.
 	var/list/has_purchase_shuttle_access
 
@@ -143,6 +140,9 @@ SUBSYSTEM_DEF(shuttle)
 	/// Did the supermatter start a cascade event?
 	var/supermatter_cascade = FALSE
 
+	/// List of express consoles that are waiting for pack initialization
+	var/list/obj/machinery/computer/cargo/express/express_consoles = list()
+
 /datum/controller/subsystem/shuttle/Initialize()
 	order_number = rand(1, 9000)
 
@@ -174,6 +174,9 @@ SUBSYSTEM_DEF(shuttle)
 			pack.desc += " Requires [SSid_access.get_access_desc(pack.access_view)] access to purchase."
 
 		supply_packs[pack.id] = pack
+
+	for (var/obj/machinery/computer/cargo/express/console as anything in express_consoles)
+		console.packin_up(TRUE)
 
 	setup_shuttles(stationary_docking_ports)
 	has_purchase_shuttle_access = init_has_purchase_shuttle_access()
@@ -261,13 +264,27 @@ SUBSYSTEM_DEF(shuttle)
 		message_admins(msg)
 		log_shuttle("[msg] Alive: [alive], Roundstart: [total], Threshold: [threshold]")
 		emergency_no_recall = TRUE
-		priority_announce("Catastrophic casualties detected: crisis shuttle protocols activated - jamming recall signals across all frequencies.")
+		priority_announce(
+			text = "Catastrophic casualties detected: crisis shuttle protocols activated - jamming recall signals across all frequencies.",
+			title = "Emergency Shuttle Dispatched",
+			sound = ANNOUNCER_SHUTTLECALLED,
+			sender_override = "Emergency Shuttle Uplink Alert",
+			color_override = "orange",
+		)
 		if(emergency.timeLeft(1) > emergency_call_time * ALERT_COEFF_AUTOEVAC_CRITICAL)
 			emergency.request(null, set_coefficient = ALERT_COEFF_AUTOEVAC_CRITICAL)
 
 /datum/controller/subsystem/shuttle/proc/block_recall(lockout_timer)
+	if(isnull(lockout_timer))
+		CRASH("Emergency shuttle block was called, but missing a value for the lockout duration")
 	if(admin_emergency_no_recall)
-		priority_announce("Error!", "Emergency Shuttle Uplink Alert", 'sound/misc/announce_dig.ogg')
+		priority_announce(
+			text = "Emergency shuttle uplink interference detected, shuttle call disabled while the system reinitializes. Estimated restore in [DisplayTimeText(lockout_timer, round_seconds_to = 60)].",
+			title = "Uplink Interference",
+			sound = 'sound/announcer/announcement/announce_dig.ogg',
+			sender_override = "Emergency Shuttle Uplink Alert",
+			color_override = "grey",
+		)
 		addtimer(CALLBACK(src, PROC_REF(unblock_recall)), lockout_timer)
 		return
 	emergency_no_recall = TRUE
@@ -275,7 +292,13 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/proc/unblock_recall()
 	if(admin_emergency_no_recall)
-		priority_announce("Error!", "Emergency Shuttle Uplink Alert", 'sound/misc/announce_dig.ogg')
+		priority_announce(
+			text= "Emergency shuttle uplink services are now back online.",
+			title = "Uplink Restored",
+			sound = 'sound/announcer/announcement/announce_dig.ogg',
+			sender_override = "Emergency Shuttle Uplink Alert",
+			color_override = "green",
+		)
 		return
 	emergency_no_recall = FALSE
 
@@ -333,6 +356,13 @@ SUBSYSTEM_DEF(shuttle)
 
 	return TRUE
 
+/**
+ * Calls the emergency shuttle.
+ *
+ * Arguments:
+ * * user - The mob that called the shuttle.
+ * * call_reason - The reason the shuttle was called, which should be non-html-encoded text.
+ */
 /datum/controller/subsystem/shuttle/proc/requestEvac(mob/user, call_reason)
 	if (!check_backup_emergency_shuttle())
 		return
@@ -366,7 +396,7 @@ SUBSYSTEM_DEF(shuttle)
 
 	call_reason = trim(html_encode(call_reason))
 
-	var/emergency_reason = "\nNature of emergency:\n\n[call_reason]"
+	var/emergency_reason = "\n\nNature of emergency:\n[call_reason]"
 
 	emergency.request(
 		signal_origin = signal_origin,
@@ -503,15 +533,23 @@ SUBSYSTEM_DEF(shuttle)
 		emergency.mode = SHUTTLE_STRANDED
 		emergency.timer = null
 		emergency.sound_played = FALSE
-		priority_announce("Hostile environment detected. \
-			Departure has been postponed indefinitely pending \
-			conflict resolution.", null, 'sound/misc/notice1.ogg', "Priority")
-	if(!emergency_no_escape && (emergency.mode == SHUTTLE_STRANDED))
+		priority_announce(
+			text = "Departure has been postponed indefinitely pending conflict resolution.",
+			title = "Hostile Environment Detected",
+			sound = 'sound/announcer/notice/notice1.ogg',
+			sender_override = "Emergency Shuttle Uplink Alert",
+			color_override = "grey",
+		)
+	if(!emergency_no_escape && (emergency.mode == SHUTTLE_STRANDED || emergency.mode == SHUTTLE_DOCKED))
 		emergency.mode = SHUTTLE_DOCKED
 		emergency.setTimer(emergency_dock_time)
-		priority_announce("Hostile environment resolved. \
-			You have 3 minutes to board the Emergency Shuttle.",
-			null, ANNOUNCER_SHUTTLEDOCK, "Priority")
+		priority_announce(
+			text = "You have [DisplayTimeText(emergency_dock_time)] to board the emergency shuttle.",
+			title = "Hostile Environment Resolved",
+			sound = 'sound/announcer/announcement/announce_dig.ogg',
+			sender_override = "Emergency Shuttle Uplink Alert",
+			color_override = "green",
+		)
 
 //try to move/request to dock_home if possible, otherwise dock_away. Mainly used for admin buttons
 /datum/controller/subsystem/shuttle/proc/toggleShuttle(shuttle_id, dock_home, dock_away, timed)
@@ -604,7 +642,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/datum/turf_reservation/proposal = SSmapping.request_turf_block_reservation(
 		transit_width,
 		transit_height,
-		1,
+		z_size = 1, //if this is changed the turf uncontain code below has to be updated to support multiple zs
 		reservation_type = /datum/turf_reservation/transit,
 		turf_type_override = transit_path,
 	)
@@ -638,17 +676,22 @@ SUBSYSTEM_DEF(shuttle)
 	if(!midpoint)
 		qdel(proposal)
 		return FALSE
+
 	var/area/old_area = midpoint.loc
-	old_area.turfs_to_uncontain += proposal.reserved_turfs
-	var/area/shuttle/transit/A = new()
-	A.parallax_movedir = travel_dir
-	A.contents = proposal.reserved_turfs
-	A.contained_turfs = proposal.reserved_turfs
+	LISTASSERTLEN(old_area.turfs_to_uncontain_by_zlevel, bottomleft.z, list())
+	old_area.turfs_to_uncontain_by_zlevel[bottomleft.z] += proposal.reserved_turfs
+
+	var/area/shuttle/transit/new_area = new()
+	new_area.parallax_movedir = travel_dir
+	new_area.contents = proposal.reserved_turfs
+	LISTASSERTLEN(new_area.turfs_by_zlevel, bottomleft.z, list())
+	new_area.turfs_by_zlevel[bottomleft.z] = proposal.reserved_turfs
+
 	var/obj/docking_port/stationary/transit/new_transit_dock = new(midpoint)
 	new_transit_dock.reserved_area = proposal
 	new_transit_dock.name = "Transit for [M.shuttle_id]/[M.name]"
 	new_transit_dock.owner = M
-	new_transit_dock.assigned_area = A
+	new_transit_dock.assigned_area = new_area
 
 	// Add 180, because ports point inwards, rather than outwards
 	new_transit_dock.setDir(angle2dir(dock_angle))
@@ -701,8 +744,6 @@ SUBSYSTEM_DEF(shuttle)
 		shopping_list = SSshuttle.shopping_list
 	if (istype(SSshuttle.request_list))
 		request_list = SSshuttle.request_list
-	if (istype(SSshuttle.order_history))
-		order_history = SSshuttle.order_history
 
 	if (istype(SSshuttle.shuttle_loan))
 		shuttle_loan = SSshuttle.shuttle_loan
@@ -1008,7 +1049,7 @@ SUBSYSTEM_DEF(shuttle)
 
 	return data
 
-/datum/controller/subsystem/shuttle/ui_act(action, params)
+/datum/controller/subsystem/shuttle/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return

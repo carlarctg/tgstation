@@ -33,7 +33,11 @@
 			hit_living.electrocute_act(80, src, flags = SHOCK_ILLUSION | SHOCK_NOGLOVES)
 	qdel(src)
 
+<<<<<<< HEAD
 /obj/item/spellpacket/lightningbolt/throw_at(atom/target, range, speed, mob/thrower, spin = TRUE, diagonals_first = FALSE, datum/callback/callback, force = INFINITY, gentle = FALSE, quickstart = TRUE)
+=======
+/obj/item/spellpacket/lightningbolt/throw_at(atom/target, range, speed, mob/thrower, spin = TRUE, diagonals_first = FALSE, datum/callback/callback, force = INFINITY, gentle, quickstart = TRUE)
+>>>>>>> upstream/master
 	. = ..()
 	if(ishuman(thrower))
 		var/mob/living/carbon/human/human_thrower = thrower

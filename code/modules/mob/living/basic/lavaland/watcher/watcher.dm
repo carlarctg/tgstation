@@ -13,6 +13,9 @@
 	speed = 3
 	maxHealth = 160
 	health = 160
+	melee_damage_lower = 15
+	melee_damage_upper = 15
+	attack_sound = 'sound/items/weapons/bladeslice.ogg'
 	attack_verb_continuous = "buffets"
 	attack_verb_simple = "buffet"
 	crusher_loot = /obj/item/crusher_trophy/watcher_wing
@@ -29,7 +32,7 @@
 	/// Icon state for our eye overlay
 	var/eye_glow = "ice_glow"
 	/// Sound to play when we shoot
-	var/shoot_sound = 'sound/weapons/pierce.ogg'
+	var/shoot_sound = 'sound/items/weapons/pierce.ogg'
 	/// Typepath of our gaze ability
 	var/gaze_attack = /datum/action/cooldown/mob_cooldown/watcher_gaze
 	// We attract and eat these things for some reason
@@ -62,7 +65,7 @@
 	var/datum/action/cooldown/mob_cooldown/watcher_gaze/gaze = new gaze_attack(src)
 	gaze.Grant(src)
 	ai_controller.set_blackboard_key(BB_GENERIC_ACTION, gaze)
-	AddComponent(/datum/component/revenge_ability, gaze, targetting = ai_controller.blackboard[BB_TARGETTING_DATUM])
+	AddComponent(/datum/component/revenge_ability, gaze, targeting = GET_TARGETING_STRATEGY(ai_controller.blackboard[BB_TARGETING_STRATEGY]))
 
 /mob/living/basic/mining/watcher/update_overlays()
 	. = ..()

@@ -1,4 +1,6 @@
 /datum/crafting_recipe/food
+	mass_craftable = TRUE
+	crafting_flags = parent_type::crafting_flags | CRAFT_TRANSFERS_REAGENTS | CRAFT_CLEARS_REAGENTS
 
 /datum/crafting_recipe/food/on_craft_completion(mob/user, atom/result)
 	SHOULD_CALL_PARENT(TRUE)
@@ -38,17 +40,16 @@
 	var/resulting_reagent_purity
 
 /datum/chemical_reaction/food/pre_reaction_other_checks(datum/reagents/holder)
-	resulting_reagent_purity = holder.get_average_purity(/datum/reagent/consumable)
+	resulting_reagent_purity = holder.get_average_purity()
 	return TRUE
 
 /datum/chemical_reaction/food/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	if(resulting_food_path)
 		var/atom/location = holder.my_atom.drop_location()
 		for(var/i in 1 to created_volume)
+			var/obj/item/food/result = new resulting_food_path(location)
 			if(ispath(resulting_food_path, /obj/item/food) && !isnull(resulting_reagent_purity))
-				new resulting_food_path(location, resulting_reagent_purity)
-			else
-				new resulting_food_path(location)
+				result.reagents?.set_all_reagents_purity(resulting_reagent_purity)
 
 /datum/chemical_reaction/food/tofu
 	required_reagents = list(/datum/reagent/consumable/soymilk = 10)
@@ -264,7 +265,7 @@
 	required_reagents = list(/datum/reagent/consumable/olivepaste = 4, /datum/reagent/water = 1)
 	reaction_flags = REACTION_INSTANT
 
-/datum/chemical_reaction/food/vinegar
+/datum/chemical_reaction/food/wine_vinegar
 	results = list(/datum/reagent/consumable/vinegar = 5)
 	required_reagents = list(/datum/reagent/consumable/ethanol/wine = 1, /datum/reagent/water = 1, /datum/reagent/consumable/sugar = 1)
 	reaction_flags = REACTION_INSTANT
@@ -273,11 +274,17 @@
 	results = list(/datum/reagent/consumable/salt = 2)
 	required_reagents = list(/datum/reagent/consumable/liquidelectricity/enriched = 2, /datum/reagent/consumable/grounding_solution = 1)
 	mix_message = "The mixture lets off a sharp snap as the electricity discharges."
-	mix_sound = 'sound/weapons/taser.ogg'
+	mix_sound = 'sound/items/weapons/taser.ogg'
 	reaction_flags = REACTION_INSTANT
 
 /datum/chemical_reaction/food/martian_batter
-	results = list(/datum/reagent/consumable/martian_batter = 2)
-	required_reagents = list(/datum/reagent/consumable/flour = 1, /datum/reagent/consumable/nutriment/soup/dashi = 1)
+	results = list(/datum/reagent/consumable/martian_batter = 10)
+	required_reagents = list(/datum/reagent/consumable/flour = 5, /datum/reagent/consumable/nutriment/soup/dashi = 5)
 	mix_message = "A smooth batter forms."
 	reaction_flags = REACTION_INSTANT
+
+/datum/chemical_reaction/food/grape_vinegar
+	results = list(/datum/reagent/consumable/vinegar = 5)
+	required_reagents = list(/datum/reagent/consumable/grapejuice = 5)
+	required_catalysts = list(/datum/reagent/consumable/enzyme = 5)
+	mix_message = "The smell of the mixture reminds you of how you lost access to the country club..."

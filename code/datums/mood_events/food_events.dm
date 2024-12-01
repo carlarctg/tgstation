@@ -13,6 +13,11 @@
 	mood_change = -6
 	timeout = 4 MINUTES
 
+/datum/mood_event/allergic_food
+	description = "My throat itches."
+	mood_change = -2
+	timeout = 4 MINUTES
+
 /datum/mood_event/breakfast
 	description = "Nothing like a hearty breakfast to start the shift."
 	mood_change = 2
@@ -44,3 +49,8 @@
 
 /datum/mood_event/food/top
 	quality = FOOD_QUALITY_TOP
+
+/datum/mood_event/pacifist_eating_fish_item
+	description = "I shouldn't be eating living creatures..."
+	mood_change = -1 //The disgusting food moodlet already has a pretty big negative value, this is just for context.
+	timeout = 4 MINUTES

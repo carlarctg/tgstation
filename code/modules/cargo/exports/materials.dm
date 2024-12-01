@@ -19,7 +19,7 @@
 		return 0
 
 	var/obj/item/I = O
-	var/list/mat_comp = I.get_material_composition(BREAKDOWN_FLAGS_EXPORT)
+	var/list/mat_comp = I.get_material_composition()
 	var/datum/material/mat_ref = ispath(material_id) ? locate(material_id) in mat_comp : GET_MATERIAL_REF(material_id)
 	if(isnull(mat_comp[mat_ref]))
 		return 0
@@ -134,13 +134,16 @@
 /datum/export/material/market/sell_object(obj/sold_item, datum/export_report/report, dry_run, apply_elastic)
 	. = ..()
 	var/amount = get_amount(sold_item)
-	var/price = get_cost(sold_item)
 	if(!amount)
 		return
+
+	//This formula should impact lower quantity materials greater, and higher quantity materials less. Still, it's  a bit rough. Tweaking may be needed.
 	if(!dry_run)
-		SSstock_market.materials_quantity[material_id] += amount
-		SSstock_market.materials_prices[material_id] -= round((price) * (amount / (amount + SSstock_market.materials_quantity[material_id])))
-		//This formula should impact lower quantity materials greater, and higher quantity materials less. Still, it's  a bit rough. Tweaking may be needed.
+		//decrease the market price
+		SSstock_market.adjust_material_price(material_id, -SSstock_market.materials_prices[material_id] * (amount / (amount + SSstock_market.materials_quantity[material_id])))
+
+		//increase the stock
+		SSstock_market.adjust_material_quantity(material_id, amount)
 
 
 // Stock blocks are a special type of export that can be used to sell a quantity of materials at a specific price on the market.
@@ -161,4 +164,4 @@
 	var/sale_value = sold_block.export_value
 	SSstock_market.materials_quantity[sold_block.export_mat] += sold_block.quantity
 	SSstock_market.materials_prices[sold_block.export_mat] -= round((sale_value) * (sold_block.quantity / (sold_block.quantity + SSstock_market.materials_quantity[sold_block.export_mat])))
-	SSstock_market.materials_prices[sold_block.export_mat] = round(clamp(SSstock_market.materials_prices[sold_block.export_mat], sold_block.export_mat.value_per_unit * SHEET_MATERIAL_AMOUNT * 0.5 , sold_block.export_mat.value_per_unit * SHEET_MATERIAL_AMOUNT * 3))
+	SSstock_market.materials_prices[sold_block.export_mat] = round(clamp(SSstock_market.materials_prices[sold_block.export_mat], initial(sold_block.export_mat.value_per_unit) * SHEET_MATERIAL_AMOUNT * 0.5 , initial(sold_block.export_mat.value_per_unit) * SHEET_MATERIAL_AMOUNT * 3))

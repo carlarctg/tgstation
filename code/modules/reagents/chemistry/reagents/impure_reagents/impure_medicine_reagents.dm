@@ -69,7 +69,7 @@
 /datum/reagent/inverse/helgrasp/on_mob_add(mob/living/affected_mob, amount)
 	. = ..()
 	to_chat(affected_mob, span_hierophant("You hear laughter as malevolent hands apparate before you, eager to drag you down to hell...! Look out!"))
-	playsound(affected_mob.loc, 'sound/chemistry/ahaha.ogg', 80, TRUE, -1) //Very obvious tell so people can be ready
+	playsound(affected_mob.loc, 'sound/effects/chemistry/ahaha.ogg', 80, TRUE, -1) //Very obvious tell so people can be ready
 
 //Sends hands after you for your hubris
 /*
@@ -100,18 +100,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 /datum/reagent/inverse/helgrasp/proc/spawn_hands(mob/living/carbon/affected_mob)
 	if(!affected_mob && iscarbon(holder.my_atom))//Catch timer
 		affected_mob = holder.my_atom
-	//Adapted from the end of the curse - but lasts a short time
-	var/grab_dir = turn(affected_mob.dir, pick(-90, 90, 180, 180)) //grab them from a random direction other than the one faced, favoring grabbing from behind
-	var/turf/spawn_turf = get_ranged_target_turf(affected_mob, grab_dir, 8)//Larger range so you have more time to dodge
-	if(!spawn_turf)
-		return
-	new/obj/effect/temp_visual/dir_setting/curse/grasp_portal(spawn_turf, affected_mob.dir)
-	playsound(spawn_turf, 'sound/effects/curse2.ogg', 80, TRUE, -1)
-	var/obj/projectile/curse_hand/hel/hand = new (spawn_turf)
-	hand.preparePixelProjectile(affected_mob, spawn_turf)
-	if(QDELETED(hand)) //safety check if above fails - above has a stack trace if it does fail
-		return
-	hand.fire()
+	fire_curse_hand(affected_mob)
 
 //At the end, we clear up any loose hanging timers just in case and spawn any remaining lag_remaining hands all at once.
 /datum/reagent/inverse/helgrasp/on_mob_delete(mob/living/affected_mob)
@@ -131,46 +120,50 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	tox_damage = 0
 
 //libital
-//Impure
+//Inverse:
 //Simply reduces your alcohol tolerance, kinda simular to prohol
-/datum/reagent/impurity/libitoil
+/datum/reagent/inverse/libitoil
 	name = "Libitoil"
 	description = "Temporarilly interferes a patient's ability to process alcohol."
 	chemical_flags = REAGENT_DONOTSPLIT
 	ph = 13.5
-	liver_damage = 0.1
 	addiction_types = list(/datum/addiction/medicine = 4)
+	tox_damage = 0
 
-/datum/reagent/impurity/libitoil/on_mob_add(mob/living/affected_mob, amount)
+/datum/reagent/inverse/libitoil/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
+	. = ..()
+	affected_mob.adjustOrganLoss(ORGAN_SLOT_LIVER, 0.1 * REM * delta_time)
+
+/datum/reagent/inverse/libitoil/on_mob_add(mob/living/affected_mob, amount)
 	. = ..()
 	var/mob/living/carbon/consumer = affected_mob
 	if(!consumer)
 		return
 	RegisterSignal(consumer, COMSIG_CARBON_GAIN_ORGAN, PROC_REF(on_gained_organ))
 	RegisterSignal(consumer, COMSIG_CARBON_LOSE_ORGAN, PROC_REF(on_removed_organ))
-	var/obj/item/organ/internal/liver/this_liver = consumer.get_organ_slot(ORGAN_SLOT_LIVER)
+	var/obj/item/organ/liver/this_liver = consumer.get_organ_slot(ORGAN_SLOT_LIVER)
 	this_liver.alcohol_tolerance *= 2
 
-/datum/reagent/impurity/libitoil/proc/on_gained_organ(mob/prev_owner, obj/item/organ/organ)
+/datum/reagent/inverse/libitoil/proc/on_gained_organ(mob/prev_owner, obj/item/organ/organ)
 	SIGNAL_HANDLER
-	if(!istype(organ, /obj/item/organ/internal/liver))
+	if(!istype(organ, /obj/item/organ/liver))
 		return
-	var/obj/item/organ/internal/liver/this_liver = organ
+	var/obj/item/organ/liver/this_liver = organ
 	this_liver.alcohol_tolerance *= 2
 
-/datum/reagent/impurity/libitoil/proc/on_removed_organ(mob/prev_owner, obj/item/organ/organ)
+/datum/reagent/inverse/libitoil/proc/on_removed_organ(mob/prev_owner, obj/item/organ/organ)
 	SIGNAL_HANDLER
-	if(!istype(organ, /obj/item/organ/internal/liver))
+	if(!istype(organ, /obj/item/organ/liver))
 		return
-	var/obj/item/organ/internal/liver/this_liver = organ
+	var/obj/item/organ/liver/this_liver = organ
 	this_liver.alcohol_tolerance /= 2
 
-/datum/reagent/impurity/libitoil/on_mob_delete(mob/living/affected_mob)
+/datum/reagent/inverse/libitoil/on_mob_delete(mob/living/affected_mob)
 	. = ..()
 	var/mob/living/carbon/consumer = affected_mob
 	UnregisterSignal(consumer, COMSIG_CARBON_LOSE_ORGAN)
 	UnregisterSignal(consumer, COMSIG_CARBON_GAIN_ORGAN)
-	var/obj/item/organ/internal/liver/this_liver = consumer.get_organ_slot(ORGAN_SLOT_LIVER)
+	var/obj/item/organ/liver/this_liver = consumer.get_organ_slot(ORGAN_SLOT_LIVER)
 	if(!this_liver)
 		return
 	this_liver.alcohol_tolerance /= 2
@@ -205,69 +198,37 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	affected_mob.adjust_nutrition(-5 * REAGENTS_METABOLISM * seconds_per_tick)
 
 //Lenturi
-//impure
-/datum/reagent/impurity/lentslurri //Okay maybe I should outsource names for these
+//inverse
+/datum/reagent/inverse/lentslurri //Okay maybe I should outsource names for these
 	name = "Lentslurri"//This is a really bad name please replace
-	description = "A highly addicitive muscle relaxant that is made when Lenturi reactions go wrong."
+	description = "A highly addicitive muscle relaxant that is made when Lenturi reactions go wrong, this will cause the patient to move slowly."
 	addiction_types = list(/datum/addiction/medicine = 8)
-	liver_damage = 0
+	tox_damage = 0
 
-/datum/reagent/impurity/lentslurri/on_mob_metabolize(mob/living/carbon/affected_mob)
+/datum/reagent/inverse/lentslurri/on_mob_metabolize(mob/living/carbon/affected_mob)
 	. = ..()
 	affected_mob.add_movespeed_modifier(/datum/movespeed_modifier/reagent/lenturi)
 
-/datum/reagent/impurity/lentslurri/on_mob_end_metabolize(mob/living/carbon/affected_mob)
+/datum/reagent/inverse/lentslurri/on_mob_end_metabolize(mob/living/carbon/affected_mob)
 	. = ..()
 	affected_mob.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/lenturi)
 
-//failed
-/datum/reagent/inverse/ichiyuri
-	name = "Ichiyuri"
-	description = "Prolonged exposure to this chemical can cause an overwhelming urge to itch oneself."
-	reagent_state = LIQUID
-	color = "#C8A5DC"
-	ph = 1.7
-	addiction_types = list(/datum/addiction/medicine = 2.5)
-	tox_damage = 0.1
-	///Probability of scratch - increases as a function of time
-	var/resetting_probability = 0
-	///Prevents message spam
-	var/spammer = 0
-
-//Just the removed itching mechanism - omage to it's origins.
-/datum/reagent/inverse/ichiyuri/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
-	. = ..()
-	if(prob(resetting_probability) && !(HAS_TRAIT(affected_mob, TRAIT_RESTRAINED) || affected_mob.incapacitated()))
-		. = TRUE
-		if(spammer < world.time)
-			to_chat(affected_mob,span_warning("You can't help but itch yourself."))
-			spammer = world.time + (10 SECONDS)
-		var/scab = rand(1,7)
-		if(affected_mob.adjustBruteLoss(scab*REM, updating_health = FALSE))
-			. = UPDATE_MOB_HEALTH
-		affected_mob.bleed(scab)
-		resetting_probability = 0
-	resetting_probability += (5*((current_cycle-1)/10) * seconds_per_tick) // 10 iterations = >51% to itch
-
 //Aiuri
-//impure
-/datum/reagent/impurity/aiuri
+//inverse
+/datum/reagent/inverse/aiuri
 	name = "Aivime"
 	description = "This reagent is known to interfere with the eyesight of a patient."
 	ph = 3.1
 	addiction_types = list(/datum/addiction/medicine = 1.5)
-	liver_damage = 0.1
-	/// blurriness at the start of taking the med
-	var/amount_of_blur_applied = 0 SECONDS
+	///The amount of blur applied per second. Given the average on_life interval is 2 seconds, that'd be 2.5s.
+	var/amount_of_blur_applied = 1.25 SECONDS
+	tox_damage = 0
 
-/datum/reagent/impurity/aiuri/on_mob_add(mob/living/affected_mob, amount)
+/datum/reagent/inverse/aiuri/on_mob_life(mob/living/carbon/owner, delta_time, times_fired)
+	owner.adjustOrganLoss(ORGAN_SLOT_EYES, 0.1 * REM * delta_time)
+	owner.adjust_eye_blur(amount_of_blur_applied * delta_time)
 	. = ..()
-	amount_of_blur_applied = creation_purity * (volume / metabolization_rate) * 2 SECONDS
-	affected_mob.adjust_eye_blur(amount_of_blur_applied)
-
-/datum/reagent/impurity/aiuri/on_mob_delete(mob/living/affected_mob, amount)
-	. = ..()
-	affected_mob.adjust_eye_blur(-amount_of_blur_applied)
+	return TRUE
 
 //Hercuri
 //inverse
@@ -376,19 +337,19 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	. = ..()
 	RegisterSignal(affected_mob, COMSIG_CARBON_GAIN_ORGAN, PROC_REF(on_gained_organ))
 	RegisterSignal(affected_mob, COMSIG_CARBON_LOSE_ORGAN, PROC_REF(on_removed_organ))
-	var/obj/item/organ/internal/lungs/lungs = affected_mob.get_organ_slot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/lungs/lungs = affected_mob.get_organ_slot(ORGAN_SLOT_LUNGS)
 	if(!lungs)
 		return
 	apply_lung_levels(lungs)
 
 /datum/reagent/inverse/healing/convermol/proc/on_gained_organ(mob/prev_owner, obj/item/organ/organ)
 	SIGNAL_HANDLER
-	if(!istype(organ, /obj/item/organ/internal/lungs))
+	if(!istype(organ, /obj/item/organ/lungs))
 		return
-	var/obj/item/organ/internal/lungs/lungs = organ
+	var/obj/item/organ/lungs/lungs = organ
 	apply_lung_levels(lungs)
 
-/datum/reagent/inverse/healing/convermol/proc/apply_lung_levels(obj/item/organ/internal/lungs/lungs)
+/datum/reagent/inverse/healing/convermol/proc/apply_lung_levels(obj/item/organ/lungs/lungs)
 	cached_heat_level_1 = lungs.heat_level_1_threshold
 	cached_heat_level_2 = lungs.heat_level_2_threshold
 	cached_heat_level_3 = lungs.heat_level_3_threshold
@@ -406,12 +367,12 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/healing/convermol/proc/on_removed_organ(mob/prev_owner, obj/item/organ/organ)
 	SIGNAL_HANDLER
-	if(!istype(organ, /obj/item/organ/internal/lungs))
+	if(!istype(organ, /obj/item/organ/lungs))
 		return
-	var/obj/item/organ/internal/lungs/lungs = organ
+	var/obj/item/organ/lungs/lungs = organ
 	restore_lung_levels(lungs)
 
-/datum/reagent/inverse/healing/convermol/proc/restore_lung_levels(obj/item/organ/internal/lungs/lungs)
+/datum/reagent/inverse/healing/convermol/proc/restore_lung_levels(obj/item/organ/lungs/lungs)
 	lungs.heat_level_1_threshold = cached_heat_level_1
 	lungs.heat_level_2_threshold = cached_heat_level_2
 	lungs.heat_level_3_threshold = cached_heat_level_3
@@ -423,7 +384,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	. = ..()
 	UnregisterSignal(affected_mob, COMSIG_CARBON_LOSE_ORGAN)
 	UnregisterSignal(affected_mob, COMSIG_CARBON_GAIN_ORGAN)
-	var/obj/item/organ/internal/lungs/lungs = affected_mob.get_organ_slot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/lungs/lungs = affected_mob.get_organ_slot(ORGAN_SLOT_LUNGS)
 	if(!lungs)
 		return
 	restore_lung_levels(lungs)
@@ -496,6 +457,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 //Heals toxins if it's the only thing present - kinda the oposite of multiver! Maybe that's why it's inverse!
 /datum/reagent/inverse/healing/monover/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
 	var/need_mob_update
 	if(length(affected_mob.reagents.reagent_list) > 1)
 		need_mob_update = affected_mob.adjustOrganLoss(ORGAN_SLOT_LUNGS, 0.5 * seconds_per_tick, required_organ_flag = affected_organ_flags) //Hey! It's everyone's favourite drawback from multiver!
@@ -518,6 +480,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	overdose_threshold = 20
 	self_consuming = TRUE //No pesky liver shenanigans
 	chemical_flags = REAGENT_DONOTSPLIT | REAGENT_DEAD_PROCESS
+	affected_organ_flags = NONE
 	///If we brought someone back from the dead
 	var/back_from_the_dead = FALSE
 	/// List of trait buffs to give to the affected mob, and remove as needed.
@@ -532,7 +495,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/penthrite/on_mob_dead(mob/living/carbon/affected_mob, seconds_per_tick)
 	. = ..()
-	var/obj/item/organ/internal/heart/heart = affected_mob.get_organ_slot(ORGAN_SLOT_HEART)
+	var/obj/item/organ/heart/heart = affected_mob.get_organ_slot(ORGAN_SLOT_HEART)
 	if(!heart || heart.organ_flags & ORGAN_FAILING)
 		return
 	metabolization_rate = 0.2 * REM
@@ -548,7 +511,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	affected_mob.grab_ghost(force = FALSE) //Shoves them back into their freshly reanimated corpse.
 	back_from_the_dead = TRUE
 	affected_mob.emote("gasp")
-	affected_mob.playsound_local(affected_mob, 'sound/health/fastbeat.ogg', 65)
+	affected_mob.playsound_local(affected_mob, 'sound/effects/health/fastbeat.ogg', 65)
 
 /datum/reagent/inverse/penthrite/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
@@ -566,7 +529,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 		affected_mob.add_movespeed_modifier(/datum/movespeed_modifier/reagent/nooartrium)
 	if(affected_mob.health < HEALTH_THRESHOLD_FULLCRIT)
 		affected_mob.add_actionspeed_modifier(/datum/actionspeed_modifier/nooartrium)
-	var/obj/item/organ/internal/heart/heart = affected_mob.get_organ_slot(ORGAN_SLOT_HEART)
+	var/obj/item/organ/heart/heart = affected_mob.get_organ_slot(ORGAN_SLOT_HEART)
 	if(!heart || heart.organ_flags & ORGAN_FAILING)
 		remove_buffs(affected_mob)
 	if(need_mob_update)
@@ -575,7 +538,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 /datum/reagent/inverse/penthrite/on_mob_delete(mob/living/carbon/affected_mob)
 	. = ..()
 	remove_buffs(affected_mob)
-	var/obj/item/organ/internal/heart/heart = affected_mob.get_organ_slot(ORGAN_SLOT_HEART)
+	var/obj/item/organ/heart/heart = affected_mob.get_organ_slot(ORGAN_SLOT_HEART)
 	if(affected_mob.health < -500 || heart.organ_flags & ORGAN_FAILING)//Honestly commendable if you get -500
 		explosion(affected_mob, light_impact_range = 1, explosion_cause = src)
 		qdel(heart)
@@ -585,7 +548,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	. = ..()
 	if(!back_from_the_dead)
 		return ..()
-	var/obj/item/organ/internal/heart/heart = affected_mob.get_organ_slot(ORGAN_SLOT_HEART)
+	var/obj/item/organ/heart/heart = affected_mob.get_organ_slot(ORGAN_SLOT_HEART)
 	if(!heart) //No heart? No life!
 		REMOVE_TRAIT(affected_mob, TRAIT_NODEATH, type)
 		affected_mob.stat = DEAD
@@ -670,7 +633,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 		/datum/brain_trauma/special/honorbound, // Designed to be chaplain exclusive
 	)
 	traumalist -= forbiddentraumas
-	var/obj/item/organ/internal/brain/brain = affected_mob.get_organ_slot(ORGAN_SLOT_BRAIN)
+	var/obj/item/organ/brain/brain = affected_mob.get_organ_slot(ORGAN_SLOT_BRAIN)
 	traumalist = shuffle(traumalist)
 	for(var/trauma in traumalist)
 		if(brain.brain_gain_trauma(trauma, TRAUMA_RESILIENCE_MAGIC))
@@ -686,7 +649,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	affected_mob.cure_trauma_type(temp_trauma, resilience = TRAUMA_RESILIENCE_MAGIC)
 
 /datum/reagent/inverse/corazargh
-	name = "Corazargh" //It's what you yell! Though, if you've a better name feel free. Also an omage to an older chem
+	name = "Corazargh" //It's what you yell! Though, if you've a better name feel free. Also an homage to an older chem
 	description = "Interferes with the body's natural pacemaker, forcing the patient to manually beat their heart."
 	color = "#5F5F5F"
 	self_consuming = TRUE
@@ -695,83 +658,23 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	metabolization_rate = REM
 	chemical_flags = REAGENT_DEAD_PROCESS
 	tox_damage = 0
-	///Weakref to the old heart we're swapping for
-	var/datum/weakref/original_heart_ref
-	///Weakref to the new heart that's temp added
-	var/datum/weakref/manual_heart_ref
 
-///Creates a new cursed heart and puts the old inside of it, then replaces the position of the old
+///Give the victim the manual heart beating component.
 /datum/reagent/inverse/corazargh/on_mob_metabolize(mob/living/affected_mob)
 	. = ..()
 	if(!iscarbon(affected_mob))
 		return
 	var/mob/living/carbon/carbon_mob = affected_mob
-	var/obj/item/organ/internal/heart/original_heart = affected_mob.get_organ_slot(ORGAN_SLOT_HEART)
-	if(!original_heart)
+	var/obj/item/organ/heart/affected_heart = carbon_mob.get_organ_slot(ORGAN_SLOT_HEART)
+	if(isnull(affected_heart))
 		return
-	original_heart_ref = WEAKREF(original_heart)
+	carbon_mob.AddComponent(/datum/component/manual_heart)
+	return ..()
 
-	var/obj/item/organ/internal/heart/cursed/manual_heart = new(null, src)
-	manual_heart_ref = WEAKREF(manual_heart)
-	original_heart.Remove(carbon_mob, special = TRUE) //So we don't suddenly die
-	original_heart.forceMove(manual_heart)
-	original_heart.organ_flags |= ORGAN_FROZEN //Not actually frozen, but we want to pause decay
-	manual_heart.Insert(carbon_mob, special = TRUE)
-	//these last so instert doesn't call them
-	RegisterSignal(carbon_mob, COMSIG_CARBON_GAIN_ORGAN, PROC_REF(on_gained_organ))
-	RegisterSignal(carbon_mob, COMSIG_CARBON_LOSE_ORGAN, PROC_REF(on_removed_organ))
-	to_chat(affected_mob, span_userdanger("You feel your heart suddenly stop beating on it's own - you'll have to manually beat it!"))
-
-///Intercepts the new heart and creates a new cursed heart - putting the old inside of it
-/datum/reagent/inverse/corazargh/proc/on_gained_organ(mob/affected_mob, obj/item/organ/organ)
-	SIGNAL_HANDLER
-	if(!istype(organ, /obj/item/organ/internal/heart))
-		return
-	// DO NOT REACT TO YOUR OWN HEART ADDITION I SWEAR TO CHRIST
-	var/obj/item/organ/internal/heart/cursed/manual_heart = manual_heart_ref?.resolve()
-	if(organ == manual_heart)
-		return
-
-	var/mob/living/carbon/affected_carbon = affected_mob
-	var/obj/item/organ/internal/heart/original_heart = organ
-	original_heart_ref = WEAKREF(original_heart)
-	original_heart.Remove(affected_carbon, special = TRUE)
-	if(!manual_heart)
-		manual_heart = new(null, src)
-		manual_heart_ref = WEAKREF(manual_heart)
-	original_heart.forceMove(manual_heart)
-	original_heart.organ_flags |= ORGAN_FROZEN //Not actually frozen, but we want to pause decay
-	manual_heart.Insert(affected_carbon, special = TRUE)
-
-///If we're ejecting out the organ - replace it with the original
-/datum/reagent/inverse/corazargh/proc/on_removed_organ(mob/prev_owner, obj/item/organ/organ)
-	SIGNAL_HANDLER
-	var/obj/item/organ/internal/heart/cursed/manual_heart = manual_heart_ref?.resolve()
-	if(organ != manual_heart)
-		return
-	var/obj/item/organ/internal/heart/original_heart = original_heart_ref?.resolve()
-	if(!original_heart)
-		return
-
-	original_heart.forceMove(manual_heart.loc)
-	original_heart.organ_flags &= ~ORGAN_FROZEN //enable decay again
-	QDEL_NULL(manual_heart_ref)
-
-///We're done - remove the curse and restore the old one
+///We're done - remove the curse
 /datum/reagent/inverse/corazargh/on_mob_end_metabolize(mob/living/affected_mob)
-	. = ..()
-	//Do these first so Insert doesn't call them
-	UnregisterSignal(affected_mob, COMSIG_CARBON_LOSE_ORGAN)
-	UnregisterSignal(affected_mob, COMSIG_CARBON_GAIN_ORGAN)
-	if(!iscarbon(affected_mob))
-		return
-	var/mob/living/carbon/affected_carbon = affected_mob
-	var/obj/item/organ/internal/heart/original_heart = original_heart_ref?.resolve()
-	if(original_heart) //Mostly a just in case
-		original_heart.organ_flags &= ~ORGAN_FROZEN //enable decay again
-		original_heart.Insert(affected_carbon, special = TRUE)
-	QDEL_NULL(manual_heart_ref)
-	to_chat(affected_mob, span_userdanger("You feel your heart start beating normally again!"))
+	qdel(affected_mob.GetComponent(/datum/component/manual_heart))
+	..()
 
 /datum/reagent/inverse/antihol
 	name = "Prohol"
@@ -828,18 +731,18 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	liver_damage = 0.1
 	metabolization_rate = 0.04 * REM
 	///The random span we start hearing in
-	var/randomSpan
+	var/random_span
 
 /datum/reagent/impurity/inacusiate/on_mob_metabolize(mob/living/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
-	randomSpan = pick(list("clown", "small", "big", "hypnophrase", "alien", "cult", "alert", "danger", "emote", "yell", "brass", "sans", "papyrus", "robot", "his_grace", "phobia"))
+	random_span = pick("clown", "small", "big", "hypnophrase", "alien", "cult", "alert", "danger", "emote", "yell", "brass", "sans", "papyrus", "robot", "his_grace", "phobia")
 	RegisterSignal(affected_mob, COMSIG_MOVABLE_HEAR, PROC_REF(owner_hear))
-	to_chat(affected_mob, span_warning("Your hearing seems to be a bit off!"))
+	to_chat(affected_mob, span_warning("Your hearing seems to be a bit off[affected_mob.can_hear() ? "!" : " - wait, that's normal."]"))
 
 /datum/reagent/impurity/inacusiate/on_mob_end_metabolize(mob/living/affected_mob)
 	. = ..()
 	UnregisterSignal(affected_mob, COMSIG_MOVABLE_HEAR)
-	to_chat(affected_mob, span_notice("You start hearing things normally again."))
+	to_chat(affected_mob, span_notice("You start hearing things normally again[affected_mob.can_hear() ? "" : " - no, wait, no you don't"]."))
 
 /datum/reagent/impurity/inacusiate/proc/owner_hear(mob/living/owner, list/hearing_args)
 	SIGNAL_HANDLER
@@ -847,5 +750,156 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	// don't skip messages that the owner says or can't understand (since they still make sounds)
 	if(!owner.can_hear())
 		return
+	// not technically hearing
+	var/atom/movable/speaker = hearing_args[HEARING_SPEAKER]
+	if(!isnull(speaker) && HAS_TRAIT(speaker, TRAIT_SIGN_LANG))
+		return
 
-	hearing_args[HEARING_RAW_MESSAGE] = "<span class='[randomSpan]'>[hearing_args[HEARING_RAW_MESSAGE]]</span>"
+	var/list/spans = hearing_args[HEARING_SPANS]
+	var/list/copied_spans = spans.Copy()
+	copied_spans |= random_span
+	hearing_args[HEARING_SPANS] = copied_spans
+
+/datum/reagent/inverse/sal_acid
+	name = "Benzoic Acid"
+	description = "Robust fertilizer that provides a decent range of benefits for plant life."
+	taste_description = "flowers"
+	reagent_state = LIQUID
+	color = "#e6c843"
+	ph = 3.4
+	tox_damage = 0
+
+/datum/reagent/inverse/sal_acid/on_hydroponics_apply(obj/machinery/hydroponics/mytray, mob/user)
+	mytray.adjust_plant_health(round(volume * 0.5))
+	mytray.myseed?.adjust_production(-round(volume * 0.2))
+	mytray.myseed?.adjust_potency(round(volume * 0.25))
+	mytray.myseed?.adjust_yield(round(volume * 0.2))
+
+/datum/reagent/inverse/oxandrolone
+	name = "Oxymetholone"
+	description = "Anabolic steroid that promotes the growth of muscle during and after exercise."
+	reagent_state = LIQUID
+	color = "#520c23"
+	taste_description = "sweat"
+	metabolization_rate = 0.4 * REM
+	overdose_threshold = 25
+	ph = 12.2
+	tox_damage = 0
+
+/datum/reagent/inverse/oxandrolone/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
+	var/high_message = pick("You feel unstoppable.", "Giving it EVERYTHING!!", "You feel ready for anything.", "You feel like doing a thousand jumping jacks!")
+	if(SPT_PROB(2, seconds_per_tick))
+		to_chat(affected_mob, span_notice("[high_message]"))
+
+/datum/reagent/inverse/oxandrolone/overdose_process(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
+	if(SPT_PROB(25, seconds_per_tick))
+		affected_mob.adjust_bodytemperature(30 * TEMPERATURE_DAMAGE_COEFFICIENT * REM * seconds_per_tick)
+		affected_mob.set_jitter_if_lower(3 SECONDS)
+		affected_mob.adjustStaminaLoss(5 * REM * seconds_per_tick)
+	else if(SPT_PROB(5, seconds_per_tick))
+		affected_mob.vomit(VOMIT_CATEGORY_BLOOD, lost_nutrition = 0, distance = 3)
+		affected_mob.Paralyze(3 SECONDS)
+
+/datum/reagent/inverse/salbutamol
+	name = "Bamethan"
+	description = "Blood thinner that drastically increases the chance of receiving bleeding wounds."
+	reagent_state = LIQUID
+	color = "#ecd4d6"
+	taste_description = "paint thinner"
+	ph = 4.5
+	metabolization_rate = 0.08 * REM
+	tox_damage = 0
+	metabolized_traits = list(TRAIT_EASYBLEED)
+
+/datum/reagent/inverse/pen_acid
+	name = "Pendetide"
+	description = "Purges basic toxin healing medications and increases the severity of radiation poisoning."
+	reagent_state = LIQUID
+	color = "#09ff00"
+	ph = 3.7
+	taste_description = "venom"
+	metabolization_rate = 0.25 * REM
+	tox_damage = 0
+
+/datum/reagent/inverse/pen_acid/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	holder.remove_reagent(/datum/reagent/medicine/c2/seiver, 5 * REM * seconds_per_tick)
+	holder.remove_reagent(/datum/reagent/medicine/potass_iodide, 5 * REM * seconds_per_tick)
+	holder.remove_reagent(/datum/reagent/medicine/c2/multiver, 5 * REM * seconds_per_tick)
+
+	. = ..()
+	if(HAS_TRAIT(affected_mob, TRAIT_IRRADIATED))
+		affected_mob.set_jitter_if_lower(10 SECONDS)
+		affected_mob.adjust_disgust(3 * REM * seconds_per_tick)
+		if(SPT_PROB(2.5, seconds_per_tick))
+			to_chat(affected_mob, span_warning("A horrible ache spreads in your insides!"))
+			affected_mob.adjust_confusion_up_to(10 SECONDS, 15 SECONDS)
+
+/datum/reagent/inverse/atropine
+	name = "Hyoscyamine"
+	description = "Slowly regenerates all damaged organs, but cannot restore non-functional organs."
+	reagent_state = LIQUID
+	color = "#273333"
+	ph = 13.6
+	metabolization_rate = 0.2 * REM
+	tox_damage = 0
+	overdose_threshold = 40
+
+/datum/reagent/inverse/atropine/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
+	var/need_mob_update
+	need_mob_update = affected_mob.adjustOrganLoss(ORGAN_SLOT_STOMACH, -1 * REM * seconds_per_tick)
+	need_mob_update += affected_mob.adjustOrganLoss(ORGAN_SLOT_HEART, -1 * REM * seconds_per_tick)
+	if(affected_mob.getToxLoss() <= 25)
+		need_mob_update = affected_mob.adjustToxLoss(-0.5, updating_health = FALSE, required_biotype = affected_biotype)
+	if(need_mob_update)
+		return UPDATE_MOB_HEALTH
+
+/datum/reagent/inverse/atropine/overdose_process(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
+	var/static/list/possible_organs = list(
+		ORGAN_SLOT_HEART,
+		ORGAN_SLOT_LIVER,
+		ORGAN_SLOT_LUNGS,
+		ORGAN_SLOT_STOMACH,
+		ORGAN_SLOT_EYES,
+		ORGAN_SLOT_EARS,
+		ORGAN_SLOT_BRAIN,
+		ORGAN_SLOT_APPENDIX,
+		ORGAN_SLOT_TONGUE,
+	)
+	affected_mob.adjustOrganLoss(pick(possible_organs) ,2 * seconds_per_tick)
+	affected_mob.reagents.remove_reagent(type, 1 * REM * seconds_per_tick)
+
+/datum/reagent/inverse/ammoniated_mercury
+	name = "Ammoniated Sludge"
+	description = "A ghastly looking mess of mercury by-product. Causes bursts of manic hysteria."
+	reagent_state = LIQUID
+	color = "#353535"
+	ph = 10.2
+	metabolization_rate = 0.4 * REM
+	tox_damage = 0
+
+/datum/reagent/inverse/ammoniated_mercury/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
+	if(SPT_PROB(7.5, seconds_per_tick))
+		affected_mob.emote("scream")
+		affected_mob.say(pick("AAAAAAAHHHHH!!","OOOOH NOOOOOO!!","GGGUUUUHHHHH!!","AIIIIIEEEEEE!!","HAHAHAHAHAAAAAA!!","OORRRGGGHHH!!","AAAAAAAJJJJJJJJJ!!"), forced = type)
+
+/datum/reagent/inverse/rezadone
+	name = "Inreziniver"
+	description = "Makes the user horribly afraid of all things related to carps."
+	reagent_state = LIQUID
+	color = "#c92eb4"
+	ph = 13.9
+	metabolization_rate = 0.05 * REM
+	tox_damage = 0
+
+/datum/reagent/inverse/rezadone/on_mob_metabolize(mob/living/carbon/affected_mob)
+	. = ..()
+	affected_mob.gain_trauma(/datum/brain_trauma/mild/phobia/carps, TRAUMA_RESILIENCE_ABSOLUTE)
+
+/datum/reagent/inverse/rezadone/on_mob_end_metabolize(mob/living/carbon/affected_mob)
+	. = ..()
+	affected_mob.cure_trauma_type(/datum/brain_trauma/mild/phobia/carps, resilience = TRAUMA_RESILIENCE_ABSOLUTE)
