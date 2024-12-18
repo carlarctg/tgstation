@@ -222,6 +222,12 @@
 	},
 /turf/open/water/beach,
 /area/space)
+"ft" = (
+/obj/structure/disposaloutlet{
+	dir = 4
+	},
+/turf/open/floor/pod/dark,
+/area/space)
 "fy" = (
 /obj/machinery/disposal/delivery_chute{
 	dir = 1
@@ -774,6 +780,12 @@
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron/grimy,
 /area/space)
+"sh" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space)
 "sv" = (
 /obj/structure/fluff/drake_statue{
 	pixel_y = 16
@@ -788,6 +800,15 @@
 /turf/open/floor/iron/chapel{
 	dir = 6
 	},
+/area/space)
+"sF" = (
+/obj/machinery/disposal/delivery_chute{
+	dir = 8;
+	name = "cargo shuttle chute";
+	desc = "Delivers empty crates directly into the input conveyor belt. Convenient!"
+	},
+/obj/structure/railing,
+/turf/open/floor/pod/dark,
 /area/space)
 "sK" = (
 /obj/structure/geyser,
@@ -1443,6 +1464,10 @@
 /obj/machinery/vending/robotics,
 /turf/open/space/basic,
 /area/space)
+"Ks" = (
+/obj/machinery/conveyor_switch,
+/turf/open/floor/iron,
+/area/space)
 "Kv" = (
 /obj/machinery/conveyor{
 	dir = 1;
@@ -1570,6 +1595,13 @@
 	},
 /turf/open/floor/wood/tile,
 /area/space)
+"NG" = (
+/obj/structure/railing{
+	dir = 4;
+	layer = 4.1
+	},
+/turf/open/space/basic,
+/area/space)
 "NH" = (
 /obj/structure/fluff/iced_abductor,
 /turf/open/space/basic,
@@ -1613,6 +1645,14 @@
 	pixel_y = 16
 	},
 /turf/closed/wall,
+/area/space)
+"OS" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "mining"
+	},
+/obj/structure/railing,
+/turf/open/floor/pod/dark,
 /area/space)
 "OX" = (
 /obj/machinery/rnd/production/techfab/department/service,
@@ -1737,8 +1777,6 @@
 /area/space)
 "Sm" = (
 /obj/structure/rack/skeletal,
-/obj/item/organ/internal/brain/primitive,
-/obj/item/organ/internal/heart,
 /turf/open/floor/iron/dark/herringbone,
 /area/space)
 "Sq" = (
@@ -1985,7 +2023,11 @@
 /area/space)
 "XS" = (
 /obj/machinery/byteforge,
-/turf/open/floor/iron,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "mining"
+	},
+/turf/open/floor/pod/dark,
 /area/space)
 "XX" = (
 /obj/machinery/conveyor{
@@ -25387,7 +25429,7 @@ pN
 pN
 pN
 pN
-yE
+ft
 yS
 yS
 MK
@@ -26415,7 +26457,7 @@ pN
 pN
 JH
 pN
-yE
+sh
 hc
 hc
 hc
@@ -26929,7 +26971,7 @@ pN
 pN
 pN
 pN
-yE
+NG
 hc
 hc
 hc
@@ -27202,8 +27244,8 @@ yE
 yE
 jo
 hc
-yE
-pN
+OS
+Ks
 pN
 yS
 qB
@@ -27459,7 +27501,7 @@ tJ
 yE
 La
 hc
-yE
+sF
 pN
 pN
 yS
@@ -35161,7 +35203,7 @@ yS
 YK
 qj
 wb
-yE
+wb
 wb
 wb
 oN
@@ -35419,7 +35461,7 @@ yS
 zM
 wk
 wk
-yE
+wk
 eX
 yS
 yE
@@ -43621,7 +43663,7 @@ yE
 yE
 yE
 yE
-yE
+wb
 yE
 yE
 yE
