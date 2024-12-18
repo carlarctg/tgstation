@@ -143,6 +143,7 @@
 	shoes = /obj/item/clothing/shoes/workboots/mining
 
 /datum/outfit/consumed_miner/pre_equip(mob/living/carbon/human/miner, visuals_only = FALSE)
+	..()
 	var/regular_uniform = FALSE
 	if(visuals_only)
 		regular_uniform = TRUE //assume human
@@ -203,6 +204,7 @@
 	uniform = /obj/item/clothing/under/costume/gladiator/ash_walker
 
 /datum/outfit/consumed_ashwalker/pre_equip(mob/living/carbon/human/ashwalker, visuals_only = FALSE)
+	..()
 	if(!visuals_only)
 		ashwalker.set_species(/datum/species/lizard/ashwalker)
 	if(prob(95))
@@ -242,6 +244,7 @@
 	var/drop_a_pie_cannon = FALSE
 
 /datum/outfit/consumed_clown/pre_equip(mob/living/carbon/human/clown, visuals_only = FALSE)
+	..()
 	if(!visuals_only)
 		clown.fully_replace_character_name(clown.name, pick(GLOB.clown_names))
 	if(prob(70))
@@ -277,6 +280,7 @@
 	//Oops! All randomized!
 
 /datum/outfit/consumed_golem/pre_equip(mob/living/carbon/human/golem, visuals_only = FALSE)
+	..()
 	if(!visuals_only)
 		golem.set_species(/datum/species/golem)
 	if(prob(30))
@@ -307,6 +311,7 @@
 	mask = /obj/item/clothing/mask/breath
 
 /datum/outfit/consumed_ice_settler/pre_equip(mob/living/carbon/human/ice_settler, visuals_only = FALSE)
+	..()
 	if(prob(40))
 		r_pocket = pick_weight(list(
 			/obj/item/coin/silver = 5,
@@ -341,6 +346,7 @@
 	r_pocket = /obj/item/tank/internals/emergency_oxygen
 
 /datum/outfit/consumed_dame/pre_equip(mob/living/carbon/human/dame, visuals_only = FALSE)
+	..()
 	if(!visuals_only)
 		dame.gender = FEMALE
 		dame.physique = FEMALE
@@ -364,6 +370,7 @@
 	accessory = /obj/item/clothing/accessory/medal/plasma/nobel_science
 
 /datum/outfit/consumed_shadowperson/pre_equip(mob/living/carbon/human/shadowperson, visuals_only = FALSE)
+	..()
 	if(visuals_only)
 		return
 	shadowperson.set_species(/datum/species/shadow)
@@ -389,6 +396,7 @@
 	head = /obj/item/clothing/head/hooded/cult_hoodie/eldritch
 
 /datum/outfit/consumed_heremoth/pre_equip(mob/living/carbon/human/moth, visuals_only = FALSE)
+	..()
 	if(!visuals_only)
 		moth.set_species(/datum/species/moth)
 	if(prob(70))

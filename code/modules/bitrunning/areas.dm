@@ -43,15 +43,7 @@
 	icon_state = "bit_ice"
 	area_flags = UNIQUE_AREA | NOTELEPORT | EVENT_PROTECTED | HIDDEN_AREA | UNLIMITED_FISHING
 
-<<<<<<< HEAD
-/area/icemoon/underground/explored/virtual_domain/noteleport
-	name = "Virtual Domain Ice Ruins No Teleport"
-	icon_state = "bit_notp"
-	area_flags = UNIQUE_AREA | ABDUCTOR_PROOF | EVENT_PROTECTED | HIDDEN_AREA
 
-/area/ruin/space/has_grav/powered/virtual_domain
-	name = "Virtual Domain Space Ruins"
-=======
 /area/ruin/space/virtual_domain
 	name = "Virtual Domain Unexplored Location"
 	icon = 'icons/area/areas_station.dmi'
@@ -60,7 +52,7 @@
 
 /area/space/virtual_domain
 	name = "Virtual Domain Space"
->>>>>>> upstream/master
+
 	icon = 'icons/area/areas_station.dmi'
 	icon_state = "bit_space"
 	area_flags = UNIQUE_AREA | NOTELEPORT | EVENT_PROTECTED | HIDDEN_AREA | UNLIMITED_FISHING

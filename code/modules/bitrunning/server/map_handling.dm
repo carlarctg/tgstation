@@ -84,24 +84,20 @@
 	for(var/datum/lazy_template/virtual_domain/available in SSbitrunning.all_domains)
 		if(map_key == available.key && points >= available.cost)
 			generated_domain = available
-			RegisterSignal(generated_domain, COMSIG_LAZY_TEMPLATE_LOADED, PROC_REF(on_template_loaded))
-			generated_domain.lazy_load()
-			return TRUE
 
-	return FALSE
+	if(!generated_domain)
+		return FALSE
 
-
-<<<<<<< HEAD
 	var/list/mob/lucky_ghosts
-	if(initial(to_load.mission_max_candidates))
+	if(initial(generated_domain.mission_max_candidates))
 		playsound(src, 'sound/machines/chime.ogg', 50, TRUE)
 		say("Loading advanced NPCs...")
-		var/list/mob/candidates = poll_ghost_candidates("Do you want to play as a virtual [initial(to_load.spawner_role)] in a bitrunner domain?", ROLE_GHOST_ROLE, ROLE_GHOST_ROLE, 15 SECONDS, POLL_IGNORE_SHUTTLE_DENIZENS, TRUE)
-		for(var/amount in 1 to initial(to_load.mission_max_candidates))
+		var/list/mob/candidates = SSpolling.poll_ghost_candidates("Do you want to play as a virtual [initial(generated_domain.spawner_role)] in a bitrunner domain?", ROLE_GHOST_ROLE, ROLE_GHOST_ROLE, 15 SECONDS, POLL_IGNORE_SHUTTLE_DENIZENS, TRUE)
+		for(var/amount in 1 to initial(generated_domain.mission_max_candidates))
 			LAZYADD(lucky_ghosts, pick_n_take(candidates))
 
-		if(length(lucky_ghosts) < initial(to_load.mission_min_candidates))
-			notify_ghosts("Not enough candidates for [initial(to_load.spawner_role)]! Aborting mission!")
+		if(length(lucky_ghosts) < initial(generated_domain.mission_min_candidates))
+			notify_ghosts("Not enough candidates for [initial(generated_domain.spawner_role)]! Aborting mission!")
 			playsound(src, "sound/machines/buzz-[pick("sigh", "two")].ogg", 50, TRUE)
 			say("Error! Unable to load advanced NPCs. Please try again or select different domain.")
 			return FALSE
@@ -109,18 +105,14 @@
 		playsound(src, 'sound/machines/ping.ogg', 50, TRUE)
 		say("Success!")
 
-	generated_domain = new to_load(lucky_ghosts)
+//	generated_domain = new to_load(lucky_ghosts)
 	RegisterSignal(generated_domain, COMSIG_LAZY_TEMPLATE_LOADED, PROC_REF(on_template_loaded))
 	generated_domain.lazy_load()
 
 	return TRUE
 
-/// Loads in necessary map items, sets mutation targets, etc
-/obj/machinery/quantum_server/proc/initialize_map_items()
-=======
 /// Loads in necessary map items like hololadder spawns, caches, etc
 /obj/machinery/quantum_server/proc/load_map_items()
->>>>>>> upstream/master
 	var/turf/goal_turfs = list()
 	var/turf/cache_turfs = list()
 	var/turf/curiosity_turfs = list()

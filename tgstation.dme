@@ -3665,12 +3665,9 @@
 #include "code\modules\bitrunning\virtual_domain\domains\meta_central.dm"
 #include "code\modules\bitrunning\virtual_domain\domains\pipedream.dm"
 #include "code\modules\bitrunning\virtual_domain\domains\pirates.dm"
-<<<<<<< HEAD
 #include "code\modules\bitrunning\virtual_domain\domains\ruined_library.dm"
-=======
 #include "code\modules\bitrunning\virtual_domain\domains\psyker_shuffle.dm"
 #include "code\modules\bitrunning\virtual_domain\domains\psyker_zombies.dm"
->>>>>>> upstream/master
 #include "code\modules\bitrunning\virtual_domain\domains\stairs_and_cliffs.dm"
 #include "code\modules\bitrunning\virtual_domain\domains\syndicate_showdown.dm"
 #include "code\modules\bitrunning\virtual_domain\domains\test_only.dm"

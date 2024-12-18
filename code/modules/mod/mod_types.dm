@@ -463,11 +463,9 @@
 		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/magnetic_harness,
 		/obj/item/mod/module/flashlight,
-<<<<<<< HEAD
-		/obj/item/mod/module/jetpack,
-=======
+
 		/obj/item/mod/module/quick_cuff,
->>>>>>> upstream/master
+
 	)
 	/// The insignia type, insignias show what sort of member of the ERT you're dealing with.
 	var/insignia_type = /obj/item/mod/module/insignia

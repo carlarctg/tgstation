@@ -88,13 +88,8 @@
 		return
 	return ..()
 
-<<<<<<< HEAD
 
-/obj/item/paperplane/throw_at(atom/target, range, speed, mob/thrower, spin=FALSE, diagonals_first = FALSE, datum/callback/callback, gentle = FALSE, quickstart = TRUE)
-	. = ..(target, range, speed, thrower, FALSE, diagonals_first, callback, quickstart = quickstart)
 
-=======
->>>>>>> upstream/master
 /obj/item/paperplane/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(iscarbon(hit_atom) && HAS_TRAIT(hit_atom, TRAIT_PAPER_MASTER))
 		var/mob/living/carbon/hit_carbon = hit_atom

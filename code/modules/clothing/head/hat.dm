@@ -201,6 +201,9 @@
 	greyscale_config_worn = /datum/greyscale_config/jester_hat/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 
+/obj/item/clothing/head/costume/jester/clown_colors
+	greyscale_colors = COLOR_YELLOW + COLOR_PINK
+
 /obj/item/clothing/head/costume/jesteralt
 	name = "jester hat"
 	desc = "A hat with bells, to add some merriness to the suit."

@@ -48,14 +48,6 @@
 	if(is_station_level(z))
 		GLOB.station_turfs += src
 
-<<<<<<< HEAD
-/turf/open/misc/grass/burnt
-	name = "burnt grass"
-	desc = "A patch of burnt grass."
-	icon_state = "sand"
-	base_icon_state = "sand"
-=======
-
 /turf/open/misc/grass/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
 	. = ..()
 	if (!.)
@@ -66,7 +58,11 @@
 
 	underlay_appearance.transform = transform
 
->>>>>>> upstream/master
+/turf/open/misc/grass/burnt
+	name = "burnt grass"
+	desc = "A patch of burnt grass."
+	icon_state = "sand"
+	base_icon_state = "sand"
 
 /turf/open/misc/grass/lavaland
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS

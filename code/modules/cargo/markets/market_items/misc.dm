@@ -162,10 +162,6 @@
 	stock_min = 1
 	stock_max = 4
 	availability_prob = 80
-
-/datum/market_item/misc/fish
-	name = "Fish"
-	desc = "Fish! Fresh fish! Fish you can cut, grind and even keep in aquarium if you want to! Get some before the next fight at my village breaks out!"
 	price_min = PAYCHECK_CREW * 0.5
 	price_max = PAYCHECK_CREW * 1.2
 	item = /obj/item/storage/fish_case/blackmarket

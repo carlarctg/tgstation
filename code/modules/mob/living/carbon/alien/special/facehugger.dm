@@ -103,11 +103,9 @@
 	if(CanHug(AM) && Adjacent(AM))
 		return Leap(AM)
 
-<<<<<<< HEAD
-/obj/item/clothing/mask/facehugger/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, gentle = FALSE, quickstart = TRUE)
-=======
+
 /obj/item/clothing/mask/facehugger/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, gentle, quickstart = TRUE)
->>>>>>> upstream/master
+
 	. = ..()
 	if(!.)
 		return

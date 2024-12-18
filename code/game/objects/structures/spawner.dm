@@ -94,7 +94,8 @@
 	spawner_gps_id = "Hostile Warp Beacon"
 
 /obj/structure/spawner/syndicate/stormtrooper
-	mob_types = list(/mob/living/basic/syndicate/melee/space/stormtrooper, /mob/living/basic/syndicate/melee/sword/space/stormtrooper, /mob/living/basic/syndicate/ranged/space/stormtrooper, /mob/living/basic/syndicate/ranged/smg/space/stormtrooper, /mob/living/basic/syndicate/ranged/shotgun/space/stormtrooper)
+//	mob_types = list(/mob/living/basic/syndicate/melee/space/stormtrooper, /mob/living/basic/syndicate/melee/sword/space/stormtrooper, /mob/living/basic/syndicate/ranged/space/stormtrooper, /mob/living/basic/syndicate/ranged/smg/space/stormtrooper, /mob/living/basic/syndicate/ranged/shotgun/space/stormtrooper)
+	mob_types = list(/mob/living/basic/trooper/syndicate/space/stormtrooper)
 
 /obj/structure/spawner/skeleton
 	name = "bone pit"

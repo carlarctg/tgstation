@@ -49,17 +49,13 @@
 	return .
 
 /obj/item/melee/sickly_blade/attack_self(mob/user)
-<<<<<<< HEAD
-	if(is_centcom_level(z) || is_reserved_level(z) || is_secret_level(z))
-		to_chat(user, span_warning("The Mansus can't help you here."))
-		return
-=======
+
 	seek_safety(user)
 	return ..()
 
 /// Attempts to teleport the passed mob to somewhere safe on the station, if they can use the blade.
 /obj/item/melee/sickly_blade/proc/seek_safety(mob/user)
->>>>>>> upstream/master
+
 	var/turf/safe_turf = find_safe_turf(zlevels = z, extended_safety_checks = TRUE)
 	if(check_usability(user))
 		if(do_teleport(user, safe_turf, channel = TELEPORT_CHANNEL_MAGIC))

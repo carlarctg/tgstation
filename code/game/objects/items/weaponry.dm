@@ -82,6 +82,35 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	if(user.combat_mode)
 		return ..(target, user)
 
+/obj/item/balloon_mallet/squasher
+	name = "comical balloon mallet"
+	desc = "This large balloon mallet somehow seems sillier than usual. Best not to get hit by it."
+	icon = 'icons/obj/weapons/hammer.dmi'
+	icon_state = "balloon_mallet"
+	inhand_icon_state = "balloon_mallet"
+	lefthand_file = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
+	siemens_coefficient = 0
+	hitsound = 'sound/effects/cartoon_sfx/cartoon_splat.ogg'
+	force = 15
+	w_class = WEIGHT_CLASS_HUGE
+	attack_verb_continuous = list("squashes", "flattens")
+	attack_verb_simple = list("squash", "flatten")
+	color = COLOR_RED
+
+/obj/item/balloon_mallet/squasher/Initialize(mapload)
+	. = ..()
+
+	transform.Scale(1.5)
+
+/obj/item/balloon_mallet/squasher/attack(mob/living/target, mob/living/user)
+	. = ..()
+	if(!.)
+		return
+
+	target.AddElement(/datum/element/squish, 2 SECONDS)
+	target.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH * 2, 10 SECONDS)
+
 /obj/item/sord
 	name = "\improper SORD"
 	desc = "This thing is so unspeakably shitty you are having a hard time even holding it."

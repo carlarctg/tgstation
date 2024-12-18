@@ -2,10 +2,10 @@
 	name = "Cleanse"
 	desc = "Tidies up the nearby area, extinguishes flames, and generally just makes things nicer."
 	button_icon_state = "sacredflame"
-	sound = 'sound/magic/repulse.ogg'
+	sound = SFX_RUSTLE
 
 	school = SCHOOL_CONJURATION
-	cooldown_time = 45 SECONDS
+	cooldown_time = 25 SECONDS
 
 	invocation = "SCOURGIFY!"
 	invocation_type = INVOCATION_SHOUT

@@ -295,13 +295,10 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 			var/unholy2holy = bible_smacked.reagents.get_reagent_amount(/datum/reagent/fuel/unholywater)
 			bible_smacked.reagents.del_reagent(/datum/reagent/fuel/unholywater)
 			bible_smacked.reagents.add_reagent(/datum/reagent/water/holywater,unholy2holy)
-<<<<<<< HEAD
-		if(istype(bible_smacked, /obj/item/book/bible))
-			. |= AFTERATTACK_PROCESSED_ITEM
-=======
+
 			. = ITEM_INTERACT_SUCCESS
-		if(istype(bible_smacked, /obj/item/book/bible) && !istype(bible_smacked, /obj/item/book/bible/syndicate))
->>>>>>> upstream/master
+		if(istype(bible_smacked, /obj/item/book/bible) && !istype(bible_smacked, /obj/item/book/bible/blessing_bible/syndicate))
+
 			bible_smacked.balloon_alert(user, "converted")
 			var/obj/item/book/bible/other_bible = bible_smacked
 			other_bible.name = name
@@ -337,7 +334,6 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 	carve_out()
 	new /obj/item/reagent_containers/cup/glass/bottle/whiskey(src)
 
-<<<<<<< HEAD
 /obj/item/book/bible/blessing_bible
 	name = "blessed bible"
 	desc = "This bible feels ethereal to the touch, almost like it was graced by a deity. You feel the strong urge to peer inside its pages."
@@ -346,7 +342,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 	var/owner_name
 	var/baptize_verb = "BLESSES"
 	var/baptize_damtype = BURN
-	var/baptize_sfx = 'sound/weapons/sear.ogg'
+	var/baptize_sfx = SFX_SEAR
 	var/baptize_effect = "holy light"
 	var/blessing_color = COLOR_YELLOW
 
@@ -378,10 +374,6 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 
 /obj/item/book/bible/blessing_bible/syndicate
 	name = "Syndicate Tome"
-=======
-/obj/item/book/bible/syndicate
-	name = "syndicate tome"
->>>>>>> upstream/master
 	desc = "A very ominous tome resembling a bible."
 	icon_state ="ebook"
 	item_flags = NO_BLOOD_ON_ITEM
@@ -409,29 +401,9 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 		tip_text = "Clear rune", \
 		effects_we_clear = list(/obj/effect/rune, /obj/effect/heretic_rune, /obj/effect/cosmic_rune), \
 	)
-<<<<<<< HEAD
-	AddElement(/datum/element/bane, target_type = /mob/living/simple_animal/revenant, damage_multiplier = 0, added_damage = 25, requires_combat_mode = FALSE)
-=======
 	AddElement(/datum/element/bane, target_type = /mob/living/basic/revenant, damage_multiplier = 0, added_damage = 25, requires_combat_mode = FALSE)
 
-/obj/item/book/bible/syndicate/attack_self(mob/living/carbon/human/user, modifiers)
-	if(!uses || !istype(user))
-		return
-	user.mind.holy_role = HOLY_ROLE_PRIEST
-	uses -= 1
-	to_chat(user, span_userdanger("You try to open the book AND IT BITES YOU!"))
-	playsound(src.loc, 'sound/effects/snap.ogg', 50, TRUE)
-	user.apply_damage(5, BRUTE, user.get_active_hand(), attacking_item = src)
-	to_chat(user, span_notice("Your name appears on the inside cover, in blood."))
-	owner_name = user.real_name
-
-/obj/item/book/bible/syndicate/examine(mob/user)
-	. = ..()
-	if(owner_name)
-		. += span_warning("The name [owner_name] is written in blood inside the cover.")
-
-/obj/item/book/bible/syndicate/attack(mob/living/target_mob, mob/living/carbon/human/user, params, heal_mode = TRUE)
+/obj/item/book/bible/blessing_bible/syndicate/attack(mob/living/target_mob, mob/living/carbon/human/user, params, heal_mode = TRUE)
 	if(!user.combat_mode)
 		return ..()
 	return ..(target_mob, user, heal_mode = FALSE)
->>>>>>> upstream/master

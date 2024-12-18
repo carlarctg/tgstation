@@ -80,15 +80,11 @@
 			spawned_human.set_facial_hairstyle(facial_hairstyle, update = FALSE)
 		if(haircolor)
 			spawned_human.set_haircolor(haircolor, update = FALSE)
-		if(facial_haircolor)
-<<<<<<< HEAD
-			spawned_human.facial_hair_color = facial_haircolor
-		else
-			spawned_human.facial_hair_color = haircolor
+			spawned_human.set_facial_haircolor(facial_haircolor ? facial_haircolor : haircolor, update = FALSE)
 		if(skin_tone)
 			spawned_human.skin_tone = skin_tone
 		else
-			spawned_human.skin_tone = random_skin_tone()
+			spawned_human.skin_tone = pick(GLOB.skin_tones)
 		if(mob_gender)
 			spawned_human.gender = mob_gender
 		else
@@ -105,9 +101,6 @@
 		else
 			spawned_human.eye_color_left = random_eye_color()
 			spawned_human.eye_color_right = prob(99) ? spawned_human.eye_color_left : random_eye_color()
-=======
-			spawned_human.set_facial_haircolor(facial_haircolor, update = FALSE)
->>>>>>> upstream/master
 		spawned_human.update_body(is_creating = TRUE)
 
 /obj/effect/mob_spawn/proc/name_mob(mob/living/spawned_mob, forced_name)

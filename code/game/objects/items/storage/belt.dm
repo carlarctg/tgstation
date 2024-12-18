@@ -469,7 +469,6 @@
 	. = ..()
 	atom_storage.max_slots = 9
 	atom_storage.set_holdable(null)
-	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
 
 /obj/item/storage/belt/mining/healing/PopulateContents()
 	for(var/i in 1 to 2)

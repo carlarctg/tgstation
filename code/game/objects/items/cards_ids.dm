@@ -1790,6 +1790,34 @@
 	assigned_icon_state = "assigned_syndicate"
 	wildcard_slots = WILDCARD_LIMIT_GOLD
 
+/obj/item/card/id/advanced/adventuring_license
+	name = "adventuring license"
+	desc = "A written license from the adventuring guild. You're good to go!"
+	icon_state = "card_rpg"
+	assigned_icon_state = "rpg_assigned"
+	wildcard_slots = WILDCARD_LIMIT_GOLD
+
+/obj/item/card/id/advanced/adventuring_license/ranger
+	department_color_override = COLOR_DARK_BROWN
+	assignment = /datum/job/curator::rpg_title
+	pointer_color = COLOR_DARK_BROWN
+
+/obj/item/card/id/advanced/adventuring_license/knight
+	department_color_override = COLOR_SILVER
+	assignment = /datum/job/chaplain::rpg_title
+	pointer_color = COLOR_SILVER
+
+/obj/item/card/id/advanced/adventuring_license/priest
+	department_color_override = COLOR_LIGHT_YELLOW
+	assignment = /datum/job/doctor::rpg_title
+	pointer_color = COLOR_LIGHT_YELLOW
+	big_pointer = TRUE // in lieu of a dedicated leader, supports are often the rallying point
+
+/obj/item/card/id/advanced/adventuring_license/jester
+	department_color_override = COLOR_PINK
+	assignment = /datum/job/clown::rpg_title
+	pointer_color = COLOR_PINK
+
 /obj/item/card/id/advanced/engioutpost
 	registered_name = "George 'Plastic' Miller"
 	desc = "A card used to provide ID and determine access across the station. There's blood dripping from the corner. Ew."

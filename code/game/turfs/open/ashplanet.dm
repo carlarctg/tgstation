@@ -70,7 +70,6 @@
 	icon_state = "[icon_state][rand(1, 9)]"
 	. = ..()
 
-<<<<<<< HEAD
 /turf/open/misc/ashplanet/ash/normal_air
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = FALSE
@@ -78,7 +77,6 @@
 /turf/open/misc/ashplanet/rocky/normal_air
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = FALSE
-=======
+
 /turf/open/misc/ashplanet/wateryrock/lavaland_atmos
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
->>>>>>> upstream/master

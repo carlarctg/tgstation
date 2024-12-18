@@ -121,6 +121,15 @@
 	  */
 	var/list/skillchips = null
 
+	/// If defined, using this outfit sets the targets species to it
+	var/datum/species/species_override
+	/// This outfit will grant these spells if applied
+	var/list/spells_to_add = list()
+	/// If this is set to anything but null, it will change spell requirements from (usually) requiring wizard garb and so on
+	var/new_spell_requirements = NONE
+	/// This outfit will grant these mutations if applied
+	var/list/mutations_to_add = list()
+
 	///Should we preload some of this job's items?
 	var/preload = FALSE
 
@@ -141,7 +150,23 @@
  * If visuals_only is true, you can omit any work that doesn't visually appear on the character sprite
  */
 /datum/outfit/proc/pre_equip(mob/living/carbon/human/user, visuals_only = FALSE)
-	//to be overridden for customization depending on client prefs,species etc
+	SHOULD_CALL_PARENT(TRUE)
+	if(!isnull(species_override))
+		user.set_species(species_override)
+
+	else if (!isnull(user.dna.species.outfit_important_for_life)) //plasmamen get lit on fire and die
+		user.set_species(/datum/species/human)
+
+	for(var/datum/action/act as anything in spells_to_add)
+		var/datum/action/new_ability = new act(user)
+		if(istype(new_ability, /datum/action/cooldown/spell) && new_spell_requirements)
+			var/datum/action/cooldown/spell/new_spell = new_ability
+			new_spell.spell_requirements = new_spell_requirements
+		new_ability.Grant(user)
+
+	for(var/mutation in mutations_to_add)
+		user.dna.add_mutation(mutation)
+
 	return
 
 /**
@@ -296,6 +321,11 @@
 				var/activate_msg = skillchip_instance.try_activate_skillchip(TRUE, TRUE)
 				if(activate_msg)
 					CRASH("Failed to activate [user]'s [skillchip_instance], on job [src]. Failure message: [activate_msg]")
+
+		if(spells_to_add)
+			for(var/datum/action/cooldown/spell/spelle as anything in spells_to_add)
+				spelle = new(user)
+				spelle.Grant(user)
 
 
 	user.update_body()

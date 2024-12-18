@@ -824,14 +824,7 @@ Striking a noncultist, however, will tear their flesh."}
 	icon_state = "blindfold"
 	inhand_icon_state = "blindfold"
 	flash_protect = FLASH_PROTECTION_WELDER
-<<<<<<< HEAD
-	var/cult_only = TRUE
 
-/obj/item/clothing/glasses/hud/health/night/cultblind/equipped(mob/living/user, slot)
-	..()
-	if(user.stat != DEAD && !IS_CULTIST(user) && (slot & ITEM_SLOT_EYES) && cult_only)
-		to_chat(user, span_cultlarge("\"You want to be blind, do you?\""))
-=======
 	actions_types = null
 	color_cutoffs = list(40, 0, 0) //red
 	glass_colour_type = null
@@ -841,7 +834,7 @@ Striking a noncultist, however, will tear their flesh."}
 	..()
 	if(user.stat != DEAD && !IS_CULTIST(user) && (slot & ITEM_SLOT_EYES))
 		to_chat(user, span_cult_large("\"You want to be blind, do you?\""))
->>>>>>> upstream/master
+
 		user.dropItemToGround(src, TRUE)
 		user.set_dizzy_if_lower(1 MINUTES)
 		user.Paralyze(100)
@@ -849,7 +842,7 @@ Striking a noncultist, however, will tear their flesh."}
 
 /obj/item/clothing/glasses/hud/health/night/cultblind/free
 	desc = "May the Mansus guide you through the darkness and shield you from the light."
-	cult_only = FALSE
+//	cult_only = FALSE
 
 /obj/item/reagent_containers/cup/beaker/unholywater
 	name = "flask of unholy water"

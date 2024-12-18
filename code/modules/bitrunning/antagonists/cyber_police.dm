@@ -24,6 +24,7 @@
 	uniform = /obj/item/clothing/under/suit/black_really
 
 /datum/outfit/cyber_police/pre_equip(mob/living/carbon/human/user, visuals_only)
+	..()
 	if(!visuals_only)
 		return
 

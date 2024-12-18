@@ -5,33 +5,6 @@
 	var/display_name = ""
 	/// Description shown in the UI
 	var/desc = ":KILL:"
-	/// If defined, using this outfit sets the targets species to it
-	var/datum/species/species_override
-	/// This outfit will grant these spells if applied
-	var/list/spells_to_add = list()
-	/// This outfit will grant these mutations if applied
-	var/list/mutations_to_add = list()
-
-/datum/outfit/deathmatch_loadout/pre_equip(mob/living/carbon/human/user, visuals_only = FALSE)
-	. = ..()
-	if(isdummy(user))
-		return
-
-	if(!isnull(species_override))
-		user.set_species(species_override)
-
-	else if (!isnull(user.dna.species.outfit_important_for_life)) //plasmamen get lit on fire and die
-		user.set_species(/datum/species/human)
-
-	for(var/datum/action/act as anything in spells_to_add)
-		var/datum/action/new_ability = new act(user)
-		if(istype(new_ability, /datum/action/cooldown/spell))
-			var/datum/action/cooldown/spell/new_spell = new_ability
-			new_spell.spell_requirements = NONE
-		new_ability.Grant(user)
-
-	for(var/mutation in mutations_to_add)
-		user.dna.add_mutation(mutation)
 
 /datum/outfit/deathmatch_loadout/naked
 	name = "Deathmatch: Naked"

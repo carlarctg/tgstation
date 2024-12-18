@@ -162,3 +162,13 @@
 	name = pick("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
 	// Only one person can tame these fellas, and they only need one apple
 	AddComponent(/datum/component/tameable, food_types = list(/obj/item/food/grown/apple), tame_chance = 100, bonus_tame_chance = 15, unique = unique_tamer)
+
+/obj/item/horse_spawner
+	name = "horse deliverer"
+	desc = "This item delivers one horse somewhere nearby. Wow!"
+
+/obj/item/horse_spawner/attack_self(mob/user, modifiers)
+	. = ..()
+	user.balloon_alert(user, "horse delivery in progress")
+	send_supply_pod_to_area(new /mob/living/basic/pony, get_area(src), pod_type = /obj/structure/closet/supplypod/podspawn)
+	qdel(src)

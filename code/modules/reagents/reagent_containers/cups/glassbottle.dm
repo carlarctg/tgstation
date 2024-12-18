@@ -1088,7 +1088,7 @@
 	gulp_size = 25
 	amount_per_transfer_from_this = 25
 	possible_transfer_amounts = list(25)
-	list_reagents = list(/datum/reagent/medicine/c2/penthrite = 20, /datum/reagent/abidonium = 20, /datum/reagent/consumable/ethanol/brave_bull = 10)
+	list_reagents = list(/datum/reagent/medicine/c2/penthrite = 20/*, /datum/reagent/abidonium = 20*/, /datum/reagent/consumable/ethanol/brave_bull = 10)
 
 /obj/item/reagent_containers/cup/tube/martyr_phial
 	name = "martyr phial"
@@ -1097,6 +1097,15 @@
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(20)
 	list_reagents = list(/datum/reagent/inverse/penthrite = 10)
+
+// todo make this shatter on throw
+/obj/item/reagent_containers/cup/tube/mending_phial
+	name = "mending phial"
+	desc = "A grainy, dirty phial that looks extremely unpalatable for drinking. Probably because it's not meant to be; throw this at someone who's bleeding or otherwise Wounded to partly seal up their injuries. Smells like salty flour."
+	gulp_size = 20
+	amount_per_transfer_from_this = 20
+	possible_transfer_amounts = list(20)
+	list_reagents = list(/datum/reagent/consumable/flour = 5, /datum/reagent/consumable/corn_starch = 5, /datum/reagent/water/salt = 5)
 
 /obj/item/reagent_containers/cup/glass/bottle/small/stasis_potion
 	name = "stasis potion"
@@ -1124,7 +1133,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/dreadful_potion
 	name = "dreadful potion"
-	desc = "Nausea overcomes you just from glancing at this draught. I don't even know what it looks like. Smells pretty good though."
+	desc = "Nausea overcomes you just from glancing at this draught. There's a symbol that looks like a book carved into it. Smells like raspberries."
 	gulp_size = 25
 	amount_per_transfer_from_this = 25
 	possible_transfer_amounts = list(25)

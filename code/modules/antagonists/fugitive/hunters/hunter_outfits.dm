@@ -47,7 +47,10 @@
 	id = /obj/item/card/id/advanced/bountyhunter
 
 /datum/outfit/russian_hunter/pre_equip(mob/living/carbon/human/equip_to)
+	..()
+	spawn_random_gear()
 
+/datum/outfit/russian_hunter/proc/spawn_random_gear()
 	// Let's give the Russians a bit of randomization for style.
 	var/static/list/alt_uniforms = list(
 		/obj/item/clothing/under/syndicate/soviet,
@@ -93,7 +96,7 @@
 	head = /obj/item/clothing/head/costume/ushanka
 	shoes = /obj/item/clothing/shoes/combat
 
-/datum/outfit/russian_hunter/leader/pre_equip(mob/living/carbon/human/equip_to)
+/datum/outfit/russian_hunter/leader/spawn_random_gear()
 	return // None of the RNG russian equipment stuff.
 
 /datum/outfit/bountyarmor
@@ -232,6 +235,7 @@
 	implants = list(/obj/item/implant/explosive)
 
 /datum/outfit/mi13_hunter/pre_equip(mob/living/carbon/human/agent, visuals_only = FALSE)
+	..()
 	backpack_contents = list()
 	backpack_contents += pick_weight(list(/obj/item/ammo_box/magazine/m9mm = 80,
 	/obj/item/ammo_box/magazine/m9mm/hp = 10,

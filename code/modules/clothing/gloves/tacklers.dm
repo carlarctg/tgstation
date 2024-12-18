@@ -121,19 +121,6 @@
 	desc = "Gloves for football players! Teaches them how to tackle like a pro."
 	icon_state = "tackle_gloves"
 	inhand_icon_state = null
-<<<<<<< HEAD
 
-/obj/item/clothing/gloves/tackler/plate
-	name = "enchanted gauntlets"
-	desc = "These enchanted gauntlets allow the wearer to perform combat dives, dodging spells, tackling foes, and smashing into walls!"
-	icon_state = "plate"
-	siemens_coefficient = 0
-	cold_protection = HANDS
-	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
-	heat_protection = HANDS
-	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
-	resistance_flags = NONE
-	clothing_traits = list()
-=======
 	fishing_modifier = -4
->>>>>>> upstream/master
+

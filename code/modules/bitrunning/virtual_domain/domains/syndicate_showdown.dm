@@ -3,14 +3,15 @@
 	cost = BITRUNNER_COST_MEDIUM
 	help_text = "Destroy the syndicate asteroid stronghold, look for a keycard, and break into the syndicate shuttle."
 	difficulty = BITRUNNER_DIFFICULTY_HIGH
-	extra_loot = list(/obj/item/toy/plush/nukeplushie = 1)
+	completion_loot = list(/obj/item/toy/plush/nukeplushie = 1)
+	secondary_loot = list()
 	desc = "The syndicate have set up a plasma mining outpost on a nearby asteroid. \
 		It is exceedingly well protected, with many lesser Syndicate, viscerators, and four true Nuclear Operatives. \
 		Find the keycard to the Syndicate shuttle, breach in, take the loot, and run!"
 	key = "syndicate_showdown"
 	map_name = "syndicate_showdown"
 	reward_points = BITRUNNER_REWARD_EXTREME
-	safehouse_path = /datum/map_template/safehouse/shuttle
+	//safehouse_path = /datum/map_template/safehouse/shuttle
 	mission_min_candidates = 0 // Not required.
 	mission_max_candidates = 4
 

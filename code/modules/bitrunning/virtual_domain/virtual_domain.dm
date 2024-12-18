@@ -32,26 +32,6 @@
 	var/name = "Virtual Domain"
 	/// Points to reward for completion. Used to purchase new domains and calculate ore rewards.
 	var/reward_points = BITRUNNER_REWARD_MIN
-<<<<<<< HEAD
-	/// The start time of the map. Used to calculate time taken
-	var/start_time
-	/// This map is specifically for unit tests. Shouldn't display in game
-	var/test_only = FALSE
-	/// The safehouse to load into the map
-	var/datum/map_template/safehouse/safehouse_path = /datum/map_template/safehouse/den
-	/// At least this many candidates or it will cancel the loading!
-	var/mission_min_candidates = 0
-	/// Maximum amount possible of above.
-	var/mission_max_candidates = 1
-	/// Ghosts that will be spawned as, presumably, an antagonist in the map.
-	var/list/chosen_ghosts
-	/// The role that ghosts will get. Only used for poll text.
-	var/spawner_role = "Antagonist"
-
-/datum/lazy_template/virtual_domain/New(var/list/chosen_ghosts)
-	. = ..()
-	SEND_GLOBAL_SIGNAL("COMSIG_GLOBAL_VIRTUAL_DOMAIN_LOADED", chosen_ghosts)
-=======
 
 	/**
 	 * Player customization
@@ -96,7 +76,18 @@
 	var/list/custom_spawns = list()
 	/// Set TRUE if you want reusable custom spawners
 	var/keep_custom_spawns = FALSE
+	/// At least this many candidates or it will cancel the loading!
+	var/mission_min_candidates = 0
+	/// Maximum amount possible of above.
+	var/mission_max_candidates = 1
+	/// Ghosts that will be spawned as, presumably, an antagonist in the map.
+	var/list/chosen_ghosts
+	/// The role that ghosts will get. Only used for poll text.
+	var/spawner_role = "Antagonist"
 
+/datum/lazy_template/virtual_domain/New(var/list/chosen_ghosts)
+	. = ..()
+	SEND_GLOBAL_SIGNAL("COMSIG_GLOBAL_VIRTUAL_DOMAIN_LOADED", chosen_ghosts)
 
 /// Sends a point to any loot signals on the map
 /datum/lazy_template/virtual_domain/proc/add_points(points_to_add)
@@ -106,4 +97,3 @@
 /// Overridable proc to be called after the map is loaded.
 /datum/lazy_template/virtual_domain/proc/setup_domain(list/created_atoms)
 	return
->>>>>>> upstream/master

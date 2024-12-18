@@ -326,6 +326,10 @@
 	strip_delay = 70
 	equip_delay_other = 50
 
+/obj/item/clothing/suit/armor/balloon_vest/Initialize(mapload)
+	. = ..()
+	allowed |= /obj/item/balloon_mallet
+
 /datum/armor/balloon_vest
 	melee = 10
 	laser = 10

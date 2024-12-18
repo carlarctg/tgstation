@@ -103,7 +103,7 @@ GLOBAL_LIST_EMPTY(identity_barriers)
 		allowed_entity = living_mover
 		update_description()
 		visible_message("[src] pulses as [living_mover] passes through, marking [living_mover.p_them()] as the only allowed creature!")
-		playsound(src, 'sound/magic/staff_chaos.ogg', 25, TRUE)
+//		playsound(src, 'sound/magic/staff_chaos.ogg', 25, TRUE)
 		ASYNC
 			animate(src, transform = matrix()*2, alpha = 0, time = 5, flags = ANIMATION_END_NOW) //fade out
 			sleep(0.5 SECONDS)
