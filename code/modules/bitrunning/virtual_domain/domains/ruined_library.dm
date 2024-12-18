@@ -96,7 +96,8 @@
 
 	uniform = /obj/item/clothing/under/costume/gladiator/ash_walker/darkened
 	suit = /obj/item/clothing/suit/hooded/cloak/goliath
-
+	l_pocket = /obj/item/eldritch_potion/wounded
+	r_pocket = /obj/item/eldritch_potion/crucible_soul
 	back = null
 	backpack_contents = list()
 	belt = /obj/item/storage/belt/mining/primitive/unrestricted
@@ -105,10 +106,18 @@
 		/obj/item/reagent_containers/cup/beaker/eldritch,
 		/obj/item/reagent_containers/cup/beaker/eldritch,
 		/obj/item/reagent_containers/cup/glass/bottle/wyvern,
-		/obj/item/eldritch_potion/wounded,
-		/obj/item/eldritch_potion/crucible_soul,
 		/obj/item/melee/sickly_blade/ash,
 		/obj/item/melee/sickly_blade/ash,
+	)
+	knowledge_to_grant = list(
+		/datum/heretic_knowledge/spell/basic,
+		/datum/heretic_knowledge/ashen_grasp,
+		/datum/heretic_knowledge/spell/ash_passage,
+		/datum/heretic_knowledge/mark/ash_mark,
+		/datum/heretic_knowledge/spell/fire_blast,
+		/datum/heretic_knowledge/spell/flame_birth,
+		/datum/heretic_knowledge/blade_upgrade/ash,
+		// spawns with mad mask
 	)
 
 /obj/item/slimecross/stabilized/darkblue/waterstone
@@ -130,12 +139,16 @@
 
 	glasses = /obj/item/clothing/glasses/hud/health/night/cultblind/free
 	gloves = /obj/item/clothing/gloves/color/black
-	mask = null
+	mask = /obj/item/clothing/mask/gas/explorer/folded
+	head = /obj/item/clothing/head/hooded/winterhood
+	neck = /obj/item/clothing/neck/heretic_focus/moon_amulet
 
 	shoes = /obj/item/clothing/shoes/workboots/mining
 	uniform = /obj/item/clothing/under/rank/cargo/miner/lavaland
 	suit = /obj/item/clothing/suit/hooded/wintercoat
 
+	l_pocket = /obj/item/eldritch_potion/wounded
+	r_pocket = /obj/item/eldritch_potion/duskndawn
 	belt = /obj/item/shovel/serrated
 	back = /obj/item/storage/backpack/explorer
 	backpack_contents = list(
@@ -143,11 +156,11 @@
 		/obj/item/reagent_containers/cup/beaker/eldritch,
 		/obj/item/reagent_containers/cup/glass/bottle/wyvern,
 		/obj/item/eldritch_potion/wounded,
-		/obj/item/eldritch_potion/duskndawn,
 		/obj/item/melee/sickly_blade/void,
 		/obj/item/melee/sickly_blade/void,
 	)
 	knowledge_to_grant = list(
+		/datum/heretic_knowledge/spell/basic,
 		/datum/heretic_knowledge/void_grasp,
 		/datum/heretic_knowledge/cold_snap,
 		/datum/heretic_knowledge/mark/void_mark,

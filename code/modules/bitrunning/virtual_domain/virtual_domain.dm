@@ -79,7 +79,7 @@
 	/// At least this many candidates or it will cancel the loading!
 	var/mission_min_candidates = 0
 	/// Maximum amount possible of above.
-	var/mission_max_candidates = 1
+	var/mission_max_candidates = 0
 	/// Ghosts that will be spawned as, presumably, an antagonist in the map.
 	var/list/chosen_ghosts
 	/// The role that ghosts will get. Only used for poll text.

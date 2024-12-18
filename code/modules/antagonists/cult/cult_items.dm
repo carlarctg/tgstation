@@ -829,9 +829,14 @@ Striking a noncultist, however, will tear their flesh."}
 	color_cutoffs = list(40, 0, 0) //red
 	glass_colour_type = null
 	forced_glass_color = FALSE
+	var/cult_only = TRUE
 
 /obj/item/clothing/glasses/hud/health/night/cultblind/equipped(mob/living/user, slot)
 	..()
+
+	if(!cult_only)
+		return
+
 	if(user.stat != DEAD && !IS_CULTIST(user) && (slot & ITEM_SLOT_EYES))
 		to_chat(user, span_cult_large("\"You want to be blind, do you?\""))
 
@@ -842,7 +847,7 @@ Striking a noncultist, however, will tear their flesh."}
 
 /obj/item/clothing/glasses/hud/health/night/cultblind/free
 	desc = "May the Mansus guide you through the darkness and shield you from the light."
-//	cult_only = FALSE
+	cult_only = FALSE
 
 /obj/item/reagent_containers/cup/beaker/unholywater
 	name = "flask of unholy water"
