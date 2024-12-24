@@ -125,8 +125,9 @@
 
 	l_pocket = /obj/item/flashlight/flare/torch
 	r_pocket = /obj/item/bitrunning_host_monitor
-	suit = /obj/item/clothing/suit/chaplainsuit/armor/crusader
+	suit = /obj/item/clothing/suit/chaplainsuit/armor/templar
 	suit_store = /obj/item/claymore/weak
+	force_suit_store = TRUE
 
 	back = /obj/item/shield/kite
 	belt = /obj/item/storage/belt/mining/alt/unrestricted

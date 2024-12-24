@@ -89,15 +89,15 @@
 		return FALSE
 
 	var/list/mob/lucky_ghosts
-	if(initial(generated_domain.mission_max_candidates))
+	if(generated_domain.mission_min_candidates)
 		playsound(src, 'sound/machines/chime.ogg', 50, TRUE)
 		say("Loading advanced NPCs...")
-		var/list/mob/candidates = SSpolling.poll_ghost_candidates("Do you want to play as a virtual [initial(generated_domain.spawner_role)] in a bitrunner domain?", ROLE_GHOST_ROLE, ROLE_GHOST_ROLE, 15 SECONDS, POLL_IGNORE_SHUTTLE_DENIZENS, TRUE)
-		for(var/amount in 1 to initial(generated_domain.mission_max_candidates))
+		var/list/mob/candidates = SSpolling.poll_ghost_candidates("Do you want to play as a virtual [generated_domain.spawner_role] in a bitrunner domain?", ROLE_GHOST_ROLE, ROLE_GHOST_ROLE, 15 SECONDS, POLL_IGNORE_SHUTTLE_DENIZENS, TRUE)
+		for(var/amount in 1 to generated_domain.mission_max_candidates)
 			LAZYADD(lucky_ghosts, pick_n_take(candidates))
 
-		if(length(lucky_ghosts) < initial(generated_domain.mission_min_candidates))
-			notify_ghosts("Not enough candidates for [initial(generated_domain.spawner_role)]! Aborting mission!")
+		if(length(lucky_ghosts) < generated_domain.mission_min_candidates)
+			notify_ghosts("Not enough candidates for [generated_domain.spawner_role]! Aborting mission!")
 			playsound(src, "sound/machines/buzz-[pick("sigh", "two")].ogg", 50, TRUE)
 			say("Error! Unable to load advanced NPCs. Please try again or select different domain.")
 			return FALSE
@@ -105,7 +105,7 @@
 		playsound(src, 'sound/machines/ping.ogg', 50, TRUE)
 		say("Success!")
 
-//	generated_domain = new to_load(lucky_ghosts)
+	generated_domain.load_advanced_npcs(lucky_ghosts)
 	RegisterSignal(generated_domain, COMSIG_LAZY_TEMPLATE_LOADED, PROC_REF(on_template_loaded))
 	generated_domain.lazy_load()
 
@@ -136,6 +136,10 @@
 			qdel(thing)
 			continue
 
+		if(istype(thing, /obj/effect/mob_spawn))
+			generated_domain.ghost_spawners += thing
+			continue
+
 		if(istype(thing, /obj/effect/landmark/bitrunning/curiosity_spawn))
 			curiosity_turfs += get_turf(thing)
 			qdel(thing)
@@ -154,12 +158,10 @@
 
 			new /obj/structure/hololadder(tile)
 
-
 	if(!length(exit_turfs))
 		CRASH("Failed to find exit turfs on generated domain.")
 	if(!length(goal_turfs))
 		CRASH("Failed to find send turfs on generated domain.")
-
 	if(!attempt_spawn_cache(cache_turfs))
 		return FALSE
 

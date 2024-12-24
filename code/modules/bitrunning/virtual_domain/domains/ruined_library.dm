@@ -12,26 +12,21 @@
 	map_name = "ruined_library"
 	reward_points = BITRUNNER_REWARD_HIGH
 	//safehouse_path = /datum/map_template/safehouse/wood
-	mission_min_candidates = 1 // They ARE the mission.
-	mission_max_candidates = 2
+	//mission_min_candidates = 1 // They ARE the mission.
+	//mission_max_candidates = 2
+
+
+/datum/lazy_template/virtual_domain/ruined_library/setup_domain(list/created_atoms)
+	. = ..()
+	for(var/mob/living/dude in ghost_mobs)
+		RegisterSignal(dude, COMSIG_LIVING_DEATH, PROC_REF(do_add_points))
+
+/datum/lazy_template/virtual_domain/ruined_library/proc/do_add_points()
+	SIGNAL_HANDLER
+	// 10 points make a crate. 15 points make a crate and a half. Thus a dead heretic = 1 crate, two dead heretics = 3 crates.
+	add_points(15)
 
 /obj/effect/mob_spawn/ghost_role/virtual_domain
-
-/obj/effect/mob_spawn/ghost_role/virtual_domain/Initialize(mapload)
-	. = ..()
-	RegisterSignal(SSdcs, "COMSIG_GLOB_VIRTUAL_DOMAIN_LOADED", PROC_REF(pick_ghost))
-
-/obj/effect/mob_spawn/ghost_role/virtual_domain/proc/pick_ghost(list/mob/ghosts_to_take)
-	if(length(ghosts_to_take) < 0 || isnull(ghosts_to_take))
-		return
-	create_from_ghost(pick_n_take(ghosts_to_take))
-	if(uses > 0)
-		pick_ghost(ghosts_to_take)
-
-/obj/effect/mob_spawn/ghost_role/virtual_domain/create_from_ghost(mob/dead/user)
-	var/mob/created_dude = ..()
-	notify_ghosts("[user] has been selected to be a [prompt_name]!", source = created_dude, header = "001010110")
-
 /obj/effect/mob_spawn/ghost_role/virtual_domain/library_heretic
 	name = "Virtual Domain Library Heretic"
 	prompt_name = "Virtual Heretic"
@@ -95,7 +90,7 @@
 	neck = /obj/item/clothing/neck/eldritch_amulet
 
 	uniform = /obj/item/clothing/under/costume/gladiator/ash_walker/darkened
-	suit = /obj/item/clothing/suit/hooded/cloak/goliath
+	suit = /obj/item/clothing/suit/hooded/cloak/goliath // forces hood on. annoying
 	l_pocket = /obj/item/eldritch_potion/wounded
 	r_pocket = /obj/item/eldritch_potion/crucible_soul
 	back = null
@@ -119,6 +114,7 @@
 		/datum/heretic_knowledge/blade_upgrade/ash,
 		// spawns with mad mask
 	)
+	spells_to_add = list(/datum/action/cooldown/spell/pointed/ash_beams) // Not a knowledge
 
 /obj/item/slimecross/stabilized/darkblue/waterstone
 	name = "water stone"

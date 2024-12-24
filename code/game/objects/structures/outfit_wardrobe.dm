@@ -55,7 +55,7 @@
 	for(var/datum/outfit/dressup in selectable_outfits_to_amount)
 		if(selectable_outfits_to_amount[dressup] == 0)
 			continue
-		var/datum/radial_menu_choice/option = new
+		var/datum/radial_menu_choice/option = new(src)
 		// We take the type of either the suit storage or head item (Likely to be relevant) or barring that the uniform
 		var/obj/item/sprite_path = initial(dressup.suit_store) || initial(dressup.head) || initial(dressup.uniform)
 		if(!sprite_path)
@@ -93,7 +93,7 @@
 
 /obj/structure/outfit_wardrobe/adventuring
 	name = "adventuring wardrobe"
-	desc = "Become a questing adventurer! Narnia not included, sadly."
+	desc = "Become a questing adventurer! Narnia not included."
 	obj_flags = INDESTRUCTIBLE
 	selectable_outfits_to_amount = list(
 		/datum/outfit/medieval/cleric = 1,
@@ -108,7 +108,7 @@
 
 /obj/structure/outfit_wardrobe/adventuring/honk
 	name = "jesting wardrobe"
-	desc = "Become a clowning clown! Wait what?"
+	desc = "Become a jesting clown! Wait what?"
 	obj_flags = INDESTRUCTIBLE
 	selectable_outfits_to_amount = list(
 		/datum/outfit/medieval/jester = 1,

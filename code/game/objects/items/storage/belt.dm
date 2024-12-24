@@ -468,7 +468,9 @@
 /obj/item/storage/belt/mining/alt/unrestricted/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 9
-	atom_storage.set_holdable(null)
+	atom_storage.max_total_storage = 60
+	atom_storage.max_specific_storage = WEIGHT_CLASS_BULKY
+	atom_storage.set_holdable(/obj/item)
 
 /obj/item/storage/belt/mining/healing/PopulateContents()
 	for(var/i in 1 to 2)
