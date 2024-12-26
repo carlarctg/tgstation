@@ -158,13 +158,17 @@
 	suit = /obj/item/clothing/suit/chaplainsuit/armor/witchhunter
 	suit_store = /obj/item/book/bible/blessing_bible
 
+	back = /obj/item/storage/backpack/cultpack
 	backpack_contents = list(
 		/obj/item/reagent_containers/cup/glass/bottle/healing_potion,
 		/obj/item/reagent_containers/cup/glass/bottle/healing_potion,
 		/obj/item/reagent_containers/cup/tube/martyr_phial,
+		/obj/item/reagent_containers/cup/tube/mending_phial,
+		/obj/item/reagent_containers/cup/tube/mending_phial,
+		/obj/item/reagent_containers/cup/tube/mending_phial,
 		/obj/item/knife/bloodletter,
 	)
-	belt = /obj/item/gun/ballistic/revolver/chaplain
+	belt = /obj/item/gun/ballistic/revolver/chaplain/burdenless
 	gloves = /obj/item/clothing/gloves/color/black
 	shoes = /obj/item/clothing/shoes/sneakers/marisa
 
@@ -181,6 +185,7 @@
 	l_pocket = /obj/item/grown/bananapeel
 	r_pocket = /obj/item/bitrunning_host_monitor
 	suit = /obj/item/clothing/suit/armor/balloon_vest
+	force_suit_store = TRUE
 	suit_store = /obj/item/balloon_mallet/squasher
 
 	back = /obj/item/storage/backpack/clown

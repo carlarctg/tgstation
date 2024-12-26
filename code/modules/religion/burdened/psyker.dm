@@ -173,6 +173,9 @@
 		"Lucky" = "Ain't that a kick in the head?",
 	)
 
+/obj/item/gun/ballistic/revolver/chaplain/burdenless
+	needs_burden = FALSE
+
 /obj/item/gun/ballistic/revolver/chaplain/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/anti_magic, MAGIC_RESISTANCE|MAGIC_RESISTANCE_HOLY)

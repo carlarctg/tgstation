@@ -36,7 +36,7 @@
 	  */
 	var/suit_store = null
 	/// If TRUE, forcibly adds type of suit_store to suit.allowed
-	var/forced_suit_store = FALSE
+	var/force_suit_store = FALSE
 
 	/// Type path of item to go in back slot
 	var/back = null
@@ -210,6 +210,9 @@
 		EQUIP_OUTFIT_ITEM(uniform, ITEM_SLOT_ICLOTHING)
 	if(suit)
 		EQUIP_OUTFIT_ITEM(suit, ITEM_SLOT_OCLOTHING)
+		if(force_suit_store && suit_store)
+			var/obj/item/clothing/suit/outfit_suit = user.wear_suit
+			LAZYADD(outfit_suit.allowed, suit_store)
 	if(belt)
 		EQUIP_OUTFIT_ITEM(belt, ITEM_SLOT_BELT)
 	if(gloves)
@@ -241,9 +244,6 @@
 				if(!SSid_access.apply_trim_to_card(id_card, id_trim))
 					WARNING("Unable to apply trim [id_trim] to [id_card] in outfit [name].")
 				user.sec_hud_set_ID()
-
-	if(forced_suit_store)
-		LAZYADD(suit.allowed, suit_store)
 
 	if(suit_store)
 		EQUIP_OUTFIT_ITEM(suit_store, ITEM_SLOT_SUITSTORE)

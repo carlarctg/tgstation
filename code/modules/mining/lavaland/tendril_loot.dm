@@ -836,6 +836,9 @@
 	custom_materials = null
 	var/datum/action/cooldown/spell/pointed/scan/scan_ability
 
+/obj/item/clothing/glasses/godeye/noturfs
+	vision_flags = NONE
+
 /obj/item/clothing/glasses/godeye/Initialize(mapload)
 	. = ..()
 	scan_ability = new(src)

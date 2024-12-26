@@ -65,25 +65,25 @@
 		option.info = span_boldnotice("[initial(dressup.name)]") // no desc..
 		display_classes[dressup] = option
 
-		sort_list(display_classes)
-		var/choice = show_radial_menu(human_user, src, display_classes, radius = 38)
-		if(!choice)
-			return
+	sort_list(display_classes)
+	var/choice = show_radial_menu(human_user, src, display_classes, radius = 38)
+	if(!choice)
+		return
 
-		chosen_class = choice
-		// If not null, reduce amount by one
-		if(!isnull(selectable_outfits_to_amount[choice]))
-			selectable_outfits_to_amount[choice]--
+	chosen_class = choice
+	// If not null, reduce amount by one
+	if(!isnull(selectable_outfits_to_amount[choice]))
+		selectable_outfits_to_amount[choice]--
 
 	human_user.balloon_alert(human_user, "outfitting...")
 	playsound(human_user, 'sound/items/zip/un_zip.ogg', 33)
-	playsound(src, /obj/structure/closet/secure_closet/personal/cabinet::open_sound, /obj/structure/closet/secure_closet/personal/cabinet::open_sound_volume)
+	playsound(src, 'sound/machines/closet/wooden_closet_open.ogg', 25)
 	icon_state = "fullcabinet_open"
 	if(!do_after(human_user, 5 SECONDS))
-		playsound(src, /obj/structure/closet/secure_closet/personal/cabinet::close_sound, /obj/structure/closet/secure_closet/personal/cabinet::close_sound_volume)
+		playsound(src, 'sound/machines/closet/wooden_closet_close.ogg', 50)
 		icon_state = initial(icon_state)
 		return
-	playsound(src, /obj/structure/closet/secure_closet/personal/cabinet::close_sound, /obj/structure/closet/secure_closet/personal/cabinet::close_sound_volume)
+	playsound(src, 'sound/machines/closet/wooden_closet_close.ogg', 50)
 	icon_state = initial(icon_state)
 	playsound(human_user, 'sound/items/zip/zip_up.ogg', 33)
 

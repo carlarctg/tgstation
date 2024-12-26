@@ -105,8 +105,6 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 
 /obj/item/balloon_mallet/squasher/attack(mob/living/target, mob/living/user)
 	. = ..()
-	if(!.)
-		return
 
 	target.AddElement(/datum/element/squish, 2 SECONDS)
 	target.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH * 2, 10 SECONDS)
