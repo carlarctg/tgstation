@@ -469,8 +469,9 @@
 /obj/item/storage/belt/mining/primitive/unrestricted/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 9
-	atom_storage.set_holdable(list(/obj/item), null)
-	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
+	atom_storage.max_total_storage = 60
+	atom_storage.set_holdable(/obj/item)
+	atom_storage.max_specific_storage = WEIGHT_CLASS_BULKY
 
 /obj/item/storage/belt/soulstone
 	name = "soul stone belt"

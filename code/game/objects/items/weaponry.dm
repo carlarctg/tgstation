@@ -95,15 +95,9 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	siemens_coefficient = 0
 	hitsound = 'sound/effects/cartoon_sfx/cartoon_splat.ogg'
 	force = 15
-	w_class = WEIGHT_CLASS_HUGE
 	attack_verb_continuous = list("squashes", "flattens")
 	attack_verb_simple = list("squash", "flatten")
 	color = COLOR_RED
-
-/obj/item/balloon_mallet/squasher/Initialize(mapload)
-	. = ..()
-
-	transform.Scale(1.5)
 
 /obj/item/balloon_mallet/squasher/attack(mob/living/target, mob/living/user)
 	. = ..()

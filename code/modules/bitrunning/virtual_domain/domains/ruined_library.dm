@@ -90,7 +90,7 @@
 	neck = /obj/item/clothing/neck/eldritch_amulet
 
 	uniform = /obj/item/clothing/under/costume/gladiator/ash_walker/darkened
-	suit = /obj/item/clothing/suit/hooded/cloak/goliath // forces hood on. annoying
+	suit = /obj/item/clothing/suit/hooded/cloak/goliath // forces hood on. annoying. how do i stop that
 	l_pocket = /obj/item/eldritch_potion/wounded
 	r_pocket = /obj/item/eldritch_potion/crucible_soul
 	back = null
@@ -154,6 +154,7 @@
 		/obj/item/eldritch_potion/wounded,
 		/obj/item/melee/sickly_blade/void,
 		/obj/item/melee/sickly_blade/void,
+		/obj/item/slimecross/stabilized/darkblue/waterstone,
 	)
 	knowledge_to_grant = list(
 		/datum/heretic_knowledge/spell/basic,

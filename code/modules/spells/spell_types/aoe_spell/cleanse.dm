@@ -13,32 +13,32 @@
 
 	aoe_radius = 3
 	var/static/list/elevated_structures = list(/obj/structure/table, /obj/structure/rack)
+	var/list/structures_in_view
 
 /datum/action/cooldown/spell/aoe/area_cleanse/get_things_to_cast_on(atom/center)
 	var/list/things = list()
+	structures_in_view = list()
 	for(var/atom/movable/movable_atom in view(aoe_radius, center))
+		if(istype(movable_atom, /obj/structure/table) || istype(movable_atom, /obj/structure/rack))
+			structures_in_view |= movable_atom
 		things += movable_atom
 
 	return things
 
 /datum/action/cooldown/spell/aoe/area_cleanse/cast_on_thing_in_aoe(atom/movable/movable_atom, mob/living/caster)
 
-	movable_atom.wash(CLEAN_ALL)
-
-	var/list/structures_in_view = list()
-	for(var/atom/movable/atomo in view(aoe_radius, caster))
-		if(is_type_in_list(movable_atom, elevated_structures))
-			structures_in_view |= movable_atom
-
-	var/cleaned
+	// Returns TRUE if washed.
+	var/cleaned = movable_atom.wash(CLEAN_ALL)
 	if(isitem(movable_atom))
-		handle_item(movable_atom, structures_in_view, caster)
-		cleaned = TRUE
+		var/did_clean = handle_item(movable_atom, structures_in_view, caster)
+		cleaned = cleaned ? cleaned : did_clean
 
 	if(isliving(movable_atom))
-		handle_living(movable_atom)
-		cleaned = TRUE
+		var/did_clean = handle_living(movable_atom)
+		cleaned = cleaned ? cleaned : did_clean
 
+	// Only add one bubble effect per cleaned tile.
+	// This way only things that were actually washed get soap bubbles!
 	if(cleaned && !locate(/obj/effect/temp_visual/bubbles) in get_turf(movable_atom))
 		new /obj/effect/temp_visual/bubbles(get_turf(movable_atom))
 
@@ -48,12 +48,15 @@
 		if(cleaned_item.contents) // if there's any kind of Stuff Inside that means it Might Be Important
 			return
 		qdel(cleaned_item) // begone muck!
+		return TRUE
 
-	if(!(locate(elevated_structures) in cleaned_item.loc) && isturf(cleaned_item.loc) && length(structures_in_view))
+	if(isturf(cleaned_item.loc) && length(structures_in_view))
+		if(locate(/obj/structure/table) in cleaned_item.loc || locate(/obj/structure/rack) in cleaned_item.loc)
+			return FALSE
 		var/atom/chosen_structure = pick(structures_in_view)
-		cleaned_item.throw_at(chosen_structure, aoe_radius, 2, spin = FALSE, gentle = TRUE)
+		cleaned_item.throw_at(chosen_structure, aoe_radius, cleaned_item.throw_speed, spin = TRUE)
 
-	return
+	return FALSE
 
 /datum/action/cooldown/spell/aoe/area_cleanse/proc/handle_living(mob/living/cleaned_mob, atom/caster)
 	cleaned_mob.extinguish()
@@ -64,3 +67,4 @@
 	if(iscarbon(cleaned_mob))
 		var/mob/living/carbon/cleaned_carbon = cleaned_mob
 		cleaned_carbon.reagents.add_reagent(/datum/reagent/space_cleaner, 5)
+	return TRUE

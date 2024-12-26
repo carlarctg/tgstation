@@ -7,6 +7,8 @@
 	icon = 'icons/obj/storage/closet.dmi'
 	icon_state = "fullcabinet"
 	obj_flags = INDESTRUCTIBLE
+	density = TRUE
+	anchored = TRUE
 	/**
 	 * Assoc list of outfits to how many charges left.
 	 * If value is null, the amount is infinite. Otherwise, it decreases by one per use.
@@ -21,22 +23,10 @@
 	var/one_use = TRUE
 	/// All wardrobes that share this id, share the one use restriction. If one_use is FALSE, it effectively does nothing.
 	var/wardrobe_id = "asparagus"
-	/// If the outfit user's old items are deleted.
-	var/delete_old_items = FALSE
-	/// If the outfit user's old items are forcibly dropped, rather than normally dropped.
-	var/force_drops = TRUE
-	/// If the outfit user's old items are deleted if they're undroppable. (eg armblade)
-	var/del_nodrop = TRUE
 	/// Humanize species that need unique environments to survive.
 	var/humanize_plasmamen = TRUE
 
-/obj/structure/outfit_wardrobe/examine(mob/user)
-	. = ..()
-
-	if(delete_old_items)
-		. += span_bolddanger("You should probably drop anything you don't want to go away forever.")
-
-/obj/structure/outfit_wardrobe/interact(mob/user)
+/obj/structure/outfit_wardrobe/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -52,7 +42,7 @@
 	var/list/display_classes = list()
 	var/datum/outfit/chosen_class
 
-	for(var/datum/outfit/dressup in selectable_outfits_to_amount)
+	for(var/datum/outfit/dressup as anything in selectable_outfits_to_amount)
 		if(selectable_outfits_to_amount[dressup] == 0)
 			continue
 		var/datum/radial_menu_choice/option = new(src)
@@ -71,9 +61,6 @@
 		return
 
 	chosen_class = choice
-	// If not null, reduce amount by one
-	if(!isnull(selectable_outfits_to_amount[choice]))
-		selectable_outfits_to_amount[choice]--
 
 	human_user.balloon_alert(human_user, "outfitting...")
 	playsound(human_user, 'sound/items/zip/un_zip.ogg', 33)
@@ -83,11 +70,14 @@
 		playsound(src, 'sound/machines/closet/wooden_closet_close.ogg', 50)
 		icon_state = initial(icon_state)
 		return
+	// If not null, reduce amount by one
+	if(!isnull(selectable_outfits_to_amount[choice]))
+		selectable_outfits_to_amount[choice]--
 	playsound(src, 'sound/machines/closet/wooden_closet_close.ogg', 50)
 	icon_state = initial(icon_state)
 	playsound(human_user, 'sound/items/zip/zip_up.ogg', 33)
 
-	human_user.drop_everything(del_on_drop = delete_old_items, force = force_drops, del_if_nodrop = del_nodrop)
+	human_user.drop_everything()
 	human_user.equipOutfit(chosen_class)
 	ADD_TRAIT(human_user, TRAIT_WARDROBE_USED, wardrobe_id)
 
@@ -101,9 +91,6 @@
 		/datum/outfit/medieval/knight = 1,
 		)
 	wardrobe_id = "questing"
-	delete_old_items = TRUE
-	force_drops = TRUE
-	del_nodrop = TRUE
 	humanize_plasmamen = TRUE
 
 /obj/structure/outfit_wardrobe/adventuring/honk

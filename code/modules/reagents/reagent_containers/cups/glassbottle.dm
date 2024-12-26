@@ -1120,15 +1120,7 @@
 	gulp_size = 25
 	amount_per_transfer_from_this = 25
 	possible_transfer_amounts = list(25)
-	list_reagents = list(/datum/reagent/medicine/c2/penthrite = 20/*, /datum/reagent/abidonium = 20*/, /datum/reagent/consumable/ethanol/brave_bull = 10)
-
-/obj/item/reagent_containers/cup/tube/martyr_phial
-	name = "martyr phial"
-	desc = "A cursed, pitch black phial. It is rumoured to let you cheat death itself for a few moments, turning you into a ghastly ghoul before Death drags you back to its domain. Smells like asparagus."
-	gulp_size = 20
-	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(20)
-	list_reagents = list(/datum/reagent/inverse/penthrite = 10)
+	list_reagents = list(/datum/reagent/medicine/c2/penthrite = 20, /datum/reagent/consumable/ethanol/brave_bull = 10, , /datum/reagent/consumable/ethanol/alexander)
 
 // todo make this shatter on throw
 /obj/item/reagent_containers/cup/tube/mending_phial

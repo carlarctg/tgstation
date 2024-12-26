@@ -136,11 +136,13 @@
 		/obj/item/reagent_containers/cup/glass/bottle/healing_potion,
 		/obj/item/reagent_containers/cup/glass/bottle/healing_potion,
 		/obj/item/reagent_containers/cup/glass/bottle/small/endurance_potion,
-		/obj/item/reagent_containers/cup/tube/martyr_phial,
 		/obj/item/restraints/legcuffs/bola,
 		/obj/item/restraints/legcuffs/bola,
+		/obj/item/food/grown/apple,
+		/obj/item/food/grown/apple,
+		/obj/item/food/grown/apple,
 	)
-	l_hand = /obj/item/horse_spawner
+	l_hand = /obj/item/sbeacondrop/horse/bit
 	gloves = /obj/item/clothing/gloves/tackler//plate
 	shoes = /obj/item/clothing/shoes/bhop/plate
 
@@ -149,7 +151,7 @@
 /datum/outfit/medieval/cleric
 	name = "Bitrunning Cleric"
 	head = /obj/item/clothing/head/helmet/chaplain/witchunter_hat
-	glasses = /obj/item/clothing/glasses/godeye
+	glasses = /obj/item/clothing/glasses/godeye/noturfs
 	neck = /obj/item/clothing/neck/heretic_focus/crimson_medallion
 
 	uniform = /obj/item/clothing/under/costume/dutch
@@ -162,7 +164,6 @@
 	backpack_contents = list(
 		/obj/item/reagent_containers/cup/glass/bottle/healing_potion,
 		/obj/item/reagent_containers/cup/glass/bottle/healing_potion,
-		/obj/item/reagent_containers/cup/tube/martyr_phial,
 		/obj/item/reagent_containers/cup/tube/mending_phial,
 		/obj/item/reagent_containers/cup/tube/mending_phial,
 		/obj/item/reagent_containers/cup/tube/mending_phial,
