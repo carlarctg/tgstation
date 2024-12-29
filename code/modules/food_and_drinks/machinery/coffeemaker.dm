@@ -498,6 +498,13 @@
 	atom_storage.max_slots = 4
 	atom_storage.set_holdable(/obj/item/coffee_cartridge)
 
+/obj/item/storage/fancy/coffee_cart_rack/varied/PopulateContents()
+	new /obj/item/coffee_cartridge(src)
+	new /obj/item/coffee_cartridge(src)
+	new /obj/item/coffee_cartridge/fancy(src)
+	new /obj/item/coffee_cartridge/decaf(src)
+	updat_appearance()
+
 /*
  * impressa coffee maker
  * its supposed to be a premium line product, so its cargo-only, the board cant be therefore researched
